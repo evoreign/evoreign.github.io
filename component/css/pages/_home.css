@@ -1,0 +1,245 @@
+/* plain approach/component/css/pages/_home.css */
+
+/* --- Homepage Specific Styles --- */
+
+/* .homepage-content.container is handled by layout/_page_layouts.css */
+.homepage-content.container { /* Add specific padding if different from default .container */
+    padding-top: var(--spacing-6);
+    padding-bottom: var(--spacing-6);
+}
+
+/* General section styling for consistent spacing on home */
+.content-section {
+    margin-bottom: var(--spacing-10); /* Space between sections on home */
+}
+
+.section-title { /* Used on home and other pages, if consistent it could be a component or base typography.
+                    For now, assuming it's styled per page context if variations exist. */
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-6);
+    color: hsl(var(--foreground));
+}
+
+.section-header { /* For titles with a "see all" link on home */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-4);
+}
+.section-header .section-title {
+    margin-bottom: 0;
+}
+
+.see-all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    font-size: var(--font-size-sm);
+    color: hsl(var(--primary));
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    transition: color var(--transition-duration);
+}
+.see-all-link:hover {
+    color: hsl(var(--primary) / 0.8);
+    text-decoration: underline;
+}
+.see-all-link .icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Banner Section on Home */
+.banner-section {
+    display: flex;
+    gap: var(--spacing-6);
+    margin-bottom: var(--spacing-10); /* Already covered by .content-section */
+    min-height: 300px;
+}
+
+.banner-main {
+    flex-grow: 2;
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.banner-main a, .banner-item a { /* Assuming links wrap banner content */
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: hsl(var(--muted-foreground));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.banner-main img, .banner-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-side {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+}
+
+.banner-item {
+    flex-grow: 1;
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.placeholder-text { /* Utility-like, but often styled per context. If truly generic, move to utilities. */
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+/* This specific .product-image-placeholder style is for homepage product cards.
+   If other pages use it differently, those would be separate or overrides. */
+.product-image-placeholder {
+    width: 100%;
+    height: 180px; /* Adjust height */
+    background-color: hsl(var(--muted));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid hsl(var(--border)); /* If image is flush with top */
+}
+.product-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Category placeholder on Home */
+.category-image-placeholder {
+    width: 80px;
+    height: 80px;
+    background-color: hsl(var(--secondary));
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-2);
+    border: 1px solid hsl(var(--border));
+}
+.category-image-placeholder .placeholder-text {
+    font-size: 0.75rem;
+}
+
+
+/* Categories Section on Home */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--spacing-4);
+}
+
+.category-item.card { /* Extends .card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-3);
+    text-decoration: none;
+    color: hsl(var(--foreground));
+}
+/* .card-interactive hover is in components/_cards.css */
+
+.category-name {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground));
+    line-height: var(--line-height-snug);
+}
+
+/* Flash Sale & Recommendations - Product Card Styling for Home */
+.product-scroll-container {
+    overflow-x: auto;
+    padding-bottom: var(--spacing-4);
+}
+.product-scroll-container::-webkit-scrollbar { height: 8px; }
+.product-scroll-container::-webkit-scrollbar-track { background: hsl(var(--secondary)); border-radius: var(--radius-full); }
+.product-scroll-container::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: var(--radius-full); }
+.product-scroll-container::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground)); }
+
+.product-list-horizontal {
+    display: flex;
+    gap: var(--spacing-4);
+    width: max-content;
+}
+
+.product-card.card { /* Common product card on home - consider componentizing if very similar elsewhere */
+    width: 200px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.product-card .product-link-wrapper {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.product-card-content { /* Specific to home product cards */
+    padding: var(--spacing-3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+    flex-grow: 1;
+}
+
+.product-name { /* Reused class, ensure base style is in typography or component if consistent */
+    /* For home product cards: */
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground));
+    line-height: var(--line-height-snug);
+    margin-bottom: var(--spacing-1);
+}
+
+.product-price { /* Reused class, ensure base style is in typography or component */
+    /* For home product cards: */
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--primary)); /* Or foreground color */
+}
+
+.stock-badge { /* Specific to home flash sale */
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--destructive-foreground));
+    background-color: hsl(var(--destructive));
+    padding: var(--spacing-0_5, 0.125rem) var(--spacing-2);
+    border-radius: var(--radius-sm);
+    align-self: flex-start;
+    margin-top: var(--spacing-1);
+}
+
+/* Recommendations Section - Product Grid on Home */
+.product-grid { /* General product grid for recommendations */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--spacing-4);
+}
+.product-grid .product-card.card { /* Product cards in this grid */
+    width: 100%;
+}
+
+/* Optional Load More Button on Home */
+.load-more-container {
+    text-align: center;
+    margin-top: var(--spacing-8);
+}

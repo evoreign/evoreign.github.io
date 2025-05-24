@@ -1,0 +1,35 @@
+/* plain approach/component/css/components/_badges.css */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: 0.75rem; /* 12px */
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  border-radius: var(--radius-full);
+  border: 1px solid hsl(var(--border));
+  white-space: nowrap;
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+}
+.badge-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-color: hsl(var(--primary));
+}
+.badge-secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+  border-color: hsl(var(--secondary));
+}
+.badge-destructive {
+  background-color: hsl(var(--destructive));
+  color: hsl(var(--destructive-foreground));
+  border-color: hsl(var(--destructive));
+}
+.badge-outline {
+  background-color: transparent;
+  color: hsl(var(--foreground));
+  /* border color is already var(--border) by default from .badge */
+}

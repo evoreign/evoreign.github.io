@@ -1,0 +1,136 @@
+/* plain approach/component/css/pages/_profile.css */
+
+/* .profile-page-content.container and .profile-layout-container are in layout/_page_layouts.css */
+/* .profile-sidebar.card and profile navigation elements are in layout/_sidebar_navigation.css */
+
+.profile-sidebar.card { /* Layout specific to profile page context */
+    flex: 0 0 280px;
+    padding: var(--spacing-6); /* Specific padding for profile sidebar card */
+}
+.profile-sidebar-userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--spacing-6);
+    padding-bottom: var(--spacing-6);
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.user-avatar-placeholder.placeholder-bg { /* Extends .placeholder-bg */
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-full);
+    /* background-color, display, align, justify, color from .placeholder-bg */
+    margin-bottom: var(--spacing-3);
+}
+.user-avatar-placeholder .user-avatar-icon { /* Icon inside avatar */
+    width: 3rem;
+    height: 3rem;
+}
+
+.user-profile-name {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--foreground));
+    margin: 0;
+    text-align: center;
+}
+ .profile-sidebar-userinfo .btn-link { /* Specific to profile sidebar */
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-1) 0;
+}
+
+
+/* Main Profile Section */
+.profile-main-section.card { /* Extends .card */
+    flex: 1;
+    padding: var(--spacing-6) var(--spacing-8);
+}
+
+.section-title-lg { /* Large title for main profile area */
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-6);
+    color: hsl(var(--foreground));
+    padding-bottom: var(--spacing-4);
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.biodata-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-8);
+}
+@media (min-width: 768px) {
+    .biodata-content-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.profile-photo-container {
+    flex: 0 0 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+.profile-photo-placeholder.placeholder-bg { /* Extends .placeholder-bg */
+    width: 180px;
+    height: 180px;
+    border-radius: var(--radius-lg);
+    /* background-color, display, align, justify, font-size, color from .placeholder-bg */
+    border: 1px solid hsl(var(--border)); /* Explicit border for this placeholder */
+}
+.change-photo-button.btn-outline.btn-sm { /* Extends button components */
+    width: 100%;  /* Optional if needed */
+}
+
+
+.biodata-details {
+    flex: 1;
+    display: grid;
+    gap: var(--spacing-4) var(--spacing-6);
+}
+
+.detail-item {
+    display: grid;
+    grid-template-columns: minmax(120px, max-content) 1fr;
+    align-items: flex-start;
+    gap: var(--spacing-2);
+    padding: var(--spacing-1) 0;
+}
+
+.detail-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--muted-foreground));
+    grid-column: 1 / 2;
+    white-space: nowrap;
+}
+
+.detail-value {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--foreground));
+    grid-column: 2 / 3;
+    word-break: break-word;
+}
+.detail-value.gender-radio-group { /* Layout for radio buttons in details */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding-top: 0;
+}
+/* .form-radio-container and its children are in components/_checkboxes_radios.css */
+
+.profile-actions {
+    margin-top: var(--spacing-8);
+    padding-top: var(--spacing-6);
+    border-top: 1px solid hsl(var(--border));
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-profile-button.btn-primary { /* Extends .btn-primary */
+    min-width: 150px;
+}

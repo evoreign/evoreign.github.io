@@ -1,0 +1,137 @@
+/* plain approach/component/css/layout/_header.css */
+
+/* --- Global Site Header Styles --- */
+.site-header {
+    background-color: hsl(var(--background));
+    border-bottom: 1px solid hsl(var(--border));
+    padding: var(--spacing-3) 0; /* Vertical padding, horizontal handled by header-container */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+}
+
+.header-container {
+    max-width: 1280px; /* Example max width */
+    margin: 0 auto;
+    padding: 0 var(--spacing-6); /* Horizontal padding for the container */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-4);
+}
+
+.logo-container .logo-link {
+    font-size: var(--font-size-lg); /* Or your logo's specific size */
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--foreground));
+    text-decoration: none;
+}
+
+/* Search Bar NEW Styles (from "header styling start") */
+.search-bar-container.new-search-bar .search-form {
+    position: relative; /* For positioning the icon inside */
+    display: flex;
+    align-items: center;
+}
+
+.search-bar-container.new-search-bar .search-icon-inside {
+    position: absolute;
+    left: var(--spacing-3); /* Adjust as needed for padding inside input */
+    color: hsl(var(--muted-foreground));
+    width: 1.125rem; /* 18px */
+    height: 1.125rem;
+    z-index: 1; /* Ensure icon is above input field's background */
+    pointer-events: none; /* So the icon doesn't interfere with clicking the input */
+}
+
+.search-bar-container.new-search-bar .search-input.form-input {
+    padding-left: calc(var(--spacing-3) + 1.125rem + var(--spacing-2));
+    /* Existing .search-input styles like background-color for search can be in components/_forms.css
+       or overridden in page-specific CSS if it varies significantly.
+       For now, this structure is for the header variant.
+    */
+}
+/* Search bar from general site header in keranjang.html */
+.search-bar-container { /* This is a more general rule, might conflict or be merged with new-search-bar */
+    flex-grow: 1;
+    max-width: 600px;
+}
+.search-form { /* This is a more general rule */
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+/* This old search-icon might be deprecated if new-search-bar is always used */
+.search-icon {
+    position: absolute;
+    left: var(--spacing-3);
+    color: hsl(var(--muted-foreground));
+    width: 1.125rem; /* 18px */
+    height: 1.125rem;
+}
+.search-input.form-input { /* General search input styling */
+    padding-left: calc(var(--spacing-3) + 1.25rem + var(--spacing-2)); /* Space for old icon */
+    background-color: hsl(var(--secondary) / 0.7); /* Slightly different bg for search */
+}
+.search-input.form-input:focus {
+    background-color: hsl(var(--background));
+}
+
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.header-actions .btn.btn-ghost.btn-icon {
+    background-color: transparent;
+    color: hsl(var(--muted-foreground));
+}
+
+.header-actions .btn.btn-ghost.btn-icon .icon {
+    width: 1.25rem; /* 20px */
+    height: 1.25rem;
+}
+.header-actions .btn-icon .icon { /* General icon size in header actions (from keranjang.html) */
+    width: 1.25rem; /* 20px */
+    height: 1.25rem;
+}
+
+
+/* Checkout Header (Variation of site-header) */
+.checkout-header { /* This class is used on checkout.html header */
+    background-color: hsl(var(--background));
+    border-bottom: 1px solid hsl(var(--border));
+    padding: var(--spacing-3) 0;
+    position: sticky; /* Redundant if .site-header already has it, but specific if structure differs */
+    top: 0;
+    z-index: 50; /* Ensure it's consistent with .site-header z-index */
+}
+
+.checkout-header-container.header-container { /* Uses .header-container */
+    /* max-width, margin, padding inherited from .header-container */
+    justify-content: flex-start; /* Override from .header-container */
+    /* gap inherited */
+}
+
+.back-link-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    text-decoration: none;
+    color: hsl(var(--foreground));
+}
+.back-link-logo .icon {
+    width: 1.5rem; /* 24px */
+    height: 1.5rem;
+}
+.back-link-logo .logo-placeholder { /* This seems to be text beside the back icon */
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
+}
+/* .page-main-title for "Pembayaran" in checkout header is very page-specific,
+   so it might stay in _checkout.css or be a more generic layout element if reused.
+   For now, keeping it out of _header.css unless it's a true header variant.
+*/

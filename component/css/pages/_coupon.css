@@ -1,0 +1,140 @@
+/* plain approach/component/css/pages/_coupon.css */
+
+/* --- Coupon Page Specific Styles --- */
+
+/* .coupon-page-content.container handled by layout/_page_layouts.css */
+.coupon-page-content.container { /* Add specific padding if different */
+    padding-top: var(--spacing-6);
+    padding-bottom: var(--spacing-6);
+}
+
+/* .info-bar and .info-item are in _promo.css.
+   The .active state is also there as it's used in promo.html's screenshot.
+   If it's truly specific to coupon.html active state, it would be here.
+*/
+
+/* "Spesial Untukmu" Section - Large Coupon Cards */
+.special-foryou-section .section-title {
+    /* Uses general .section-title, or define specific one if different */
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+}
+
+.coupon-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) {
+    .coupon-list {
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+}
+
+.coupon-card-large.card { /* Extends .card */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-4);
+}
+
+.coupon-image-placeholder.placeholder-bg { /* Extends .placeholder-bg */
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md, 0.375rem); /* Ensure --radius-md is defined in variables */
+}
+.coupon-image-placeholder .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: hsl(var(--primary));
+}
+
+.coupon-card-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+}
+
+.coupon-title {
+    font-size: var(--font-size-base); /* Or --font-size-lg */
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--foreground));
+    line-height: var(--line-height-snug);
+}
+
+.coupon-condition {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+    line-height: var(--line-height-base);
+}
+
+.coupon-card-action .btn { /* Uses .btn and size/variant classes */
+    white-space: nowrap;
+}
+
+/* "Voucher Toko" Section - Small Voucher Cards */
+.store-vouchers-section .section-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    /* Uses general .section-title */
+
+}
+
+.voucher-grid-small {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-5);
+}
+
+.voucher-card-small.card { /* Extends .card and .card-interactive */
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-3);
+}
+
+.voucher-store-image-placeholder.placeholder-bg { /* Extends .placeholder-bg */
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius);
+    margin-bottom: var(--spacing-3);
+}
+.voucher-store-image-placeholder .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: hsl(var(--muted-foreground));
+}
+
+.voucher-card-content {
+    flex-grow: 1;
+    margin-bottom: var(--spacing-3);
+}
+
+.voucher-store-name {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground));
+    margin-bottom: var(--spacing-1);
+}
+
+.voucher-title { /* Different from .coupon-title */
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--primary));
+    margin-bottom: var(--spacing-0_5, 0.125rem);
+}
+
+.voucher-condition { /* Different from .coupon-condition */
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+    line-height: var(--line-height-snug);
+}
+
+.voucher-card-action {
+    margin-top: auto;
+}
+.voucher-card-action .btn { /* Uses button classes */
+    width: 100%;
+}

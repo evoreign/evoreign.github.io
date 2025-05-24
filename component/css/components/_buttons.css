@@ -1,0 +1,106 @@
+/* plain approach/component/css/components/_buttons.css */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: var(--radius);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base); /* Ensure this aligns with font-size for height */
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--transition-duration);
+  height: var(--button-h);
+}
+
+.btn:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
+}
+
+.btn:disabled,
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background-color: hsl(var(--button-primary-bg-hsl));
+  color: hsl(var(--button-primary-text-hsl));
+  border-color: hsl(var(--button-primary-bg-hsl));
+}
+.btn-primary:hover {
+  background-color: hsl(var(--button-primary-hover-bg-hsl));
+  border-color: hsl(var(--button-primary-hover-bg-hsl));
+}
+
+.btn-destructive {
+  background-color: hsl(var(--button-destructive-bg-hsl));
+  color: hsl(var(--button-destructive-text-hsl));
+  border-color: hsl(var(--button-destructive-bg-hsl));
+}
+.btn-destructive:hover {
+  background-color: hsl(var(--button-destructive-hover-bg-hsl));
+  border-color: hsl(var(--button-destructive-hover-bg-hsl));
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: hsl(var(--button-outline-text-hsl));
+  border-color: hsl(var(--button-outline-border-hsl));
+}
+.btn-outline:hover {
+  background-color: hsl(var(--button-outline-hover-bg-hsl));
+}
+
+.btn-secondary {
+  background-color: hsl(var(--button-secondary-bg-hsl));
+  color: hsl(var(--button-secondary-text-hsl));
+  border-color: hsl(var(--button-secondary-bg-hsl));
+}
+.btn-secondary:hover {
+  background-color: hsl(var(--button-secondary-hover-bg-hsl));
+  border-color: hsl(var(--button-secondary-hover-bg-hsl));
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: hsl(var(--button-ghost-text-hsl));
+  border-color: transparent;
+}
+.btn-ghost:hover {
+  background-color: hsl(var(--button-ghost-hover-bg-hsl));
+}
+
+.btn-link {
+  background-color: transparent;
+  color: hsl(var(--button-link-text-hsl));
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  height: auto; /* Links might not need fixed height */
+  padding: 0; /* Links might not need padding */
+}
+.btn-link:hover {
+  /* text-decoration-color: hsl(var(--button-link-text-hsl)); */
+  text-decoration-thickness: 2px;
+}
+
+/* Icon button variant */
+.btn-icon {
+    padding: var(--spacing-2); /* Adjust padding for icons */
+    width: var(--button-h); /* Make it square */
+    height: var(--button-h);
+}
+.btn-icon svg { /* Assuming SVG icons */
+    width: 1rem;
+    height: 1rem;
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesanan Saya - Beliin.id</title>
+    <link rel="stylesheet" href="../component/css/main.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
+        .product-image-placeholder img {width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-sm); }
+    </style>
+    <link rel="icon" href="../assets/logo.PNG" type="image/png">
+</head>
+<body class="page-body">
+
+    <header class="site-header">
+    <div class="header-container">
+        <div class="logo-container">
+            <a href="index.html" class="logo-link">
+                <img src="../assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+            </a>
+        </div>
+        <div class="search-bar-container new-search-bar">
+            <form action="#" class="search-form">
+                <i data-lucide="search" class="icon search-icon-inside"></i>
+                <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+            </form>
+        </div>
+        <nav class="header-actions">
+            <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+                <i data-lucide="shopping-cart" class="icon"></i>
+            </a>
+            <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+                <i data-lucide="heart" class="icon"></i>
+            </a>
+            <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+                <i data-lucide="message-circle" class="icon"></i>
+            </a>
+            <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+                <i data-lucide="user" class="icon"></i>
+            </a>
+        </nav>
+    </div>
+</header>
+
+    <main class="profile-page-content container">
+        <div class="profile-layout-container">
+
+            <aside class="profile-sidebar card">
+                <div class="profile-sidebar-userinfo">
+                    <div class="user-avatar-placeholder placeholder-bg">
+                        <i data-lucide="user-circle-2" class="icon user-avatar-icon"></i>
+                    </div>
+                    <h2 class="user-profile-name">violetta fransisca</h2>
+                    <a href="profile.html" class="btn btn-link btn-sm">Ubah profil</a>
+                </div>
+                <nav class="profile-navigation">
+                    <h3 class="profile-nav-title">Navigasi Akun</h3>
+                    <ul class="profile-nav-list">
+                        <li class="profile-nav-item">
+                            <a href="profile.html" class="profile-nav-link">
+                                <i data-lucide="user" class="icon nav-icon"></i> Akun Saya
+                            </a>
+                        </li>
+                        <li class="profile-nav-item">
+                            <a href="orders.html" class="profile-nav-link active" aria-current="page">
+                                <i data-lucide="package" class="icon nav-icon"></i> Pesanan Saya
+                            </a>
+                        </li>
+                        <li class="profile-nav-item">
+                            <a href="#" class="profile-nav-link">
+                                <i data-lucide="bell" class="icon nav-icon"></i> Notifikasi
+                            </a>
+                        </li>
+                        <li class="profile-nav-item">
+                            <a href="coupon.html" class="profile-nav-link">
+                                <i data-lucide="ticket" class="icon nav-icon"></i> Voucher Saya
+                            </a>
+                        </li>
+                        <li class="profile-nav-item">
+                            <a href="#" class="profile-nav-link">
+                                <i data-lucide="coins" class="icon nav-icon"></i> Koin Beliin Saya
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <section class="orders-main-section">
+                <nav class="orders-tab-navigation tab-navigation">
+                    <button type="button" class="tab-button active" aria-selected="true" data-status="Semua">Semua</button>
+                    <button type="button" class="tab-button" aria-selected="false" data-status="Belum Bayar">Belum Bayar</button>
+                    <button type="button" class="tab-button" aria-selected="false" data-status="Dikemas">Dikemas</button>
+                    <button type="button" class="tab-button" aria-selected="false" data-status="Dikirim">Dikirim</button>
+                    <button type="button" class="tab-button" aria-selected="false" data-status="Selesai">Selesai</button>
+                    <button type="button" class="tab-button" aria-selected="false" data-status="Dibatalkan">Dibatalkan</button>
+                    <button type="button" class="tab-button" aria-selected="false" data-status="Pengembalian">Pengembalian</button>
+                </nav>
+
+                <div class="order-list" id="orderList">
+                    </div>
+            </section>
+        </div>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    lucide.createIcons();
+
+    // Header Links (conversion to <a> tags or adding event listeners)
+    const headerActionLinks = {
+        "Keranjang Belanja": "keranjang.html",
+        "Notifikasi": "#",
+        "Chat": "chat.html",
+        "Profil Pengguna": "profile.html"
+    };
+    document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
+        const label = button.getAttribute('aria-label');
+        if (headerActionLinks[label]) {
+            if (button.tagName.toLowerCase() !== 'a') {
+                const link = document.createElement('a');
+                link.href = headerActionLinks[label];
+                link.className = button.className;
+                link.setAttribute('aria-label', label);
+                link.innerHTML = button.innerHTML;
+                button.parentNode.replaceChild(link, button);
+            } else {
+                button.href = headerActionLinks[label];
+            }
+        }
+    });
+    lucide.createIcons(); // Re-run if icons were part of replaced elements
+
+    const orderTabs = document.querySelectorAll('.orders-tab-navigation .tab-button');
+    const orderListContainer = document.getElementById('orderList');
+
+    // Sample order data (in a real app, this would come from a server)
+    const allOrders = [
+        { 
+            id: "order1", storeName: "Nama Toko Elektronik", status: "Selesai", statusMessage: "Pesanan tiba di alamat tujuan, diterima oleh Anggota keluarga.",
+            icon: "truck",
+            products: [{ name: "Nama Produk Yang Cukup Panjang Contohnya", quantity: 1, price: "125.000", image: "https://via.placeholder.com/80x80/007bff/ffffff?text=Produk+Elektronik" }],
+            total: "125.000", storeId: "tokoElektronik", productId: "produkElektronik"
+        },
+        { 
+            id: "order2", storeName: "Toko Fashionista", status: "Dikirim", statusMessage: "Pesanan sedang dalam perjalanan menuju alamat Anda.",
+            icon: "package",
+            products: [{ name: "Baju Kemeja Pria Lengan Panjang", quantity: 2, price: "150.000", image: "https://via.placeholder.com/80x80/28a745/ffffff?text=Baju+Kemeja" }],
+            total: "300.000", storeId: "tokoFashion", productId: "bajuKemeja"
+        },
+        { 
+            id: "order3", storeName: "Perabotan Rumah Modern", status: "Belum Bayar", statusMessage: "Menunggu pembayaran Anda sebelum 25 Mei 2025, 23:59.",
+            icon: "credit-card",
+            products: [{ name: "Lampu Meja Belajar LED", quantity: 1, price: "85.000", image: "https://via.placeholder.com/80x80/ffc107/000000?text=Lampu+Meja" }],
+            total: "85.000", storeId: "tokoPerabotan", productId: "lampuMeja"
+        },
+         { 
+            id: "order4", storeName: "Gadget Store", status: "Dikemas", statusMessage: "Pesanan sedang disiapkan oleh penjual.",
+            icon: "archive",
+            products: [{ name: "Wireless Mouse Pro", quantity: 1, price: "250.000", image: "https://via.placeholder.com/80x80/fd7e14/ffffff?text=Mouse" }],
+            total: "250.000", storeId: "tokoGadget", productId: "mousePro"
+        },
+         { 
+            id: "order5", storeName: "Toko Buku Edukasi", status: "Dibatalkan", statusMessage: "Pesanan telah dibatalkan oleh sistem.",
+            icon: "x-circle",
+            products: [{ name: "Buku Novel Fantasi Terbaru", quantity: 1, price: "95.000", image: "https://via.placeholder.com/80x80/17a2b8/ffffff?text=Buku+Novel" }],
+            total: "95.000", storeId: "tokoBuku", productId: "novelFantasi"
+        }
+    ];
+
+    function renderOrders(statusFilter = "Semua") {
+        orderListContainer.innerHTML = ''; // Clear existing orders
+        const filteredOrders = statusFilter === "Semua" ? allOrders : allOrders.filter(order => order.status === statusFilter);
+
+        if (filteredOrders.length === 0) {
+            orderListContainer.innerHTML = `<p style="text-align:center; color:hsl(var(--muted-foreground)); padding: var(--spacing-6) 0;">Tidak ada pesanan dengan status "${statusFilter}".</p>`;
+            return;
+        }
+
+        filteredOrders.forEach(order => {
+            const orderCard = document.createElement('div');
+            orderCard.className = 'order-card card';
+            
+            let productsHTML = '';
+            order.products.forEach(product => {
+                productsHTML += `
+                    <div class="order-product-item">
+                        <a href="detailProduct.html?id=${product.productId || 'generic'}" class="product-image-placeholder order-product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                        </a>
+                        <div class="order-product-details">
+                            <a href="detailProduct.html?id=${product.productId || 'generic'}" style="text-decoration:none; color:inherit;"><p class="product-name">${product.name}</p></a>
+                            <p class="product-quantity">x${product.quantity}</p>
+                        </div>
+                        <p class="order-product-price">Rp ${product.price}</p>
+                    </div>
+                `;
+            });
+
+            orderCard.innerHTML = `
+                <div class="order-card-header">
+                    <div class="order-store-info">
+                        <a href="storeProfile.html?id=${order.storeId || 'generic'}" style="text-decoration:none; color:inherit;"><span class="store-name">${order.storeName}</span></a>
+                        <a href="chat.html?store_id=${order.storeId || 'generic'}" class="btn btn-outline btn-sm store-chat-button">
+                            <i data-lucide="message-circle" class="icon"></i>Chat
+                        </a>
+                        <a href="storeProfile.html?id=${order.storeId || 'generic'}" class="btn btn-outline btn-sm store-visit-button">
+                            <i data-lucide="store" class="icon"></i>Kunjungi Toko
+                        </a>
+                    </div>
+                    <div class="order-status-message">
+                        <i data-lucide="${order.icon || 'info'}" class="icon"></i> ${order.statusMessage}
+                    </div>
+                </div>
+                <div class="order-card-body">
+                    ${productsHTML}
+                </div>
+                <div class="order-card-footer">
+                    <div class="order-total-summary">
+                        <span>Total Pesanan:</span>
+                        <span class="total-amount">Rp ${order.total}</span>
+                    </div>
+                    <div class="order-actions">
+                        ${order.status === "Selesai" ? '<button class="btn btn-outline btn-sm rate-order-button" data-orderid="'+order.id+'">Nilai</button>' : ''}
+                        <a href="chat.html?store_id=${order.storeId || 'generic'}" class="btn btn-outline btn-sm">Hubungi Penjual</a>
+                        <button class="btn btn-primary btn-sm buy-again-button" data-orderid="${order.id}">Beli Lagi</button>
+                    </div>
+                </div>
+            `;
+            orderListContainer.appendChild(orderCard);
+        });
+        lucide.createIcons({context: orderListContainer}); // Render icons for the new order cards
+
+        // Add event listeners for new buttons
+        document.querySelectorAll('.rate-order-button').forEach(button => {
+            button.addEventListener('click', function() {
+                alert(`Tombol "Nilai" untuk pesanan ${this.dataset.orderid} diklik. (Simulasi)`);
+                // Redirect to review page or open modal
+            });
+        });
+        document.querySelectorAll('.buy-again-button').forEach(button => {
+            button.addEventListener('click', function() {
+                alert(`Tombol "Beli Lagi" untuk pesanan ${this.dataset.orderid} diklik. (Simulasi)`);
+                // Logic to re-add items to cart or redirect to product pages
+                 window.location.href = `detailProduct.html?id=${allOrders.find(o => o.id === this.dataset.orderid)?.products[0]?.productId || 'generic'}`;
+            });
+        });
+
+    }
+
+    orderTabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+            orderTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+            this.classList.add('active');
+            this.setAttribute('aria-selected', 'true');
+            renderOrders(this.dataset.status);
+        });
+    });
+
+    // Initial render
+    renderOrders("Semua");
+});
+</script>
+</body>
+</html>

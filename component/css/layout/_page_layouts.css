@@ -1,0 +1,175 @@
+/* plain approach/component/css/layout/_page_layouts.css */
+
+/* General Page Body Styling (if applicable, or set on html/body in base) */
+.page-body { /* Used in keranjang, home, profile, coupon, promo, wishlist, storeProfile, detailProduct, checkout */
+    background-color: hsl(var(--muted) / 0.3); /* Light page background, common theme */
+    /* Note: chat.html and signUp.html have specific body classes */
+}
+
+/* General Container for centering and max-width */
+.container { /* Common class used across many pages */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-4);   /* Default horizontal padding */
+    padding-right: var(--spacing-4);  /* Default horizontal padding */
+}
+
+/* Specific max-widths for different container contexts if needed,
+   or define utility classes like .container-sm, .container-lg */
+.shopping-cart-page.container,
+.signup-container { /* signup-container also acts as a page wrapper */
+    max-width: 1100px;
+}
+
+.homepage-content.container,
+.checkout-header-container.header-container, /* from _header.css, but related to container logic */
+.checkout-page-content.container,
+.profile-page-content.container,
+.promo-page-content.container,
+.coupon-page-content.container,
+.wishlist-page-content.container,
+.store-profile-page-content.container,
+.product-detail-page-content.container {
+    max-width: 1280px; /* A common larger max-width */
+}
+/* Note: some containers like .header-container have padding set directly in _header.css */
+
+
+/* --- Sign-Up/Sign-In Page Body & Container --- */
+.signup-page-body { /* Also used for signIn.html */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Changed from previous flex-start to allow header space */
+    min-height: 100vh;
+    background-color: hsl(var(--muted) / 0.3);
+    padding-top: 0; /* Reset from previous fix as header handles its own space */
+    padding-bottom: var(--spacing-8);
+    padding-left: 0;
+    padding-right: 0;
+}
+.signup-container { /* Main form container for auth pages */
+    display: flex;
+    width: 100%;
+    /* max-width: 1100px; Set by .container variant */
+    min-height: 70vh;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 8px 24px hsla(var(--foreground), 0.08);
+    background-color: hsl(var(--background));
+    margin-top: var(--spacing-8); /* Space between header and form */
+    /* Centering is handled by .signup-page-body align-items */
+}
+/* .promo-section and .form-section inside .signup-container are page-specific layouts,
+   so they would go into pages/_auth.css */
+
+
+/* --- Chat Page Body & Layout --- */
+.chat-page-body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    background-color: hsl(var(--background)); /* Overrides .page-body */
+    font-family: var(--font-sans);
+}
+.chat-app-layout {
+    display: flex;
+    width: 100%;
+    flex-grow: 1;
+    min-height: 0;
+    overflow: hidden; /* Children will scroll */
+}
+/* .chat-sidebar and .chat-main-content inside .chat-app-layout are page-specific,
+   so they would go into pages/_chat.css */
+
+
+/* --- Checkout Page Layout --- */
+.checkout-layout-container { /* Used in checkout.html */
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    gap: var(--spacing-6);
+}
+@media (min-width: 992px) {
+    .checkout-layout-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+/* .checkout-main-column and .checkout-sidebar-column are part of this specific layout,
+   so they would go into pages/_checkout.css */
+
+
+/* --- Profile Page Layout --- */
+.profile-layout-container { /* Used in profile.html and orders.html */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+}
+@media (min-width: 768px) {
+    .profile-layout-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+/* .profile-sidebar and .profile-main-section / .orders-main-section are part of this,
+   details in pages/_profile.css and pages/_orders.css */
+
+
+/* --- Wishlist Page Layout --- */
+.wishlist-layout-container { /* Used in wishlist.html */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+}
+@media (min-width: 768px) {
+    .wishlist-layout-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+/* .wishlist-sidebar and .wishlist-main-area are part of this,
+   details in pages/_wishlist.css */
+
+
+/* --- Product Detail Page Layout --- */
+.product-detail-layout { /* Used in detailProduct.html */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+    margin-top: var(--spacing-6);
+}
+@media (min-width: 768px) {
+    .product-detail-layout {
+        grid-template-columns: 0.8fr 1.2fr;
+        grid-template-areas:
+            "gallery info"
+            "purchase purchase";
+    }
+    /* Grid area assignments will be in pages/_product-detail.css */
+}
+@media (min-width: 1024px) {
+    .product-detail-layout {
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas: "gallery info purchase";
+        gap: var(--spacing-8);
+    }
+    /* Grid area assignments will be in pages/_product-detail.css */
+}
+
+/* Sticky sidebar column behavior for checkout and product detail */
+.checkout-sidebar-column,
+.product-purchase-column { /* These are often sticky sidebars */
+    /* position: sticky; top: ...; align-self: flex-start;
+       These specific sticky properties are better placed in their respective
+       page CSS (_checkout.css, _product-detail.css) as the 'top' offset
+       can vary based on page structure or header height.
+    */
+    z-index: 10; /* Ensure it stays above other content */
+    background-color: hsl(var(--background)); /* Ensure it has a solid background */
+    padding: var(--spacing-6);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 1px 3px hsla(var(--foreground), 0.1);
+    /* This shadow can be adjusted or removed based on design */
+    
+}

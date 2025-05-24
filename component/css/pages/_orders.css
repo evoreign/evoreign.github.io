@@ -1,0 +1,163 @@
+/* plain approach/component/css/pages/_orders.css */
+
+/* --- Orders Page Specific Styles --- */
+
+/* .profile-page-content.container and .profile-layout-container
+   are in layout/_page_layouts.css */
+/* .profile-sidebar and its navigation are in layout/_sidebar_navigation.css
+   and pages/_profile.css for user info block */
+
+.orders-main-section { /* Main section for orders list, sibling to profile-sidebar */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+}
+
+/* .orders-tab-navigation and .tab-button are in layout/_tab_navigation.css */
+.orders-tab-navigation .tab-button { /* Minor adjustment if needed for orders page */
+    white-space: nowrap; /* Already in layout/_tab_navigation.css */
+}
+
+
+/* Order List container */
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-5);
+}
+
+/* Individual Order Card */
+.order-card.card { /* Extends .card component */
+    padding: 0; /* Override base card padding if sections handle it */
+}
+
+.order-card-header {
+    padding: var(--spacing-4);
+    border-bottom: 1px solid hsl(var(--border));
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+}
+
+.order-store-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+
+.order-store-info .store-name { /* Store name within an order card */
+    font-weight: var(--font-weight-semibold);
+    color: var(--foreground);
+    flex-grow: 1;
+}
+.order-store-info .btn-sm { /* Specific button styling in order card header */
+    padding: var(--spacing-1) var(--spacing-2);
+    font-size: var(--font-size-sm);
+    gap: var(--spacing-1);
+}
+.order-store-info .btn-sm .icon {
+    width: 0.875rem;
+    height: 0.875rem;
+}
+
+.order-status-message {
+    font-size: var(--font-size-sm);
+    color: var(--muted-foreground);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+.order-status-message .icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    color: var(--primary); /* Or adjust based on status */
+}
+
+.order-card-body {
+    padding: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+
+.order-product-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-4);
+}
+
+.order-product-image.product-image-placeholder { /* Uses .product-image-placeholder */
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.order-product-details {
+    flex-grow: 1;
+}
+.order-product-details .product-name { /* Uses .product-name style */
+    font-size: var(--font-size-base); /* Override if needed for orders */
+    margin-bottom: var(--spacing-1);
+}
+.order-product-details .product-quantity {
+    font-size: var(--font-size-sm);
+    color: var(--muted-foreground);
+}
+
+.order-product-price {
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+    font-weight: var(--font-weight-medium);
+    white-space: nowrap;
+    margin-left: auto;
+    padding-left: var(--spacing-3);
+    align-self: flex-start;
+}
+
+.order-card-footer {
+    padding: var(--spacing-4);
+    border-top: 1px solid hsl(var(--border));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--spacing-3);
+}
+
+@media (min-width: 768px) {
+    .order-card-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.order-total-summary {
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+    text-align: right;
+}
+.order-total-summary .total-amount { /* Uses .total-amount style */
+    font-size: var(--font-size-base); /* Override if needed */
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+    margin-left: var(--spacing-1);
+}
+
+.order-actions {
+    display: flex;
+    gap: var(--spacing-2);
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+/* .order-actions .btn-sm uses component styles */
+
+/* Sidebar active link icon color specific to orders page if needed */
+.profile-sidebar .profile-navigation .profile-nav-link.active .nav-icon[data-lucide="package"],
+.profile-sidebar .profile-navigation .profile-nav-link.active[href="orders.html"] {
+    color: hsl(var(--primary-foreground)); /* Already handled by general active nav link */
+}
+/* Koin icon color, if specific and not a general nav icon override */
+.profile-nav-link .nav-icon[data-lucide="coins"] {
+    color: hsl(var(--primary)); /* Or a specific gold color variable */
+}

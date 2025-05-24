@@ -1,0 +1,248 @@
+/* plain approach/component/css/pages/_checkout.css */
+
+/* .checkout-page-body and .checkout-page-content.container are in layout/_page_layouts.css */
+/* .checkout-header and related are in layout/_header.css */
+/* .checkout-layout-container is in layout/_page_layouts.css */
+
+.checkout-main-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+}
+
+.checkout-sidebar-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+    position: sticky; /* Sticky behavior specific to this page layout */
+    top: calc(var(--site-header-height, 70px) + var(--spacing-6)); /* Adjust 70px if actual header height differs */
+    align-self: flex-start;
+}
+
+/* General section/card title if not covered by base .card styles or components/_cards.css */
+.checkout-main-column .section-title,
+.checkout-sidebar-column .section-title { /* Assuming .section-title from home is too generic */
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-4);
+    color: hsl(var(--foreground));
+}
+.checkout-main-column .card .section-title, /* If title is inside a card and needs specific padding/border */
+.checkout-sidebar-column .card .section-title {
+    padding-bottom: var(--spacing-3);
+    border-bottom: 1px solid hsl(var(--border));
+    margin-bottom: var(--spacing-4); /* Overrides the general .section-title margin */
+}
+
+
+/* Ordered Products Section */
+.ordered-products-section.card {
+    /* Uses .card base */
+    padding: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-summary-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+
+.product-summary-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-3) 0;
+    border-bottom: 1px solid hsl(var(--border) / 0.5);
+}
+.product-summary-item:last-child {
+    border-bottom: none;
+}
+.product-summary-item.highlighted {
+    border: 2px solid hsl(var(--ring));
+    border-radius: var(--radius);
+    padding: calc(var(--spacing-3) - 2px);
+    margin: -2px;
+}
+
+.product-summary-image.placeholder-bg { /* Uses .placeholder-bg */
+    width: 64px; height: 64px;
+    flex-shrink: 0;
+    /* Inherits from .placeholder-bg or a more specific component style if created */
+}
+.product-summary-image img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-sm); }
+
+.product-summary-details {
+    flex-grow: 1;
+}
+.product-summary-name {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground));
+    line-height: var(--line-height-snug);
+    margin-bottom: var(--spacing-0_5, 0.125rem);
+}
+.product-summary-price {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+
+/* Order Totals Summary */
+.order-totals-summary.card {
+    padding: var(--spacing-4);
+}
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-sm);
+    color: hsl(var(--foreground));
+    padding: var(--spacing-1_5, 0.375rem) 0;
+}
+.summary-line span:first-child {
+    color: hsl(var(--muted-foreground));
+}
+.summary-line.discount-line span:last-child {
+    color: hsl(var(--destructive));
+}
+.summary-line.shipping-line span:last-child {
+    color: hsl(var(--muted-foreground)); /* Default for shipping */
+    /* color for shipping, can be foreground or specific */
+}
+
+
+/* Payment Methods */
+.payment-methods-section.card {
+    /* Uses .card base */
+    padding: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+.payment-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--spacing-3);
+}
+.payment-option-button.btn { /* Extends .btn */
+    font-weight: var(--font-weight-normal);
+    border-color: hsl(var(--border)); /* Default for these buttons */
+}
+.payment-option-button.btn.active {
+    border-color: hsl(var(--primary));
+    background-color: hsl(var(--primary) / 0.1);
+    color: hsl(var(--primary));
+    font-weight: var(--font-weight-medium);
+}
+
+/* Sidebar Cards: Address, Note, Shipping */
+.card-header-actions { /* For card titles with a button on the side */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom, padding-bottom, border-bottom are from .card .section-title now */
+}
+.card-title-sm { /* Smaller title for cards in checkout sidebar */
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    margin: 0; /* Already handled by .section-title if used */
+    color: hsl(var(--foreground));
+}
+.change-button.btn-link.btn-sm { /* Extends .btn-link and .btn-sm */
+    font-size: var(--font-size-sm); /* from .btn-sm */
+    padding: 0;
+    height: auto;
+    color: hsl(var(--primary));
+}
+
+.address-details p, .shipping-details p {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+    margin-bottom: var(--spacing-1);
+    line-height: var(--line-height-snug);
+}
+.address-details p:last-child, .shipping-details p:last-child {
+    margin-bottom: 0;
+}
+.address-recipient-name, .shipping-method-name {
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground));
+}
+
+.order-note-section.card .form-label { /* Extends .form-label */
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-2);
+}
+.order-note-section.card .form-textarea { /* Extends .form-textarea */
+    min-height: 80px;
+}
+
+/* Checkout Footer Actions */
+.checkout-footer-actions {
+    background-color: hsl(var(--background));
+    border-top: 1px solid hsl(var(--border));
+    padding: var(--spacing-4) var(--spacing-6);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--spacing-3);
+    position: sticky;
+    bottom: 0;
+    z-index: 40;
+}
+@media (min-width: 768px) {
+    .checkout-footer-actions {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
+
+.final-total-display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--spacing-0_5, 0.125rem);
+}
+.final-total-display .total-label {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+.final-total-display .total-amount {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--primary));
+}
+
+.place-order-button.btn-primary { /* Extends .btn-primary */
+    min-width: 200px;
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .place-order-button.btn-primary {
+        width: auto;
+    }
+}
+
+/* Helper for placeholder backgrounds if not already a component */
+.placeholder-bg { /* If this isn't componentized yet */
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius-sm); /* General radius, some placeholders have specific radii */
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; color: hsl(var(--muted-foreground));
+    /* border: 1px solid hsl(var(--border)); */ /* Some placeholders have border, others don't in original CSS */
+}
+/* Page specific title for checkout header (moved from _header.css as it's not a general header element) */
+.page-main-title { /* For "Pembayaran" in checkout header */
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--foreground));
+    margin: 0;
+    flex-grow: 1;
+    /* text-align: center; */
+}

@@ -1,0 +1,109 @@
+/* plain approach/component/css/components/_checkboxes_radios.css */
+
+/* Custom Checkbox Styling */
+.form-checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+.form-checkbox { /* The actual hidden input */
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.form-checkbox-indicator {
+  display: inline-flex; /* Changed to inline-flex */
+  align-items: center;
+  justify-content: center;
+  width: 1rem; /* 16px */
+  height: 1rem; /* 16px */
+  border: 1px solid hsl(var(--input-border));
+  border-radius: var(--radius-sm);
+  background-color: hsl(var(--background));
+  transition: all var(--transition-duration) var(--transition-timing-function);
+  flex-shrink: 0; /* Prevent shrinking in flex container */
+}
+.form-checkbox-indicator svg { /* Checkmark icon */
+  width: 0.75rem; /* 12px */
+  height: 0.75rem;
+  color: hsl(var(--primary-foreground));
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all var(--transition-duration) var(--transition-timing-function);
+}
+.form-checkbox:checked + .form-checkbox-indicator {
+  background-color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+}
+.form-checkbox:checked + .form-checkbox-indicator svg {
+  opacity: 1;
+  transform: scale(1);
+}
+.form-checkbox:focus-visible + .form-checkbox-indicator {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
+}
+.form-checkbox-label {
+  font-size: var(--font-size-sm);
+  color: hsl(var(--foreground));
+  line-height: 1; /* Adjust if needed */
+}
+
+/* Custom Radio Button Styling */
+.form-radio-container {
+  display: inline-flex; /* Changed from flex to inline-flex */
+  align-items: center;
+  gap: var(--spacing-2);
+  cursor: pointer;
+  user-select: none;
+}
+.form-radio { /* The actual hidden input */
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.form-radio-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem; /* 16px */
+  height: 1rem;
+  border: 1px solid hsl(var(--input-border));
+  border-radius: var(--radius-full); /* Circular for radio */
+  background-color: hsl(var(--background));
+  transition: all var(--transition-duration) var(--transition-timing-function);
+  flex-shrink: 0;
+}
+.form-radio-indicator::after { /* Inner dot for checked state */
+    content: "";
+    width: 0.5rem; /* 8px */
+    height: 0.5rem;
+    border-radius: var(--radius-full);
+    background-color: hsl(var(--primary-foreground)); /* Color of the dot */
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all var(--transition-duration) var(--transition-timing-function);
+}
+.form-radio:checked + .form-radio-indicator {
+  background-color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+}
+.form-radio:checked + .form-radio-indicator::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.form-radio:focus-visible + .form-radio-indicator {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
+}
+.form-radio-label {
+  font-size: var(--font-size-sm);
+  color: hsl(var(--foreground));
+  line-height: 1;
+}

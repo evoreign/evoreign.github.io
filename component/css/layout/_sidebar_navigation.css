@@ -1,0 +1,95 @@
+/* plain approach/component/css/layout/_sidebar_navigation.css */
+
+/* Profile Sidebar Navigation (profile.html, orders.html) */
+.profile-navigation .profile-nav-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--muted-foreground));
+    padding: 0 var(--spacing-2);
+    margin-bottom: var(--spacing-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.profile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-nav-item {
+    margin-bottom: var(--spacing-1);
+}
+
+.profile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-2_5, 0.625rem) var(--spacing-3);
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground));
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+.profile-nav-link .nav-icon {
+    width: 1.125rem; /* 18px */
+    height: 1.125rem;
+    color: hsl(var(--muted-foreground));
+    transition: color var(--transition-duration);
+}
+
+.profile-nav-link:hover {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+}
+.profile-nav-link:hover .nav-icon {
+    color: hsl(var(--accent-foreground));
+}
+
+.profile-nav-link.active {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-weight: var(--font-weight-semibold);
+}
+.profile-nav-link.active .nav-icon {
+    color: hsl(var(--primary-foreground));
+}
+
+/* Wishlist Sidebar Navigation/Filters (wishlist.html) */
+.wishlist-sidebar .sidebar-title { /* This is a heading, not part of the nav list itself */
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-4);
+    padding-bottom: var(--spacing-3);
+    border-bottom: 1px solid hsl(var(--border));
+    color: hsl(var(--foreground));
+}
+.category-filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.category-filter-item {
+    margin-bottom: var(--spacing-1);
+}
+.category-filter-link { /* Similar to .profile-nav-link but with slight differences */
+    display: block;
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--muted-foreground));
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+.category-filter-link:hover {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+}
+.category-filter-link.active {
+    background-color: hsl(var(--primary) / 0.1);
+    color: hsl(var(--primary));
+    font-weight: var(--font-weight-semibold);
+}

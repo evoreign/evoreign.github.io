@@ -1,0 +1,94 @@
+/* plain approach/component/css/main.css */
+@import url('base/_variables.css');
+@import url('base/_reset.css');
+@import url('base/_typography.css');
+
+/* plain approach/component/css/main.css */
+/* ... (base and layout imports) ... */
+
+/* 3. Components */
+@import url('components/_buttons.css');
+@import url('components/_forms.css');
+@import url('components/_checkboxes_radios.css');
+@import url('components/_cards.css');
+@import url('components/_alerts.css');
+@import url('components/_badges.css');
+@import url('components/_carousel.css');
+@import url('components/_avatars.css');
+@import url('components/_pagination.css');
+/* ... import other component files as you create them ... */
+
+/* ... (page and utility imports will come later) ... */
+
+/* plain approach/component/css/main.css */
+/* ... (base imports) ... */
+
+/* 2. Layout Styles */
+@import url('layout/_page_layouts.css');
+@import url('layout/_header.css');
+@import url('layout/_tab_navigation.css');
+@import url('layout/_sidebar_navigation.css');
+/* @import url('layout/_grid.css'); */ /* If you create it */
+/* @import url('layout/_footer.css'); */ /* If you create it */
+
+/* ... (component, page, and utility imports will come after) ... */
+
+/* plain approach/component/css/main.css */
+/* ... (base, layout, component imports) ... */
+
+/* 4. Page-Specific Styles */
+@import url('pages/_auth.css');
+@import url('pages/_chat.css');
+@import url('pages/_cart.css');
+/* ... more to come ... */
+
+/* plain approach/component/css/main.css */
+/* ... (base, layout, component imports) ... */
+
+/* 4. Page-Specific Styles */
+@import url('pages/_auth.css');
+@import url('pages/_chat.css');
+@import url('pages/_cart.css');
+@import url('pages/_home.css');
+@import url('pages/_checkout.css');
+@import url('pages/_profile.css');
+/* ... more to come ... */
+
+/* plain approach/component/css/main.css */
+/* ... (base, layout, component imports) ... */
+
+/* 4. Page-Specific Styles */
+/* ... (previous page imports) ... */
+@import url('pages/_promo.css');
+@import url('pages/_coupon.css');
+@import url('pages/_wishlist.css');
+@import url('pages/_store-profile.css');
+/* ... more to come ... */
+
+/* plain approach/component/css/main.css */
+/* ... (base, layout, component imports) ... */
+
+/* 4. Page-Specific Styles */
+@import url('pages/_auth.css');
+@import url('pages/_chat.css');
+@import url('pages/_cart.css');
+@import url('pages/_home.css');
+@import url('pages/_checkout.css');
+@import url('pages/_profile.css');
+@import url('pages/_promo.css');
+@import url('pages/_coupon.css');
+@import url('pages/_wishlist.css');
+@import url('pages/_store-profile.css');
+@import url('pages/_orders.css');
+@import url('pages/_product-detail.css');
+
+/* ... (utility imports will come last) ... */
+
+/* plain approach/component/css/main.css */
+/* ... (base, layout, component, page imports) ... */
+
+/* 5. Utilities */
+@import url('utilities/_display.css');
+@import url('utilities/_placeholders.css');
+@import url('utilities/_spacing.css');
+@import url('utilities/_text.css');

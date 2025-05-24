@@ -1,0 +1,55 @@
+/* plain approach/component/css/components/_forms.css */
+
+.form-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-2); /* Increased spacing */
+  color: hsl(var(--foreground));
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  display: flex; /* Changed to flex for potential icon alignment */
+  align-items: center;
+  width: 100%;
+  min-height: var(--button-h); /* Match button height */
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+  border: 1px solid hsl(var(--input-border));
+  border-radius: var(--radius);
+  transition: border-color var(--transition-duration) var(--transition-timing-function), box-shadow var(--transition-duration) var(--transition-timing-function);
+}
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 1px hsl(var(--ring));
+}
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: hsl(var(--muted-foreground));
+  opacity: 1; /* Firefox */
+}
+.form-textarea {
+  min-height: 80px;
+  resize: vertical;
+  padding-top: var(--spacing-2); /* Ensure text starts nicely */
+  padding-bottom: var(--spacing-2);
+}
+.form-select {
+  appearance: none; /* Remove default arrow */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"); /* Basic custom arrow */
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-3) center;
+  background-size: 1em;
+  padding-right: calc(var(--spacing-3) + 1.5em); /* Space for arrow */
+}
+.dark .form-select {
+   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}

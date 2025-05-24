@@ -1,0 +1,72 @@
+/* plain approach/component/css/layout/_tab_navigation.css */
+
+/* Common Tab Button Styling (Base for different tab containers) */
+.tab-button {
+    padding: var(--spacing-3) var(--spacing-2); /* Default padding */
+    cursor: pointer;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background-color: transparent;
+    color: hsl(var(--muted-foreground));
+    font-size: var(--font-size-base); /* Default font size */
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    white-space: nowrap; /* Prevent tabs from wrapping text */
+}
+.tab-button.active {
+    color: hsl(var(--primary));
+    border-bottom-color: hsl(var(--primary));
+    font-weight: var(--font-weight-semibold);
+}
+.tab-button:hover:not(.active) {
+    color: hsl(var(--foreground));
+}
+
+/* Tabs for Auth Forms (signup.html, signIn.html) */
+.form-tabs {
+    display: flex;
+    margin-bottom: var(--spacing-6);
+    border-bottom: 1px solid hsl(var(--border));
+}
+.form-tabs .tab-button { /* Specifics for auth tabs */
+    flex-basis: 50%;
+    margin-bottom: -1px; /* Align active border with container border */
+}
+
+/* General Tab Navigation (promo.html, storeProfile.html, orders.html, detailProduct.html) */
+.tab-navigation { /* Also .store-category-tabs, .orders-tab-navigation, .product-info-tabs */
+    display: flex;
+    gap: var(--spacing-2); /* Default gap */
+    margin-bottom: var(--spacing-4); /* Default margin */
+    padding-bottom: var(--spacing-1); /* Space for active indicator */
+    overflow-x: auto; /* Allow horizontal scrolling for tabs */
+}
+.tab-navigation::-webkit-scrollbar { height: 4px; } /* Optional custom scrollbar */
+.tab-navigation::-webkit-scrollbar-track { background: transparent; }
+.tab-navigation::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: var(--radius-full); }
+
+/* Specifics for different tab navigation contexts */
+.store-category-tabs {
+    gap: var(--spacing-1);
+    border-bottom: 1px solid hsl(var(--border)); /* Already has border */
+    padding-bottom: 0;
+}
+.store-category-tabs .tab-button {
+
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    margin-bottom: -1px;
+}
+
+.orders-tab-navigation { /* Mostly uses .tab-navigation defaults */
+    margin-bottom: 0; /* If order cards have own top margin */
+}
+
+.product-info-tabs.tab-navigation { /* detailProduct.html */
+    border-bottom: 1px solid hsl(var(--border));
+    margin-bottom: var(--spacing-4);
+}
+.product-info-tabs .tab-button {
+    padding: var(--spacing-2) var(--spacing-3);
+    font-size: var(--font-size-sm);
+}

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya - Beliin.id</title>
+    <link rel="stylesheet" href="../component/css/main.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
+        .profile-main-section .detail-value input[type="text"],
+        .profile-main-section .detail-value input[type="date"],
+        .profile-main-section .detail-value input[type="tel"],
+        .profile-main-section .detail-value input[type="email"] {
+            /* display: inline-block; Remove if you want form-input default display:flex */
+            width: auto; /* Adjust width as needed, or let it be 100% if .form-input is used */
+            min-width: 200px;
+            padding: var(--spacing-1) var(--spacing-2);
+            font-size: var(--font-size-sm);
+            border: 1px solid hsl(var(--input-border));
+            border-radius: var(--radius-sm);
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+        }
+         .profile-photo-placeholder img { width:100%; height:100%; object-fit:cover; border-radius: inherit;}
+    </style>
+    <link rel="icon" href="../assets/logo.PNG" type="image/png">
+</head>
+<body class="page-body">
+
+    <header class="site-header">
+    <div class="header-container">
+        <div class="logo-container">
+            <a href="index.html" class="logo-link">
+                <img src="../assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+            </a>
+        </div>
+        <div class="search-bar-container new-search-bar">
+            <form action="#" class="search-form">
+                <i data-lucide="search" class="icon search-icon-inside"></i>
+                <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+            </form>
+        </div>
+        <nav class="header-actions">
+            <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+                <i data-lucide="shopping-cart" class="icon"></i>
+            </a>
+            <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+                <i data-lucide="heart" class="icon"></i>
+            </a>
+            <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+                <i data-lucide="message-circle" class="icon"></i>
+            </a>
+            <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+                <i data-lucide="user" class="icon"></i>
+            </a>
+        </nav>
+    </div>
+</header>
+
+    <main class="profile-page-content container">
+        <div class="profile-layout-container">
+
+            <aside class="profile-sidebar card">
+                <div class="profile-sidebar-userinfo">
+                    <div class="user-avatar-placeholder placeholder-bg">
+                         <img src="https://via.placeholder.com/80x80/6c757d/ffffff?text=VF" alt="Avatar Violetta Fransisca" id="userAvatarPreview" style="border-radius:50%;">
+                    </div>
+                    <h2 class="user-profile-name">Violetta Fransisca</h2>
+                    <button type="button" class="btn btn-link btn-sm edit-profile-button-main">Ubah profil</button>
+                </div>
+                <nav class="profile-navigation">
+                    <h3 class="profile-nav-title">Akun Saya</h3>
+                    <ul class="profile-nav-list">
+                        <li class="profile-nav-item">
+                            <a href="#biodata" class="profile-nav-link active" aria-current="page" data-section="biodata-section">
+                                <i data-lucide="user" class="icon nav-icon"></i> Biodata diri
+                            </a>
+                        </li>
+                        <li class="profile-nav-item">
+                            <a href="#alamat" class="profile-nav-link" data-section="alamat-section">
+                                <i data-lucide="map-pin" class="icon nav-icon"></i> Daftar Alamat
+                            </a>
+                        </li>
+                        <li class="profile-nav-item">
+                            <a href="#pembayaran" class="profile-nav-link" data-section="pembayaran-section">
+                                <i data-lucide="credit-card" class="icon nav-icon"></i> Pembayaran
+                            </a>
+                        </li>
+                        <li class="profile-nav-item">
+                            <a href="#notifikasi" class="profile-nav-link" data-section="notifikasi-section">
+                                <i data-lucide="bell" class="icon nav-icon"></i> Pengaturan Notifikasi
+                            </a>
+                        </li>
+                        <li class="profile-nav-item">
+                            <a href="#password" class="profile-nav-link" data-section="password-section">
+                                <i data-lucide="lock" class="icon nav-icon"></i> Ubah Password
+                            </a>
+                        </li>
+                         <li class="profile-nav-item">
+                            <a href="orders.html" class="profile-nav-link">
+                                <i data-lucide="package" class="icon nav-icon"></i> Pesanan Saya
+                            </a>
+                        </li>
+                         <li class="profile-nav-item">
+                            <a href="coupon.html" class="profile-nav-link">
+                                <i data-lucide="ticket" class="icon nav-icon"></i> Coupon Saya
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <section class="profile-main-section card" id="biodata-section" data-title="Biodata diri">
+                <h1 class="section-title-lg">Biodata diri</h1>
+                <div class="biodata-content-wrapper">
+                    <div class="profile-photo-container">
+                        <div class="profile-photo-placeholder placeholder-bg">
+                            <img src="https://via.placeholder.com/180x180/adb5bd/ffffff?text=Foto+Profil" alt="Foto Profil Violetta Fransisca" id="profilePhotoPreview">
+                        </div>
+                        <input type="file" id="changePhotoImageInput" style="display: none;" accept="image/*">
+                        <button class="btn btn-outline btn-sm change-photo-button" id="changePhotoButton">Ubah Foto</button>
+                    </div>
+                    <div class="biodata-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Nama</span>
+                            <span class="detail-value" data-field="name">Violetta Fransisca</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Tanggal Lahir</span>
+                            <span class="detail-value" data-field="dob">25/09/1975</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Jenis Kelamin</span>
+                            <div class="detail-value gender-radio-group" data-field="gender">
+                                <label class="form-radio-container">
+                                    <input type="radio" name="gender" value="laki-laki" class="form-radio" disabled>
+                                    <span class="form-radio-indicator"></span>
+                                    <span class="form-radio-label">Laki-laki</span>
+                                </label>
+                                <label class="form-radio-container">
+                                    <input type="radio" name="gender" value="perempuan" class="form-radio" checked disabled>
+                                    <span class="form-radio-indicator"></span>
+                                    <span class="form-radio-label">Perempuan</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Nomor Telepon</span>
+                            <span class="detail-value" data-field="phone">08163823562</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Nama Toko</span>
+                            <span class="detail-value" data-field="storeName">Ncik VP</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Email</span>
+                            <span class="detail-value" data-field="email">violetta.mathers@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button type="button" class="btn btn-primary edit-profile-button">Edit profile</button>
+                </div>
+            </section>
+
+            <section class="profile-main-section card" id="alamat-section" data-title="Daftar Alamat" style="display:none;">
+                <h1 class="section-title-lg">Daftar Alamat</h1>
+                <p>Konten untuk Daftar Alamat akan ditampilkan di sini.</p>
+                <p><a href="#" class="btn btn-primary btn-sm">Tambah Alamat Baru</a></p>
+                <div class="section-list">
+                    <div class="section-item">
+                        <h3 class="section-name">Rumah</h3>
+                        <p class="section-details">Jl. Raya No. 123, Jakarta, Indonesia</p>
+                        <button type="button" class="btn btn-link btn-sm">Edit</button>
+                        <button type="button" class="btn btn-link btn-sm">Hapus</button>
+                    </div>
+                    <br>
+                    <div class="section-item">
+                        <h3 class="section-name">Kantor</h3>
+                        <p class="section-details">Jl. Kebon Jeruk No. 456, Jakarta, Indonesia</p>
+                        <button type="button" class="btn btn-link btn-sm">Edit</button>
+                        <button type="button" class="btn btn-link btn-sm">Hapus</button>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="profile-main-section card" id="pembayaran-section" data-title="Pembayaran" style="display:none;">
+                <h1 class="section-title-lg">Pembayaran</h1>
+                <p>Konten untuk metode Pembayaran akan ditampilkan di sini.</p>
+                <p><a href="#" class="btn btn-primary btn-sm">Tambah Metode Pembayaran</a></p>
+                <div class="section-list">
+                    <div class="section-item">
+                        <h3 class="section-name">Kartu Kredit</h3>
+                        <p class="section-details">**** **** **** 1234</p>
+                        <button type="button" class="btn btn-link btn-sm">Edit</button>
+                        <button type="button" class="btn btn-link btn-sm">Hapus</button>
+                    </div>
+                    <br>
+                    <div class="section-item">
+                        <h3 class="section-name">Transfer Bank</h3>
+                        <p class="section-details">Bank BCA - 1234567890</p>
+                        <button type="button" class="btn btn-link btn-sm">Edit</button>
+                        <button type="button" class="btn btn-link btn-sm">Hapus</button>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <p class="section-hint">Pastikan untuk memperbarui informasi pembayaran Anda secara berkala.</p>
+            </section>
+
+            <section class="profile-main-section card" id="notifikasi-section" data-title="Pengaturan Notifikasi" style="display:none;">
+                <h1 class="section-title-lg">Pengaturan Notifikasi</h1>
+                <p>Konten untuk Pengaturan Notifikasi akan ditampilkan di sini.</p>
+                <div>
+                    <label class="form-checkbox-container">
+                        <input type="checkbox" class="form-checkbox" checked>
+                        <span class="form-checkbox-indicator"></span>
+                        <span class="form-checkbox-label">Notifikasi Pesanan</span>
+                    </label>
+                    <label class="form-checkbox-container">
+                        <input type="checkbox" class="form-checkbox" checked>
+                        <span class="form-checkbox-indicator"></span>
+                        <span class="form-checkbox-label">Notifikasi Promo</span>
+                    </label>
+                </div>
+                <div>
+                    <label class="form-checkbox-container">
+                        <input type="checkbox" class="form-checkbox">
+                        <span class="form-checkbox-indicator"></span>
+                        <span class="form-checkbox-label">Notifikasi Chat</span>
+                    </label>
+                    <label class="form-checkbox-container">
+                        <input type="checkbox" class="form-checkbox">
+                        <span class="form-checkbox-indicator"></span>
+                        <span class="form-checkbox-label">Notifikasi Pembayaran</span>
+                    </label>
+              
+
+            </section>
+
+            <section class="profile-main-section card" id="password-section" data-title="Ubah Password" style="display:none;">
+                <h1 class="section-title-lg">Ubah Password</h1>
+                <p>Form untuk Ubah Password akan ditampilkan di sini.</p>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="current-password" class="form-label">Password Saat Ini</label>
+                        <input type="password" id="current-password" name="current-password" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password" class="form-label">Password Baru</label>
+                        <input type="password" id="new-password" name="new-password" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password" class="form-label">Konfirmasi Password Baru</label>
+                        <input type="password" id="confirm-password" name="confirm-password" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-button">Simpan Perubahan</button>
+                </form>
+                <p class="form-hint">Pastikan password baru Anda kuat dan unik.</p>
+
+            </section>
+
+        </div>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    lucide.createIcons();
+
+    // Header Links
+    const headerActionLinks = {
+        "Keranjang Belanja": "keranjang.html",
+        "Notifikasi": "#",
+        "Chat": "chat.html",
+        "Profil Pengguna": "profile.html"
+    };
+    document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
+        const label = button.getAttribute('aria-label');
+        if (headerActionLinks[label]) {
+            if (button.tagName.toLowerCase() !== 'a') {
+                const link = document.createElement('a');
+                link.href = headerActionLinks[label];
+                link.className = button.className;
+                link.setAttribute('aria-label', label);
+                link.innerHTML = button.innerHTML;
+                button.parentNode.replaceChild(link, button);
+            } else {
+                button.href = headerActionLinks[label];
+            }
+        }
+    });
+    lucide.createIcons();
+
+    // Profile Page Navigation & Section Switching
+    const profileNavLinks = document.querySelectorAll('.profile-nav-link');
+    const profileSections = document.querySelectorAll('.profile-main-section');
+    const mainSectionTitleElement = document.querySelector('.profile-main-section .section-title-lg'); // Assuming only one is visible
+
+    function showSection(sectionIdToShow) {
+        profileSections.forEach(section => {
+            if (section.id === sectionIdToShow) {
+                section.style.display = 'block';
+                // Update the main title if structure allows for a single H1 for all sections
+                // For this HTML, each section has its own H1, so we only need to show/hide.
+            } else {
+                section.style.display = 'none';
+            }
+        });
+    }
+
+    profileNavLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            const targetSectionId = this.dataset.section;
+            if (targetSectionId) { // For same-page navigation
+                e.preventDefault();
+                profileNavLinks.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                showSection(targetSectionId);
+                window.location.hash = this.hash; // Update URL hash
+            }
+            // Else, it's a normal link (e.g., to orders.html) and will navigate
+        });
+    });
+
+    // Handle initial section display based on URL hash
+    function displayInitialSection() {
+        let sectionIdFromHash = window.location.hash.substring(1);
+        if (!sectionIdFromHash) {
+            sectionIdFromHash = "biodata"; // Default section
+        }
+        const targetSection = document.getElementById(sectionIdFromHash + "-section");
+        const targetLink = document.querySelector(`.profile-nav-link[data-section="${sectionIdFromHash}-section"]`);
+
+        if (targetSection) {
+            showSection(targetSection.id);
+            if (targetLink) {
+                 profileNavLinks.forEach(nav => nav.classList.remove('active'));
+                 targetLink.classList.add('active');
+            }
+        } else {
+            showSection('biodata-section'); // Fallback to default
+             const defaultLink = document.querySelector('.profile-nav-link[data-section="biodata-section"]');
+             if(defaultLink) defaultLink.classList.add('active');
+        }
+    }
+    displayInitialSection();
+    window.addEventListener('hashchange', displayInitialSection); // Listen for hash changes
+
+
+    // Edit Profile Functionality
+    const editProfileButton = document.querySelector('.edit-profile-button'); // In Biodata Diri section
+    const editProfileButtonMain = document.querySelector('.edit-profile-button-main'); // Under user avatar
+    const biodataDetailsDiv = document.querySelector('#biodata-section .biodata-details');
+    let isEditMode = false;
+
+    function toggleEditMode() {
+        isEditMode = !isEditMode;
+        const detailValues = biodataDetailsDiv.querySelectorAll('.detail-value[data-field]');
+        const genderRadios = biodataDetailsDiv.querySelectorAll('input[name="gender"]');
+
+        detailValues.forEach(span => {
+            const fieldName = span.dataset.field;
+            if (isEditMode) {
+                if (fieldName !== 'gender') {
+                    let currentValue = span.textContent.startsWith(': ') ? span.textContent.substring(2) : span.textContent;
+                    let inputType = "text";
+                    if (fieldName === "dob") inputType = "date"; // Simple date, can be improved
+                    else if (fieldName === "phone") inputType = "tel";
+                    else if (fieldName === "email") inputType = "email";
+                    
+                    const input = document.createElement('input');
+                    input.type = inputType;
+                    if (fieldName === "dob") { // Attempt to convert dd/mm/yyyy to yyyy-mm-dd
+                        const parts = currentValue.split('/');
+                        if (parts.length === 3) currentValue = `${parts[2]}-${parts[1]}-${parts[0]}`;
+                    }
+                    input.value = currentValue;
+                    input.dataset.originalSpan = fieldName; // Keep track
+                    span.style.display = 'none';
+                    span.parentNode.insertBefore(input, span.nextSibling);
+                }
+            } else { // View mode
+                const inputField = span.parentNode.querySelector(`input[data-original-span="${fieldName}"]`);
+                if (inputField) {
+                    let newValue = inputField.value;
+                     if (fieldName === "dob") { // Convert yyyy-mm-dd back to dd/mm/yyyy
+                        const parts = newValue.split('-');
+                        if (parts.length === 3) newValue = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                    }
+                    span.textContent = newValue; // Removed adding ": " prefix, style with CSS if needed
+                    span.style.display = '';
+                    inputField.remove();
+                }
+            }
+        });
+
+        genderRadios.forEach(radio => {
+            radio.disabled = !isEditMode;
+        });
+
+        if(editProfileButton) editProfileButton.textContent = isEditMode ? 'Simpan Perubahan' : 'Edit profile';
+        if(editProfileButtonMain) editProfileButtonMain.textContent = isEditMode ? 'Simpan Perubahan' : 'Ubah profil';
+
+    }
+
+    if (editProfileButton) {
+        editProfileButton.addEventListener('click', toggleEditMode);
+    }
+    if (editProfileButtonMain) { // The one under avatar
+         editProfileButtonMain.addEventListener('click', () => {
+            // Ensure biodata section is active for this button
+            const biodataLink = document.querySelector('.profile-nav-link[data-section="biodata-section"]');
+            if (biodataLink && !biodataLink.classList.contains('active')) {
+                biodataLink.click(); // Activate and show biodata section
+            }
+            // Then toggle edit mode if not already in edit mode by the other button
+             if (editProfileButton && editProfileButton.textContent === 'Edit profile' && !isEditMode) { // Only toggle if main btn is not already "Simpan"
+                toggleEditMode();
+            } else if (editProfileButton && editProfileButton.textContent === 'Simpan Perubahan' && isEditMode) {
+                 toggleEditMode(); // This would save changes
+            }
+        });
+    }
+
+
+    // Change Photo Button
+    const changePhotoButton = document.getElementById('changePhotoButton');
+    const photoInput = document.getElementById('changePhotoImageInput');
+    const profilePhotoPreview = document.getElementById('profilePhotoPreview');
+    const userAvatarPreview = document.getElementById('userAvatarPreview');
+
+
+    if (changePhotoButton && photoInput) {
+        changePhotoButton.addEventListener('click', () => photoInput.click());
+        photoInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file && profilePhotoPreview && userAvatarPreview) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profilePhotoPreview.src = e.target.result;
+                    userAvatarPreview.src = e.target.result; // Update sidebar avatar too
+                }
+                reader.readAsDataURL(file);
+                alert('Foto profil diubah! (Simulasi)');
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>

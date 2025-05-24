@@ -1,0 +1,47 @@
+/* plain approach/component/css/components/_cards.css */
+
+.card {
+  background-color: hsl(var(--card-background));
+  color: hsl(var(--card-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: 0 1px 3px 0 hsla(var(--foreground), 0.07), 0 1px 2px 0 hsla(var(--foreground), 0.05);
+}
+.card-header {
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid hsl(var(--border));
+  margin-bottom: var(--spacing-4);
+}
+.card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-1);
+  color: hsl(var(--card-foreground)); /* Ensure title color inherits card context */
+}
+.card-description {
+  font-size: var(--font-size-sm);
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 0;
+}
+.card-content {
+  padding-top: var(--spacing-4); /* Add padding if header is not present */
+}
+.card-content:first-child { /* If no header, remove top padding */
+    padding-top: 0;
+}
+.card-footer {
+  padding-top: var(--spacing-4);
+  border-top: 1px solid hsl(var(--border));
+  margin-top: var(--spacing-4);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-2);
+}
+
+/* For interactive cards as seen in homepage categories and promo product cards */
+.card-interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px hsla(var(--foreground), 0.08);
+    border-color: hsl(var(--primary) / 0.5);
+}

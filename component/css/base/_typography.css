@@ -1,0 +1,37 @@
+/* plain approach/component/css/base/_typography.css */
+
+h1, h2, h3, h4, h5, h6 {
+  color: hsl(var(--foreground));
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-3);
+}
+
+h1 { font-size: var(--font-size-2xl); }
+h2 { font-size: var(--font-size-xl); }
+h3 { font-size: var(--font-size-lg); }
+h4 { font-size: var(--font-size-base); } /* Same as body, but bolder */
+
+p {
+  margin-bottom: var(--spacing-4);
+  line-height: var(--line-height-base);
+  color: hsl(var(--foreground));
+}
+
+a {
+  color: hsl(var(--primary));
+  text-decoration: none;
+  transition: color var(--transition-duration) var(--transition-timing-function);
+}
+a:hover {
+  text-decoration: underline;
+  /* color: hsl(var(--primary)); Or a slightly different hover color */
+}
+
+ul, ol {
+  margin-bottom: var(--spacing-4);
+  padding-left: var(--spacing-5);
+}
+li {
+  margin-bottom: var(--spacing-2);
+}

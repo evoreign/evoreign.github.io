@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk - Beliin.id</title>
+    <link rel="stylesheet" href="../component/css/main.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
+        .product-thumbnail-item img, .main-product-image img { width: 100%; height: 100%; object-fit: cover; }
+        .main-product-image { background-color: #eee; } /* Default for placeholder */
+        .action-icon-button .icon.filled { color: hsl(var(--destructive)); fill: hsl(var(--destructive));} /* For wishlist heart */
+    </style>
+    <link rel="icon" href="../assets/logo.PNG" type="image/png">
+</head>
+<body class="page-body">
+
+    <header class="site-header">
+    <div class="header-container">
+        <div class="logo-container">
+                <a href="index.html" class="logo-link">
+                    <img src="../assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+                </a>
+        </div>
+        <div class="search-bar-container new-search-bar">
+            <form action="#" class="search-form">
+                <i data-lucide="search" class="icon search-icon-inside"></i>
+                <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+            </form>
+        </div>
+        <nav class="header-actions">
+            <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+                <i data-lucide="shopping-cart" class="icon"></i>
+            </a>
+            <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+                <i data-lucide="heart" class="icon"></i>
+            </a>
+            <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+                <i data-lucide="message-circle" class="icon"></i>
+            </a>
+            <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+                <i data-lucide="user" class="icon"></i>
+            </a>
+        </nav>
+    </div>
+</header>
+
+    <main class="product-detail-page-content container">
+        <div class="product-detail-layout">
+
+            <section class="product-gallery-column">
+                <div class="product-main-image-container">
+                    <div class="product-image-placeholder main-product-image" id="mainProductImage">
+                         <img src="https://via.placeholder.com/600x750/007bff/ffffff?text=Produk+Utama+1" alt="Foto Produk Utama">
+                    </div>
+                </div>
+                <div class="product-thumbnail-gallery">
+                    <div class="product-thumbnail-item active" data-mainimage="https://via.placeholder.com/600x750/007bff/ffffff?text=Produk+Utama+1">
+                        <div class="product-image-placeholder thumbnail-image"><img src="https://via.placeholder.com/64x64/007bff/ffffff?text=Thumb+1" alt="Thumbnail 1"></div>
+                    </div>
+                    <div class="product-thumbnail-item" data-mainimage="https://via.placeholder.com/600x750/28a745/ffffff?text=Produk+Utama+2">
+                        <div class="product-image-placeholder thumbnail-image"><img src="https://via.placeholder.com/64x64/28a745/ffffff?text=Thumb+2" alt="Thumbnail 2"></div>
+                    </div>
+                    <div class="product-thumbnail-item" data-mainimage="https://via.placeholder.com/600x750/ffc107/000000?text=Produk+Utama+3">
+                        <div class="product-image-placeholder thumbnail-image"><img src="https://via.placeholder.com/64x64/ffc107/000000?text=Thumb+3" alt="Thumbnail 3"></div>
+                    </div>
+                    <div class="product-thumbnail-item" data-mainimage="https://via.placeholder.com/600x750/dc3545/ffffff?text=Produk+Utama+4">
+                        <div class="product-image-placeholder thumbnail-image"><img src="https://via.placeholder.com/64x64/dc3545/ffffff?text=Thumb+4" alt="Thumbnail 4"></div>
+                    </div>
+                    <div class="product-thumbnail-item" data-mainimage="https://via.placeholder.com/600x750/6f42c1/ffffff?text=Produk+Lain">
+                        <div class="product-image-placeholder thumbnail-image"><span>+1</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="product-info-column">
+                <h1 class="product-title-detail">Acmedelavie Block Bear Short Sleeve T-Shiirt Grey - Size 1</h1>
+                <div class="product-meta-info">
+                    <span class="product-sold">Terjual 2 rb+</span>
+                    <span class="product-rating">
+                        <i data-lucide="star" class="icon star-filled"></i> 5
+                    </span>
+                    <span class="product-rating-count">(963 rating)</span>
+                </div>
+                <p class="product-price-detail" id="productPrice" data-baseprice="935000">Rp935.000</p>
+
+                <div class="variant-selection-group">
+                    <p class="variant-label">Pilih ukuran pakaian: <span class="selected-variant-name" id="selectedVariantNameDisplay">Size 1</span></p>
+                    <div class="variant-options">
+                        <button class="btn btn-outline btn-sm variant-button active" data-variantname="Size 1">Size 1</button>
+                        <button class="btn btn-outline btn-sm variant-button" data-variantname="Size 2">Size 2</button>
+                        <button class="btn btn-outline btn-sm variant-button" data-variantname="Size Lain">Size Lain</button>
+                    </div>
+                </div>
+
+                <div class="product-description-tabs">
+                    <nav class="tab-navigation product-info-tabs">
+                        <button type="button" class="tab-button active" aria-selected="true" data-tab="detail">Detail</button>
+                        <button type="button" class="tab-button" aria-selected="false" data-tab="info-penting">Info Penting</button>
+                    </nav>
+                    <div class="product-tab-content">
+                        <div id="tab-content-detail" class="tab-pane active">
+                            <p><strong>Kondisi:</strong> Baru</p>
+                            <p><strong>Min. Pemesanan:</strong> 1 Buah</p>
+                            <p><strong>Etalase:</strong> ADLV</p>
+                            <p id="productDescriptionShort">Lorem ipsum dolor sit amet. Eum ipsum harum qui quaerat quia hic officiis quidem ad corrupti voluptas et maxime molestiae vel aperiam distinctio nam sunt eligendi! Non delectus aliquid a expedita</p>
+                            <div id="productDescriptionMore" style="display:none;">
+                                <p>Ini adalah teks deskripsi tambahan yang lebih panjang untuk menunjukkan fungsionalitas "Lihat Selengkapnya". Bisa berisi spesifikasi detail, cerita produk, atau informasi lain yang relevan dan mendalam.</p>
+                            </div>
+                            <a href="#" class="link-see-more" id="seeMoreLink">Lihat Selengkapnya <i data-lucide="chevron-down" class="icon"></i></a>
+                        </div>
+                        <div id="tab-content-info-penting" class="tab-pane" style="display:none;">
+                            <p>Informasi penting mengenai produk, pengiriman, atau garansi. Pastikan untuk membaca syarat dan ketentuan sebelum melakukan pembelian. Pengembalian barang hanya diterima jika ada video unboxing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="store-info-card-detail card">
+                    <div class="store-info-header">
+                         <a href="storeProfile.html" class="store-avatar-placeholder placeholder-bg" aria-label="Kunjungi Toko ADVL Official Shop">
+                            <img src="https://via.placeholder.com/48x48/6c757d/ffffff?text=ADVL" alt="Logo Toko ADVL">
+                         </a>
+                        <div class="store-name-location">
+                           <a href="storeProfile.html" style="text-decoration:none; color:inherit;"> <h3 class="store-name-heading">ADVL Official Shop</h3></a>
+                            <p class="store-location-text"><i data-lucide="map-pin" class="icon"></i> Dikirim dari Kota Jakarta Barat</p>
+                        </div>
+                    </div>
+                    <div class="store-shipping-details">
+                        <p class="store-shipping-cost">Ongkir Rp9.500</p>
+                        <p class="store-shipping-eta">Estimasi tiba 16 Juni - 18 Juni</p>
+                    </div>
+                    <a href="storeProfile.html#products" class="btn btn-link btn-sm store-other-products-link">Lihat Produk Lainnya <i data-lucide="arrow-right" class="icon"></i></a>
+                </div>
+                <section class="buyer-reviews-section card">
+                    <h2 class="buyer-reviews-main-title">ULASAN PEMBELI</h2>
+                     <div class="rating-overview-block">
+                        <div class="average-rating-details">
+                            <div class="average-rating-score">
+                                <i data-lucide="star" class="icon rating-summary-icon star-filled"></i>
+                                <span class="score-value">4.8</span>
+                                <span class="score-max">/5.0</span>
+                            </div>
+                            <p class="buyer-satisfaction-text">98% pembeli merasa puas</p>
+                            <p class="rating-review-counts">1526 rating • 1288 ulasan</p>
+                        </div>
+                        <div class="detailed-rating-bars">
+                            <div class="rating-distribution-row" data-star="5" data-count="938" data-totalreviews="1288">
+                                <i data-lucide="star" class="icon star-small star-filled"></i><span class="star-num">5</span>
+                                <div class="rating-bar-progress"><div class="filled" style="width: 72.82%;"></div></div>
+                                <span class="count">(938)</span>
+                            </div>
+                            <div class="rating-distribution-row" data-star="4" data-count="481" data-totalreviews="1288">
+                                <i data-lucide="star" class="icon star-small star-filled"></i><span class="star-num">4</span>
+                                <div class="rating-bar-progress"><div class="filled" style="width: 37.34%;"></div></div>
+                                <span class="count">(481)</span>
+                            </div>
+                             <div class="rating-distribution-row" data-star="3" data-count="67" data-totalreviews="1288">
+                                <i data-lucide="star" class="icon star-small star-filled"></i><span class="star-num">3</span>
+                                <div class="rating-bar-progress"><div class="filled" style="width: 5.2%;"></div></div>
+                                <span class="count">(67)</span>
+                            </div>
+                             <div class="rating-distribution-row" data-star="2" data-count="21" data-totalreviews="1288">
+                                <i data-lucide="star" class="icon star-small star-filled"></i><span class="star-num">2</span>
+                                <div class="rating-bar-progress"><div class="filled" style="width: 1.63%;"></div></div>
+                                <span class="count">(21)</span>
+                            </div>
+                             <div class="rating-distribution-row" data-star="1" data-count="9" data-totalreviews="1288">
+                                <i data-lucide="star" class="icon star-small star-filled"></i><span class="star-num">1</span>
+                                <div class="rating-bar-progress"><div class="filled" style="width: 0.7%;"></div></div>
+                                <span class="count">(9)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-interactive-section">
+                        <aside class="review-filters-column card">
+                            <h3 class="filter-title">FILTER ULASAN</h3>
+                            <button type="button" class="filter-option-button btn btn-ghost" data-filtertype="media">
+                                <span>Media</span> <i data-lucide="sliders-horizontal" class="icon"></i>
+                            </button>
+                            <button type="button" class="filter-option-button btn btn-ghost" data-filtertype="rating">
+                                <span>Rating</span> <i data-lucide="sliders-horizontal" class="icon"></i>
+                            </button>
+                            <button type="button" class="filter-option-button btn btn-ghost" data-filtertype="topic">
+                                <span>Topik Ulasan</span> <i data-lucide="sliders-horizontal" class="icon"></i>
+                            </button>
+                        </aside>
+                        <div class="review-media-gallery-column">
+                            <h3 class="media-gallery-title">FOTO & VIDEO PEMBELI</h3>
+                            <div class="media-grid">
+                                <div class="media-item placeholder-bg"><img src="https://via.placeholder.com/80x80/007bff/ffffff?text=Media+1" alt="Media 1"></div>
+                                <div class="media-item placeholder-bg"><img src="https://via.placeholder.com/80x80/28a745/ffffff?text=Media+2" alt="Media 2"></div>
+                                <div class="media-item placeholder-bg"><img src="https://via.placeholder.com/80x80/ffc107/000000?text=Media+3" alt="Media 3"></div>
+                                <div class="media-item placeholder-bg"><img src="https://via.placeholder.com/80x80/dc3545/ffffff?text=Media+4" alt="Media 4"></div>
+                                <div class="media-item placeholder-bg"><img src="https://via.placeholder.com/80x80/17a2b8/ffffff?text=Media+5" alt="Media 5"></div>
+                                <div class="media-item placeholder-bg more-media"><span>+938</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="selected-reviews-block">
+                        <div class="selected-reviews-header">
+                            <h3 class="reviews-title">ULASAN PILIHAN</h3>
+                            <p class="reviews-count-info" id="reviewsCountInfo"> Menampilkan 2 dari 1288 ulasan</p>
+                            <div class="reviews-sort-options">
+                                <label for="sort-reviews" class="sr-only">Urutkan:</label>
+                                <select id="sort-reviews" class="form-select btn-sm">
+                                    <option value="paling-membantu">Paling Membantu</option>
+                                    <option value="terbaru" selected>Terbaru</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="review-items-list" id="reviewItemsList">
+                            </div>
+                            <div class="pagination" id="reviewsPagination">
+                               </div>
+                    </div>
+                </section>
+            </section>
+
+            <aside class="product-purchase-column card">
+                <h3 class="purchase-column-title">Atur jumlah</h3>
+                <div class="selected-variant-display">
+                    <p id="purchaseSelectedVariant">Size 1</p>
+                    <p class="stock-info">Stok Total: <span id="stockTotal">45</span></p>
+                </div>
+                <div class="quantity-adjuster-wrapper">
+                    <div class="quantity-adjuster">
+                        <button type="button" class="btn btn-outline btn-icon btn-sm quantity-button" aria-label="Kurangi jumlah" data-action="decrease">
+                            <i data-lucide="minus" class="icon"></i>
+                        </button>
+                        <input type="number" class="form-input quantity-display" id="quantityInput" value="1" min="1" max="45" aria-label="Jumlah produk">
+                        <button type="button" class="btn btn-outline btn-icon btn-sm quantity-button" aria-label="Tambah jumlah" data-action="increase">
+                            <i data-lucide="plus" class="icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="subtotal-display">
+                    <span>Subtotal</span>
+                    <span class="subtotal-amount" id="subtotalAmount">Rp935.000</span>
+                </div>
+                <div class="purchase-buttons">
+                    <button class="btn btn-primary add-to-cart-button" id="addToCartButton">
+                        <i data-lucide="shopping-cart" class="icon"></i> + Keranjang
+                    </button>
+                    <button class="btn btn-secondary buy-now-button" id="buyNowButton">Beli Langsung</button>
+                </div>
+                <div class="additional-actions">
+                    <a href="chat.html" class="btn btn-ghost btn-sm action-icon-button">
+                        <i data-lucide="message-circle" class="icon"></i> Chat
+                    </a>
+                    <button class="btn btn-ghost btn-sm action-icon-button" id="wishlistButton">
+                        <i data-lucide="heart" class="icon" id="wishlistIcon"></i> Wishlist
+                    </button>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    lucide.createIcons();
+
+    // Header Links (assuming they are converted to <a> tags)
+    const headerActionLinks = {
+        "Keranjang Belanja": "keranjang.html",
+        "Notifikasi": "#",
+        "Chat": "chat.html",
+        "Profil Pengguna": "profile.html"
+    };
+    document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
+        const label = button.getAttribute('aria-label');
+        if (headerActionLinks[label] && button.tagName.toLowerCase() !== 'a') {
+            const link = document.createElement('a');
+            link.href = headerActionLinks[label];
+            link.className = button.className;
+            link.setAttribute('aria-label', label);
+            link.innerHTML = button.innerHTML;
+            button.parentNode.replaceChild(link, button);
+        } else if (headerActionLinks[label] && button.tagName.toLowerCase() === 'a') {
+            button.href = headerActionLinks[label];
+        }
+    });
+    lucide.createIcons(); // Re-run if icons were part of replaced elements
+
+
+    // Product Gallery
+    const mainProductImage = document.getElementById('mainProductImage').querySelector('img');
+    const thumbnailItems = document.querySelectorAll('.product-thumbnail-item');
+    thumbnailItems.forEach(item => {
+        item.addEventListener('click', function () {
+            thumbnailItems.forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+            const newImageSrc = this.dataset.mainimage;
+            if (newImageSrc && mainProductImage) {
+                mainProductImage.src = newImageSrc;
+                mainProductImage.alt = this.querySelector('img') ? this.querySelector('img').alt.replace('Thumb', 'Produk Utama') : 'Foto Produk Utama';
+            } else if (mainProductImage && this.querySelector('span') && this.querySelector('span').textContent.startsWith('+')) {
+                // Placeholder for "more images" action
+                mainProductImage.src = 'https://via.placeholder.com/600x750/cccccc/000000?text=More+Images+View';
+                mainProductImage.alt = 'Tampilan Gambar Lainnya';
+            }
+        });
+    });
+
+    // Variant Selection
+    const variantButtons = document.querySelectorAll('.variant-button');
+    const selectedVariantNameDisplay = document.getElementById('selectedVariantNameDisplay');
+    const purchaseSelectedVariantDisplay = document.getElementById('purchaseSelectedVariant');
+    variantButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            variantButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            const variantName = this.dataset.variantname;
+            if (selectedVariantNameDisplay) selectedVariantNameDisplay.textContent = variantName;
+            if (purchaseSelectedVariantDisplay) purchaseSelectedVariantDisplay.textContent = variantName;
+            // Add logic here if variants affect price or stock
+            // updateSubtotal(); // if price changes
+        });
+    });
+
+    // Description Tabs (already provided in original HTML, ensuring it's here)
+    const tabButtons = document.querySelectorAll('.product-info-tabs .tab-button');
+    const tabPanes = document.querySelectorAll('.product-tab-content .tab-pane');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tabButtons.forEach(btn => {btn.classList.remove('active'); btn.setAttribute('aria-selected', 'false');});
+            button.classList.add('active');
+            button.setAttribute('aria-selected', 'true');
+            const targetTab = button.getAttribute('data-tab');
+            tabPanes.forEach(pane => {
+                pane.style.display = pane.id === `tab-content-${targetTab}` ? 'block' : 'none';
+                pane.classList.toggle('active', pane.id === `tab-content-${targetTab}`);
+            });
+        });
+    });
+
+    // "Lihat Selengkapnya" for Description
+    const seeMoreLink = document.getElementById('seeMoreLink');
+    const descriptionMore = document.getElementById('productDescriptionMore');
+    const seeMoreIcon = seeMoreLink ? seeMoreLink.querySelector('i') : null;
+    if (seeMoreLink && descriptionMore && seeMoreIcon) {
+        seeMoreLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const isHidden = descriptionMore.style.display === 'none';
+            descriptionMore.style.display = isHidden ? 'block' : 'none';
+            this.innerHTML = isHidden ? 'Lihat Lebih Sedikit <i data-lucide="chevron-up" class="icon"></i>' : 'Lihat Selengkapnya <i data-lucide="chevron-down" class="icon"></i>';
+            lucide.createIcons({ nodes: [this.querySelector('i')]});
+        });
+    }
+
+    // Quantity Adjuster & Subtotal
+    const quantityInput = document.getElementById('quantityInput');
+    const decreaseButtons = document.querySelectorAll('.quantity-button[data-action="decrease"]');
+    const increaseButtons = document.querySelectorAll('.quantity-button[data-action="increase"]');
+    const productPriceElement = document.getElementById('productPrice');
+    const subtotalAmountElement = document.getElementById('subtotalAmount');
+    const stockTotalElement = document.getElementById('stockTotal');
+    const basePrice = productPriceElement ? parseFloat(productPriceElement.dataset.baseprice) : 0;
+    const maxStock = stockTotalElement ? parseInt(stockTotalElement.textContent) : 1; // Default if not found
+
+    function formatCurrency(amount) {
+        return 'Rp' + amount.toLocaleString('id-ID');
+    }
+
+    function updateSubtotal() {
+        if (!quantityInput || !subtotalAmountElement || !basePrice) return;
+        const quantity = parseInt(quantityInput.value);
+        const subtotal = quantity * basePrice;
+        subtotalAmountElement.textContent = formatCurrency(subtotal);
+    }
+
+    decreaseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+                updateSubtotal();
+            }
+        });
+    });
+    increaseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue < maxStock) { // Check against max stock
+                 quantityInput.value = currentValue + 1;
+                 updateSubtotal();
+            } else {
+                alert(`Stok maksimal adalah ${maxStock}`);
+            }
+        });
+    });
+
+    if (quantityInput) {
+        quantityInput.addEventListener('change', () => {
+            let val = parseInt(quantityInput.value);
+            if (isNaN(val) || val < 1) {
+                quantityInput.value = 1;
+            } else if (val > maxStock) {
+                alert(`Stok maksimal adalah ${maxStock}`);
+                quantityInput.value = maxStock;
+            }
+            updateSubtotal();
+        });
+        quantityInput.setAttribute('max', maxStock); // Set max attribute on input
+    }
+
+
+    // Purchase Buttons
+    const addToCartButton = document.getElementById('addToCartButton');
+    if (addToCartButton) {
+        addToCartButton.addEventListener('click', function() {
+            const quantity = quantityInput ? quantityInput.value : 1;
+            const variant = document.querySelector('.variant-button.active') ? document.querySelector('.variant-button.active').dataset.variantname : "Default";
+            alert(`${quantity}x "${document.querySelector('.product-title-detail').textContent}" (${variant}) ditambahkan ke keranjang! (Simulasi)`);
+        });
+    }
+    const buyNowButton = document.getElementById('buyNowButton');
+    if (buyNowButton) {
+        buyNowButton.addEventListener('click', function() {
+            alert('Mengarahkan ke halaman checkout... (Simulasi)');
+            window.location.href = 'checkout.html';
+        });
+    }
+
+    // Additional Actions
+    const wishlistButton = document.getElementById('wishlistButton');
+    const wishlistIcon = document.getElementById('wishlistIcon');
+    if (wishlistButton && wishlistIcon) {
+        let isWishlisted = false;
+        wishlistButton.addEventListener('click', function() {
+            isWishlisted = !isWishlisted;
+            if (isWishlisted) {
+                alert('Produk ditambahkan ke wishlist! (Simulasi)');
+                wishlistIcon.classList.add('filled'); // Needs CSS for .filled to color/fill it
+                wishlistIcon.setAttribute('data-lucide', 'heart'); // Keep it heart
+                // To make it appear filled, you might need to change the SVG path or rely on CSS
+            } else {
+                alert('Produk dihapus dari wishlist! (Simulasi)');
+                wishlistIcon.classList.remove('filled');
+                wishlistIcon.setAttribute('data-lucide', 'heart');
+            }
+            lucide.createIcons({nodes: [wishlistIcon]}); // Re-render if icon type changes
+        });
+    }
+
+    // Buyer Reviews Section
+    // Rating bars (visual only based on HTML, JS can make it dynamic if data source changes)
+    document.querySelectorAll('.rating-distribution-row').forEach(row => {
+        const count = parseInt(row.dataset.count);
+        const totalReviews = parseInt(row.dataset.totalreviews);
+        if (totalReviews > 0) {
+            const percentage = (count / totalReviews) * 100;
+            const barFill = row.querySelector('.rating-bar-progress .filled');
+            if (barFill) barFill.style.width = percentage.toFixed(2) + '%';
+        }
+    });
+
+    const reviewFilterButtons = document.querySelectorAll('.review-filters-column .filter-option-button');
+    reviewFilterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            alert(`Filter "${this.querySelector('span').textContent}" diklik. (Simulasi)`);
+            // Add actual filtering logic here if data was present
+        });
+    });
+    
+    document.querySelectorAll('.media-grid .media-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const content = this.querySelector('img') ? this.querySelector('img').alt : this.textContent;
+            alert(`Media item "${content}" diklik. (Simulasi)`);
+        });
+    });
+
+    const sortReviewsSelect = document.getElementById('sort-reviews');
+    if (sortReviewsSelect) {
+        sortReviewsSelect.addEventListener('change', function() {
+            alert(`Ulasan diurutkan berdasarkan: ${this.options[this.selectedIndex].text}. (Simulasi)`);
+            // Add actual sorting and re-rendering logic
+            renderDummyReviews(1, this.value); // Example: re-render page 1 with new sort
+        });
+    }
+
+    // Dummy Review Data & Pagination
+    const dummyReviews = [
+        { name: "User A", stars: 5, time: "1 hari lalu", text: "Kualitasnya bagus banget, sesuai ekspektasi. Recommended seller!" },
+        { name: "User B", stars: 4, time: "3 hari lalu", text: "Pengiriman cepat, barang oke. Ada sedikit goresan tapi tidak masalah." },
+        { name: "User C", stars: 5, time: "5 hari lalu", text: "Sempurna! Akan beli lagi dari toko ini. Pelayanannya juga ramah." },
+        { name: "User D", stars: 3, time: "1 minggu lalu", text: "Lumayan lah, sesuai harga. Tapi bahannya agak tipis." },
+        { name: "User E", stars: 5, time: "2 minggu lalu", text: "Mantap jiwa, produknya original dan berfungsi dengan baik." },
+        { name: "User F", stars: 4, time: "2 minggu lalu", text: "Good product, fast delivery. Thanks!" },
+        { name: "User G", stars: 2, time: "3 minggu lalu", text: "Kecewa, tidak sesuai gambar. Proses retur ribet." },
+        { name: "User H", stars: 5, time: "1 bulan lalu", text: "THE BEST! Jangan ragu beli disini." },
+        { name: "User I", stars: 4, time: "1 bulan lalu", text: "Barang sudah diterima, packing aman. Semoga awet." },
+        { name: "User J", stars: 5, time: "1 bulan lalu", text: "Puas banget sama produknya. Ukuran pas dan warna sesuai." }
+    ];
+    const reviewsPerPage = 2; // Show 2 reviews per page
+    let currentPage = 1;
+    const reviewItemsList = document.getElementById('reviewItemsList');
+    const reviewsPagination = document.getElementById('reviewsPagination');
+    const reviewsCountInfo = document.getElementById('reviewsCountInfo');
+
+    function renderStars(starCount) {
+        let starsHTML = '';
+        for (let i = 0; i < 5; i++) {
+            starsHTML += `<i data-lucide="star" class="icon ${i < starCount ? 'star-filled' : 'star-empty'}"></i>`;
+        }
+        return starsHTML;
+    }
+
+    function renderDummyReviews(page, sortOption = "terbaru") {
+        if (!reviewItemsList || !reviewsPagination || !reviewsCountInfo) return;
+        reviewItemsList.innerHTML = ''; // Clear existing
+
+        // Simulate sorting (in a real app, data would come sorted from backend or sorted here more robustly)
+        let sortedReviews = [...dummyReviews];
+        if (sortOption === "paling-membantu") { // Simplistic sort for demo
+            sortedReviews.sort((a,b) => b.stars - a.stars || (a.text.length - b.text.length));
+        } else { // Default to "terbaru" (current order is fine for demo as newest are first)
+            // No change for this simple demo data for 'terbaru'
+        }
+
+
+        const start = (page - 1) * reviewsPerPage;
+        const end = start + reviewsPerPage;
+        const paginatedReviews = sortedReviews.slice(start, end);
+
+        paginatedReviews.forEach(review => {
+            const reviewElement = document.createElement('div');
+            reviewElement.className = 'review-item-detailed card';
+            reviewElement.innerHTML = `
+                <div class="review-item-main-info">
+                    <div class="reviewer-avatar-name">
+                        <div class="reviewer-avatar placeholder-bg"><span>${review.name.charAt(0)}</span></div>
+                        <span class="reviewer-name">${review.name}</span>
+                    </div>
+                    <div class="review-rating-date">
+                        <div class="review-stars">${renderStars(review.stars)}</div>
+                        <span class="review-timestamp">${review.time}</span>
+                    </div>
+                </div>
+                <p class="review-text-content">${review.text.substring(0, 100)}${review.text.length > 100 ? '...' : ''}</p>
+                ${review.text.length > 100 ? '<a href="#" class="link-read-more" onclick="alert(\'Read more clicked for: ' + review.name + '\'); return false;">Read more</a>' : ''}
+            `;
+            reviewItemsList.appendChild(reviewElement);
+        });
+        lucide.createIcons({ context: reviewItemsList });
+        renderReviewPagination(dummyReviews.length);
+        reviewsCountInfo.textContent = `Menampilkan ${paginatedReviews.length > 0 ? start + 1 : 0}-${Math.min(end, dummyReviews.length)} dari ${dummyReviews.length} ulasan`;
+
+    }
+
+    function renderReviewPagination(totalReviews) {
+        if (!reviewsPagination) return;
+        reviewsPagination.innerHTML = '';
+        const totalPages = Math.ceil(totalReviews / reviewsPerPage);
+        if (totalPages <= 1) return;
+
+        // Previous Button
+        const prevButton = document.createElement('button');
+        prevButton.type = 'button';
+        prevButton.className = 'btn btn-ghost btn-icon pagination-button';
+        prevButton.setAttribute('aria-label', 'Halaman Sebelumnya');
+        prevButton.innerHTML = '<i data-lucide="chevron-left" class="icon"></i>';
+        prevButton.disabled = currentPage === 1;
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderDummyReviews(currentPage, sortReviewsSelect ? sortReviewsSelect.value : "terbaru");
+            }
+        });
+        reviewsPagination.appendChild(prevButton);
+
+        // Page Number Buttons (simplified)
+        const pageNumbersSpan = document.createElement('span');
+        pageNumbersSpan.className = 'pagination'; // Use existing class if it helps styling
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.type = 'button';
+            pageButton.className = 'btn btn-ghost btn-icon pagination-button';
+            if (i === currentPage) pageButton.classList.add('active'); // You'll need an .active style for these buttons
+            pageButton.setAttribute('aria-label', `Halaman ${i}`);
+            pageButton.textContent = i;
+            pageButton.addEventListener('click', () => {
+                currentPage = i;
+                renderDummyReviews(currentPage, sortReviewsSelect ? sortReviewsSelect.value : "terbaru");
+            });
+            pageNumbersSpan.appendChild(pageButton);
+        }
+        reviewsPagination.appendChild(pageNumbersSpan);
+
+
+        // Next Button
+        const nextButton = document.createElement('button');
+        nextButton.type = 'button';
+        nextButton.className = 'btn btn-ghost btn-icon pagination-button';
+        nextButton.setAttribute('aria-label', 'Halaman Berikutnya');
+        nextButton.innerHTML = '<i data-lucide="chevron-right" class="icon"></i>';
+        nextButton.disabled = currentPage === totalPages;
+        nextButton.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderDummyReviews(currentPage, sortReviewsSelect ? sortReviewsSelect.value : "terbaru");
+            }
+        });
+        reviewsPagination.appendChild(nextButton);
+        lucide.createIcons({ context: reviewsPagination });
+    }
+
+    // Initial setup
+    updateSubtotal();
+    renderDummyReviews(currentPage, sortReviewsSelect ? sortReviewsSelect.value : "terbaru");
+
+
+});
+</script>
+</body>
+</html>

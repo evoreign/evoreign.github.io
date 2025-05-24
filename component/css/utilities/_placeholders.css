@@ -1,0 +1,29 @@
+/* plain approach/component/css/utilities/_placeholders.css */
+
+.placeholder-bg {
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius); /* General radius, can be overridden by more specific selectors */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-sm); /* Default font size for text inside */
+    color: hsl(var(--muted-foreground)); /* Default text color for text inside */
+    border: 1px solid hsl(var(--border)); /* Common border */
+}
+
+.placeholder-text { /* For text inside banner/image placeholders */
+    font-size: var(--font-size-sm); /* Redundant if set on .placeholder-bg, but good for explicitness */
+    color: hsl(var(--muted-foreground));
+}
+
+/* Example of how a specific placeholder might override in a page/component CSS:
+.product-image-placeholder {
+    height: 180px;
+    border-bottom: 1px solid hsl(var(--border));
+}
+.category-image-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-full); // Example override
+}
+*/

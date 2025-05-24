@@ -1,0 +1,4085 @@
+/* Shadcn-Inspired Base Styles & UI Primitives */
+
+/* 1. Basic Reset/Normalize (Simplified) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-sans);
+  line-height: var(--line-height-base);
+  font-size: var(--font-size-base);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  min-height: 100vh;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 2. Root Variables (Light & Dark Mode Theming) */
+:root {
+  /* Light Mode (Default) */
+  --background: 255 100% 100%; /* white */
+  --foreground: 240 10% 3.9%; /* Equivalent to Tailwind's zinc-950 */
+
+  --card-background: 255 100% 100%;
+  --card-foreground: 240 10% 3.9%;
+
+  --popover-background: 255 100% 100%;
+  --popover-foreground: 240 10% 3.9%;
+
+  --primary: 240 10% 3.9%;
+  --primary-foreground: 0 0% 98%; /* Text on primary background (e.g., zinc-50) */
+
+  --secondary: 240 4.8% 95.9%; /* Secondary elements, backgrounds (e.g., zinc-100) */
+  --secondary-foreground: 240 10% 3.9%;
+
+  --muted: 240 4.8% 95.9%; /* Muted elements, backgrounds */
+  --muted-foreground: 240 3.8% 46.1%; /* Muted text (e.g., zinc-500) */
+
+  --accent: 240 4.8% 95.9%; /* Accent elements, often interactive highlights */
+  --accent-foreground: 240 10% 3.9%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 240 5.9% 90%; /* Borders (e.g., zinc-200) */
+  --input-border: 240 5.9% 90%; /* Input borders */
+  --ring: 217 91% 60%; /* Focus rings (e.g., blue-500 or a primary accent) */
+
+  --radius-sm: 0.375rem; /* 6px */
+  --radius: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-size-base: 1rem; /* 16px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-base: 1.5;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+
+  /* Spacing (based on 0.25rem = 4px unit) */
+  --spacing-1: 0.25rem;  /* 4px */
+  --spacing-2: 0.5rem;   /* 8px */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-5: 1.25rem;  /* 20px */
+  --spacing-6: 1.5rem;   /* 24px */
+  --spacing-8: 2rem;     /* 32px */
+  --spacing-10: 2.5rem;  /* 40px */
+  --spacing-12: 3rem;    /* 48px */
+
+  /* Transitions */
+  --transition-duration: 0.2s;
+  --transition-timing-function: ease-in-out;
+
+  /* Button Specific Variables (can be merged or kept separate) */
+  --button-primary-bg-hsl: var(--primary);
+  --button-primary-text-hsl: var(--primary-foreground);
+  --button-primary-hover-bg-hsl: 240 10% 13.9%; /* Darker primary */
+
+  --button-destructive-bg-hsl: var(--destructive);
+  --button-destructive-text-hsl: var(--destructive-foreground);
+  --button-destructive-hover-bg-hsl: 0 84.2% 50.2%; /* Darker destructive */
+
+  --button-outline-text-hsl: var(--primary);
+  --button-outline-hover-bg-hsl: var(--accent);
+  --button-outline-border-hsl: var(--input-border);
+
+  --button-secondary-bg-hsl: var(--secondary);
+  --button-secondary-text-hsl: var(--secondary-foreground);
+  --button-secondary-hover-bg-hsl: 240 5.9% 88%; /* Darker secondary */
+
+  --button-ghost-text-hsl: var(--primary);
+  --button-ghost-hover-bg-hsl: var(--accent);
+
+  --button-link-text-hsl: var(--primary);
+
+  --button-padding-y: 0.5rem; /* 8px */
+  --button-padding-x: 1rem;   /* 16px */
+  --button-h: calc(var(--button-padding-y) * 2 + var(--font-size-sm) * var(--line-height-base)); /* Approximate height */
+}
+
+/* Example Dark Mode (toggle by adding class="dark" to <html> or <body>) */
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+
+  --card-background: 240 10% 10.9%; /* Slightly lighter than main dark bg (zinc-900) */
+  --card-foreground: 0 0% 98%;
+
+  --popover-background: 240 10% 10.9%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 10% 3.9%;
+
+  --secondary: 240 3.7% 15.9%; /* zinc-800 */
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%; /* zinc-400 */
+
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+
+  --destructive: 0 72.2% 50.6%; /* red-600 for dark mode */
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 240 3.7% 15.9%;
+  --input-border: 240 3.7% 15.9%;
+  --ring: 221 83% 53%; /* blue-500, often brighter in dark mode */
+
+  /* Button Dark Mode Overrides */
+  --button-primary-hover-bg-hsl: 0 0% 88%; /* Lighter primary for dark hover */
+  --button-destructive-hover-bg-hsl: 0 72.2% 40.6%;
+  --button-outline-hover-bg-hsl: var(--accent);
+  --button-secondary-hover-bg-hsl: 240 3.7% 25.9%;
+  --button-ghost-hover-bg-hsl: var(--accent);
+}
+
+/* Apply HSL colors */
+html {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+
+/* 3. Base Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: hsl(var(--foreground));
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-3);
+}
+
+h1 { font-size: var(--font-size-2xl); }
+h2 { font-size: var(--font-size-xl); }
+h3 { font-size: var(--font-size-lg); }
+h4 { font-size: var(--font-size-base); } /* Same as body, but bolder */
+
+p {
+  margin-bottom: var(--spacing-4);
+  line-height: var(--line-height-base);
+  color: hsl(var(--foreground));
+}
+
+a {
+  color: hsl(var(--primary));
+  text-decoration: none;
+  transition: color var(--transition-duration) var(--transition-timing-function);
+}
+a:hover {
+  text-decoration: underline;
+  /* color: hsl(var(--primary)); Or a slightly different hover color */
+}
+
+ul, ol {
+  margin-bottom: var(--spacing-4);
+  padding-left: var(--spacing-5);
+}
+li {
+  margin-bottom: var(--spacing-2);
+}
+
+/* 4. Button Component Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: var(--radius);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base); /* Ensure this aligns with font-size for height */
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--transition-duration);
+  height: var(--button-h);
+}
+
+.btn:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
+}
+
+.btn:disabled,
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background-color: hsl(var(--button-primary-bg-hsl));
+  color: hsl(var(--button-primary-text-hsl));
+  border-color: hsl(var(--button-primary-bg-hsl));
+}
+.btn-primary:hover {
+  background-color: hsl(var(--button-primary-hover-bg-hsl));
+  border-color: hsl(var(--button-primary-hover-bg-hsl));
+}
+
+.btn-destructive {
+  background-color: hsl(var(--button-destructive-bg-hsl));
+  color: hsl(var(--button-destructive-text-hsl));
+  border-color: hsl(var(--button-destructive-bg-hsl));
+}
+.btn-destructive:hover {
+  background-color: hsl(var(--button-destructive-hover-bg-hsl));
+  border-color: hsl(var(--button-destructive-hover-bg-hsl));
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: hsl(var(--button-outline-text-hsl));
+  border-color: hsl(var(--button-outline-border-hsl));
+}
+.btn-outline:hover {
+  background-color: hsl(var(--button-outline-hover-bg-hsl));
+}
+
+.btn-secondary {
+  background-color: hsl(var(--button-secondary-bg-hsl));
+  color: hsl(var(--button-secondary-text-hsl));
+  border-color: hsl(var(--button-secondary-bg-hsl));
+}
+.btn-secondary:hover {
+  background-color: hsl(var(--button-secondary-hover-bg-hsl));
+  border-color: hsl(var(--button-secondary-hover-bg-hsl));
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: hsl(var(--button-ghost-text-hsl));
+  border-color: transparent;
+}
+.btn-ghost:hover {
+  background-color: hsl(var(--button-ghost-hover-bg-hsl));
+}
+
+.btn-link {
+  background-color: transparent;
+  color: hsl(var(--button-link-text-hsl));
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  height: auto; /* Links might not need fixed height */
+  padding: 0; /* Links might not need padding */
+}
+.btn-link:hover {
+  /* text-decoration-color: hsl(var(--button-link-text-hsl)); */
+  text-decoration-thickness: 2px;
+}
+
+/* Icon button variant */
+.btn-icon {
+    padding: var(--spacing-2); /* Adjust padding for icons */
+    width: var(--button-h); /* Make it square */
+    height: var(--button-h);
+}
+.btn-icon svg { /* Assuming SVG icons */
+    width: 1rem;
+    height: 1rem;
+}
+
+
+/* 5. Form Control Styling */
+.form-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-2); /* Increased spacing */
+  color: hsl(var(--foreground));
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  display: flex; /* Changed to flex for potential icon alignment */
+  align-items: center;
+  width: 100%;
+  min-height: var(--button-h); /* Match button height */
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+  border: 1px solid hsl(var(--input-border));
+  border-radius: var(--radius);
+  transition: border-color var(--transition-duration) var(--transition-timing-function), box-shadow var(--transition-duration) var(--transition-timing-function);
+}
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 1px hsl(var(--ring));
+}
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: hsl(var(--muted-foreground));
+  opacity: 1; /* Firefox */
+}
+.form-textarea {
+  min-height: 80px;
+  resize: vertical;
+  padding-top: var(--spacing-2); /* Ensure text starts nicely */
+  padding-bottom: var(--spacing-2);
+}
+.form-select {
+  appearance: none; /* Remove default arrow */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e"); /* Basic custom arrow */
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-3) center;
+  background-size: 1em;
+  padding-right: calc(var(--spacing-3) + 1.5em); /* Space for arrow */
+}
+.dark .form-select {
+   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+
+/* Custom Checkbox Styling */
+.form-checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+.form-checkbox { /* The actual hidden input */
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.form-checkbox-indicator {
+  display: inline-flex; /* Changed to inline-flex */
+  align-items: center;
+  justify-content: center;
+  width: 1rem; /* 16px */
+  height: 1rem; /* 16px */
+  border: 1px solid hsl(var(--input-border));
+  border-radius: var(--radius-sm);
+  background-color: hsl(var(--background));
+  transition: all var(--transition-duration) var(--transition-timing-function);
+  flex-shrink: 0; /* Prevent shrinking in flex container */
+}
+.form-checkbox-indicator svg { /* Checkmark icon */
+  width: 0.75rem; /* 12px */
+  height: 0.75rem;
+  color: hsl(var(--primary-foreground));
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all var(--transition-duration) var(--transition-timing-function);
+}
+.form-checkbox:checked + .form-checkbox-indicator {
+  background-color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+}
+.form-checkbox:checked + .form-checkbox-indicator svg {
+  opacity: 1;
+  transform: scale(1);
+}
+.form-checkbox:focus-visible + .form-checkbox-indicator {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
+}
+.form-checkbox-label {
+  font-size: var(--font-size-sm);
+  color: hsl(var(--foreground));
+  line-height: 1; /* Adjust if needed */
+}
+
+
+/* 6. Card Component */
+.card {
+  background-color: hsl(var(--card-background));
+  color: hsl(var(--card-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: 0 1px 3px 0 hsla(var(--foreground), 0.07), 0 1px 2px 0 hsla(var(--foreground), 0.05);
+}
+.card-header {
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid hsl(var(--border));
+  margin-bottom: var(--spacing-4);
+}
+.card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-1);
+  color: hsl(var(--card-foreground)); /* Ensure title color inherits card context */
+}
+.card-description {
+  font-size: var(--font-size-sm);
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 0;
+}
+.card-content {
+  padding-top: var(--spacing-4); /* Add padding if header is not present */
+}
+.card-content:first-child { /* If no header, remove top padding */
+    padding-top: 0;
+}
+.card-footer {
+  padding-top: var(--spacing-4);
+  border-top: 1px solid hsl(var(--border));
+  margin-top: var(--spacing-4);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-2);
+}
+
+/* 7. Alert Component */
+.alert {
+  position: relative;
+  padding: var(--spacing-3) var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+}
+.alert-title {
+  margin-bottom: var(--spacing-1);
+  font-weight: var(--font-weight-medium);
+  color: hsl(var(--foreground)); /* Ensure title color inherits alert context */
+}
+.alert-description {
+  font-size: var(--font-size-sm);
+  color: hsl(var(--foreground)); /* Ensure description color inherits alert context */
+}
+.alert-destructive {
+  border-color: hsl(var(--destructive));
+  background-color: hsl(var(--destructive) / 0.05); /* Light destructive bg using HSL alpha */
+  color: hsl(var(--destructive));
+}
+.alert-destructive .alert-title,
+.alert-destructive .alert-description {
+    color: hsl(var(--destructive));
+}
+.dark .alert-destructive {
+  background-color: hsl(var(--destructive) / 0.15); /* Darker destructive bg for dark mode */
+  color: hsl(var(--destructive-foreground));
+}
+.dark .alert-destructive .alert-title,
+.dark .alert-destructive .alert-description {
+    color: hsl(var(--destructive-foreground));
+}
+
+/* 8. Badge Component */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: 0.75rem; /* 12px */
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  border-radius: var(--radius-full);
+  border: 1px solid hsl(var(--border));
+  white-space: nowrap;
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+}
+.badge-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-color: hsl(var(--primary));
+}
+.badge-secondary {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+  border-color: hsl(var(--secondary));
+}
+.badge-destructive {
+  background-color: hsl(var(--destructive));
+  color: hsl(var(--destructive-foreground));
+  border-color: hsl(var(--destructive));
+}
+.badge-outline {
+  background-color: transparent;
+  color: hsl(var(--foreground));
+  /* border color is already var(--border) by default from .badge */
+}
+
+/* 9. Carousel Component (Basic Structure & Styling) */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  background-color: hsl(var(--muted)); /* Placeholder background */
+}
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* For JS-driven sliding */
+}
+.carousel-item {
+  min-width: 100%;
+  flex-shrink: 0;
+  /* Add aspect ratio for consistent item height or set fixed height */
+  /* aspect-ratio: 16 / 9; */
+  height: 300px; /* Example fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(var(--secondary)); /* Different for item visibility */
+  color: hsl(var(--secondary-foreground));
+  font-size: var(--font-size-xl);
+}
+.carousel-item:nth-child(odd) {
+    background-color: hsl(var(--muted)); /* Alternate item bg for demo */
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  /* Using button styles for controls */
+}
+.carousel-control-prev {
+  left: var(--spacing-4);
+}
+.carousel-control-next {
+  right: var(--spacing-4);
+}
+.carousel-indicators {
+  position: absolute;
+  bottom: var(--spacing-4);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: var(--spacing-2);
+  list-style: none; /* Remove default list styling */
+  padding: 0;
+  margin: 0;
+}
+.carousel-indicator {
+  width: 0.75rem; /* 12px */
+  height: 0.75rem;
+  border-radius: var(--radius-full);
+  background-color: hsl(var(--muted-foreground) / 0.5);
+  cursor: pointer;
+  transition: background-color var(--transition-duration);
+}
+.carousel-indicator.active,
+.carousel-indicator:hover {
+  background-color: hsl(var(--primary));
+}
+/* Note: Carousel functionality (sliding, active states) requires JavaScript. */
+
+
+/* Utility Classes */
+.sr-only { /* For screen readers only */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+/* signup and sign in start */
+/* --- Sign-Up Page Specific Styles --- */
+
+/* Body styling for the signup page context */
+.signup-page-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This will still center main.signup-container */
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-color: hsl(var(--muted) / 0.3);
+    padding-top: 0; /* From previous fix */
+    padding-bottom: var(--spacing-8);
+    padding-left: 0;  /* CHANGE THIS: Remove side padding from body */
+    padding-right: 0; /* CHANGE THIS: Remove side padding from body */
+}
+
+/* Optional header for "Sign up" text at the very top left */
+.page-top-header {
+    width: 100%;
+    max-width: 1100px; /* Should match .signup-container max-width */
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+
+/* Main container for the two-column layout */
+.signup-container {
+    display: flex;
+    width: 100%;
+    max-width: 1100px; /* Adjust overall width as desired */
+    min-height: 70vh; /* Example minimum height */
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 8px 24px hsla(var(--foreground), 0.08); /* Subtle shadow */
+    background-color: hsl(var(--background)); /* Base background for the container */
+}
+
+/* Promo section (left side) */
+.promo-section {
+    flex: 1.2; /* Give slightly more space to promo, adjust ratio as needed */
+    background-color: hsl(var(--secondary) / 0.7); /* Light, distinct background */
+    padding: var(--spacing-10) var(--spacing-8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* Optional: border-right: 1px solid hsl(var(--border)); */
+}
+
+.promo-content {
+    max-width: 400px; /* Max width for the text content within promo */
+}
+
+.promo-section .brand-name {
+    font-size: 2rem; /* Example: 32px */
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--primary));
+    margin-bottom: var(--spacing-10);
+}
+
+.promo-section .image-placeholder {
+    width: 180px;
+    height: 180px;
+    background-color: hsl(var(--muted));
+    border: 1px solid hsl(var(--border)); /* Solid border for placeholder */
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-lg);
+    color: hsl(var(--muted-foreground));
+    margin-bottom: var(--spacing-8);
+    font-weight: var(--font-weight-medium);
+}
+
+.promo-section .headline {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--foreground));
+    margin-bottom: var(--spacing-3);
+    line-height: var(--line-height-snug);
+}
+
+.promo-section .sub-headline {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+    max-width: 380px;
+    line-height: var(--line-height-base);
+}
+
+/* Form section (right side) - inherits .card styles for base */
+.form-section.card { /* Ensure card styles apply */
+    flex: 1; /* Adjust ratio as needed */
+    /* .card class provides padding, background, border-radius etc. */
+    /* Override padding if necessary for this specific context */
+    padding: var(--spacing-8) var(--spacing-10); /* Example: more horizontal padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Tabs styling */
+.form-tabs {
+    display: flex;
+    margin-bottom: var(--spacing-6);
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.tab-button {
+    flex-basis: 50%; /* Each tab takes 50% width */
+    padding: var(--spacing-3) var(--spacing-2);
+    cursor: pointer;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background-color: transparent;
+    color: hsl(var(--muted-foreground));
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    margin-bottom: -1px; /* To make active border align with container border */
+}
+
+.tab-button.active {
+    color: hsl(var(--primary));
+    border-bottom-color: hsl(var(--primary));
+    font-weight: var(--font-weight-semibold);
+}
+
+.tab-button:hover:not(.active) {
+    color: hsl(var(--foreground)); /* Or a slightly lighter primary color */
+}
+
+/* Form group for spacing label and input */
+.form-group {
+    margin-bottom: var(--spacing-5); /* Consistent spacing between form groups */
+}
+
+/* Ensure form-input takes full width if not already default */
+/* .form-input { width: 100%; } */
+
+.form-hint {
+    font-size: var(--font-size-sm); /* Should be smaller than input text */
+    color: hsl(var(--muted-foreground));
+    margin-top: var(--spacing-1);
+    padding-left: var(--spacing-1); /* Optional: slight indent for the hint */
+}
+
+.submit-button.btn.btn-primary { /* Specificity for the main action button */
+    width: 100%;
+    margin-top: var(--spacing-2); /* Space before the button */
+    padding-top: var(--spacing-3);
+    padding-bottom: var(--spacing-3);
+    font-size: var(--font-size-base); /* Ensure font size is as desired */
+}
+
+.terms-text {
+    font-size: 0.8rem; /* Approx 12.8px, adjust as needed */
+    color: hsl(var(--muted-foreground));
+    text-align: center;
+    margin-top: var(--spacing-6); /* Space above terms */
+    line-height: 1.5;
+}
+
+.terms-text a {
+    color: hsl(var(--primary));
+    text-decoration: none;
+}
+.terms-text a:hover {
+    text-decoration: underline;
+}
+
+.login-prompt {
+    text-align: center;
+    margin-top: var(--spacing-6); /* Space above login prompt */
+    font-size: var(--font-size-sm);
+    color: hsl(var(--foreground));
+}
+
+.login-prompt a {
+    color: hsl(var(--primary));
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+}
+.login-prompt a:hover {
+    text-decoration: underline;
+}
+/* signup and sign in end */
+
+/* chat page start */
+/* --- Chat Page Specific Styles --- */
+/* --- Chat Page Specific Styles --- */
+
+.chat-page-body {
+    display: flex;
+    height: 100vh;
+    overflow: hidden; /* Prevent body scroll, chat areas will scroll */
+    background-color: hsl(var(--background));
+    font-family: var(--font-sans);
+}
+
+.chat-app-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Sidebar (Chat List) */
+.chat-sidebar {
+    width: 280px; /* Adjust width as needed */
+    flex-shrink: 0;
+    background-color: hsl(var(--secondary) / 0.5); /* Slightly muted background */
+    border-right: 1px solid hsl(var(--border));
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.sidebar-header {
+    padding: var(--spacing-4);
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.return-button.btn-ghost {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    color: hsl(var(--foreground)); /* Ensure good contrast */
+    font-weight: var(--font-weight-medium);
+    width: 100%;
+    justify-content: flex-start;
+}
+.return-button .icon {
+    width: 1.25rem; /* 20px */
+    height: 1.25rem;
+}
+
+.chat-list-navigation {
+    flex-grow: 1;
+    overflow-y: auto; /* Enable scrolling for chat list */
+}
+
+.chat-list {
+    list-style: none;
+    padding: var(--spacing-2) 0; /* Add some padding top/bottom */
+}
+
+.chat-list-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-3) var(--spacing-4);
+    cursor: pointer;
+    border-radius: var(--radius); /* Apply radius to items */
+    margin: var(--spacing-1) var(--spacing-2); /* Margin around items */
+    transition: background-color var(--transition-duration);
+    color: hsl(var(--secondary-foreground));
+}
+
+.chat-list-item:hover {
+    background-color: hsl(var(--accent));
+}
+
+.chat-list-item.active {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-weight: var(--font-weight-medium);
+}
+.chat-list-item.active .avatar { /* Example: style active avatar differently */
+    border-color: hsl(var(--primary-foreground) / 0.5);
+}
+
+
+.chat-name {
+    flex-grow: 1;
+    font-size: var(--font-size-sm);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Generic Avatar Styling (if not already in your base styles) */
+.avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-medium);
+    background-color: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
+    border: 2px solid transparent; /* For potential active state or borders */
+}
+.avatar-sm {
+    width: 32px; height: 32px; font-size: 0.875rem;
+}
+.avatar-md {
+    width: 40px; height: 40px; font-size: 1rem;
+}
+.chat-list-item.active .avatar,
+.chat-list-item:hover .avatar {
+    background-color: hsl(var(--background) / 0.2); /* Subtle change */
+}
+.chat-list-item.active .avatar {
+    color: hsl(var(--primary-foreground));
+    background-color: hsl(var(--primary-foreground) / 0.2);
+}
+
+
+/* Main Chat Area */
+.chat-main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: hsl(var(--background));
+}
+
+.chat-area-header {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-3) var(--spacing-4);
+    border-bottom: 1px solid hsl(var(--border));
+    background-color: hsl(var(--background)); /* Or a slightly different header bg */
+    min-height: 65px; /* Consistent header height */
+}
+
+.chat-partner-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+
+.chat-partner-name {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--foreground));
+    margin: 0; /* Reset heading margin */
+}
+
+/* Message Display Area */
+.message-display-area {
+    flex-grow: 1;
+    padding: var(--spacing-4) var(--spacing-6);
+    overflow-y: auto; /* Crucial for scrolling messages */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4); /* Spacing between messages */
+}
+
+.date-separator {
+    text-align: center;
+    margin: var(--spacing-4) 0;
+}
+.date-separator span {
+    background-color: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+.message-item {
+    display: flex;
+    max-width: 75%; /* Messages shouldn't take full width */
+    gap: var(--spacing-2);
+}
+
+.message-avatar { /* Avatar specific to messages */
+    margin-top: auto; /* Align avatar to bottom of message if bubble grows */
+}
+
+.message-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.message-item.message-received {
+    align-self: flex-start;
+}
+.message-item.message-received .message-bubble {
+    background-color: hsl(var(--secondary));
+    color: white;
+    border-top-left-radius: var(--radius-sm); /* Different rounding for received */
+    border-top-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+
+}
+.message-item.message-received .message-timestamp {
+    align-self: flex-start;
+}
+
+
+.message-item.message-sent {
+    align-self: flex-end;
+}
+.message-item.message-sent .message-content {
+    align-items: flex-end; /* Align bubble and timestamp to the right */
+}
+.message-item.message-sent .message-bubble {
+  background-color: hsl(var(--primary));
+  /* color: white; */ /* REPLACE THIS LINE */
+  color: hsl(var(--primary-foreground)); /* WITH THIS LINE */
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius-sm);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+.message-item.message-sent .message-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+}
+
+
+.message-bubble {
+    color: hsl(var(--foreground));
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius); /* Default rounding */
+    line-height: var(--line-height-base);
+}
+.message-bubble p {
+    margin: 0; /* Reset paragraph margin */
+    margin: 0;
+    font-size: var(--font-size-sm);
+}
+
+.message-timestamp {
+    font-size: 0.75rem; /* Approx 12px */
+    color: hsl(var(--muted-foreground));
+    margin-top: var(--spacing-1);
+}
+
+.message-status .icon {
+    width: 1rem; /* 16px */
+    height: 1rem;
+    color: hsl(var(--primary-foreground)); /* Status icon color */
+}
+.message-item.message-received .message-status {
+    display: none; /* Status typically only for sent messages */
+}
+
+
+/* Message Input Area */
+.message-input-area {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-3) var(--spacing-4);
+    border-top: 1px solid hsl(var(--border));
+    background-color: hsl(var(--secondary) / 0.3);
+    min-height: 70px; /* Consistent input area height */
+}
+
+.current-user-avatar.avatar-sm {
+    /* Avatar size for current user in input area */
+    width: 32px;
+    height: 32px;
+    font-size: 0.875rem; /* 14px */
+    /* Styles for current user's avatar in input area */
+}
+
+.message-form {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.message-input.form-input {
+    flex-grow: 1;
+    /* form-input styles from base should provide height, padding, etc. */
+    /* Ensure it has a slightly different bg or border if needed in this context */
+    background-color: hsl(var(--background));
+}
+
+.send-button.btn-icon {
+    /* Ensure width/height are appropriate if not covered by .btn-icon from base */
+    width: var(--button-h); /* Using button height variable from base styles */
+    height: var(--button-h);
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+.send-button .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+/* chat page styling end */
+
+/* keranjang page styling start */
+/* --- Global Site Header Styles (if not already defined) --- */
+.site-header {
+    background-color: hsl(var(--background));
+    border-bottom: 1px solid hsl(var(--border));
+    padding: var(--spacing-3) 0; /* Vertical padding is fine, horizontal is handled by header-container */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%; /* ADD THIS to ensure header spans full width */
+}
+
+.header-container {
+    /* Use a .container class or define max-width and centering here */
+    max-width: 1280px; /* Example max width */
+    margin: 0 auto;
+    padding: 0 var(--spacing-6); /* Horizontal padding for the container */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-4);
+}
+
+.logo-container .logo-link {
+    font-size: var(--font-size-lg); /* Or your logo's specific size */
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--foreground));
+    text-decoration: none;
+    /* Add dimensions if it's an image logo */
+}
+
+.search-bar-container {
+    flex-grow: 1; /* Allow search bar to take available space */
+    max-width: 600px; /* Limit search bar width */
+}
+
+.search-form {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: var(--spacing-3);
+    color: hsl(var(--muted-foreground));
+    width: 1.125rem; /* 18px */
+    height: 1.125rem;
+}
+
+.search-input.form-input {
+    padding-left: calc(var(--spacing-3) + 1.25rem + var(--spacing-2)); /* Space for icon */
+    /* Assuming .form-input provides other base styles like height, border, etc. */
+    background-color: hsl(var(--secondary) / 0.7); /* Slightly different bg for search */
+}
+.search-input.form-input:focus {
+    background-color: hsl(var(--background));
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2); /* Gap between action buttons */
+}
+.header-actions .btn-icon .icon {
+    width: 1.25rem; /* 20px */
+    height: 1.25rem;
+}
+
+
+/* --- Shopping Cart Page Specific Styles --- */
+.page-body { /* General body style if needed, or apply to a specific page wrapper */
+    background-color: hsl(var(--muted) / 0.3); /* Light page background */
+}
+
+.shopping-cart-page.container {
+    max-width: 1100px; /* Max width for cart content */
+    margin: var(--spacing-8) auto; /* Top/bottom margin, centered */
+    padding: 0 var(--spacing-4); /* Padding for smaller screens */
+}
+
+.page-title { /* Already in base, but ensure margin is fine */
+    font-size: var(--font-size-2xl); /* Example: 24px */
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-6);
+    color: hsl(var(--foreground));
+}
+
+.cart-content {
+    background-color: hsl(var(--background)); /* White background for the main cart area */
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-6);
+    box-shadow: 0 4px 12px hsla(var(--foreground), 0.05);
+}
+
+.select-all-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-3) var(--spacing-4);
+    background-color: hsl(var(--secondary) / 0.7);
+    border-radius: var(--radius);
+    margin-bottom: var(--spacing-6);
+    border: 1px solid hsl(var(--border));
+}
+.select-all-bar .form-checkbox-label {
+    font-weight: var(--font-weight-medium);
+}
+
+/* Cart Items Grid */
+.cart-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Responsive grid */
+    /* For a fixed 2-column layout: grid-template-columns: 1fr 1fr; */
+    gap: var(--spacing-6);
+    margin-bottom: var(--spacing-6);
+}
+
+.cart-item.card {
+    /* .card provides base padding, border, radius, background */
+    /* We'll use grid/flex for internal layout */
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* checkbox | image+details | quantity */
+    grid-template-areas: "selection image details"
+                         "selection image quantity";
+    gap: var(--spacing-4);
+    align-items: center; /* Vertically align items in the grid rows */
+    padding: var(--spacing-4); /* Adjust card padding if needed */
+}
+.cart-item .item-selection {
+    grid-area: selection;
+    display: flex;
+    align-items: flex-start; /* Align checkbox to the top */
+    padding-top: var(--spacing-1); /* Small spacing for checkbox */
+}
+
+.product-image-placeholder {
+    grid-area: image;
+    width: 100px; /* Adjust as needed */
+    height: 100px;
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+    align-self: flex-start; /* Align image to the top */
+}
+
+.product-details {
+    grid-area: details;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+    align-self: flex-start; /* Align details to the top */
+}
+
+.product-name {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground));
+    line-height: var(--line-height-snug);
+    /* For text truncation if needed: */
+    /* display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; */
+}
+
+.product-price {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+    font-weight: var(--font-weight-semibold);
+}
+
+.quantity-adjuster {
+    grid-area: quantity;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    align-self: center; /* Center quantity adjuster vertically relative to its grid area */
+    justify-self: end; /* Align to the end of its grid cell */
+}
+
+.quantity-button.btn-icon.btn-sm { /* Specific styles for small +/- buttons */
+    width: 28px; /* Adjust size */
+    height: 28px;
+    padding: 0; /* Remove padding if using fixed size */
+}
+.quantity-button.btn-icon.btn-sm .icon {
+    width: 0.875rem; /* 14px */
+    height: 0.875rem;
+}
+
+.quantity-display.form-input {
+    width: 40px; /* Adjust width */
+    height: 28px; /* Match button height */
+    text-align: center;
+    padding: var(--spacing-1);
+    font-weight: var(--font-weight-medium);
+    /* Remove spinners for number input if desired */
+    -moz-appearance: textfield; /* Firefox */
+}
+.quantity-display::-webkit-outer-spin-button,
+.quantity-display::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.cart-separator {
+    border: 0;
+    border-top: 1px solid hsl(var(--border));
+    margin: var(--spacing-6) 0;
+}
+
+/* Cart Summary */
+.cart-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align content to the right */
+    gap: var(--spacing-4);
+}
+
+.total-payment-info {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-2);
+    font-size: var(--font-size-base); /* Adjust as needed */
+}
+
+.total-label {
+    color: hsl(var(--muted-foreground));
+}
+
+.total-amount {
+    font-size: var(--font-size-lg); /* Larger for total amount */
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--foreground));
+}
+
+.checkout-button.btn-primary {
+    min-width: 180px; /* Example min-width for checkout button */
+    padding-top: var(--spacing-3); /* Taller button */
+    padding-bottom: var(--spacing-3);
+}
+/* keranjang page styling end */
+
+/*home page styling start */
+/* --- Homepage Specific Styles --- */
+
+.homepage-content.container {
+    max-width: 1280px; /* Adjust based on your site's max-width */
+    margin: 0 auto; /* Centering */
+    padding: var(--spacing-6) var(--spacing-4); /* Overall padding for homepage content */
+}
+
+/* General section styling for consistent spacing */
+.content-section {
+    margin-bottom: var(--spacing-10); /* Space between sections */
+}
+
+.section-title {
+    font-size: var(--font-size-xl); /* Example: 20px or 1.25rem */
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-6); /* Space after title */
+    color: hsl(var(--foreground));
+}
+
+.section-header { /* For titles with a "see all" link */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-4); /* Overrides .section-title margin if used inside */
+}
+.section-header .section-title {
+    margin-bottom: 0; /* Reset margin as spacing is handled by .section-header */
+}
+
+.see-all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    font-size: var(--font-size-sm);
+    color: hsl(var(--primary));
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    transition: color var(--transition-duration);
+}
+.see-all-link:hover {
+    color: hsl(var(--primary) / 0.8); /* Slightly darker/muted primary on hover */
+    text-decoration: underline;
+}
+.see-all-link .icon {
+    width: 1rem; /* 16px */
+    height: 1rem;
+}
+
+
+/* Banner Section */
+.banner-section {
+    display: flex;
+    gap: var(--spacing-6); /* Gap between main and side banners */
+    margin-bottom: var(--spacing-10);
+    min-height: 300px; /* Example minimum height */
+}
+
+.banner-main {
+    flex-grow: 2; /* Main banner takes more space */
+    background-color: hsl(var(--muted)); /* Placeholder background */
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.banner-main a, .banner-item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: hsl(var(--muted-foreground)); /* For placeholder text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.banner-main img, .banner-item img { /* If using actual images */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.banner-side {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6); /* Gap between the two side banners */
+}
+
+.banner-item {
+    flex-grow: 1;
+    background-color: hsl(var(--muted)); /* Placeholder background */
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.placeholder-text { /* For text inside banner/image placeholders */
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+
+
+/* Categories Section */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+    /* For a fixed 6 columns: grid-template-columns: repeat(6, 1fr); */
+    gap: var(--spacing-4);
+}
+
+.category-item.card {
+    /* .card provides base padding, border, etc. */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-3); /* Adjust card padding */
+    text-decoration: none;
+    color: hsl(var(--foreground));
+}
+/* Add card-interactive class for hover effects if not default for .card */
+.card-interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px hsla(var(--foreground), 0.08);
+    border-color: hsl(var(--primary) / 0.5);
+}
+
+
+.category-image-placeholder {
+    width: 80px; /* Adjust size */
+    height: 80px;
+    background-color: hsl(var(--secondary));
+    border-radius: var(--radius); /* Or --radius-full for circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-2);
+    border: 1px solid hsl(var(--border));
+}
+.category-image-placeholder .placeholder-text {
+    font-size: 0.75rem;
+}
+
+.category-name {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground)); /* Ensure text color */
+    line-height: var(--line-height-snug);
+}
+
+
+/* Flash Sale & Recommendations - Product Card Styling */
+.product-scroll-container {
+    overflow-x: auto;
+    padding-bottom: var(--spacing-4); /* Space for scrollbar if needed */
+    /* Custom scrollbar styling (optional, webkit only) */
+    &::-webkit-scrollbar { height: 8px; }
+    &::-webkit-scrollbar-track { background: hsl(var(--secondary)); border-radius: var(--radius-full); }
+    &::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: var(--radius-full); }
+    &::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground)); }
+}
+
+.product-list-horizontal {
+    display: flex; /* Arrange items in a row */
+    gap: var(--spacing-4);
+    width: max-content; /* Allow content to exceed container width for scrolling */
+}
+
+.product-card.card {
+    /* .card provides base background, border, radius */
+    width: 200px; /* Fixed width for horizontal scroll items, adjust as needed */
+    flex-shrink: 0; /* Prevent items from shrinking */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Ensure content respects border-radius */
+}
+.product-card .product-link-wrapper { /* Make whole card clickable */
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Make link wrapper fill the card */
+}
+
+
+.product-image-placeholder { /* Reusable for product cards */
+    width: 100%;
+    height: 180px; /* Adjust height */
+    background-color: hsl(var(--muted));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid hsl(var(--border)); /* If image is flush with top */
+}
+.product-image-placeholder img { /* If using actual images */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.product-card-content {
+    padding: var(--spacing-3); /* Padding for text content */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1); /* Space between text elements */
+    flex-grow: 1; /* Allow content to take remaining space if card height is fixed */
+}
+
+.product-name { /* For recommendation cards */
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground));
+    line-height: var(--line-height-snug);
+    /* Optional: Truncate long names */
+    /* display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; */
+    margin-bottom: var(--spacing-1); /* Space between name and price */
+}
+
+.product-price {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--primary)); /* Or foreground color */
+}
+
+.stock-badge {
+    font-size: 0.7rem; /* Approx 11.2px */
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--destructive-foreground)); /* Use destructive colors for urgency */
+    background-color: hsl(var(--destructive));
+    padding: var(--spacing-0_5, 0.125rem) var(--spacing-2); /* var(--spacing-0_5) needs to be defined if used */
+    border-radius: var(--radius-sm);
+    align-self: flex-start; /* Align badge to the start */
+    margin-top: var(--spacing-1);
+}
+
+
+/* Recommendations Section - Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Responsive product grid */
+    /* For fixed 6 columns as in wireframe: grid-template-columns: repeat(6, 1fr); */
+    gap: var(--spacing-4);
+}
+.product-grid .product-card.card { /* Ensure product cards in grid take full width */
+    width: 100%;
+}
+
+/* Optional Load More Button */
+.load-more-container {
+    text-align: center;
+    margin-top: var(--spacing-8);
+}
+/* home page styling end */
+
+/*checkout page styling start */
+/* --- Checkout Page Specific Styles --- */
+
+.checkout-page-body { /* Or a specific wrapper class */
+    background-color: hsl(var(--muted) / 0.3); /* Light page background */
+}
+
+/* Checkout Header */
+.checkout-header {
+    background-color: hsl(var(--background));
+    border-bottom: 1px solid hsl(var(--border));
+    padding: var(--spacing-3) 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.checkout-header-container.header-container { /* Re-use .header-container if defined globally */
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-6);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the start */
+    gap: var(--spacing-4);
+}
+
+.back-link-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    text-decoration: none;
+    color: hsl(var(--foreground));
+}
+.back-link-logo .icon {
+    width: 1.5rem; /* 24px */
+    height: 1.5rem;
+}
+.back-link-logo .logo-placeholder {
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base); /* Adjust as needed */
+}
+
+.page-main-title { /* For "Pembayaran" */
+    font-size: var(--font-size-2xl); /* Large title, e.g., 24px or 1.5rem */
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--foreground));
+    margin: 0; /* Remove default heading margin */
+    flex-grow: 1; /* Allow it to take space, or text-align center if needed */
+    /* text-align: center; */ /* Uncomment if title should be centered in remaining space */
+}
+
+
+/* Main Checkout Content Layout */
+.checkout-page-content.container {
+    max-width: 1200px; /* Max width for checkout content */
+    margin: var(--spacing-8) auto;
+    padding: 0 var(--spacing-4);
+}
+
+.checkout-layout-container {
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    gap: var(--spacing-6);
+}
+
+/* Use media query for two-column layout on larger screens */
+@media (min-width: 992px) { /* Adjust breakpoint as needed */
+    .checkout-layout-container {
+        flex-direction: row;
+        align-items: flex-start; /* Align items to the top */
+    }
+}
+
+.checkout-main-column {
+    flex: 2; /* Takes more space, e.g., 66% */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+}
+
+.checkout-sidebar-column {
+    flex: 1; /* Takes less space, e.g., 33% */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+    position: sticky; /* Optional: make sidebar sticky within its column */
+    top: calc(var(--spacing-8) + 60px); /* Adjust top offset based on header height */
+}
+
+
+/* General section/card title if not covered by base .card styles */
+.section-title { /* Reusable from homepage if consistent */
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-4);
+    color: hsl(var(--foreground));
+}
+.card .section-title { /* If title is inside a card */
+    padding-bottom: var(--spacing-3);
+    border-bottom: 1px solid hsl(var(--border));
+    margin-bottom: var(--spacing-4);
+}
+
+
+/* Ordered Products Section */
+.ordered-products-section.card {
+    /* .card provides base styling */
+}
+
+.product-summary-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+
+.product-summary-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-3) 0;
+    border-bottom: 1px solid hsl(var(--border) / 0.5); /* Lighter border between items */
+}
+.product-summary-item:last-child {
+    border-bottom: none;
+}
+.product-summary-item.highlighted {
+    border: 2px solid hsl(var(--ring)); /* Using ring color for highlight */
+    border-radius: var(--radius);
+    padding: calc(var(--spacing-3) - 2px); /* Adjust padding to account for border */
+    margin: -2px; /* Negative margin to keep alignment */
+    /* background-color: hsl(var(--ring) / 0.05); */ /* Optional subtle background */
+}
+
+
+.product-summary-image.placeholder-bg {
+    width: 64px; height: 64px;
+    flex-shrink: 0;
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; color: hsl(var(--muted-foreground));
+}
+.product-summary-image img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-sm); }
+
+.product-summary-details {
+    flex-grow: 1;
+}
+.product-summary-name {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground));
+    line-height: var(--line-height-snug);
+    margin-bottom: var(--spacing-0_5, 0.125rem);
+}
+.product-summary-price {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+
+
+/* Order Totals Summary */
+.order-totals-summary.card {
+    /* .card provides base styling */
+    padding: var(--spacing-4);
+}
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-sm);
+    color: hsl(var(--foreground));
+    padding: var(--spacing-1_5, 0.375rem) 0; /* var(--spacing-1_5) needs definition or use var(--spacing-1) */
+}
+.summary-line span:first-child {
+    color: hsl(var(--muted-foreground));
+}
+.summary-line.discount-line span:last-child {
+    color: hsl(var(--destructive)); /* Or a green color for positive discounts */
+}
+
+
+/* Payment Methods */
+.payment-methods-section.card {
+    /* .card provides base styling */
+}
+.payment-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--spacing-3);
+}
+.payment-option-button.btn {
+    /* Standard button styling should apply */
+    /* Add active state styling */
+    font-weight: var(--font-weight-normal); /* Default state */
+    border-color: hsl(var(--border));
+}
+.payment-option-button.btn.active {
+    border-color: hsl(var(--primary));
+    background-color: hsl(var(--primary) / 0.1); /* Subtle background for active */
+    color: hsl(var(--primary));
+    font-weight: var(--font-weight-medium);
+    /* box-shadow: 0 0 0 2px hsl(var(--primary)); */ /* Optional ring effect */
+}
+
+
+/* Sidebar Cards: Address, Note, Shipping */
+.card-header-actions { /* For card titles with a button on the side */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-3); /* Space after header in card */
+    padding-bottom: var(--spacing-3);
+    border-bottom: 1px solid hsl(var(--border));
+}
+.card-title-sm { /* Smaller title for cards */
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    margin: 0;
+    color: hsl(var(--foreground));
+}
+.change-button.btn-link.btn-sm { /* For "Ubah" buttons */
+    font-size: var(--font-size-sm);
+    padding: 0; /* Typical for link buttons */
+    height: auto;
+    color: hsl(var(--primary));
+}
+
+.address-details p, .shipping-details p {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+    margin-bottom: var(--spacing-1);
+    line-height: var(--line-height-snug);
+}
+.address-details p:last-child, .shipping-details p:last-child {
+    margin-bottom: 0;
+}
+.address-recipient-name, .shipping-method-name {
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground)); /* More prominent */
+}
+
+.order-note-section.card .form-label {
+    font-weight: var(--font-weight-semibold); /* Make label slightly bolder */
+    margin-bottom: var(--spacing-2);
+}
+.order-note-section.card .form-textarea {
+    min-height: 80px; /* Adjust as needed */
+}
+
+
+/* Checkout Footer Actions */
+.checkout-footer-actions {
+    background-color: hsl(var(--background));
+    border-top: 1px solid hsl(var(--border));
+    padding: var(--spacing-4) var(--spacing-6);
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    align-items: flex-end; /* Align content to the right */
+    gap: var(--spacing-3);
+    position: sticky;
+    bottom: 0;
+    z-index: 40; /* Below header if header is also sticky */
+}
+@media (min-width: 768px) { /* Adjust breakpoint */
+    .checkout-footer-actions {
+        flex-direction: row; /* Side-by-side on larger screens */
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
+
+
+.final-total-display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align text to right */
+    gap: var(--spacing-0_5, 0.125rem);
+}
+.final-total-display .total-label {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+.final-total-display .total-amount {
+    font-size: var(--font-size-xl); /* Larger for final total */
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--primary)); /* Or foreground */
+}
+
+.place-order-button.btn-primary {
+    min-width: 200px; /* Make button substantial */
+    width: 100%; /* Full width on mobile */
+}
+@media (min-width: 768px) {
+    .place-order-button.btn-primary {
+        width: auto; /* Auto width on larger screens */
+    }
+}
+
+/* Helper for placeholder backgrounds if not using actual images */
+.placeholder-bg {
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; color: hsl(var(--muted-foreground));
+}
+/* checkout page styling end */
+
+/*profile page styling start */
+/* --- Profile Page Specific Styles --- */
+
+.profile-page-content.container {
+    max-width: 1200px; /* Adjust max-width as needed */
+    margin: var(--spacing-8) auto;
+    padding: 0 var(--spacing-4);
+}
+
+.profile-layout-container {
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) { /* Adjust breakpoint for two-column layout */
+    .profile-layout-container {
+        flex-direction: row;
+        align-items: flex-start; /* Align items to the top */
+    }
+}
+
+/* Profile Sidebar */
+.profile-sidebar.card {
+    flex: 0 0 280px; /* Fixed width for sidebar, adjust as needed */
+    /* .card provides padding, background, border, radius */
+    padding: var(--spacing-6);
+}
+
+.profile-sidebar-userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--spacing-6);
+    padding-bottom: var(--spacing-6);
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.user-avatar-placeholder.placeholder-bg {
+    width: 80px; /* Adjust avatar size */
+    height: 80px;
+    border-radius: var(--radius-full); /* Circular avatar */
+    background-color: hsl(var(--muted));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-3);
+    color: hsl(var(--muted-foreground));
+}
+.user-avatar-placeholder .user-avatar-icon {
+    width: 3rem; /* Adjust icon size within avatar */
+    height: 3rem;
+}
+
+.user-profile-name {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--foreground));
+    margin: 0;
+    text-align: center;
+}
+
+.profile-navigation .profile-nav-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--muted-foreground));
+    padding: 0 var(--spacing-2); /* Match link padding if any */
+    margin-bottom: var(--spacing-2);
+    text-transform: uppercase; /* Optional: for section title style */
+    letter-spacing: 0.05em; /* Optional */
+}
+
+.profile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-nav-item {
+    margin-bottom: var(--spacing-1);
+}
+
+.profile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-2_5, 0.625rem) var(--spacing-3); /* var(--spacing-2_5) or similar */
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground));
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+.profile-nav-link .nav-icon {
+    width: 1.125rem; /* 18px */
+    height: 1.125rem;
+    color: hsl(var(--muted-foreground)); /* Icon color */
+    transition: color var(--transition-duration);
+}
+
+.profile-nav-link:hover {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+}
+.profile-nav-link:hover .nav-icon {
+    color: hsl(var(--accent-foreground));
+}
+
+.profile-nav-link.active {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-weight: var(--font-weight-semibold);
+}
+.profile-nav-link.active .nav-icon {
+    color: hsl(var(--primary-foreground));
+}
+
+
+/* Main Profile Section */
+.profile-main-section.card {
+    flex: 1; /* Takes remaining space */
+    /* .card provides padding, background, border, radius */
+    padding: var(--spacing-6) var(--spacing-8); /* Adjust padding */
+}
+
+.section-title-lg { /* Larger title for main profile area */
+    font-size: var(--font-size-2xl); /* e.g., 24px or 1.5rem */
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-6);
+    color: hsl(var(--foreground));
+    padding-bottom: var(--spacing-4);
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.biodata-content-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    gap: var(--spacing-8);
+}
+@media (min-width: 768px) {
+    .biodata-content-wrapper {
+        flex-direction: row; /* Side by side on larger screens */
+        align-items: flex-start;
+    }
+}
+
+.profile-photo-container {
+    flex: 0 0 200px; /* Fixed width for photo area, adjust as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+.profile-photo-placeholder.placeholder-bg {
+    width: 180px; /* Adjust photo size */
+    height: 180px;
+    border-radius: var(--radius-lg); /* Or --radius-full for circular */
+    background-color: hsl(var(--muted));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-base);
+    color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+}
+/* Optional: .change-photo-button { width: 100%; } */
+
+
+.biodata-details {
+    flex: 1;
+    display: grid;
+    /* grid-template-columns: auto 1fr; */ /* Label and value */
+    gap: var(--spacing-4) var(--spacing-6); /* Row and column gap */
+}
+
+.detail-item {
+    display: grid; /* Using grid for alignment of label and multi-line value */
+    grid-template-columns: minmax(120px, max-content) 1fr; /* Label width, value takes rest */
+    align-items: flex-start; /* Align items at the start of the cell */
+    gap: var(--spacing-2); /* Gap between label and value */
+    padding: var(--spacing-1) 0;
+}
+
+.detail-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--muted-foreground));
+    grid-column: 1 / 2;
+    white-space: nowrap;
+}
+
+.detail-value {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--foreground));
+    grid-column: 2 / 3;
+    word-break: break-word; /* Prevent long values from breaking layout */
+}
+.detail-value.gender-radio-group { /* Specific for gender radio layout */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding-top: 0; /* Align with baseline of label if radios are small */
+}
+
+/* Custom Radio Button Styling (if not already in base and matching form-checkbox) */
+/* Adapting .form-checkbox-container structure for radio */
+.form-radio-container {
+  display: inline-flex; /* Changed from flex to inline-flex */
+  align-items: center;
+  gap: var(--spacing-2);
+  cursor: pointer;
+  user-select: none;
+}
+.form-radio { /* The actual hidden input */
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.form-radio-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem; /* 16px */
+  height: 1rem;
+  border: 1px solid hsl(var(--input-border));
+  border-radius: var(--radius-full); /* Circular for radio */
+  background-color: hsl(var(--background));
+  transition: all var(--transition-duration) var(--transition-timing-function);
+  flex-shrink: 0;
+}
+.form-radio-indicator::after { /* Inner dot for checked state */
+    content: "";
+    width: 0.5rem; /* 8px */
+    height: 0.5rem;
+    border-radius: var(--radius-full);
+    background-color: hsl(var(--primary-foreground)); /* Color of the dot */
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all var(--transition-duration) var(--transition-timing-function);
+}
+.form-radio:checked + .form-radio-indicator {
+  background-color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+}
+.form-radio:checked + .form-radio-indicator::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.form-radio:focus-visible + .form-radio-indicator {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
+}
+.form-radio-label {
+  font-size: var(--font-size-sm);
+  color: hsl(var(--foreground));
+  line-height: 1;
+}
+
+.profile-actions {
+    margin-top: var(--spacing-8);
+    padding-top: var(--spacing-6);
+    border-top: 1px solid hsl(var(--border));
+    display: flex;
+    justify-content: flex-end; /* Align button to the right */
+}
+
+.edit-profile-button.btn-primary {
+    min-width: 150px; /* Example width */
+}
+
+/* Helper for placeholder backgrounds */
+.placeholder-bg {
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius); /* General radius */
+    display: flex; align-items: center; justify-content: center;
+    font-size: var(--font-size-sm); color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+}
+/* profile page styling end */
+
+/*promo page styling start */
+/* --- Promo Page Specific Styles --- */
+
+.promo-page-content.container {
+    max-width: 1280px; /* Adjust based on your site's max-width */
+    margin: 0 auto; /* Centering */
+    padding: var(--spacing-6) var(--spacing-4); /* Overall padding for promo content */
+}
+
+/* General section styling for consistent spacing (reusable from homepage) */
+/* .content-section { margin-bottom: var(--spacing-10); } */
+/* .section-title { ... } */
+/* .section-header { ... } */
+/* .see-all-link { ... } */
+
+
+/* Main Promo Banner */
+.main-promo-banner.content-section { /* Use content-section for consistent margin */
+    /* margin-bottom: var(--spacing-6); */ /* Slightly less margin after big banner */
+}
+.banner-placeholder.placeholder-bg { /* Reusable placeholder style */
+    width: 100%;
+    height: 300px; /* Adjust height as needed */
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-lg);
+    color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+}
+.banner-placeholder img { /* If using actual images */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+}
+
+
+/* Info Bar (Promo/Kupon) */
+.info-bar.content-section {
+    display: flex;
+    gap: var(--spacing-4); /* Gap between info items */
+    justify-content: center; /* Or space-around, space-between */
+    padding: var(--spacing-4);
+    background-color: hsl(var(--secondary) / 0.5); /* Light background for the bar */
+    border-radius: var(--radius-lg);
+    /* margin-bottom: var(--spacing-8); */ /* Use content-section margin */
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--secondary-foreground)); /* Text color for info bar */
+    padding: var(--spacing-2) var(--spacing-3);
+    background-color: hsl(var(--background)); /* Individual item background */
+    border-radius: var(--radius);
+    box-shadow: 0 2px 4px hsla(var(--foreground), 0.05);
+    cursor: pointer; /* If they are clickable */
+    transition: transform var(--transition-duration);
+}
+.info-item:hover {
+    transform: translateY(-2px);
+}
+.info-item .info-icon {
+    width: 1.25rem; /* 20px */
+    height: 1.25rem;
+    color: hsl(var(--primary)); /* Icon color */
+}
+
+
+/* Promo Category Sections (Hot Promo, Dapatkan diskonnya, etc.) */
+.promo-category-section .product-grid {
+    /* .product-grid styles from homepage should apply (responsive grid) */
+    /* grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); */
+}
+/* .product-card styles from homepage should apply */
+
+
+/* Tabbed Promo Section ("Cek Promo Lainnya!") */
+.tabbed-promo-section .section-header { /* If only title, standard margin applies */
+    justify-content: flex-start; /* Align title to start if no "See All" */
+    margin-bottom: var(--spacing-4);
+}
+
+.tab-navigation {
+    display: flex;
+    gap: var(--spacing-2); /* Gap between tab buttons */
+    margin-bottom: var(--spacing-4);
+    padding-bottom: var(--spacing-1); /* Space for active indicator */
+    overflow-x: auto; /* Allow horizontal scrolling for tabs */
+    /* Custom scrollbar for tabs (optional) */
+    &::-webkit-scrollbar { height: 4px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: var(--radius-full); }
+}
+
+.tab-button { /* Can reuse .tab-button from sign-up or define new variant */
+    padding: var(--spacing-2) var(--spacing-4);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--muted-foreground));
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid transparent; /* Placeholder for active state */
+    border-radius: 0; /* Tabs are usually not rounded like buttons */
+    cursor: pointer;
+    white-space: nowrap; /* Prevent tabs from wrapping text */
+    transition: color var(--transition-duration), border-color var(--transition-duration);
+}
+.tab-button:hover {
+    color: hsl(var(--foreground));
+}
+.tab-button.active {
+    color: hsl(var(--primary));
+    border-bottom-color: hsl(var(--primary));
+    font-weight: var(--font-weight-semibold);
+}
+
+
+/* Filter Bar */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-6);
+    padding: var(--spacing-3) 0;
+    border-top: 1px solid hsl(var(--border));
+    border-bottom: 1px solid hsl(var(--border));
+    overflow-x: auto; /* Allow horizontal scrolling for tags */
+}
+
+.filter-main-button.btn-sm {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1_5, 0.375rem); /* var(--spacing-1_5) or specific value */
+    /* .btn-sm should handle padding and font size */
+}
+.filter-main-button .icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.tag-button.btn-sm {
+    /* .btn-sm and .btn-outline should provide base styling */
+    /* Specific overrides for tag appearance if needed */
+    border-radius: var(--radius-full); /* Pill shape for tags */
+    font-weight: var(--font-weight-normal);
+    color: hsl(var(--muted-foreground));
+    border-color: hsl(var(--border));
+}
+.tag-button.btn-sm:hover,
+.tag-button.btn-sm.active { /* Example active state for tags */
+    background-color: hsl(var(--primary) / 0.1);
+    border-color: hsl(var(--primary) / 0.5);
+    color: hsl(var(--primary));
+}
+
+
+/* Reusable placeholder styling */
+.placeholder-bg .placeholder-text {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+/* promo page styling end */
+
+/*coupon page styling start */
+/* --- Coupon Page Specific Styles --- */
+
+.coupon-page-content.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--spacing-6) var(--spacing-4);
+}
+
+/* Info Bar - Active State Example */
+.info-bar .info-item.active {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 4px 8px hsla(var(--primary), 0.2);
+}
+.info-bar .info-item.active .info-icon {
+    color: hsl(var(--primary-foreground));
+}
+
+
+/* "Spesial Untukmu" Section - Large Coupon Cards */
+.special-foryou-section .section-title {
+    /* Standard section title styling */
+}
+
+.coupon-list { /* Can be a grid too if more than 1 column is desired on wider screens */
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column */
+    gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) { /* Example: 2 columns on medium screens */
+    .coupon-list {
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+}
+
+
+.coupon-card-large.card {
+    /* .card provides base styling */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-4); /* Adjust padding as needed */
+}
+
+.coupon-image-placeholder.placeholder-bg {
+    width: 80px; /* Adjust size */
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md, 0.375rem); /* Use appropriate radius */
+    /* Other placeholder styles from base */
+}
+.coupon-image-placeholder .icon {
+    width: 2.5rem; /* 40px */
+    height: 2.5rem;
+    color: hsl(var(--primary)); /* Example icon color */
+}
+
+
+.coupon-card-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+}
+
+.coupon-title {
+    font-size: var(--font-size-base); /* Or --font-size-lg */
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--foreground));
+    line-height: var(--line-height-snug);
+}
+
+.coupon-condition {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+    line-height: var(--line-height-base);
+}
+
+.coupon-card-action .btn {
+    /* .btn and .btn-primary / .btn-sm styles should apply */
+    /* white-space: nowrap; */ /* If button text might wrap undesirably */
+}
+
+
+/* "Voucher Toko" Section - Small Voucher Cards */
+.store-vouchers-section .section-title {
+    /* Standard section title styling */
+}
+
+.voucher-grid-small {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
+    /* For fixed 3 columns: grid-template-columns: repeat(3, 1fr); */
+    gap: var(--spacing-5);
+}
+
+.voucher-card-small.card {
+    /* .card and .card-interactive provide base styling */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    padding: var(--spacing-3); /* Adjust padding */
+}
+
+.voucher-store-image-placeholder.placeholder-bg {
+    width: 48px; /* Smaller image/icon for store */
+    height: 48px;
+    border-radius: var(--radius); /* Or --radius-full for circular */
+    margin-bottom: var(--spacing-3);
+    /* Other placeholder styles from base */
+}
+.voucher-store-image-placeholder .icon {
+    width: 1.5rem; /* 24px */
+    height: 1.5rem;
+    color: hsl(var(--muted-foreground));
+}
+
+.voucher-card-content {
+    flex-grow: 1; /* Allow content to take space before action */
+    margin-bottom: var(--spacing-3);
+}
+
+.voucher-store-name {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground));
+    margin-bottom: var(--spacing-1);
+}
+
+.voucher-title {
+    font-size: var(--font-size-base); /* Or --font-size-sm */
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--primary)); /* Highlight voucher title */
+    margin-bottom: var(--spacing-0_5, 0.125rem);
+}
+
+.voucher-condition {
+    font-size: 0.75rem; /* Approx 12px */
+    color: hsl(var(--muted-foreground));
+    line-height: var(--line-height-snug);
+}
+
+.voucher-card-action {
+    margin-top: auto; /* Push button to the bottom if card heights vary */
+    /* display: flex; justify-content: flex-end; */ /* If button needs specific alignment */
+}
+.voucher-card-action .btn {
+    width: 100%; /* Make button full width of card footer */
+}
+
+/* Reusable placeholder styling - ensure defined in base */
+/*
+.placeholder-bg {
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    font-size: var(--font-size-sm); color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+}
+.placeholder-bg .placeholder-text { (if using text instead of icons)
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+*/
+/* coupon page styling end */
+
+/*wishlist page styling start */
+
+/* --- Wishlist Page Specific Styles --- */
+
+.wishlist-page-content.container {
+    max-width: 1280px; /* Adjust based on your site's max-width */
+    margin: 0 auto; /* Centering */
+    padding: var(--spacing-6) var(--spacing-4); /* Overall padding for wishlist content */
+}
+
+.page-main-title { /* Reusable if defined; ensure correct margin for this context */
+    font-size: var(--font-size-2xl); /* Example: 24px */
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-6); /* Space before the two-column layout */
+    color: hsl(var(--foreground));
+}
+
+.wishlist-layout-container {
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    gap: var(--spacing-6);
+}
+
+@media (min-width: 768px) { /* Adjust breakpoint for two-column layout */
+    .wishlist-layout-container {
+        flex-direction: row;
+        align-items: flex-start; /* Align items to the top */
+    }
+}
+
+/* Wishlist Sidebar */
+.wishlist-sidebar.card {
+    flex: 0 0 260px; /* Fixed width for sidebar, adjust as needed */
+    /* .card provides padding, background, border, radius */
+    padding: var(--spacing-5); /* Custom padding for sidebar card */
+}
+
+.sidebar-title { /* For "Kategori" */
+    font-size: var(--font-size-lg); /* Or --font-size-base */
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-4);
+    padding-bottom: var(--spacing-3);
+    border-bottom: 1px solid hsl(var(--border));
+    color: hsl(var(--foreground));
+}
+
+.category-filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-filter-item {
+    margin-bottom: var(--spacing-1);
+}
+
+.category-filter-link {
+    display: block; /* Make entire area clickable */
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--muted-foreground)); /* Default color for non-active links */
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+.category-filter-link:hover {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+}
+.category-filter-link.active {
+    background-color: hsl(var(--primary) / 0.1); /* Subtle primary background */
+    color: hsl(var(--primary));
+    font-weight: var(--font-weight-semibold);
+}
+
+
+/* Main Wishlist Area */
+.wishlist-main-area {
+    flex: 1; /* Takes remaining space */
+}
+
+.wishlist-sort-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align sort options to the right */
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-6);
+    padding: var(--spacing-3);
+    background-color: hsl(var(--card-background, var(--background))); /* Match card bg or main bg */
+    border-radius: var(--radius);
+    border: 1px solid hsl(var(--border));
+}
+
+.sort-label {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+    margin-right: var(--spacing-1); /* Pushes select slightly away */
+}
+
+.sort-select.form-select {
+    min-width: 200px; /* Give dropdown some width */
+    max-width: 250px;
+    /* .form-select base styles should apply for appearance */
+}
+
+.view-toggle-button.btn-icon .icon {
+    width: 1.25rem; /* 20px */
+    height: 1.25rem;
+}
+
+
+/* Wishlist Product Grid */
+.wishlist-product-grid.product-grid {
+    /* .product-grid styles from homepage should apply (responsive grid) */
+    /* Example for 5 columns as in wireframe (might be too many for some screens) */
+    /* grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); */
+    /* Consider fewer columns for better readability or adjust minmax */
+     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* A common setting */
+}
+
+/* Specific to Product Card within Wishlist */
+.product-card.card-interactive { /* Ensure card hover effects apply */
+    position: relative; /* For positioning the remove button */
+}
+
+.remove-wishlist-item.btn-icon {
+    position: absolute;
+    top: var(--spacing-2);
+    right: var(--spacing-2);
+    z-index: 10; /* Above other card content */
+    background-color: hsl(var(--background) / 0.7); /* Semi-transparent background */
+    border-radius: var(--radius-full);
+    color: hsl(var(--muted-foreground));
+    padding: var(--spacing-1); /* Smaller padding for icon button */
+    width: 2rem; /* Adjust size */
+    height: 2rem;
+}
+.remove-wishlist-item.btn-icon:hover {
+    background-color: hsl(var(--destructive) / 0.8);
+    color: hsl(var(--destructive-foreground));
+}
+.remove-wishlist-item .icon {
+    width: 1rem; /* 16px */
+    height: 1rem;
+}
+
+/* Ensure product card structure from homepage CSS is compatible or adjust here */
+/* .product-card .product-image-placeholder { ... } */
+/* .product-card .product-card-content { ... } */
+/* .product-card .product-name { ... } */
+/* .product-card .product-price { ... } */
+
+/* Optional Pagination Styling (Basic Example) */
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-8);
+}
+.pagination {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 4px hsla(var(--foreground), 0.05);
+}
+.page-item .page-link {
+    padding: var(--spacing-2) var(--spacing-3);
+    text-decoration: none;
+    color: hsl(var(--primary));
+    background-color: hsl(var(--background));
+    border: 1px solid hsl(var(--border));
+    border-left-width: 0;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+.page-item:first-child .page-link {
+    border-left-width: 1px;
+    border-top-left-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+}
+.page-item:last-child .page-link {
+    border-top-right-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+}
+.page-item .page-link:hover {
+    background-color: hsl(var(--accent));
+}
+.page-item.active .page-link {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
+    z-index: 1;
+    position: relative;
+}
+.page-item.disabled .page-link {
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+    background-color: hsl(var(--secondary) / 0.5);
+}
+/* wishlist page styling end */
+
+/*store profile page styling start */
+/* --- Store Profile Page Specific Styles --- */
+
+.store-profile-page-content.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--spacing-6) var(--spacing-4);
+}
+
+/* General section styling for consistent spacing (reusable) */
+.content-section {
+    margin-bottom: var(--spacing-8); /* Consistent bottom margin for sections */
+}
+
+
+/* Store Header Section */
+.store-header-section.card {
+    /* .card provides base padding, background, border, radius */
+    padding: var(--spacing-6); /* Adjust padding as needed */
+    margin-bottom: var(--spacing-6); /* Space after header section */
+}
+
+.store-header-main-info {
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    align-items: center; /* Center on mobile */
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-6); /* Space before stats grid */
+}
+@media (min-width: 768px) { /* Side-by-side on larger screens */
+    .store-header-main-info {
+        flex-direction: row;
+        align-items: flex-start; /* Align to top for different height content */
+    }
+}
+
+.store-avatar-placeholder.placeholder-bg {
+    width: 100px; /* Adjust size */
+    height: 100px;
+    border-radius: var(--radius-md); /* Or --radius-lg */
+    flex-shrink: 0;
+    /* Other placeholder styles */
+}
+.store-avatar-placeholder img { /* If using actual image */
+    width: 100%; height: 100%; object-fit: cover; border-radius: inherit;
+}
+
+.store-details-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center on mobile */
+    gap: var(--spacing-3);
+    flex-grow: 1;
+}
+@media (min-width: 768px) {
+    .store-details-actions {
+        align-items: flex-start; /* Align to start on larger screens */
+    }
+}
+
+.store-name-status {
+    /* text-align: center; */ /* If needed for mobile */
+}
+@media (min-width: 768px) {
+    .store-name-status {
+        text-align: left;
+    }
+}
+
+.store-name {
+    font-size: var(--font-size-2xl); /* Large store name */
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--foreground));
+    margin: 0 0 var(--spacing-1) 0;
+}
+
+.store-activity-status {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+    margin: 0;
+}
+
+.store-action-buttons {
+    display: flex;
+    gap: var(--spacing-3);
+    margin-top: var(--spacing-2); /* Space above buttons */
+}
+.store-action-buttons .btn-sm { /* Ensure btn-sm styles are defined */
+    /* Example: padding: var(--spacing-1_5) var(--spacing-3); font-size: var(--font-size-xs, 0.75rem); */
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1_5, 0.375rem);
+}
+.store-action-buttons .btn-sm .icon {
+    width: 1rem; height: 1rem;
+}
+
+
+/* Store Stats Grid */
+.store-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive */
+    /* For fixed 3 columns as in wireframe: grid-template-columns: repeat(3, 1fr); */
+    gap: var(--spacing-4) var(--spacing-6); /* Row and column gap */
+    padding-top: var(--spacing-4);
+    border-top: 1px solid hsl(var(--border));
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+.stat-item .icon { /* Style already in <head> for demo, can be moved here */
+    color: hsl(var(--primary)); /* Example icon color */
+}
+.stat-item strong {
+    color: hsl(var(--foreground));
+    font-weight: var(--font-weight-semibold);
+}
+
+
+/* Store Category Tabs */
+.store-category-tabs {
+    display: flex;
+    gap: var(--spacing-1); /* Small gap for a continuous look */
+    margin-bottom: var(--spacing-6);
+    padding-bottom: 0; /* Remove padding if .tab-button handles bottom border alignment */
+    border-bottom: 1px solid hsl(var(--border));
+    overflow-x: auto; /* Allow horizontal scrolling for tabs */
+    /* Optional custom scrollbar styling */
+}
+/* .tab-button styles from promo.html should be reusable or adaptable */
+.store-category-tabs .tab-button {
+    /* Example overrides if needed: */
+    /* padding: var(--spacing-3) var(--spacing-4); */
+    /* border-radius: var(--radius-sm) var(--radius-sm) 0 0; */ /* Top rounding for tabs */
+    /* margin-bottom: -1px; */ /* To make active border merge with container border */
+}
+.store-category-tabs .tab-button.active {
+    /* border-bottom-color: hsl(var(--primary)); */
+    /* background-color: hsl(var(--background)); */ /* If tabs "lift" from a different bg */
+}
+
+
+/* Store Banner Carousel */
+.store-banner-carousel {
+    /* margin-bottom: var(--spacing-6); */ /* Use content-section margin */
+}
+.banner-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background-color: hsl(var(--muted)); /* Placeholder */
+    min-height: 250px; /* Adjust height as needed */
+}
+.banner-slide { /* JS will handle showing/hiding slides */
+    width: 100%;
+    height: 100%; /* If wrapper has fixed height */
+    /* For fixed height slides: */
+    /* height: 250px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* For actual images: position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.5s; */
+}
+.banner-slide.active {
+    opacity: 1; /* Show active slide */
+    /* For actual images: opacity: 1; */
+}
+.banner-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+.carousel-pagination {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-2);
+    margin-top: var(--spacing-3);
+}
+.carousel-pagination .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background-color: hsl(var(--border));
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color var(--transition-duration);
+}
+.carousel-pagination .dot:hover {
+    background-color: hsl(var(--muted-foreground));
+}
+.carousel-pagination .dot.active {
+    background-color: hsl(var(--primary));
+    width: 12px; /* Optional: make active dot slightly larger */
+}
+
+
+/* Store Products Section */
+.store-product-grid.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+    /* .product-grid styles from homepage/promo should apply */
+    /* Example for 6 columns: grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
+    /* Ensure consistent item sizing */
+}
+/* .product-card styles should be reusable */
+
+
+/* Product Pagination */
+.product-pagination.pagination-container {
+    /* .pagination-container styles from wishlist should apply (centering) */
+    margin-top: var(--spacing-8);
+}
+/* .pagination, .page-item, .page-link styles from wishlist should apply */
+.page-link-arrow .icon { /* Ensure icon aligns well in pagination arrows */
+    width: 1rem; height: 1rem;
+}
+
+/* Placeholder background styling (reusable) */
+.placeholder-bg .placeholder-text {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+/* store profile page styling end */
+
+/*orders page styling start */
+/* --- Orders Page Specific Styles --- */
+
+/* Main section for orders, sibling to profile-sidebar */
+.orders-main-section {
+    flex: 1; /* Takes remaining space */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6); /* Space between tabs and order list */
+}
+
+/* Orders Tab Navigation - reusing existing .tab-navigation and .tab-button */
+.orders-tab-navigation {
+    /* Ensure it aligns well. Existing styles from promo.html / storeProfile.html should be mostly fine. */
+    /* Example: Add a bottom border if not already part of .tab-navigation */
+    /* border-bottom: 1px solid var(--border); */
+    /* padding-bottom: 0; */ /* If buttons have bottom borders that should merge */
+    margin-bottom: 0; /* Remove bottom margin if cards have their own top margin */
+}
+.orders-tab-navigation .tab-button {
+    white-space: nowrap; /* Prevent wrapping for shorter tab names */
+}
+
+
+/* Order List container */
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-5); /* Space between order cards */
+}
+
+/* Individual Order Card */
+.order-card.card {
+    /* .card provides base padding, background, border, radius */
+    /* We might want to ensure padding is consistent or adjust it */
+    padding: 0; /* Remove base card padding if sections handle it */
+}
+
+.order-card-header {
+    padding: var(--spacing-4);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+}
+
+.order-store-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+
+.order-store-info .store-name {
+    font-weight: var(--font-weight-semibold);
+    color: var(--foreground);
+    flex-grow: 1; /* Allow store name to take available space */
+}
+.order-store-info .btn-sm { /* For Chat & Kunjungi Toko buttons */
+    padding: var(--spacing-1) var(--spacing-2); /* Adjust if needed */
+    font-size: var(--font-size-sm); /* Ensure font size is small */
+    gap: var(--spacing-1); /* Space between icon and text in button */
+}
+.order-store-info .btn-sm .icon {
+    width: 0.875rem; /* 14px */
+    height: 0.875rem;
+}
+
+
+.order-status-message {
+    font-size: var(--font-size-sm);
+    color: var(--muted-foreground);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+.order-status-message .icon {
+    width: 1.125rem; /* 18px */
+    height: 1.125rem;
+    color: var(--primary); /* Or adjust based on status */
+}
+
+.order-card-body {
+    padding: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4); /* Space if multiple products listed per card */
+}
+
+.order-product-item {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    gap: var(--spacing-4);
+}
+
+.order-product-image.product-image-placeholder {
+    width: 80px; /* Adjust as needed */
+    height: 80px;
+    flex-shrink: 0;
+    /* Inherits border, background from .product-image-placeholder */
+}
+
+.order-product-details {
+    flex-grow: 1;
+}
+.order-product-details .product-name {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--foreground);
+    margin-bottom: var(--spacing-1);
+    line-height: var(--line-height-snug);
+}
+.order-product-details .product-quantity {
+    font-size: var(--font-size-sm);
+    color: var(--muted-foreground);
+}
+
+.order-product-price {
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+    font-weight: var(--font-weight-medium);
+    white-space: nowrap;
+    margin-left: auto; /* Push to the right if it's in the same flex line as details */
+    padding-left: var(--spacing-3); /* Add some space if pushed */
+    align-self: flex-start; /* Align with top of product details */
+}
+
+.order-card-footer {
+    padding: var(--spacing-4);
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column; /* Stack total and actions on small screens */
+    align-items: flex-end; /* Align items to the right */
+    gap: var(--spacing-3);
+}
+
+@media (min-width: 768px) { /* Adjust breakpoint as needed */
+    .order-card-footer {
+        flex-direction: row; /* Side by side on larger screens */
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.order-total-summary {
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+    text-align: right; /* Ensure right alignment on small screens */
+}
+.order-total-summary .total-amount {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary); /* Or your theme's highlight color */
+    margin-left: var(--spacing-1);
+}
+
+.order-actions {
+    display: flex;
+    gap: var(--spacing-2);
+    justify-content: flex-end; /* Ensure buttons are to the right */
+    flex-wrap: wrap; /* Allow buttons to wrap if not enough space */
+}
+.order-actions .btn-sm {
+    /* Ensure .btn-sm styles are applied correctly */
+}
+
+/* Sidebar adjustments if needed (should be mostly covered by profile.css) */
+.profile-sidebar .profile-navigation .profile-nav-link.active .nav-icon,
+.profile-sidebar .profile-navigation .profile-nav-link.active {
+    /* Ensure active state is visually distinct, e.g., color, background */
+    /* These styles are likely already in your componentStyle.css for .active nav links */
+}
+.profile-sidebar-userinfo .btn-link {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-1) 0; /* Adjust padding */
+}
+
+/* Icon color for Koin in sidebar (if not covered by default nav-icon color) */
+.profile-nav-link .nav-icon[data-lucide="coins"] {
+    color: hsl(var(--primary)); /* Or adjust based on your theme */
+    /* color: #FFD700; */ /* Example gold color, or use a CSS variable */
+}
+/*orders page styling end */
+
+/*detailProduct page styling start */
+/* --- Product Detail Page Specific Styles --- */
+
+.product-detail-page-content.container {
+    max-width: 1280px; /* You can adjust this value. Other pages use 1100px or 1280px.
+                           Consider using a CSS variable if you have one for standard page widths.
+                           e.g., var(--container-max-width-lg, 1280px) */
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: var(--spacing-6);    /* Example top padding */
+    padding-bottom: var(--spacing-10); /* Example bottom padding, more space at the end */
+    padding-left: var(--spacing-4);   /* Horizontal padding within the container */
+    padding-right: var(--spacing-4);  /* Horizontal padding within the container */
+}
+
+.product-detail-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column for mobile */
+    gap: var(--spacing-6);
+    margin-top: var(--spacing-6);
+}
+
+@media (min-width: 768px) { /* Medium screens - 2 columns for gallery & info, purchase below */
+    .product-detail-layout {
+        grid-template-columns: 0.8fr 1.2fr; /* Adjust ratio as needed */
+        grid-template-areas:
+            "gallery info"
+            "purchase purchase"; /* Purchase actions span both columns or specific area */
+    }
+    .product-gallery-column { grid-area: gallery; }
+    .product-info-column { grid-area: info; }
+    .product-purchase-column {
+        grid-area: purchase;
+        max-width: 400px; /* Example max width for purchase column when it spans */
+        margin-left: auto; /* If info column is wider */
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 1024px) { /* Large screens - 3 columns */
+    .product-detail-layout {
+        grid-template-columns: auto 1fr auto; /* gallery | info | purchase */
+        grid-template-areas: "gallery info purchase";
+        gap: var(--spacing-8);
+    }
+    .product-purchase-column {
+        max-width: 320px; /* Adjust width for sidebar style */
+        margin-left: 0;
+        margin-right: 0;
+        position: sticky; /* Optional: make purchase column sticky */
+        top: calc(var(--site-header-height, 60px) + var(--spacing-6)); /* Adjust based on actual header height */
+        align-self: flex-start; /* Important for sticky positioning */
+    }
+}
+
+
+/* Product Gallery Column */
+.product-gallery-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+.product-main-image-container .main-product-image.product-image-placeholder {
+    width: 100%;
+    height: auto !important; /* Crucial: Override any existing fixed height from a general class */
+    aspect-ratio: 4 / 5;     /* This means width:height is 4:5. So height = width * (5/4).
+                                This will make the image container taller than it is wide.
+                                Adjust (e.g., to 3/4 or 2/3) if you need it even taller. */
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: none; /* Remove border-bottom if inherited from a general .product-image-placeholder style */
+}
+.product-thumbnail-gallery {
+    display: flex;
+    gap: var(--spacing-2);
+    overflow-x: auto; /* In case of many thumbnails */
+}
+.product-thumbnail-item {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+    transition: border-color var(--transition-duration);
+    flex-shrink: 0;
+}
+.product-thumbnail-item .thumbnail-image.product-image-placeholder {
+    width: 64px; /* Adjust size */
+    height: 64px;
+    /* background-color from .product-image-placeholder */
+}
+.product-thumbnail-item:hover,
+.product-thumbnail-item.active {
+    border-color: var(--primary);
+}
+
+
+/* Product Info Column */
+.product-info-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+.product-title-detail {
+    font-size: var(--font-size-xl); /* Or --font-size-2xl */
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--foreground);
+}
+.product-meta-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    font-size: var(--font-size-sm);
+    color: var(--muted-foreground);
+}
+.product-meta-info .product-rating .icon.star-filled {
+    color: #facc15; /* Tailwind yellow-400 or your theme's star color */
+    width: 1rem; height: 1rem;
+    fill: currentColor; /* Fill the star */
+}
+.product-price-detail {
+    font-size: var(--font-size-2xl); /* Large price */
+    font-weight: var(--font-weight-bold);
+    color: var(--primary); /* Or a specific price color */
+}
+
+.variant-selection-group .variant-label {
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+    margin-bottom: var(--spacing-2);
+}
+.variant-selection-group .variant-label .selected-variant-name {
+    font-weight: var(--font-weight-medium);
+}
+.variant-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+}
+.variant-button.btn-sm { /* Reusing .btn .btn-outline .btn-sm */
+    /* Add specific active state if different from default button active */
+}
+.variant-button.active {
+    border-color: var(--primary);
+    background-color: hsl(var(--primary) / 0.1);
+    color: var(--primary);
+}
+
+.product-description-tabs .product-info-tabs.tab-navigation {
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--spacing-4);
+}
+.product-description-tabs .product-info-tabs .tab-button {
+    padding: var(--spacing-2) var(--spacing-3); /* Adjust padding for content tabs */
+    font-size: var(--font-size-sm);
+}
+.product-tab-content .tab-pane {
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+    line-height: var(--line-height-base);
+}
+.product-tab-content .tab-pane p {
+    margin-bottom: var(--spacing-2);
+}
+.product-tab-content .tab-pane strong {
+    color: var(--muted-foreground); /* Or keep default */
+    font-weight: var(--font-weight-medium);
+}
+.link-see-more {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    color: var(--primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+.link-see-more .icon { width: 1rem; height: 1rem; }
+
+
+.store-info-card-detail.card {
+    padding: var(--spacing-4); /* Adjust card padding */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+}
+.store-info-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+.store-info-header .store-avatar-placeholder.placeholder-bg {
+    width: 48px; height: 48px;
+    border-radius: var(--radius);
+    flex-shrink: 0;
+}
+.store-name-location .store-name-heading {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-0_5, 0.125rem);
+}
+.store-name-location .store-location-text {
+    font-size: var(--font-size-sm);
+    color: var(--muted-foreground);
+    display: inline-flex; align-items: center; gap: var(--spacing-1);
+}
+.store-name-location .store-location-text .icon { width: 0.875rem; height: 0.875rem; }
+
+.store-shipping-details {
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+}
+.store-shipping-details .store-shipping-cost {
+    font-weight: var(--font-weight-medium);
+}
+.store-shipping-details .store-shipping-eta {
+    color: var(--muted-foreground);
+}
+.store-other-products-link.btn-link.btn-sm {
+    align-self: flex-start; /* Align link to the left */
+    color: var(--primary);
+    /* padding-left: 0; padding-right: 0; */ /* If default link padding is too much */
+}
+.store-other-products-link .icon { margin-left: var(--spacing-1); }
+
+
+/* Product Purchase Column */
+.product-purchase-column.card {
+    padding: var(--spacing-5); /* More padding for this card */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+.purchase-column-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--foreground);
+}
+.selected-variant-display {
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+}
+.selected-variant-display .stock-info {
+    color: var(--muted-foreground);
+    font-size: 0.8rem; /* Slightly smaller */
+    margin-top: var(--spacing-1);
+}
+
+.quantity-adjuster-wrapper {
+    /* If specific wrapper styling is needed */
+}
+.quantity-adjuster .quantity-display.form-input {
+    /* Styles from keranjang.html / componentStyle.css should apply */
+    /* height: 32px; width: 48px; */ /* Example specific sizing if needed */
+}
+.quantity-adjuster .quantity-button.btn-icon.btn-sm {
+    /* Styles from keranjang.html / componentStyle.css should apply */
+}
+
+.subtotal-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+}
+.subtotal-display .subtotal-amount {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+}
+
+.purchase-buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons by default */
+    gap: var(--spacing-2);
+}
+.purchase-buttons .btn {
+    width: 100%; /* Make buttons full width */
+    justify-content: center; /* Center text/icon in button */
+}
+.purchase-buttons .btn .icon { margin-right: var(--spacing-1_5, 0.375rem); }
+
+@media (min-width: 480px) { /* Side by side for larger buttons if space allows */
+    /* .purchase-buttons {
+        flex-direction: row;
+    } */
+    /* Or keep stacked for clarity, depends on preference */
+}
+
+.additional-actions {
+    display: flex;
+    justify-content: space-around; /* Or flex-start with gap */
+    gap: var(--spacing-2);
+    margin-top: var(--spacing-2);
+}
+.action-icon-button.btn-ghost.btn-sm {
+    color: var(--muted-foreground);
+    font-size: var(--font-size-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1);
+}
+.action-icon-button .icon {
+    width: 1.125rem; /* 18px */
+    height: 1.125rem;
+}
+.action-icon-button:hover {
+    color: var(--primary);
+}
+/*detailProduct page styling end */
+
+/*header styling start */
+/* In plain approach/component/componentStyle.css */
+
+/* --- Site Header Styles --- */
+
+/* ... (existing .site-header, .header-container, .logo-container styles can remain) ... */
+
+/* Search Bar NEW Styles */
+.search-bar-container.new-search-bar .search-form {
+    position: relative; /* For positioning the icon inside */
+    display: flex;
+    align-items: center;
+}
+
+.search-bar-container.new-search-bar .search-icon-inside {
+    position: absolute;
+    left: var(--spacing-3); /* Adjust as needed for padding inside input */
+    color: hsl(var(--muted-foreground));
+    width: 1.125rem; /* 18px */
+    height: 1.125rem;
+    z-index: 1; /* Ensure icon is above input field's background */
+    pointer-events: none; /* So the icon doesn't interfere with clicking the input */
+}
+
+.search-bar-container.new-search-bar .search-input.form-input {
+    padding-left: calc(var(--spacing-3) + 1.125rem + var(--spacing-2)); /* Original: Icon left + icon width + space after icon */
+                                                                    /* Adjust this padding to ensure text doesn't overlap the icon */
+    /* Other existing .search-input styles like background-color, focus can remain */
+    /* e.g., background-color: hsl(var(--secondary) / 0.7); */
+}
+/* If you want to remove the old search icon style to avoid conflict */
+/* You might comment out or delete the old .search-icon and related .search-input padding if all pages adopt the new header */
+/*
+.search-icon { (OLD STYLE - if it was defined globally like this)
+    position: absolute;
+    left: var(--spacing-3);
+    color: hsl(var(--muted-foreground));
+    width: 1.125rem;
+    height: 1.125rem;
+}
+*/
+
+
+/* Header Actions NEW icon buttons */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2); /* Existing gap, adjust if needed. Wireframe icons are close. */
+}
+
+.header-actions .btn.btn-ghost.btn-icon {
+    background-color: transparent; /* Ensure no background */
+    color: hsl(var(--muted-foreground)); /* Default icon color */
+    /* Existing .btn-ghost and .btn-icon styles should apply.
+       .btn-icon provides square shape and padding for the icon.
+       Example from your CSS:
+       width: var(--button-h); height: var(--button-h); padding: var(--spacing-2);
+    */
+   /* Ensure icon size is appropriate if not already covered by general .btn-icon .icon */
+}
+
+.header-actions .btn.btn-ghost.btn-icon .icon {
+    width: 1.25rem; /* 20px - as per existing styles for header icons */
+    height: 1.25rem; /* 20px */
+    /* color: hsl(var(--foreground)); */ /* If default ghost icon color needs override */
+}
+/* header styling end */
+
+/*signin styling start */
+/* In plain approach/component/componentStyle.css */
+
+/* Find the existing .signup-page-body rule and modify it: */
+
+
+/* Add/Modify .signup-container (if it doesn't have margin-top already) */
+.signup-container {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    min-height: 70vh;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 8px 24px hsla(var(--foreground), 0.08);
+    background-color: hsl(var(--background));
+    margin-top: var(--spacing-8); /* ADD THIS: This provides space between header and the form container */
+    /* ensure it still centers if padding-left/right removed from body: */
+    /* margin-left: auto; */ /* Already part of flex align-items:center on body for this block */
+    /* margin-right: auto; */
+}
+/*signin styling end */
+
+/*chat page styling start */
+/* In plain approach/component/componentStyle.css */
+
+/* --- Chat Page Specific Styles --- */
+
+.chat-page-body {
+    display: flex;
+    flex-direction: column; /* ADD THIS: Makes body a column flex container */
+    height: 100vh;
+    overflow: hidden; /* Prevent body scroll, chat areas will scroll */
+    background-color: hsl(var(--background));
+    font-family: var(--font-sans);
+    /* Remove any padding-top if it was added previously for other body types */
+}
+
+.chat-app-layout {
+    display: flex;
+    width: 100%;
+    /* height: 100%; */ /* REMOVE OR CHANGE THIS */
+    flex-grow: 1;      /* ADD THIS: Allows chat layout to fill remaining vertical space */
+    min-height: 0;     /* ADD THIS: Good practice with flex-grow to prevent overflow issues */
+    overflow: hidden;  /* ADD THIS (Optional but recommended): If the chat-app-layout itself shouldn't scroll,
+                           but its children (.chat-sidebar, .message-display-area) will.
+                           Your .chat-sidebar and .message-display-area already have overflow-y: auto. */
+}
+
+/* Ensure chat sidebar and main content still take full height of the .chat-app-layout */
+/* These existing rules should now work correctly with .chat-app-layout's new height behavior */
+.chat-sidebar {
+    /* ... existing styles like width, background, border ... */
+    display: flex; /* Keep if already there */
+    flex-direction: column; /* Keep if already there */
+    height: 100%; /* This will now be 100% of the .chat-app-layout's calculated height */
+}
+
+.chat-main-content {
+    /* ... existing styles like flex-grow, background ... */
+    display: flex; /* Keep if already there */
+    flex-direction: column; /* Keep if already there */
+    height: 100%; /* This will now be 100% of the .chat-app-layout's calculated height */
+}
+
+/* The .site-header already has position: sticky; top: 0; which is good. */
+/*chat page styling end */
+
+/*review page styling start */
+/* In plain approach/component/componentStyle.css */
+
+/* --- Product Detail Page Specific Styles --- */
+/* ... (existing product detail styles) ... */
+
+/* Rating and Review Section */
+.product-reviews-section.card {
+    margin-top: var(--spacing-8); /* Space above the review section */
+    padding: var(--spacing-6); /* Overall padding for the review section card */
+}
+
+.section-title-like { /* Using a class for "Rating" and "Review" titles if they aren't standard h1/h2 */
+    font-size: var(--font-size-xl); /* Or your preferred title size */
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-4);
+    color: hsl(var(--foreground));
+}
+
+.rating-summary-container {
+    display: flex;
+    flex-direction: column; /* Stack overall rating and histogram on small screens */
+    gap: var(--spacing-6);
+    margin-bottom: var(--spacing-6);
+    padding-bottom: var(--spacing-6);
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+@media (min-width: 768px) { /* Side-by-side on larger screens */
+    .rating-summary-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .overall-rating-block {
+        flex: 0 0 auto; /* Don't grow, don't shrink, base on content */
+        margin-right: var(--spacing-8);
+    }
+    .rating-histogram-block {
+        flex: 1; /* Take remaining space */
+    }
+}
+
+.overall-rating-block .average-stars-display {
+    display: flex;
+    gap: var(--spacing-1);
+    font-size: var(--font-size-lg); /* Size of the star icons */
+    margin-bottom: var(--spacing-1);
+}
+.overall-rating-block .average-rating-text {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+
+.icon.star-filled {
+    color: #facc15; /* Example gold/yellow color for filled stars, or use a CSS variable */
+    fill: currentColor; /* Fill the star svg */
+}
+.icon.star-empty {
+    color: hsl(var(--border)); /* Color for empty stars */
+}
+
+.rating-histogram-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+}
+.rating-bar-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    font-size: var(--font-size-sm);
+}
+.rating-bar-row .star-label {
+    color: hsl(var(--muted-foreground));
+    width: 50px; /* Adjust as needed */
+    flex-shrink: 0;
+}
+.rating-bar-container {
+    flex-grow: 1;
+    height: 8px; /* Height of the bar */
+    background-color: hsl(var(--secondary)); /* Background of the empty part of the bar */
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+.rating-bar-fill {
+    height: 100%;
+    background-color: hsl(var(--primary)); /* Color of the filled part of the bar */
+    border-radius: var(--radius-full);
+    transition: width 0.3s ease-in-out;
+}
+.rating-bar-row .rating-count {
+    color: hsl(var(--muted-foreground));
+    min-width: 30px; /* Ensure space for count */
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.reviews-list-container {
+    /* Styles for the main reviews block if any */
+}
+.reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-4);
+}
+.view-filters-button.btn-link.btn-sm {
+    /* Existing styles should apply, ensure icon alignment if needed */
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1);
+}
+.view-filters-button .icon { width: 1rem; height: 1rem;}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: var(--spacing-5);
+}
+
+@media (min-width: 768px) { /* Two columns for reviews on larger screens */
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.review-item.card {
+    padding: var(--spacing-4); /* Padding for individual review cards */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+}
+.review-item-header {
+    display: flex;
+    align-items: flex-start; /* Align avatar top, stars might align center */
+    gap: var(--spacing-3);
+}
+.reviewer-avatar.placeholder-bg {
+    width: 36px; /* Adjust size */
+    height: 36px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    flex-shrink: 0;
+}
+.reviewer-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.reviewer-name {
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    color: hsl(var(--foreground));
+}
+.review-date {
+    font-size: 0.75rem; /* Approx 12px */
+    color: hsl(var(--muted-foreground));
+}
+.review-item-stars {
+    display: flex;
+    gap: var(--spacing-0_5, 0.125rem); /* Define --spacing-0_5 if not present or use fixed value */
+    font-size: 0.875rem; /* Size of stars in individual review */
+    margin-left: auto; /* Push stars to the right if needed, or adjust flex on header */
+    flex-shrink: 0;
+}
+.review-content p {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--foreground));
+    line-height: var(--line-height-base);
+    margin-bottom: var(--spacing-2); /* Space before "Read more" */
+}
+.review-content .link-read-more {
+    font-size: var(--font-size-sm);
+    color: var(--primary);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Styles for pagination if you add it (reusable from wishlist.html) */
+/* .pagination-container { ... } */
+/* .pagination { ... } */
+/*review page styling end */
+/* In plain approach/component/componentStyle.css */
+
+/* --- Product Detail Page Specific Styles --- */
+/* ... (existing product detail styles for gallery, info, purchase column, etc.) ... */
+
+/* == NEW Buyer Reviews Section (Ulasan Pembeli) == */
+.buyer-reviews-section.card {
+    margin-top: var(--spacing-8);
+    padding: var(--spacing-5); /* Adjust overall padding if needed, or use 0 and pad inner blocks */
+    border-top: 4px solid hsl(var(--border)); /* Example top border for separation */
+}
+
+.buyer-reviews-main-title {
+    font-size: var(--font-size-lg); /* Or xl */
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--foreground));
+    margin-bottom: var(--spacing-5);
+}
+
+/* Rating Overview Block (Average + Histogram) */
+.rating-overview-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-5);
+    padding-bottom: var(--spacing-5);
+    margin-bottom: var(--spacing-5);
+    border-bottom: 1px solid hsl(var(--border));
+}
+@media (min-width: 768px) {
+    .rating-overview-block {
+        flex-direction: row;
+        align-items: flex-start; /* Align items to the top */
+    }
+    .average-rating-details {
+        flex: 0 0 200px; /* Fixed width for average rating details */
+        margin-right: var(--spacing-6);
+    }
+    .detailed-rating-bars {
+        flex: 1; /* Take remaining space */
+    }
+}
+
+.average-rating-details .average-rating-score {
+    display: flex;
+    align-items: baseline; /* Align score and /5.0 nicely */
+    margin-bottom: var(--spacing-2);
+}
+.average-rating-details .rating-summary-icon { /* The icon next to 4.8 */
+    width: 2.5rem; /* Adjust size */
+    height: 2.5rem;
+    color: hsl(var(--primary)); /* Example color */
+    margin-right: var(--spacing-2);
+    /* background-color: hsl(var(--muted)); border-radius: var(--radius-sm); padding: var(--spacing-1); */ /* If it has a background like wireframe */
+}
+.average-rating-details .score-value {
+    font-size: 2.5rem; /* Large score */
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--foreground));
+    line-height: 1;
+}
+.average-rating-details .score-max {
+    font-size: var(--font-size-base);
+    color: hsl(var(--muted-foreground));
+    margin-left: var(--spacing-1);
+}
+.average-rating-details .buyer-satisfaction-text,
+.average-rating-details .rating-review-counts {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+    line-height: var(--line-height-snug);
+}
+.average-rating-details .buyer-satisfaction-text {
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground)); /* Or a success color */
+    margin-bottom: var(--spacing-1);
+}
+
+.detailed-rating-bars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1_5, 0.375rem); /* Define --spacing-1_5 or use a fixed value e.g. 6px */
+}
+.rating-distribution-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+.rating-distribution-row .star-small {
+    width: 1em; height: 1em; /* Match font size */
+    /* .star-filled provides color */
+}
+.rating-distribution-row .star-num {
+    /* font-weight: var(--font-weight-medium); */
+}
+.rating-bar-progress {
+    flex-grow: 1;
+    height: 8px;
+    background-color: hsl(var(--secondary));
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+.rating-bar-progress .filled {
+    height: 100%;
+    background-color: hsl(var(--muted-foreground)); /* Color for the bars, wireframe is dark gray */
+    /* Or use a specific color like a yellow/orange for rating bars */
+    /* background-color: #facc15; */
+    border-radius: var(--radius-full);
+    transition: width 0.3s ease-in-out;
+}
+.rating-distribution-row .count {
+    min-width: 40px; /* Space for (XXX) */
+    text-align: right;
+}
+
+/* Filters and Media Gallery Section */
+.reviews-interactive-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-5);
+    padding-bottom: var(--spacing-5);
+    margin-bottom: var(--spacing-5);
+    border-bottom: 1px solid hsl(var(--border));
+}
+@media (min-width: 768px) {
+    .reviews-interactive-section {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .review-filters-column {
+        flex: 0 0 220px; /* Fixed width for filters */
+        margin-right: var(--spacing-6);
+    }
+    .review-media-gallery-column {
+        flex: 1;
+    }
+}
+
+.review-filters-column.card {
+    padding: var(--spacing-4);
+    background-color: hsl(var(--secondary) / 0.5); /* Slightly different background */
+}
+.filter-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
+    color: hsl(var(--foreground));
+}
+.filter-option-button.btn-ghost {
+    width: 100%;
+    justify-content: space-between; /* Text left, icon right */
+    padding: var(--spacing-2_5, 0.625rem) var(--spacing-3); /* Define --spacing-2_5 or use fixed */
+    margin-bottom: var(--spacing-2);
+    font-weight: var(--font-weight-normal);
+    color: hsl(var(--foreground));
+    background-color: hsl(var(--background)); /* Give them a distinct background */
+    border: 1px solid hsl(var(--border));
+    text-align: left;
+}
+.filter-option-button:hover {
+    background-color: hsl(var(--accent));
+}
+.filter-option-button .icon {
+    color: hsl(var(--muted-foreground));
+}
+
+.media-gallery-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
+    color: hsl(var(--foreground));
+}
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: var(--spacing-2);
+}
+.media-item.placeholder-bg {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs, 0.75rem); /* Define --font-size-xs or use fixed */
+}
+.media-item.more-media {
+    background-color: hsl(var(--muted) / 0.7);
+    color: hsl(var(--foreground));
+    font-weight: var(--font-weight-medium);
+}
+
+/* Selected Reviews Block */
+.selected-reviews-block {
+    /* Container for the list of reviews */
+}
+.selected-reviews-header {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    align-items: center;
+    gap: var(--spacing-3) var(--spacing-4); /* Row and column gap */
+    margin-bottom: var(--spacing-4);
+}
+.selected-reviews-header .reviews-title {
+    font-size: var(--font-size-base); /* Or lg */
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--foreground));
+    margin-right: auto; /* Push sort options to the right */
+}
+.selected-reviews-header .reviews-count-info {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+.reviews-sort-options .form-select.btn-sm { /* Using .btn-sm for smaller select */
+    min-width: 180px; /* Adjust as needed */
+    height: calc(var(--button-padding-y) * 2 + var(--font-size-xs, 0.75rem) * var(--line-height-base)); /* Match small button height */
+    padding-top: var(--spacing-1);
+    padding-bottom: var(--spacing-1);
+    font-size: var(--font-size-xs, 0.75rem);
+    background-position: right var(--spacing-2) center;
+}
+
+.review-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+.review-item-detailed.card {
+    padding: var(--spacing-4);
+    border: 1px solid hsl(var(--border)); /* Standard card border */
+    background-color: hsl(var(--card-background));
+}
+.review-item-main-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-2);
+}
+.reviewer-avatar-name {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+.review-item-detailed .reviewer-avatar.placeholder-bg {
+    width: 32px; height: 32px;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+}
+.review-item-detailed .reviewer-name {
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+}
+.review-rating-date {
+    text-align: right;
+}
+.review-item-detailed .review-stars {
+    display: flex;
+    gap: var(--spacing-0_5, 2px); /* Define --spacing-0_5 */
+    font-size: 0.875rem; /* Star size */
+    margin-bottom: var(--spacing-1);
+}
+.review-item-detailed .review-timestamp {
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+}
+.review-text-content {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--foreground));
+    line-height: var(--line-height-base);
+    margin-bottom: var(--spacing-1);
+}
+/* .link-read-more from previous review styles should still apply */
+/* .link-read-more {
+    font-size: var(--font-size-sm);
+    color: var(--primary);
+    font-weight: var(--font-weight-medium);
+} */
+
+/* Star icon filled/empty styles (ensure these are defined) */
+.icon.star-filled {
+    color: #facc15; /* Gold */
+    fill: currentColor;
+}
+.icon.star-empty {
+    color: hsl(var(--border)); /* Light gray outline */
+    /* For Lucide 'star' icon, to make it appear empty, you might need to ensure fill is none or transparent if the SVG path itself isn't an outline.
+       Often, just changing color is enough if the SVG is an outline. If it's a filled path, more complex styling might be needed for 'empty' appearance
+       or use a different icon if Lucide provides one (it usually doesn't, 'star' is the one).
+       The .star-filled with fill:currentColor and a color works well. For empty, color hsl(var(--border)) might make it a gray filled star.
+       If you want an outline for empty:
+       fill: transparent; stroke: hsl(var(--muted-foreground)); stroke-width: 1.5px;
+    */
+}

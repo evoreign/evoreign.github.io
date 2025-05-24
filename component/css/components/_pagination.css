@@ -1,0 +1,75 @@
+/* plain approach/component/css/components/_pagination.css */
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-8);
+}
+.pagination {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 4px hsla(var(--foreground), 0.05);
+}
+.page-item .page-link {
+    padding: var(--spacing-2) var(--spacing-3);
+    text-decoration: none;
+    color: hsl(var(--primary));
+    background-color: hsl(var(--background));
+    border: 1px solid hsl(var(--border));
+    border-left-width: 0;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+.page-item:first-child .page-link {
+    border-left-width: 1px;
+    border-top-left-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+}
+.page-item:last-child .page-link {
+    border-top-right-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+}
+.page-item .page-link:hover {
+    background-color: hsl(var(--accent));
+}
+.page-item.active .page-link {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
+    z-index: 1;
+    position: relative;
+}
+.page-item.disabled .page-link {
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+    background-color: hsl(var(--secondary) / 0.5);
+}
+
+/* From detailProduct.html for review pagination - might need merging or conditional styling if different */
+.pagination-button { /* This seems to be a button-based pagination rather than link-based */
+    /* Ensure .btn and .btn-ghost styles apply. Adjust padding/size if needed. */
+    padding: var(--spacing-2) var(--spacing-3);
+    background-color: hsl(var(--background));
+}
+.page-link-arrow .icon { /* From storeProfile.html */
+    width: 1rem; height: 1rem;
+}
+
+/* Pagination from detailProduct.html's review section */
+/* This uses .btn .btn-ghost .btn-icon for prev/next and simple number buttons.
+   It might be styled differently or you might want to unify it with the .pagination class above.
+   If keeping separate, it might belong in _product-detail.css or a more specific component.
+   For now, I'm assuming the .pagination styles above are the primary ones.
+*/
+/*
+.pagination .btn.btn-ghost.btn-icon.pagination-button {
+    // styles if they differ significantly from standard .btn-ghost or .page-link
+}
+.pagination span.pagination { // This was a span containing numbered buttons
+    display: inline-flex;
+    align-items: center;
+}
+*/

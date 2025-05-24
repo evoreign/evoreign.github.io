@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo Menarik - Beliin.id</title>
+    <link rel="stylesheet" href="../component/css/main.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
+        .product-image-placeholder img {width: 100%; height: 100%; object-fit: cover;}
+        .banner-placeholder img {width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);}
+    </style>
+    <link rel="icon" href="../assets/logo.PNG" type="image/png">
+</head>
+<body class="page-body">
+
+    <header class="site-header">
+    <div class="header-container">
+        <div class="logo-container">
+            <a href="index.html" class="logo-link">
+                <img src="../assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+            </a>
+        </div>
+        <div class="search-bar-container new-search-bar">
+            <form action="#" class="search-form">
+                <i data-lucide="search" class="icon search-icon-inside"></i>
+                <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+            </form>
+        </div>
+        <nav class="header-actions">
+            <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+                <i data-lucide="shopping-cart" class="icon"></i>
+            </a>
+            <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+                <i data-lucide="heart" class="icon"></i>
+            </a>
+            <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+                <i data-lucide="message-circle" class="icon"></i>
+            </a>
+            <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+                <i data-lucide="user" class="icon"></i>
+            </a>
+        </nav>
+    </div>
+</header>
+
+    <main class="promo-page-content container">
+
+        <section class="main-promo-banner content-section">
+            <a href="#" class="banner-placeholder placeholder-bg" aria-label="Promo Utama">
+                 <img src="https://via.placeholder.com/1200x300/007bff/ffffff?text=Banner+Promo+Besar" alt="Banner Promo Utama">
+            </a>
+        </section>
+
+        <section class="info-bar content-section">
+            <a href="promo.html" class="info-item active" data-target="promo">
+                <i data-lucide="tag" class="icon info-icon"></i>
+                <span>Promo Hari Ini</span>
+            </a>
+            <a href="coupon.html" class="info-item" data-target="kupon">
+                <i data-lucide="ticket" class="icon info-icon"></i>
+                <span>Kupon Saya</span>
+            </a>
+        </section>
+
+        <section class="promo-category-section content-section">
+            <div class="section-header">
+                <h2 class="section-title">Hot Promo</h2>
+                <a href="#" class="see-all-link">
+                    Lihat Semua <i data-lucide="chevron-right" class="icon"></i>
+                </a>
+            </div>
+            <div class="product-grid" id="hotPromoProductGrid">
+                </div>
+        </section>
+
+        <section class="promo-category-section content-section">
+            <div class="section-header">
+                <h2 class="section-title">Dapatkan diskonnya!</h2>
+                <a href="#" class="see-all-link"> 
+                    Lihat Semua <i data-lucide="chevron-right" class="icon"></i>
+                </a>
+            </div>
+            <div class="product-grid" id="diskonProductGrid">
+                </div>
+        </section>
+
+        <section class="promo-category-section tabbed-promo-section content-section">
+            <div class="section-header">
+                <h2 class="section-title">Cek Promo Lainnya!</h2>
+            </div>
+            <nav class="tab-navigation" id="promoTabNavigation">
+                <button type="button" class="tab-button active" aria-selected="true" data-category="Semua Promo">Semua Promo</button>
+                <button type="button" class="tab-button" aria-selected="false" data-category="Kecantikan Wajah">Kecantikan Wajah</button>
+                <button type="button" class="tab-button" aria-selected="false" data-category="Olahraga & Outdoor">Olahraga & Outdoor</button>
+                <button type="button" class="tab-button" aria-selected="false" data-category="Aksesoris Fashion">Aksesoris Fashion</button>
+                <button type="button" class="tab-button" aria-selected="false" data-category="Elektronik">Elektronik</button>
+            </nav>
+            <div class="filter-bar">
+                <button class="btn btn-outline btn-sm filter-main-button" id="mainFilterButton">
+                    <i data-lucide="sliders-horizontal" class="icon"></i> Filter
+                </button>
+                <button class="btn btn-outline btn-sm tag-button" data-filter="gratis-ongkir">Gratis Ongkir</button>
+                <button class="btn btn-outline btn-sm tag-button" data-filter="mall">Mall</button>
+                <button class="btn btn-outline btn-sm tag-button" data-filter="flash-sale">Flash Sale</button>
+            </div>
+            <div class="product-grid" id="filteredPromoProductGrid">
+                {/* Products will be dynamically inserted here */}
+            </div>
+        </section>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    lucide.createIcons();
+
+    // Header action buttons (ensure they are <a> tags)
+    const headerActionLinks = {
+        "Keranjang Belanja": "keranjang.html",
+        "Notifikasi": "#",
+        "Chat": "chat.html",
+        "Profil Pengguna": "profile.html"
+    };
+    document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
+        const label = button.getAttribute('aria-label');
+        if (headerActionLinks[label]) {
+            if (button.tagName.toLowerCase() !== 'a') {
+                const link = document.createElement('a');
+                link.href = headerActionLinks[label];
+                link.className = button.className;
+                link.setAttribute('aria-label', label);
+                link.innerHTML = button.innerHTML;
+                button.parentNode.replaceChild(link, button);
+            } else {
+                 button.href = headerActionLinks[label];
+            }
+        }
+    });
+    lucide.createIcons();
+
+
+    // Info bar active state (already set in HTML, this is if you want to make them interactive beyond links)
+    const infoItems = document.querySelectorAll('.info-bar .info-item');
+    infoItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            // If it's an actual link, let it navigate.
+            // If you want to prevent navigation and handle with JS: e.preventDefault();
+            infoItems.forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Sample Product Data
+    const sampleProducts = [
+        { id: "hp1", name: "Nama Produk Hot Promo", price: "99.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Hot+Promo+1" },
+        { id: "hp2", name: "Produk Diskon Kilat", price: "75.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Hot+Promo+2" },
+        { id: "hp3", name: "Item Terlaris Promo", price: "120.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Hot+Promo+3" },
+        { id: "hp4", name: "Promo Spesial Hari Ini", price: "50.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Hot+Promo+4" },
+        { id: "hp5", name: "Barang Cuci Gudang", price: "88.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Hot+Promo+5" },
+        { id: "hp6", name: "Penawaran Terbatas", price: "110.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Hot+Promo+6" },
+        { id: "d1", name: "Diskon Besar Produk A", price: "199.000", image: "https://via.placeholder.com/200x180/4682b4/ffffff?text=Diskon+A" },
+        { id: "d2", name: "Potongan Harga B", price: "45.000", image: "https://via.placeholder.com/200x180/4682b4/ffffff?text=Diskon+B" },
+        { id: "filter1", name: "Produk Sesuai Filter 1", price: "130.000", category: "Elektronik", filterTags: ["gratis-ongkir", "mall"], image: "https://via.placeholder.com/200x180/20b2aa/ffffff?text=Filter+1" },
+        { id: "filter2", name: "Produk Kecantikan Wajah Filter", price: "160.000", category: "Kecantikan Wajah", filterTags: ["mall"], image: "https://via.placeholder.com/200x180/20b2aa/ffffff?text=Filter+Kecantikan" },
+        { id: "filter3", name: "Produk Olahraga Flash Sale", price: "230.000", category: "Olahraga & Outdoor", filterTags: ["flash-sale"], image: "https://via.placeholder.com/200x180/20b2aa/ffffff?text=Filter+Olahraga" }
+    ];
+
+    function createProductCardHTML(product) {
+        return `
+            <div class="product-card card card-interactive">
+                <a href="detailProduct.html?id=${product.id}" class="product-link-wrapper">
+                    <div class="product-image-placeholder placeholder-bg"><img src="${product.image}" alt="${product.name}"></div>
+                    <div class="product-card-content">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-price">Rp ${product.price}</p>
+                    </div>
+                </a>
+            </div>
+        `;
+    }
+
+    function populateProductGrid(gridId, products) {
+        const gridElement = document.getElementById(gridId);
+        if (gridElement) {
+            gridElement.innerHTML = products.map(createProductCardHTML).join('');
+        }
+    }
+
+    // Populate initial grids
+    populateProductGrid('hotPromoProductGrid', sampleProducts.slice(0, 6));
+    populateProductGrid('diskonProductGrid', sampleProducts.slice(6, 8));
+    populateProductGrid('filteredPromoProductGrid', [sampleProducts[8]]); // Initial filtered product
+
+    // Tab Navigation for "Cek Promo Lainnya!"
+    const promoTabButtons = document.querySelectorAll('#promoTabNavigation .tab-button');
+    const filteredProductGrid = document.getElementById('filteredPromoProductGrid');
+
+    promoTabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            promoTabButtons.forEach(btn => { btn.classList.remove('active'); btn.setAttribute('aria-selected', 'false'); });
+            this.classList.add('active');
+            this.setAttribute('aria-selected', 'true');
+            const selectedCategory = this.dataset.category;
+            alert(`Tab "${selectedCategory}" dipilih. (Simulasi: menampilkan produk untuk kategori ini)`);
+            
+            // Simulate filtering products - replace with actual filtering logic
+            let productsToShow;
+            if (selectedCategory === "Semua Promo") {
+                productsToShow = sampleProducts.filter(p => p.id.startsWith('filter')); // Show all "filter" type products
+            } else {
+                productsToShow = sampleProducts.filter(p => p.category === selectedCategory && p.id.startsWith('filter'));
+            }
+             if (productsToShow.length === 0) { // Add a default if no specific category match
+                productsToShow = [sampleProducts.find(p => p.id === "filter1") || sampleProducts[8]];
+            }
+            populateProductGrid('filteredPromoProductGrid', productsToShow);
+        });
+    });
+
+    // Filter Bar Buttons
+    const mainFilterButton = document.getElementById('mainFilterButton');
+    if (mainFilterButton) {
+        mainFilterButton.addEventListener('click', function() {
+            alert('Tombol "Filter" utama diklik. (Simulasi: Buka modal filter)');
+        });
+    }
+
+    const tagButtons = document.querySelectorAll('.filter-bar .tag-button');
+    tagButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            this.classList.toggle('active'); // Simple toggle for demo
+            const filterName = this.textContent;
+            const isActive = this.classList.contains('active');
+            alert(`Filter tag "${filterName}" sekarang ${isActive ? 'aktif' : 'tidak aktif'}. (Simulasi)`);
+            // Add logic to actually filter products based on active tags
+        });
+    });
+});
+</script>
+</body>
+</html>

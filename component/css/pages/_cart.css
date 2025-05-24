@@ -1,0 +1,163 @@
+/* plain approach/component/css/pages/_cart.css */
+
+/* .page-body and .container rules are in layout/_page_layouts.css */
+/* .site-header rules are in layout/_header.css */
+
+.shopping-cart-page.container { /* Adds top/bottom margin */
+    margin-top: var(--spacing-8);
+    margin-bottom: var(--spacing-8);
+}
+
+.page-title { /* General page title, if not in base/_typography.css and needs specific cart margin */
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-6);
+    color: hsl(var(--foreground));
+}
+
+.cart-content {
+    background-color: hsl(var(--background));
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-6);
+    box-shadow: 0 4px 12px hsla(var(--foreground), 0.05);
+}
+
+.select-all-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-3) var(--spacing-4);
+    background-color: hsl(var(--secondary) / 0.7);
+    border-radius: var(--radius);
+    margin-bottom: var(--spacing-6);
+    border: 1px solid hsl(var(--border));
+}
+.select-all-bar .form-checkbox-label { /* from components/_checkboxes_radios.css, but with specific weight here */
+    font-weight: var(--font-weight-medium);
+}
+
+.cart-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: var(--spacing-6);
+    margin-bottom: var(--spacing-6);
+}
+
+.cart-item.card { /* Extends .card component */
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "selection image details"
+                         "selection image quantity";
+    gap: var(--spacing-4);
+    align-items: center;
+    padding: var(--spacing-4);
+}
+.cart-item .item-selection {
+    grid-area: selection;
+    display: flex;
+    align-items: flex-start;
+    padding-top: var(--spacing-1);
+}
+
+.product-image-placeholder { /* This is a common class, if it has variants, they stay here. Base in components? */
+    grid-area: image; /* Specific to cart item layout */
+    width: 100px;
+    height: 100px;
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+    border: 1px solid hsl(var(--border));
+    align-self: flex-start;
+}
+/* .placeholder-text for inside these placeholders is in _utilities.css or _home.css (if only for home) */
+
+.product-details { /* In cart item */
+    grid-area: details;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+    align-self: flex-start;
+}
+
+.product-name { /* Common class, could be a component if styling is very consistent */
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground));
+    line-height: var(--line-height-snug);
+}
+
+.product-price { /* Common class */
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground)); /* Default price color in cart */
+    font-weight: var(--font-weight-semibold); /* Cart price is bolder */
+}
+ /* Product price for flash sale / recommendations might differ, e.g. in _home.css */
+
+
+.quantity-adjuster {
+    grid-area: quantity;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    align-self: center;
+    justify-self: end;
+}
+.quantity-button.btn-icon.btn-sm { /* Specific variant of button */
+    width: 28px;
+    height: 28px;
+    padding: 0;
+}
+.quantity-button.btn-icon.btn-sm .icon {
+    width: 0.875rem;
+    height: 0.875rem;
+}
+.quantity-display.form-input { /* Specific variant of form input */
+    width: 40px;
+    height: 28px;
+    text-align: center;
+    padding: var(--spacing-1);
+    font-weight: var(--font-weight-medium);
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+.quantity-display::-webkit-outer-spin-button,
+.quantity-display::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.cart-separator {
+    border: 0;
+    border-top: 1px solid hsl(var(--border));
+    margin: var(--spacing-6) 0;
+}
+
+.cart-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--spacing-4);
+}
+.total-payment-info {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-2);
+    font-size: var(--font-size-base);
+}
+.total-label {
+    color: hsl(var(--muted-foreground));
+}
+.total-amount {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--foreground));
+}
+.checkout-button.btn-primary { /* Specific button instance */
+    min-width: 180px;
+    padding-top: var(--spacing-3);
+    padding-bottom: var(--spacing-3);
+}

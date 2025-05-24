@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beliin.id - Semua Kebutuhan, Langsung Disini</title>
+    <link rel="stylesheet" href="../component/css/main.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
+        /* Styles for carousel - can be moved to CSS file */
+        .banner-main .carousel-item, .banner-side .carousel-item {
+            display: none;
+            width: 100%;
+            height: 100%; /* Ensure banners fill their containers */
+        }
+        .banner-main .carousel-item.active, .banner-side .carousel-item.active {
+            display: flex; /* Or block, depending on content */
+            align-items: center; /* Center placeholder text/image */
+            justify-content: center; /* Center placeholder text/image */
+        }
+        .banner-main, .banner-item { /* Ensure these containers have relative positioning if controls are absolute */
+            position: relative;
+            overflow: hidden; /* To contain absolutely positioned controls or hide non-active slides */
+        }
+        .home-carousel-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background-color: hsla(var(--card-background-hsl, 0 0% 100%) / 0.5); /* Use card bg for theme consistency */
+            color: hsl(var(--card-foreground-hsl, 0 0% 0%)); /* Use card fg for theme consistency */
+            border-radius: var(--radius-full);
+            padding: var(--spacing-1);
+        }
+        .home-carousel-controls.prev { left: var(--spacing-2); }
+        .home-carousel-controls.next { right: var(--spacing-2); }
+
+        /* Ensure images within banners fit well */
+        .banner-main a img, .banner-item a img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Or contain, depending on desired effect */
+        }
+         .category-image-placeholder .icon { /* Adjust icon size in category placeholders */
+            width: 2.5em;
+            height: 2.5em;
+        }
+    </style>
+    <link rel="icon" href="../assets/logo.PNG" type="image/png">
+</head>
+<body class="page-body">
+
+    <header class="site-header">
+    <div class="header-container">
+        <div class="logo-container">
+            <a href="home.html" class="logo-link">
+                <img src="../assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+            </a>
+        </div>
+
+        <div class="search-bar-container new-search-bar">
+            <form action="#" class="search-form">
+                <i data-lucide="search" class="icon search-icon-inside"></i>
+                <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+            </form>
+        </div>
+
+        <nav class="header-actions">
+            <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+                <i data-lucide="shopping-cart" class="icon"></i>
+            </a>
+            <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+                <i data-lucide="heart" class="icon"></i>
+            </a>
+            <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+                <i data-lucide="message-circle" class="icon"></i>
+            </a>
+            <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+                <i data-lucide="user" class="icon"></i>
+            </a>
+        </nav>
+    </div>
+</header>
+
+    <main class="homepage-content container">
+
+        <section class="banner-section">
+            <div class="banner-main" id="mainBanner">
+                <div class="carousel-item active"><a href="#" aria-label="Main Banner 1"><img src="https://via.placeholder.com/800x400/007bff/ffffff?text=Main+Banner+1" alt="Main Banner 1"></a></div>
+                <div class="carousel-item"><a href="#" aria-label="Main Banner 2"><img src="https://via.placeholder.com/800x400/28a745/ffffff?text=Main+Banner+2" alt="Main Banner 2"></a></div>
+                <div class="carousel-item"><a href="#" aria-label="Main Banner 3"><img src="https://via.placeholder.com/800x400/ffc107/000000?text=Main+Banner+3" alt="Main Banner 3"></a></div>
+                <button class="btn btn-icon btn-secondary home-carousel-controls prev" data-carousel="mainBanner" data-slide="prev" aria-label="Previous slide">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <button class="btn btn-icon btn-secondary home-carousel-controls next" data-carousel="mainBanner" data-slide="next" aria-label="Next slide">
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+            <div class="banner-side">
+                <div class="banner-item banner-side-top" id="sideBannerTop">
+                    <div class="carousel-item active"><a href="#" aria-label="Side Banner Top 1"><img src="https://via.placeholder.com/400x190/fd7e14/ffffff?text=Side+Banner+Top+1" alt="Side Banner Top 1"></a></div>
+                    <div class="carousel-item"><a href="#" aria-label="Side Banner Top 2"><img src="https://via.placeholder.com/400x190/dc3545/ffffff?text=Side+Banner+Top+2" alt="Side Banner Top 2"></a></div>
+                </div>
+                <div class="banner-item banner-side-bottom" id="sideBannerBottom">
+                    <div class="carousel-item active"><a href="#" aria-label="Side Banner Bottom 1"><img src="https://via.placeholder.com/400x190/6f42c1/ffffff?text=Side+Banner+Bottom+1" alt="Side Banner Bottom 1"></a></div>
+                    <div class="carousel-item"><a href="#" aria-label="Side Banner Bottom 2"><img src="https://via.placeholder.com/400x190/17a2b8/ffffff?text=Side+Banner+Bottom+2" alt="Side Banner Bottom 2"></a></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories-section content-section">
+            <h2 class="section-title">Kategori</h2>
+            <div class="category-grid">
+                <a href="#" class="category-item card card-interactive">
+                    <div class="category-image-placeholder"><i data-lucide="layout-grid" class="icon"></i></div>
+                    <p class="category-name">Semua Kategori</p>
+                </a>
+                <a href="#" class="category-item card card-interactive">
+                    <div class="category-image-placeholder"><i data-lucide="smartphone" class="icon"></i></div>
+                    <p class="category-name">Elektronik</p>
+                </a>
+                <a href="#" class="category-item card card-interactive">
+                    <div class="category-image-placeholder"><i data-lucide="shirt" class="icon"></i></div>
+                    <p class="category-name">Fashion Pria</p>
+                </a>
+                <a href="#" class="category-item card card-interactive">
+                    <div class="category-image-placeholder"><i data-lucide="shopping-bag" class="icon"></i></div>
+                    <p class="category-name">Fashion Wanita</p>
+                </a>
+                <a href="#" class="category-item card card-interactive">
+                    <div class="category-image-placeholder"><i data-lucide="home" class="icon"></i></div>
+                    <p class="category-name">Rumah Tangga</p>
+                </a>
+                <a href="#" class="category-item card card-interactive">
+                    <div class="category-image-placeholder"><i data-lucide="heart-pulse" class="icon"></i></div>
+                    <p class="category-name">Kesehatan</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="flash-sale-section content-section">
+            <div class="section-header">
+                <h2 class="section-title">Promo Kilat</h2>
+                <a href="promo.html" class="see-all-link">
+                    Lihat Semua <i data-lucide="chevron-right" class="icon"></i>
+                </a>
+            </div>
+            <div class="product-scroll-container">
+                <div class="product-list-horizontal">
+                    <div class="product-card card card-interactive">
+                        <a href="detailProduct.html" class="product-link-wrapper">
+                            <div class="product-image-placeholder"><img src="https://via.placeholder.com/200x180/6c757d/ffffff?text=Produk+Kilat+1" alt="Produk Kilat 1"></div>
+                            <div class="product-card-content">
+                                <h3 class="product-name">Nama Produk Diskon Kilat A</h3>
+                                <p class="product-price">Rp 99.000</p>
+                                <span class="stock-badge">STOK TERBATAS</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product-card card card-interactive">
+                        <a href="detailProduct.html" class="product-link-wrapper">
+                            <div class="product-image-placeholder"><img src="https://via.placeholder.com/200x180/6c757d/ffffff?text=Produk+Kilat+2" alt="Produk Kilat 2"></div>
+                            <div class="product-card-content">
+                                 <h3 class="product-name">Nama Produk Diskon Kilat B</h3>
+                                <p class="product-price">Rp 150.000</p>
+                                <span class="stock-badge">STOK TERBATAS</span>
+                            </div>
+                        </a>
+                    </div>
+                     <div class="product-card card card-interactive">
+                        <a href="detailProduct.html" class="product-link-wrapper">
+                            <div class="product-image-placeholder"><img src="https://via.placeholder.com/200x180/6c757d/ffffff?text=Produk+Kilat+3" alt="Produk Kilat 3"></div>
+                            <div class="product-card-content">
+                                 <h3 class="product-name">Nama Produk Diskon Kilat C</h3>
+                                <p class="product-price">Rp 75.000</p>
+                                <span class="stock-badge">STOK TERBATAS</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product-card card card-interactive">
+                        <a href="detailProduct.html" class="product-link-wrapper">
+                            <div class="product-image-placeholder"><img src="https://via.placeholder.com/200x180/6c757d/ffffff?text=Produk+Kilat+4" alt="Produk Kilat 4"></div>
+                            <div class="product-card-content">
+                                 <h3 class="product-name">Nama Produk Diskon Kilat D</h3>
+                                <p class="product-price">Rp 210.000</p>
+                                <span class="stock-badge">STOK TERBATAS</span>
+                            </div>
+                        </a>
+                    </div>
+                     <div class="product-card card card-interactive">
+                        <a href="detailProduct.html" class="product-link-wrapper">
+                            <div class="product-image-placeholder"><img src="https://via.placeholder.com/200x180/6c757d/ffffff?text=Produk+Kilat+5" alt="Produk Kilat 5"></div>
+                            <div class="product-card-content">
+                                <h3 class="product-name">Nama Produk Diskon Kilat E</h3>
+                                <p class="product-price">Rp 55.000</p>
+                                <span class="stock-badge">STOK TERBATAS</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="recommendations-section content-section">
+            <h2 class="section-title">Rekomendasi Untukmu</h2>
+            <div class="product-grid">
+                <div class="product-card card card-interactive">
+                    <a href="detailProduct.html" class="product-link-wrapper">
+                        <div class="product-image-placeholder"><img src="https://via.placeholder.com/200x180/adb5bd/ffffff?text=Rekomendasi+1" alt="Rekomendasi 1"></div>
+                        <div class="product-card-content">
+                            <h3 class="product-name">Nama Produk Rekomendasi Yang Cukup Menarik</h3>
+                            <p class="product-price">Rp 125.000</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-card card card-interactive">
+                     <a href="detailProduct.html" class="product-link-wrapper">
+                        <div class="product-image-placeholder"><img src="https://via.placeholder.com/200x180/adb5bd/ffffff?text=Rekomendasi+2" alt="Rekomendasi 2"></div>
+                        <div class="product-card-content">
+                            <h3 class="product-name">Produk Unggulan Lainnya</h3>
+                            <p class="product-price">Rp 300.000</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-card card card-interactive">
+                     <a href="detailProduct.html" class="product-link-wrapper">
+                        <div class="product-image-placeholder"><img src="https://via.placeholder.com/200x180/adb5bd/ffffff?text=Rekomendasi+3" alt="Rekomendasi 3"></div>
+                        <div class="product-card-content">
+                            <h3 class="product-name">Item Pilihan Editor</h3>
+                            <p class="product-price">Rp 80.000</p>
+                        </div>
+                    </a>
+                </div>
+                </div>
+        </section>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    lucide.createIcons();
+
+    function setupCarousel(carouselId) {
+        const carouselElement = document.getElementById(carouselId);
+        if (!carouselElement) {
+            // console.warn(`Carousel element with ID "${carouselId}" not found.`);
+            return;
+        }
+
+        const items = carouselElement.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
+        const totalItems = items.length;
+
+        if (totalItems === 0) {
+            // console.warn(`No items found for carousel ID "${carouselId}".`);
+            return;
+        }
+
+        function showItem(index) {
+            items.forEach((item, i) => {
+                item.classList.remove('active');
+                if (i === index) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        let autoplayInterval;
+        function startAutoplay() {
+            if (totalItems <= 1) return;
+            stopAutoplay();
+            autoplayInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalItems;
+                showItem(currentIndex);
+            }, 5000);
+        }
+
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+
+        const prevButton = document.querySelector(`.home-carousel-controls.prev[data-carousel="${carouselId}"]`);
+        const nextButton = document.querySelector(`.home-carousel-controls.next[data-carousel="${carouselId}"]`);
+
+        if (prevButton && nextButton) {
+            if (totalItems > 1) {
+                prevButton.addEventListener('click', () => {
+                    stopAutoplay();
+                    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                    showItem(currentIndex);
+                    startAutoplay(); 
+                });
+
+                nextButton.addEventListener('click', () => {
+                    stopAutoplay();
+                    currentIndex = (currentIndex + 1) % totalItems;
+                    showItem(currentIndex);
+                    startAutoplay(); 
+                });
+            } else { // Hide controls if only one item or no items
+                prevButton.style.display = 'none';
+                nextButton.style.display = 'none';
+            }
+        }
+
+
+        carouselElement.addEventListener('mouseenter', stopAutoplay);
+        carouselElement.addEventListener('mouseleave', startAutoplay);
+
+        showItem(currentIndex); 
+        startAutoplay(); 
+    }
+
+    setupCarousel('mainBanner');
+    setupCarousel('sideBannerTop');
+    setupCarousel('sideBannerBottom');
+
+});
+</script>
+</body>
+</html>

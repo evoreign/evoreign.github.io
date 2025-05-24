@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADVL Official Shop - Beliin.id</title>
+    <link rel="stylesheet" href="../component/css/main.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
+        .placeholder-bg .icon { width: 2em; height: 2em; }
+        .stat-item .icon { width: 1.25em; height: 1.25em; margin-right: var(--spacing-2); }
+        .store-avatar-placeholder img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md); }
+        .banner-carousel-wrapper .banner-slide { display: none; }
+        .banner-carousel-wrapper .banner-slide.active { display: flex; align-items:center; justify-content:center; }
+        .banner-carousel-wrapper .banner-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); }
+        .product-image-placeholder img {width: 100%; height: 100%; object-fit: cover;}
+    </style>
+    <link rel="icon" href="../assets/logo.PNG" type="image/png">
+</head>
+<body class="page-body">
+
+    <header class="site-header">
+    <div class="header-container">
+        <div class="logo-container">
+                <a href="index.html" class="logo-link">
+                    <img src="../assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+                </a>
+            </div>
+        <div class="search-bar-container new-search-bar">
+            <form action="#" class="search-form">
+                <i data-lucide="search" class="icon search-icon-inside"></i>
+                <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+            </form>
+        </div>
+        <nav class="header-actions">
+            <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+                <i data-lucide="shopping-cart" class="icon"></i>
+            </a>
+            <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+                <i data-lucide="heart" class="icon"></i>
+            </a>
+            <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+                <i data-lucide="message-circle" class="icon"></i>
+            </a>
+            <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+                <i data-lucide="user" class="icon"></i>
+            </a>
+        </nav>
+    </div>
+</header>
+
+    <main class="store-profile-page-content container">
+
+        <section class="store-header-section card">
+            <div class="store-header-main-info">
+                <div class="store-avatar-placeholder placeholder-bg">
+                     <img src="https://via.placeholder.com/100x100/007bff/ffffff?Text=ADVL+Logo" alt="ADVL Official Shop">
+                </div>
+                <div class="store-details-actions">
+                    <div class="store-name-status">
+                        <h1 class="store-name">ADVL Official Shop</h1>
+                        <p class="store-activity-status">Aktif 1 menit yang lalu</p>
+                    </div>
+                    <div class="store-action-buttons">
+                        <button class="btn btn-outline btn-sm follow-button" id="followStoreButton" data-following="false">
+                            <i data-lucide="plus" class="icon"></i> <span class="follow-text">Ikuti</span>
+                        </button>
+                        <a href="chat.html?store_id=ADVLShop" class="btn btn-primary btn-sm chat-button">
+                            <i data-lucide="message-circle" class="icon"></i> Chat
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="store-stats-grid">
+                <div class="stat-item">
+                    <i data-lucide="package" class="icon"></i>
+                    <span>Produk: <strong>15,4RB</strong></span>
+                </div>
+                <div class="stat-item">
+                    <i data-lucide="users" class="icon"></i>
+                    <span>Pengikut: <strong>898,1 RB</strong></span>
+                </div>
+                <div class="stat-item">
+                    <i data-lucide="star" class="icon"></i>
+                    <span>Rating: <strong>4,9</strong> (dari 10k+ ulasan)</span>
+                </div>
+                <div class="stat-item">
+                    <i data-lucide="user-plus" class="icon"></i>
+                    <span>Mengikuti Toko: <strong id="followingCountDisplay">0</strong></span>
+                </div>
+                <div class="stat-item">
+                    <i data-lucide="message-square-share" class="icon"></i>
+                    <span>Performa Chat: <strong>50%</strong></span>
+                </div>
+                <div class="stat-item">
+                    <i data-lucide="calendar-days" class="icon"></i>
+                    <span>Bergabung: <strong>6 Tahun Lalu</strong></span>
+                </div>
+            </div>
+        </section>
+
+        <nav class="store-category-tabs content-section tab-navigation" id="storeCategoryTabs">
+            <button type="button" class="tab-button active" aria-selected="true" data-category="Baju">Baju</button>
+            <button type="button" class="tab-button" aria-selected="false" data-category="Celana">Celana</button>
+            <button type="button" class="tab-button" aria-selected="false" data-category="Jaket">Jaket</button>
+            <button type="button" class="tab-button" aria-selected="false" data-category="Topi">Topi</button>
+            <button type="button" class="tab-button" aria-selected="false" data-category="Knit Collections">Knit Collections</button>
+            <button type="button" class="tab-button" aria-selected="false" data-category="Lainnya">Lainnya...</button>
+        </nav>
+
+        <section class="store-banner-carousel content-section">
+            <div class="banner-carousel-wrapper" id="storeBannerCarousel">
+                <div class="banner-slide active">
+                    <img src="https://via.placeholder.com/1200x250/dc3545/ffffff?text=Store+Promo+Banner+1" alt="Store Promotion 1">
+                </div>
+                <div class="banner-slide">
+                     <img src="https://via.placeholder.com/1200x250/28a745/ffffff?text=Store+Promo+Banner+2" alt="Store Promotion 2">
+                </div>
+                 <div class="banner-slide">
+                     <img src="https://via.placeholder.com/1200x250/ffc107/000000?text=Store+Promo+Banner+3" alt="Store Promotion 3">
+                </div>
+            </div>
+            <div class="carousel-pagination" id="storeBannerPagination">
+                </div>
+        </section>
+
+        <section class="store-products-section content-section">
+            <h2 class="section-title" id="storeProductsTitle">Produk Toko - Baju</h2>
+            <div class="product-sort-bar">
+                <label for="sort-products" class="sort-label">Urutkan:</label>
+                <select id="sort-products" class="form-select sort-select">
+                    <option value="newest" selected>Produk Terbaru</option>
+                    <option value="price-low-high">Harga Terendah</option>
+                    <option value="price-high-low">Harga Tertinggi</option>
+                    <option value="best-selling">Terlaris</option>
+                </select>
+                <button type="button" class="btn btn-ghost btn-icon view-toggle-button" id="toggleViewButton" aria-label="Ubah tampilan">
+                    <i data-lucide="layout-grid" class="icon"></i>
+                </button>
+            </div>
+            <div class="product-grid store-product-grid" id="storeProductGrid">
+                </div>
+        </section>
+        <nav class="product-pagination pagination-container" aria-label="Navigasi produk toko" id="storeProductPagination">
+            </nav>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    lucide.createIcons();
+
+    // Header Links
+    const headerActionLinks = {
+        "Keranjang Belanja": "keranjang.html",
+        "Notifikasi": "#",
+        "Chat": "chat.html",
+        "Profil Pengguna": "profile.html"
+    };
+    document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
+        const label = button.getAttribute('aria-label');
+        if (headerActionLinks[label]) {
+            if (button.tagName.toLowerCase() !== 'a') {
+                const link = document.createElement('a');
+                link.href = headerActionLinks[label];
+                link.className = button.className;
+                link.setAttribute('aria-label', label);
+                link.innerHTML = button.innerHTML;
+                button.parentNode.replaceChild(link, button);
+            } else {
+                button.href = headerActionLinks[label];
+            }
+        }
+    });
+    lucide.createIcons();
+
+    // Follow Button
+    const followButton = document.getElementById('followStoreButton');
+    const followText = followButton ? followButton.querySelector('.follow-text') : null;
+    const followIcon = followButton ? followButton.querySelector('.icon') : null;
+    const followingCountDisplay = document.getElementById('followingCountDisplay'); // Assuming this counts stores the user follows
+
+    if (followButton && followText && followIcon) {
+        followButton.addEventListener('click', function() {
+            const isFollowing = this.dataset.following === 'true';
+            if (isFollowing) {
+                this.dataset.following = 'false';
+                followText.textContent = 'Ikuti';
+                this.classList.remove('btn-primary'); // Or a specific 'following' style
+                this.classList.add('btn-outline');
+                followIcon.setAttribute('data-lucide', 'plus');
+                if(followingCountDisplay) followingCountDisplay.textContent = parseInt(followingCountDisplay.textContent) -1;
+
+                alert('Anda berhenti mengikuti toko ini.');
+            } else {
+                this.dataset.following = 'true';
+                followText.textContent = 'Mengikuti';
+                this.classList.remove('btn-outline');
+                this.classList.add('btn-primary'); // Or a specific 'following' style
+                followIcon.setAttribute('data-lucide', 'check'); // Or 'user-check'
+                if(followingCountDisplay) followingCountDisplay.textContent = parseInt(followingCountDisplay.textContent) + 1;
+                alert('Anda sekarang mengikuti toko ini!');
+            }
+            lucide.createIcons({ nodes: [followIcon] });
+        });
+    }
+
+    // Store Category Tabs
+    const storeCategoryTabs = document.querySelectorAll('#storeCategoryTabs .tab-button');
+    const storeProductsTitle = document.getElementById('storeProductsTitle');
+
+    storeCategoryTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            storeCategoryTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+            this.classList.add('active');
+            this.setAttribute('aria-selected', 'true');
+            const selectedCategory = this.dataset.category;
+            if (storeProductsTitle) storeProductsTitle.textContent = `Produk Toko - ${selectedCategory}`;
+            // Simulate loading products for this category
+            loadStoreProducts(selectedCategory, 1, document.getElementById('sort-products').value);
+            alert(`Menampilkan produk untuk kategori: ${selectedCategory}`);
+        });
+    });
+
+    // Store Banner Carousel
+    const storeBannerCarousel = document.getElementById('storeBannerCarousel');
+    const storeBannerPagination = document.getElementById('storeBannerPagination');
+    let storeBannerItems = [];
+    let storeBannerCurrentIndex = 0;
+    let storeBannerAutoplayInterval;
+
+    function setupStoreBannerCarousel() {
+        if (!storeBannerCarousel || !storeBannerPagination) return;
+        storeBannerItems = storeBannerCarousel.querySelectorAll('.banner-slide');
+        if (storeBannerItems.length === 0) return;
+
+        storeBannerPagination.innerHTML = ''; // Clear old dots
+
+        storeBannerItems.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.setAttribute('aria-label', `Slide ${index + 1}`);
+            dot.addEventListener('click', () => {
+                storeBannerCurrentIndex = index;
+                showStoreBannerItem(storeBannerCurrentIndex);
+                resetStoreBannerAutoplay();
+            });
+            storeBannerPagination.appendChild(dot);
+        });
+        showStoreBannerItem(0);
+        startStoreBannerAutoplay();
+    }
+
+    function showStoreBannerItem(index) {
+        storeBannerItems.forEach((item, i) => item.classList.toggle('active', i === index));
+        const dots = storeBannerPagination.querySelectorAll('.dot');
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    }
+
+    function startStoreBannerAutoplay() {
+        if (storeBannerItems.length <= 1) return;
+        stopStoreBannerAutoplay();
+        storeBannerAutoplayInterval = setInterval(() => {
+            storeBannerCurrentIndex = (storeBannerCurrentIndex + 1) % storeBannerItems.length;
+            showStoreBannerItem(storeBannerCurrentIndex);
+        }, 4000); // Change every 4 seconds
+    }
+    function stopStoreBannerAutoplay() { clearInterval(storeBannerAutoplayInterval); }
+    function resetStoreBannerAutoplay() { startStoreBannerAutoplay(); }
+
+    if (storeBannerCarousel) {
+        setupStoreBannerCarousel();
+        storeBannerCarousel.addEventListener('mouseenter', stopStoreBannerAutoplay);
+        storeBannerCarousel.addEventListener('mouseleave', startStoreBannerAutoplay);
+    }
+
+    // Store Products Section (Sort and View Toggle)
+    const sortProductsStore = document.getElementById('sort-products');
+    const toggleViewButton = document.getElementById('toggleViewButton');
+    const storeProductGrid = document.getElementById('storeProductGrid');
+
+    if (sortProductsStore) {
+        sortProductsStore.addEventListener('change', function() {
+            const selectedSort = this.value;
+            const currentCategoryTab = document.querySelector('#storeCategoryTabs .tab-button.active');
+            const currentCategory = currentCategoryTab ? currentCategoryTab.dataset.category : "Semua";
+            loadStoreProducts(currentCategory, 1, selectedSort);
+            alert(`Produk diurutkan berdasarkan: ${this.options[this.selectedIndex].text}. (Simulasi)`);
+        });
+    }
+    if (toggleViewButton) {
+        toggleViewButton.addEventListener('click', function() {
+            alert('Tombol ubah tampilan diklik. (Simulasi: toggle grid/list view)');
+            // Add logic here to change class on storeProductGrid for different view
+        });
+    }
+    
+    // Dummy Store Product Data & Pagination
+    const dummyStoreProducts = {
+        "Baju": [
+            { id: "sb1", name: "Kemeja Flanel Store", price: "180.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Baju+1" },
+            { id: "sb2", name: "T-Shirt Basic Store", price: "90.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Baju+2" },
+            { id: "sb3", name: "Polo Shirt Store", price: "120.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Baju+3" },
+            { id: "sb4", name: "Blouse Wanita Store", price: "160.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Baju+4" }
+        ],
+        "Celana": [
+            { id: "sc1", name: "Celana Chino Store", price: "220.000", image: "https://via.placeholder.com/200x180/4682b4/ffffff?text=Celana+1" },
+            { id: "sc2", name: "Jeans Pria Store", price: "350.000", image: "https://via.placeholder.com/200x180/4682b4/ffffff?text=Celana+2" }
+        ],
+        "Jaket": [
+            { id: "sj1", name: "Jaket Bomber Store", price: "280.000", image: "https://via.placeholder.com/200x180/20b2aa/ffffff?text=Jaket+1" }
+        ],
+         "Topi": [
+            { id: "st1", name: "Topi Baseball Store", price: "75.000", image: "https://via.placeholder.com/200x180/6a5acd/ffffff?text=Topi+1" }
+        ],
+        "Knit Collections": [
+            { id: "sk1", name: "Sweater Rajut Store", price: "190.000", image: "https://via.placeholder.com/200x180/daa520/000000?text=Knit+1" }
+        ],
+        "Lainnya": [
+             { id: "sl1", name: "Aksesoris Lain Store", price: "50.000", image: "https://via.placeholder.com/200x180/778899/ffffff?text=Lainnya+1" }
+        ]
+    };
+    const productsPerPageStore = 8; // Show 8 products per page
+    let currentPageStore = 1;
+    const storeProductPagination = document.getElementById('storeProductPagination');
+
+    function createStoreProductCardHTML(product) {
+        return `
+            <div class="product-card card card-interactive">
+                <a href="detailProduct.html?id=${product.id}" class="product-link-wrapper">
+                    <div class="product-image-placeholder placeholder-bg"><img src="${product.image}" alt="${product.name}"></div>
+                    <div class="product-card-content">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-price">Rp ${product.price}</p>
+                    </div>
+                </a>
+            </div>
+        `;
+    }
+    
+    function loadStoreProducts(category = "Baju", page = 1, sortOption = "newest") {
+        if (!storeProductGrid) return;
+        storeProductGrid.innerHTML = '';
+        currentPageStore = page;
+
+        let productsToDisplay = dummyStoreProducts[category] || [];
+        
+        // Simulate sorting
+        if (sortOption === "price-low-high") {
+            productsToDisplay.sort((a, b) => parseFloat(a.price.replace(/\./g, '')) - parseFloat(b.price.replace(/\./g, '')));
+        } else if (sortOption === "price-high-low") {
+            productsToDisplay.sort((a, b) => parseFloat(b.price.replace(/\./g, '')) - parseFloat(a.price.replace(/\./g, '')));
+        } // "newest" and "best-selling" would need actual data/timestamps
+
+        const start = (page - 1) * productsPerPageStore;
+        const end = start + productsPerPageStore;
+        const paginatedProducts = productsToDisplay.slice(start, end);
+
+        if (paginatedProducts.length === 0) {
+            storeProductGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align:center; color:hsl(var(--muted-foreground)); padding: var(--spacing-4) 0;">Tidak ada produk untuk kategori "${category}".</p>`;
+        } else {
+            storeProductGrid.innerHTML = paginatedProducts.map(createStoreProductCardHTML).join('');
+        }
+        renderStoreProductPagination(productsToDisplay.length, category, sortOption);
+         if (storeProductsTitle) storeProductsTitle.textContent = `Produk Toko - ${category}`;
+
+    }
+
+    function renderStoreProductPagination(totalProducts, category, sortOption) {
+        if (!storeProductPagination) return;
+        storeProductPagination.innerHTML = '';
+        const totalPages = Math.ceil(totalProducts / productsPerPageStore);
+        if (totalPages <= 1) return;
+
+        const ul = document.createElement('ul');
+        ul.className = 'pagination';
+
+        // Previous
+        const prevLi = document.createElement('li');
+        prevLi.className = `page-item ${currentPageStore === 1 ? 'disabled' : ''}`;
+        const prevA = document.createElement('a');
+        prevA.className = 'page-link page-link-arrow';
+        prevA.href = '#';
+        prevA.setAttribute('aria-label', 'Halaman sebelumnya');
+        prevA.innerHTML = '<i data-lucide="chevron-left" class="icon"></i>';
+        prevA.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentPageStore > 1) loadStoreProducts(category, currentPageStore - 1, sortOption);
+        });
+        prevLi.appendChild(prevA);
+        ul.appendChild(prevLi);
+
+        // Page Numbers
+        for (let i = 1; i <= totalPages; i++) {
+            const pageLi = document.createElement('li');
+            pageLi.className = `page-item ${i === currentPageStore ? 'active' : ''}`;
+            const pageA = document.createElement('a');
+            pageA.className = 'page-link';
+            pageA.href = '#';
+            pageA.textContent = i;
+            pageA.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadStoreProducts(category, i, sortOption);
+            });
+            pageLi.appendChild(pageA);
+            ul.appendChild(pageLi);
+        }
+
+        // Next
+        const nextLi = document.createElement('li');
+        nextLi.className = `page-item ${currentPageStore === totalPages ? 'disabled' : ''}`;
+        const nextA = document.createElement('a');
+        nextA.className = 'page-link page-link-arrow';
+        nextA.href = '#';
+        nextA.setAttribute('aria-label', 'Halaman berikutnya');
+        nextA.innerHTML = '<i data-lucide="chevron-right" class="icon"></i>';
+        nextA.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentPageStore < totalPages) loadStoreProducts(category, currentPageStore + 1, sortOption);
+        });
+        nextLi.appendChild(nextA);
+        ul.appendChild(nextLi);
+        
+        storeProductPagination.appendChild(ul);
+        lucide.createIcons({context: storeProductPagination});
+    }
+
+    // Initial Load
+    loadStoreProducts("Baju", 1, "newest"); // Load "Baju" category by default
+});
+</script>
+</body>
+</html>

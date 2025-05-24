@@ -1,0 +1,31 @@
+/* plain approach/component/css/base/_reset.css */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-sans); /* Moved from componentStyle.css html selector */
+  line-height: var(--line-height-base); /* Moved from componentStyle.css html selector */
+  font-size: var(--font-size-base); /* Moved from componentStyle.css html selector */
+  /* background-color and color are applied in _variables.css via html selector */
+}
+
+body {
+  min-height: 100vh;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}

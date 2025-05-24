@@ -1,0 +1,112 @@
+/* plain approach/component/css/components/_carousel.css */
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  background-color: hsl(var(--muted)); /* Placeholder background */
+}
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* For JS-driven sliding */
+}
+.carousel-item {
+  min-width: 100%;
+  flex-shrink: 0;
+  /* Add aspect ratio for consistent item height or set fixed height */
+  /* aspect-ratio: 16 / 9; */
+  height: 300px; /* Example fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(var(--secondary)); /* Different for item visibility */
+  color: hsl(var(--secondary-foreground));
+  font-size: var(--font-size-xl);
+}
+.carousel-item:nth-child(odd) {
+    background-color: hsl(var(--muted)); /* Alternate item bg for demo */
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  /* Using button styles for controls */
+}
+.carousel-control-prev {
+  left: var(--spacing-4);
+}
+.carousel-control-next {
+  right: var(--spacing-4);
+}
+.carousel-indicators {
+  position: absolute;
+  bottom: var(--spacing-4);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: var(--spacing-2);
+  list-style: none; /* Remove default list styling */
+  padding: 0;
+  margin: 0;
+}
+.carousel-indicator {
+  width: 0.75rem; /* 12px */
+  height: 0.75rem;
+  border-radius: var(--radius-full);
+  background-color: hsl(var(--muted-foreground) / 0.5);
+  cursor: pointer;
+  transition: background-color var(--transition-duration);
+}
+.carousel-indicator.active,
+.carousel-indicator:hover {
+  background-color: hsl(var(--primary));
+}
+/* Note: Carousel functionality (sliding, active states) requires JavaScript. */
+
+/* Store Banner Carousel specific pagination (from storeProfile.html styles) */
+.banner-carousel-wrapper { /* This could be merged or kept if distinct from .carousel */
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background-color: hsl(var(--muted)); /* Placeholder */
+    min-height: 250px; /* Adjust height as needed */
+}
+.banner-slide { /* JS will handle showing/hiding slides */
+    width: 100%;
+    height: 100%; /* If wrapper has fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.banner-slide.active {
+    opacity: 1; /* Show active slide */
+}
+.banner-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+.carousel-pagination { /* This appears to be a different pagination style than .carousel-indicators */
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-2);
+    margin-top: var(--spacing-3);
+}
+.carousel-pagination .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background-color: hsl(var(--border));
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color var(--transition-duration);
+}
+.carousel-pagination .dot:hover {
+    background-color: hsl(var(--muted-foreground));
+}
+.carousel-pagination .dot.active {
+    background-color: hsl(var(--primary));
+    width: 12px; /* Optional: make active dot slightly larger */
+}

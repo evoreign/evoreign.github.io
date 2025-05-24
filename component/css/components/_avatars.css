@@ -1,0 +1,29 @@
+/* plain approach/component/css/components/_avatars.css */
+
+.avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    font-weight: var(--font-weight-medium);
+    background-color: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
+    border: 2px solid transparent; /* For potential active state or borders */
+}
+.avatar-sm {
+    width: 32px; height: 32px; font-size: 0.875rem;
+}
+.avatar-md {
+    width: 40px; height: 40px; font-size: 1rem;
+}
+/* Specific avatar styling from chat might be moved to _chat.css if not generic */
+/* Example:
+.chat-list-item.active .avatar,
+.chat-list-item:hover .avatar {
+    background-color: hsl(var(--background) / 0.2);
+}
+.chat-list-item.active .avatar {
+    color: hsl(var(--primary-foreground));
+    background-color: hsl(var(--primary-foreground) / 0.2);
+}
+*/

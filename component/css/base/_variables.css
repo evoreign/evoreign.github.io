@@ -1,0 +1,143 @@
+/* plain approach/component/css/base/_variables.css */
+
+:root {
+  /* Light Mode (Default) */
+  --background: 255 100% 100%; /* white */
+  --foreground: 240 10% 3.9%; /* Equivalent to Tailwind's zinc-950 */
+
+  --card-background: 255 100% 100%;
+  --card-foreground: 240 10% 3.9%;
+
+  --popover-background: 255 100% 100%;
+  --popover-foreground: 240 10% 3.9%;
+
+  --primary: 240 10% 3.9%;
+  --primary-foreground: 0 0% 98%; /* Text on primary background (e.g., zinc-50) */
+
+  --secondary: 240 4.8% 95.9%; /* Secondary elements, backgrounds (e.g., zinc-100) */
+  --secondary-foreground: 240 10% 3.9%;
+
+  --muted: 240 4.8% 95.9%; /* Muted elements, backgrounds */
+  --muted-foreground: 240 3.8% 46.1%; /* Muted text (e.g., zinc-500) */
+
+  --accent: 240 4.8% 95.9%; /* Accent elements, often interactive highlights */
+  --accent-foreground: 240 10% 3.9%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 240 5.9% 90%; /* Borders (e.g., zinc-200) */
+  --input-border: 240 5.9% 90%; /* Input borders */
+  --ring: 217 91% 60%; /* Focus rings (e.g., blue-500 or a primary accent) */
+
+  --radius-sm: 0.375rem; /* 6px */
+  --radius: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-size-base: 1rem; /* 16px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-base: 1.5;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+
+  /* Spacing (based on 0.25rem = 4px unit) */
+  --spacing-0_5: 0.125rem; /* Added this as it was used in some page specific styles later */
+  --spacing-1: 0.25rem;  /* 4px */
+  --spacing-1_5: 0.375rem; /* Added this as it was used in some page specific styles later */
+  --spacing-2: 0.5rem;   /* 8px */
+  --spacing-2_5: 0.625rem; /* Added this as it was used in some page specific styles later */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-5: 1.25rem;  /* 20px */
+  --spacing-6: 1.5rem;   /* 24px */
+  --spacing-8: 2rem;     /* 32px */
+  --spacing-10: 2.5rem;  /* 40px */
+  --spacing-12: 3rem;    /* 48px */
+
+  /* Transitions */
+  --transition-duration: 0.2s;
+  --transition-timing-function: ease-in-out;
+
+  /* Button Specific Variables (can be merged or kept separate) */
+  --button-primary-bg-hsl: var(--primary);
+  --button-primary-text-hsl: var(--primary-foreground);
+  --button-primary-hover-bg-hsl: 240 10% 13.9%; /* Darker primary */
+
+  --button-destructive-bg-hsl: var(--destructive);
+  --button-destructive-text-hsl: var(--destructive-foreground);
+  --button-destructive-hover-bg-hsl: 0 84.2% 50.2%; /* Darker destructive */
+
+  --button-outline-text-hsl: var(--primary);
+  --button-outline-hover-bg-hsl: var(--accent);
+  --button-outline-border-hsl: var(--input-border);
+
+  --button-secondary-bg-hsl: var(--secondary);
+  --button-secondary-text-hsl: var(--secondary-foreground);
+  --button-secondary-hover-bg-hsl: 240 5.9% 88%; /* Darker secondary */
+
+  --button-ghost-text-hsl: var(--primary);
+  --button-ghost-hover-bg-hsl: var(--accent);
+
+  --button-link-text-hsl: var(--primary);
+
+  --button-padding-y: 0.5rem; /* 8px */
+  --button-padding-x: 1rem;   /* 16px */
+  --button-h: calc(var(--button-padding-y) * 2 + var(--font-size-sm) * var(--line-height-base)); /* Approximate height */
+}
+
+/* Example Dark Mode (toggle by adding class="dark" to <html> or <body>) */
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+
+  --card-background: 240 10% 10.9%; /* Slightly lighter than main dark bg (zinc-900) */
+  --card-foreground: 0 0% 98%;
+
+  --popover-background: 240 10% 10.9%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 10% 3.9%;
+
+  --secondary: 240 3.7% 15.9%; /* zinc-800 */
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%; /* zinc-400 */
+
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+
+  --destructive: 0 72.2% 50.6%; /* red-600 for dark mode */
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 240 3.7% 15.9%;
+  --input-border: 240 3.7% 15.9%;
+  --ring: 221 83% 53%; /* blue-500, often brighter in dark mode */
+
+  /* Button Dark Mode Overrides */
+  --button-primary-hover-bg-hsl: 0 0% 88%; /* Lighter primary for dark hover */
+  --button-destructive-hover-bg-hsl: 0 72.2% 40.6%;
+  --button-outline-hover-bg-hsl: var(--accent);
+  --button-secondary-hover-bg-hsl: 240 3.7% 25.9%;
+  --button-ghost-hover-bg-hsl: var(--accent);
+}
+
+/* Apply HSL colors */
+html {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}

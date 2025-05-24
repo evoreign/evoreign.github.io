@@ -1,0 +1,168 @@
+/* plain approach/component/css/pages/_store-profile.css */
+
+/* --- Store Profile Page Specific Styles --- */
+
+/* .store-profile-page-content.container is in layout/_page_layouts.css */
+.store-profile-page-content.container {
+    padding-top: var(--spacing-6);
+    padding-bottom: var(--spacing-6);
+}
+
+/* .content-section from _home.css or layout/_sections.css if created */
+.content-section {
+    margin-bottom: var(--spacing-8);
+}
+
+/* Store Header Section */
+.store-header-section.card { /* Extends .card */
+    padding: var(--spacing-6);
+    margin-bottom: var(--spacing-6);
+}
+
+.store-header-main-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-6);
+}
+@media (min-width: 768px) {
+    .store-header-main-info {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.store-avatar-placeholder.placeholder-bg { /* Extends .placeholder-bg */
+    width: 100px;
+    height: 100px;
+    border-radius: var(--radius-md, 0.375rem); /* Uses --radius-md */
+    flex-shrink: 0;
+}
+.store-avatar-placeholder img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+
+.store-details-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-3);
+    flex-grow: 1;
+}
+@media (min-width: 768px) {
+    .store-details-actions {
+        align-items: flex-start;
+    }
+}
+
+.store-name-status {
+    /* text-align: center; */
+}
+@media (min-width: 768px) {
+    .store-name-status {
+        text-align: left;
+    }
+}
+
+.store-name { /* Similar to .page-main-title but for store */
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--foreground));
+    margin: 0 0 var(--spacing-1) 0;
+}
+
+.store-activity-status {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+    margin: 0;
+}
+
+.store-action-buttons {
+    display: flex;
+    gap: var(--spacing-3);
+    margin-top: var(--spacing-2);
+}
+.store-action-buttons .btn-sm { /* Extends .btn-sm */
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1_5, 0.375rem);
+}
+.store-action-buttons .btn-sm .icon {
+    width: 1rem; height: 1rem;
+}
+
+.store-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-4) var(--spacing-6);
+    padding-top: var(--spacing-4);
+    border-top: 1px solid hsl(var(--border));
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+.stat-item .icon {
+    width: 1.25em; height: 1.25em; /* from inline style in HTML */
+    margin-right: var(--spacing-2); /* from inline style in HTML */
+    color: hsl(var(--primary));
+}
+.stat-item strong {
+    color: hsl(var(--foreground));
+    font-weight: var(--font-weight-semibold);
+}
+
+/* .store-category-tabs and .tab-button are in layout/_tab_navigation.css */
+
+/* Store Banner Carousel */
+.store-banner-carousel {
+    /* .content-section handles margin */
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+    padding: var(--spacing-4);
+    border-radius: var(--radius);
+}
+/* .banner-carousel-wrapper, .banner-slide, .carousel-pagination, .dot
+   are in components/_carousel.css */
+
+
+/* Store Products Section */
+.store-products-section .section-title { /* Uses general .section-title */
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--foreground));
+    margin-bottom: var(--spacing-4);
+}
+.product-sort-bar { /* Similar to .wishlist-sort-bar */
+    display: flex; /* Copied from wishlist, adjust if store profile is different */
+    align-items: center;
+    /* justify-content: flex-end; */ /* Wishlist was flex-end */
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-4); /* Wishlist had 6 */
+    /* padding: var(--spacing-3); */ /* Wishlist had padding */
+    /* background-color: hsl(var(--card-background, var(--background))); */
+    /* border-radius: var(--radius); */
+    /* border: 1px solid hsl(var(--border)); */
+}
+.product-sort-bar .sort-label {} /* from wishlist */
+.product-sort-bar .sort-select {} /* from wishlist */
+.product-sort-bar .view-toggle-button {
+    /* Add styles for the view toggle button */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} /* from wishlist */
+
+
+.store-product-grid.product-grid {
+    /* .product-grid from _home.css or component */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+/* .product-card from _home.css or component */
+
+/* .product-pagination.pagination-container and children are in components/_pagination.css */

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist Saya - Beliin.id</title>
+    <link rel="stylesheet" href="../component/css/main.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
+        .placeholder-bg .icon { width: 2em; height: 2em; }
+        .product-image-placeholder img {width: 100%; height: 100%; object-fit: cover;}
+
+    </style>
+    <link rel="icon" href="../assets/logo.PNG" type="image/png">
+</head>
+<body class="page-body">
+
+    <header class="site-header">
+    <div class="header-container">
+        <div class="logo-container">
+            <a href="index.html" class="logo-link">
+                <img src="../assets/logo.jpeg" alt="Logo Beliin.id" class="logo"style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+            </a>
+        </div>
+        <div class="search-bar-container new-search-bar">
+            <form action="#" class="search-form">
+                <i data-lucide="search" class="icon search-icon-inside"></i>
+                <input type="search" id="wishlistSearchInput" class="form-input search-input" placeholder="Cari di wishlist...">
+            </form>
+        </div>
+        <nav class="header-actions">
+            <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+                <i data-lucide="shopping-cart" class="icon"></i>
+            </a>
+            <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+                <i data-lucide="heart" class="icon"></i>
+            </a>
+            <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+                <i data-lucide="message-circle" class="icon"></i>
+            </a>
+            <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+                <i data-lucide="user" class="icon"></i>
+            </a>
+        </nav>
+    </div>
+</header>
+
+    <main class="wishlist-page-content container">
+        <h1 class="page-main-title">Wishlist (<span id="wishlistCount">0</span>)</h1>
+
+        <div class="wishlist-layout-container">
+
+            <aside class="wishlist-sidebar card">
+                <h2 class="sidebar-title">Kategori</h2>
+                <ul class="category-filter-list">
+                    <li class="category-filter-item">
+                        <a href="#" class="category-filter-link active" aria-current="page" data-category="Elektronik">Elektronik</a>
+                    </li>
+                    <li class="category-filter-item">
+                        <a href="#" class="category-filter-link" data-category="Baku">Baku</a>
+                    </li>
+                    <li class="category-filter-item">
+                        <a href="#" class="category-filter-link" data-category="Fashion">Fashion</a>
+                    </li>
+                    <li class="category-filter-item">
+                        <a href="#" class="category-filter-link" data-category="Dapur">Dapur</a>
+                    </li>
+                    <li class="category-filter-item">
+                        <a href="#" class="category-filter-link" data-category="Bayi">Bayi</a>
+                    </li>
+                     <li class="category-filter-item">
+                        <a href="#" class="category-filter-link" data-category="Semua">Semua Kategori</a>
+                    </li>
+                </ul>
+            </aside>
+
+            <section class="wishlist-main-area">
+                <div class="wishlist-controls" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-4);">
+                    <div class="select-all-bar-wishlist" style="padding: var(--spacing-3); background-color: hsl(var(--secondary) / 0.7); border-radius: var(--radius); border: 1px solid hsl(var(--border));">
+                        <label class="form-checkbox-container">
+                            <input type="checkbox" class="form-checkbox" id="select-all-wishlist-items">
+                            <span class="form-checkbox-indicator">
+                                <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path></svg>
+                            </span>
+                            <span class="form-checkbox-label" id="selectAllWishlistLabel">Pilih Semua</span>
+                        </label>
+                         <button type="button" class="btn btn-link btn-sm" id="deleteSelectedWishlistButton" style="display:none; color:hsl(var(--destructive)); margin-left: var(--spacing-2);">Hapus Terpilih</button>
+                    </div>
+                    <div class="wishlist-sort-bar">
+                        <label for="sort-wishlist" class="sort-label">Urutkan:</label>
+                        <select id="sort-wishlist" class="form-select sort-select">
+                            <option value="newly-added" selected>Baru Ditambahkan</option>
+                            <option value="price-low-high">Harga Terendah</option>
+                            <option value="price-high-low">Harga Tertinggi</option>
+                            <option value="name-asc">Nama A-Z</option>
+                        </select>
+                        <button type="button" class="btn btn-ghost btn-icon view-toggle-button" id="wishlistViewToggleButton" aria-label="Ubah tampilan">
+                            <i data-lucide="layout-grid" class="icon"></i>
+                        </button>
+                    </div>
+                </div>
+                
+
+                <div class="product-grid wishlist-product-grid" id="wishlistProductGrid">
+                    </div>
+                
+                <nav class="pagination-container" aria-label="Wishlist navigation" id="wishlistPagination">
+                    </nav>
+            </section>
+        </div>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    lucide.createIcons();
+
+    // Header Links
+    const headerActionLinks = {
+        "Keranjang Belanja": "keranjang.html",
+        "Notifikasi": "#",
+        "Chat": "chat.html",
+        "Profil Pengguna": "profile.html"
+    };
+    document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
+        const label = button.getAttribute('aria-label');
+        if (headerActionLinks[label]) {
+            if (button.tagName.toLowerCase() !== 'a') {
+                const link = document.createElement('a');
+                link.href = headerActionLinks[label];
+                link.className = button.className;
+                link.setAttribute('aria-label', label);
+                link.innerHTML = button.innerHTML;
+                button.parentNode.replaceChild(link, button);
+            } else {
+                button.href = headerActionLinks[label];
+            }
+        }
+    });
+    lucide.createIcons();
+
+    const wishlistProductGrid = document.getElementById('wishlistProductGrid');
+    const categoryFilterLinks = document.querySelectorAll('.category-filter-list .category-filter-link');
+    const sortWishlistSelect = document.getElementById('sort-wishlist');
+    const wishlistViewToggleButton = document.getElementById('wishlistViewToggleButton');
+    const wishlistPaginationContainer = document.getElementById('wishlistPagination');
+    const wishlistCountSpan = document.getElementById('wishlistCount');
+    const wishlistSearchInput = document.getElementById('wishlistSearchInput');
+
+    const selectAllWishlistCheckbox = document.getElementById('select-all-wishlist-items');
+    const selectAllWishlistLabel = document.getElementById('selectAllWishlistLabel');
+    const deleteSelectedWishlistButton = document.getElementById('deleteSelectedWishlistButton');
+
+
+    // Sample Wishlist Data
+    let allWishlistItems = [
+        { id: "w1", name: "Nama Produk Elektronik Keren", price: "1.250.000", image: "https://via.placeholder.com/200x180/007bff/ffffff?text=Elektronik+1", category: "Elektronik", dateAdded: "2025-05-20T10:00:00Z" },
+        { id: "w2", name: "Item Fashion Terkini", price: "350.000", image: "https://via.placeholder.com/200x180/e83e8c/ffffff?text=Fashion+1", category: "Fashion", dateAdded: "2025-05-22T11:00:00Z" },
+        { id: "w3", name: "Peralatan Dapur Modern", price: "450.000", image: "https://via.placeholder.com/200x180/28a745/ffffff?text=Dapur+1", category: "Dapur", dateAdded: "2025-05-10T09:00:00Z" },
+        { id: "w4", name: "Mainan Anak Kreatif Edukatif", price: "200.000", image: "https://via.placeholder.com/200x180/ffc107/000000?text=Bayi+1", category: "Bayi", dateAdded: "2025-05-24T08:00:00Z" },
+        { id: "w5", name: "Smartphone Canggih Terbaru", price: "5.250.000", image: "https://via.placeholder.com/200x180/007bff/ffffff?text=Elektronik+2", category: "Elektronik", dateAdded: "2025-04-20T10:00:00Z"  },
+        { id: "w6", name: "Sepatu Lari Nyaman", price: "750.000", image: "https://via.placeholder.com/200x180/e83e8c/ffffff?text=Fashion+2", category: "Fashion", dateAdded: "2025-03-15T11:00:00Z" },
+        { id: "w7", name: "Blender Serbaguna", price: "320.000", image: "https://via.placeholder.com/200x180/28a745/ffffff?text=Dapur+2", category: "Dapur", dateAdded: "2025-05-01T09:00:00Z"  },
+        { id: "w8", name: "Popok Bayi Super Lembut", price: "120.000", image: "https://via.placeholder.com/200x180/ffc107/000000?text=Bayi+2", category: "Bayi", dateAdded: "2025-05-23T08:00:00Z"  },
+    ];
+
+    let currentWishlistPage = 1;
+    const itemsPerPageWishlist = 8; // Or adjust as needed
+    let currentCategoryFilter = "Semua";
+    let currentSortOption = "newly-added";
+    let currentSearchTerm = "";
+
+
+    function createWishlistItemHTML(item) {
+        return `
+            <div class="product-card card card-interactive" data-id="${item.id}" data-category="${item.category}">
+                 <div style="position:absolute; top: var(--spacing-1); left:var(--spacing-1); z-index:11;">
+                    <label class="form-checkbox-container">
+                        <input type="checkbox" class="form-checkbox wishlist-item-checkbox">
+                        <span class="form-checkbox-indicator">
+                            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path></svg>
+                        </span>
+                    </label>
+                </div>
+                <button class="btn btn-icon btn-ghost remove-wishlist-item" aria-label="Hapus dari wishlist" data-id="${item.id}">
+                    <i data-lucide="x" class="icon"></i>
+                </button>
+                <a href="detailProduct.html?id=${item.id}" class="product-link-wrapper">
+                    <div class="product-image-placeholder placeholder-bg"><img src="${item.image}" alt="${item.name}"></div>
+                    <div class="product-card-content">
+                        <h3 class="product-name">${item.name}</h3>
+                        <p class="product-price">Rp ${item.price}</p>
+                    </div>
+                </a>
+            </div>
+        `;
+    }
+    
+    function renderWishlist() {
+        if (!wishlistProductGrid) return;
+        wishlistProductGrid.innerHTML = ''; // Clear previous items
+
+        let itemsToRender = [...allWishlistItems];
+
+        // Filter by category
+        if (currentCategoryFilter !== "Semua") {
+            itemsToRender = itemsToRender.filter(item => item.category === currentCategoryFilter);
+        }
+
+        // Filter by search term
+        if (currentSearchTerm) {
+            itemsToRender = itemsToRender.filter(item => item.name.toLowerCase().includes(currentSearchTerm.toLowerCase()));
+        }
+
+        // Sort items
+        switch (currentSortOption) {
+            case "price-low-high":
+                itemsToRender.sort((a, b) => parseFloat(a.price.replace(/\./g, '')) - parseFloat(b.price.replace(/\./g, '')));
+                break;
+            case "price-high-low":
+                itemsToRender.sort((a, b) => parseFloat(b.price.replace(/\./g, '')) - parseFloat(a.price.replace(/\./g, '')));
+                break;
+            case "name-asc":
+                itemsToRender.sort((a, b) => a.name.localeCompare(b.name));
+                break;
+            case "newly-added":
+            default:
+                itemsToRender.sort((a,b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                break;
+        }
+        
+        wishlistCountSpan.textContent = itemsToRender.length;
+
+        const totalPages = Math.ceil(itemsToRender.length / itemsPerPageWishlist);
+        currentWishlistPage = Math.min(currentWishlistPage, totalPages) || 1; // Adjust if current page exceeds new total pages
+
+        const start = (currentWishlistPage - 1) * itemsPerPageWishlist;
+        const end = start + itemsPerPageWishlist;
+        const paginatedItems = itemsToRender.slice(start, end);
+
+        if (paginatedItems.length === 0) {
+            wishlistProductGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align:center; color:hsl(var(--muted-foreground)); padding: var(--spacing-6) 0;">Wishlist Anda kosong atau tidak ada produk yang cocok.</p>`;
+        } else {
+            paginatedItems.forEach(item => {
+                wishlistProductGrid.insertAdjacentHTML('beforeend', createWishlistItemHTML(item));
+            });
+        }
+        
+        lucide.createIcons({ context: wishlistProductGrid });
+        addRemoveButtonListeners();
+        addWishlistItemCheckboxListeners();
+        renderWishlistPagination(itemsToRender.length);
+        updateSelectAllWishlistState(); // After rendering items
+    }
+
+    function addRemoveButtonListeners() {
+        document.querySelectorAll('.remove-wishlist-item').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent link wrapper click
+                const itemId = this.dataset.id;
+                if (confirm(`Anda yakin ingin menghapus "${allWishlistItems.find(i => i.id === itemId)?.name}" dari wishlist?`)) {
+                    allWishlistItems = allWishlistItems.filter(item => item.id !== itemId);
+                    renderWishlist(); 
+                }
+            });
+        });
+    }
+    
+    function renderWishlistPagination(totalItems) {
+        if (!wishlistPaginationContainer) return;
+        wishlistPaginationContainer.innerHTML = '';
+        const totalPages = Math.ceil(totalItems / itemsPerPageWishlist);
+
+        if (totalPages <= 1) return;
+
+        const ul = document.createElement('ul');
+        ul.className = 'pagination';
+
+        // Previous
+        const prevLi = document.createElement('li');
+        prevLi.className = `page-item ${currentWishlistPage === 1 ? 'disabled' : ''}`;
+        const prevA = document.createElement('a');
+        prevA.className = 'page-link';
+        prevA.href = '#';
+        prevA.textContent = 'Previous';
+        prevA.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentWishlistPage > 1) {
+                currentWishlistPage--;
+                renderWishlist();
+            }
+        });
+        prevLi.appendChild(prevA);
+        ul.appendChild(prevLi);
+
+        // Page Numbers
+        for (let i = 1; i <= totalPages; i++) {
+            const pageLi = document.createElement('li');
+            pageLi.className = `page-item ${i === currentWishlistPage ? 'active' : ''}`;
+            const pageA = document.createElement('a');
+            pageA.className = 'page-link';
+            pageA.href = '#';
+            pageA.textContent = i;
+            pageA.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentWishlistPage = i;
+                renderWishlist();
+            });
+            pageLi.appendChild(pageA);
+            ul.appendChild(pageLi);
+        }
+
+        // Next
+        const nextLi = document.createElement('li');
+        nextLi.className = `page-item ${currentWishlistPage === totalPages ? 'disabled' : ''}`;
+        const nextA = document.createElement('a');
+        nextA.className = 'page-link';
+        nextA.href = '#';
+        nextA.textContent = 'Next';
+        nextA.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentWishlistPage < totalPages) {
+                currentWishlistPage++;
+                renderWishlist();
+            }
+        });
+        nextLi.appendChild(nextA);
+        ul.appendChild(nextLi);
+        
+        wishlistPaginationContainer.appendChild(ul);
+    }
+
+    // Sidebar Category Filters
+    categoryFilterLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            categoryFilterLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+            currentCategoryFilter = this.dataset.category;
+            currentWishlistPage = 1; // Reset to first page
+            renderWishlist();
+        });
+    });
+
+    // Sort Dropdown
+    if (sortWishlistSelect) {
+        sortWishlistSelect.addEventListener('change', function() {
+            currentSortOption = this.value;
+            currentWishlistPage = 1; // Reset to first page
+            renderWishlist();
+            alert(`Wishlist diurutkan berdasarkan: ${this.options[this.selectedIndex].text}`);
+        });
+    }
+
+    // View Toggle Button
+    if (wishlistViewToggleButton) {
+        wishlistViewToggleButton.addEventListener('click', function() {
+            const iconElement = this.querySelector('i');
+            if (iconElement.getAttribute('data-lucide') === 'layout-grid') {
+                iconElement.setAttribute('data-lucide', 'list');
+                wishlistProductGrid.classList.add('list-view'); // Add CSS for list view if needed
+                 alert('Tampilan diubah ke mode daftar (Simulasi).');
+            } else {
+                iconElement.setAttribute('data-lucide', 'layout-grid');
+                wishlistProductGrid.classList.remove('list-view');
+                 alert('Tampilan diubah ke mode grid (Simulasi).');
+            }
+            lucide.createIcons({ nodes: [iconElement] });
+        });
+    }
+    
+    // Search in Wishlist
+    if (wishlistSearchInput) {
+        wishlistSearchInput.addEventListener('input', function() {
+            currentSearchTerm = this.value;
+            currentWishlistPage = 1;
+            renderWishlist();
+        });
+    }
+
+    // Select All Wishlist Items & Delete Selected
+    function updateSelectAllWishlistState() {
+        const allItemCheckboxes = document.querySelectorAll('.wishlist-item-checkbox');
+        const checkedItemCheckboxes = document.querySelectorAll('.wishlist-item-checkbox:checked');
+        
+        if (selectAllWishlistCheckbox) {
+            selectAllWishlistCheckbox.checked = allItemCheckboxes.length > 0 && checkedItemCheckboxes.length === allItemCheckboxes.length;
+            selectAllWishlistCheckbox.indeterminate = checkedItemCheckboxes.length > 0 && checkedItemCheckboxes.length < allItemCheckboxes.length;
+        }
+        if (selectAllWishlistLabel) {
+            selectAllWishlistLabel.textContent = `Pilih Semua (${checkedItemCheckboxes.length})`;
+        }
+        if (deleteSelectedWishlistButton) {
+            deleteSelectedWishlistButton.style.display = checkedItemCheckboxes.length > 0 ? 'inline-flex' : 'none';
+        }
+    }
+
+    function addWishlistItemCheckboxListeners() {
+        document.querySelectorAll('.wishlist-item-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', updateSelectAllWishlistState);
+        });
+    }
+
+    if (selectAllWishlistCheckbox) {
+        selectAllWishlistCheckbox.addEventListener('change', function() {
+            document.querySelectorAll('.wishlist-item-checkbox').forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+            updateSelectAllWishlistState();
+        });
+    }
+
+    if (deleteSelectedWishlistButton) {
+        deleteSelectedWishlistButton.addEventListener('click', function() {
+            const selectedCheckboxes = document.querySelectorAll('.wishlist-item-checkbox:checked');
+            if (selectedCheckboxes.length === 0) {
+                alert('Tidak ada item yang dipilih untuk dihapus.');
+                return;
+            }
+            if (confirm(`Anda yakin ingin menghapus ${selectedCheckboxes.length} item terpilih dari wishlist?`)) {
+                selectedCheckboxes.forEach(checkbox => {
+                    const itemId = checkbox.closest('.product-card').dataset.id;
+                    allWishlistItems = allWishlistItems.filter(item => item.id !== itemId);
+                });
+                renderWishlist(); // This will re-render and update counts and select all state
+            }
+        });
+    }
+
+
+    // Initial Render
+    renderWishlist();
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,663 @@
+/* plain approach/component/css/pages/_product-detail.css */
+
+/* --- Product Detail Page Specific Styles --- */
+
+/* .product-detail-page-content.container and .product-detail-layout
+   are in layout/_page_layouts.css */
+.product-detail-page-content.container {
+    padding-top: var(--spacing-6);
+    padding-bottom: var(--spacing-10);
+}
+
+/* Grid area assignments for .product-detail-layout */
+@media (min-width: 768px) {
+    .product-gallery-column { grid-area: gallery; }
+    .product-info-column { grid-area: info; }
+    .product-purchase-column { grid-area: purchase; } /* Spans or specific area based on MQ */
+}
+@media (min-width: 1024px) {
+    /* grid-area assignments remain the same */
+    .product-purchase-column { /* Sticky behavior for 3-column layout */
+        max-width: 320px;
+        margin-left: 0;
+        margin-right: 0;
+        position: sticky;
+        top: calc(var(--site-header-height, 70px) + var(--spacing-6)); /* Adjust 70px if header height is different */
+        align-self: flex-start;
+    }
+}
+
+
+/* Product Gallery Column */
+.product-gallery-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+.product-main-image-container .main-product-image.product-image-placeholder { /* Extends .product-image-placeholder */
+    width: 100%;
+    height: auto !important;
+    aspect-ratio: 4 / 5; /* Or your preferred aspect ratio */
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border-bottom: none; /* Override if base .product-image-placeholder has it */
+}
+.product-thumbnail-gallery {
+    display: flex;
+    gap: var(--spacing-2);
+    overflow-x: auto;
+}
+.product-thumbnail-item {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+    transition: border-color var(--transition-duration);
+    flex-shrink: 0;
+}
+.product-thumbnail-item .thumbnail-image.product-image-placeholder { /* Extends .product-image-placeholder */
+    width: 64px;
+    height: 64px;
+}
+.product-thumbnail-item:hover,
+.product-thumbnail-item.active {
+    border-color: var(--primary);
+}
+
+
+/* Product Info Column */
+.product-info-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+.product-title-detail {
+    font-size: var(--font-size-xl); /* Or --font-size-2xl */
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--foreground);
+}
+.product-meta-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    font-size: var(--font-size-sm);
+    color: var(--muted-foreground);
+}
+.product-meta-info .product-rating .icon.star-filled { /* Star icon style is in _review.css or general utilities */
+    /* color: #facc15; */ /* Defined in _product-detail.css review section */
+    width: 1rem; height: 1rem;
+    /* fill: currentColor; */
+}
+.product-price-detail {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+}
+
+.variant-selection-group .variant-label {
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+    margin-bottom: var(--spacing-2);
+}
+.variant-selection-group .variant-label .selected-variant-name {
+    font-weight: var(--font-weight-medium);
+}
+.variant-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+}
+.variant-button.btn-sm { /* Extends .btn .btn-outline .btn-sm */
+    /* Component styles apply */
+    padding: var(--spacing-2_5, 0.625rem) var(--spacing-3);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+.variant-button.active { /* Specific active state for variant buttons */
+    border-color: var(--primary);
+    background-color: hsl(var(--primary) / 0.1);
+    color: var(--primary);
+}
+
+.product-description-tabs .product-info-tabs.tab-navigation { /* Uses .tab-navigation */
+    /* Specific styles in layout/_tab_navigation.css */
+    display: flex;
+    gap: var(--spacing-4);
+}
+.product-tab-content .tab-pane { /* General tab pane style */
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+    line-height: var(--line-height-base);
+    /* display: none; by default, JS handles active */
+}
+.product-tab-content .tab-pane.active {
+    display: block;
+}
+.product-tab-content .tab-pane p {
+    margin-bottom: var(--spacing-2);
+}
+.product-tab-content .tab-pane strong {
+    color: var(--muted-foreground);
+    font-weight: var(--font-weight-medium);
+}
+.link-see-more { /* Specific link style */
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    color: var(--primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+.link-see-more .icon { width: 1rem; height: 1rem; }
+
+
+.store-info-card-detail.card { /* Extends .card */
+    padding: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+}
+.store-info-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+.store-info-header .store-avatar-placeholder.placeholder-bg { /* Extends .placeholder-bg */
+    width: 48px; height: 48px;
+    border-radius: var(--radius);
+    flex-shrink: 0;
+}
+.store-name-location .store-name-heading {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-0_5, 0.125rem);
+}
+.store-name-location .store-location-text {
+    font-size: var(--font-size-sm);
+    color: var(--muted-foreground);
+    display: inline-flex; align-items: center; gap: var(--spacing-1);
+}
+.store-name-location .store-location-text .icon { width: 0.875rem; height: 0.875rem; }
+
+.store-shipping-details {
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+}
+.store-shipping-details .store-shipping-cost {
+    font-weight: var(--font-weight-medium);
+}
+.store-shipping-details .store-shipping-eta {
+    color: var(--muted-foreground);
+}
+.store-other-products-link.btn-link.btn-sm { /* Extends button classes */
+    align-self: flex-start;
+    color: var(--primary);
+}
+.store-other-products-link .icon { margin-left: var(--spacing-1); }
+
+
+/* Product Purchase Column */
+.product-purchase-column { /* This is a .card in some MQs */
+    /* max-width and sticky are handled by @media rule for this column */
+    padding: var(--spacing-4);
+    display: flex;
+}
+.product-purchase-column.card { /* Styles when it behaves as a card */
+    padding: var(--spacing-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+.purchase-column-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--foreground);
+}
+.selected-variant-display {
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+}
+.selected-variant-display .stock-info {
+    color: var(--muted-foreground);
+    font-size: 0.8rem;
+    margin-top: var(--spacing-1);
+}
+
+.quantity-adjuster-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-4);
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+    /* Styles from _cart.css for .quantity-adjuster and its children can be reused
+       or made into a component if they are identical. */
+}
+
+.subtotal-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+}
+.subtotal-display .subtotal-amount {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+}
+
+.purchase-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+}
+.purchase-buttons .btn { /* Extends .btn */
+    width: 100%;
+    justify-content: center;
+}
+.purchase-buttons .btn .icon { margin-right: var(--spacing-1_5, 0.375rem); }
+
+.additional-actions {
+    display: flex;
+    justify-content: space-around;
+    gap: var(--spacing-2);
+    margin-top: var(--spacing-2);
+}
+.action-icon-button.btn-ghost.btn-sm { /* Extends button classes */
+    color: var(--muted-foreground);
+    font-size: var(--font-size-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1);
+}
+.action-icon-button .icon {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+.action-icon-button:hover {
+    color: var(--primary);
+}
+
+/* === Review Section Styling (from "review page styling start / end" & NEW Buyer Reviews Section) === */
+/* This section is part of detailProduct.html */
+
+.product-reviews-section.card, /* Old review section name */
+.buyer-reviews-section.card {    /* New review section name */
+    margin-top: var(--spacing-8);
+    padding: var(--spacing-6); /* Overall padding for the review section card */
+    border-top: 4px solid hsl(var(--border)); /* Example from new buyer reviews */
+}
+
+.section-title-like, /* Old name */
+.buyer-reviews-main-title { /* New name */
+    font-size: var(--font-size-xl); /* Or your preferred title size */
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-4); /* Or spacing-5 for new */
+    color: hsl(var(--foreground));
+}
+
+.rating-summary-container, /* Old */
+.rating-overview-block {     /* New */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6); /* Or spacing-5 for new */
+    margin-bottom: var(--spacing-6); /* Or spacing-5 for new */
+    padding-bottom: var(--spacing-6); /* Or spacing-5 for new */
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+@media (min-width: 768px) {
+    .rating-summary-container,
+    .rating-overview-block {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .overall-rating-block, /* Old */
+    .average-rating-details { /* New */
+        flex: 0 0 auto; /* Old */
+        /* flex: 0 0 200px; New */
+        margin-right: var(--spacing-8); /* Or spacing-6 for new */
+    }
+    .rating-histogram-block, /* Old */
+    .detailed-rating-bars {   /* New */
+        flex: 1;
+    }
+}
+
+/* Old overall rating display */
+.overall-rating-block .average-stars-display {
+    display: flex;
+    gap: var(--spacing-1);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-1);
+}
+.overall-rating-block .average-rating-text {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+
+/* New average rating display */
+.average-rating-details .average-rating-score {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: var(--spacing-2);
+}
+.average-rating-details .rating-summary-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: hsl(var(--primary));
+    margin-right: var(--spacing-2);
+}
+.average-rating-details .score-value {
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    color: hsl(var(--foreground));
+    line-height: 1;
+}
+.average-rating-details .score-max {
+    font-size: var(--font-size-base);
+    color: hsl(var(--muted-foreground));
+    margin-left: var(--spacing-1);
+}
+.average-rating-details .buyer-satisfaction-text,
+.average-rating-details .rating-review-counts {
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+    line-height: var(--line-height-snug);
+}
+.average-rating-details .buyer-satisfaction-text {
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--foreground));
+    margin-bottom: var(--spacing-1);
+}
+
+
+.icon.star-filled {
+    color: #facc15; /* Tailwind yellow-400 or your theme's star color */
+    fill: currentColor;
+}
+.icon.star-empty {
+    color: hsl(var(--border));
+    /* fill: transparent; stroke: hsl(var(--muted-foreground)); stroke-width: 1.5px; */ /* For outline if needed */
+}
+
+
+.rating-histogram-block, /* Old */
+.detailed-rating-bars {   /* New */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2); /* Or spacing-1_5 for new */
+}
+.rating-bar-row, /* Old */
+.rating-distribution-row { /* New */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3); /* Or spacing-2 for new */
+    font-size: var(--font-size-sm);
+}
+.rating-bar-row .star-label { /* Old */
+    color: hsl(var(--muted-foreground));
+    width: 50px;
+    flex-shrink: 0;
+}
+/* New star label with icon */
+.rating-distribution-row .star-small {
+    width: 1em; height: 1em;
+}
+.rating-distribution-row .star-num {
+    color: hsl(var(--muted-foreground)); /* Number next to star */
+}
+
+.rating-bar-container, /* Old */
+.rating-bar-progress {  /* New */
+    flex-grow: 1;
+    height: 8px;
+    background-color: hsl(var(--secondary));
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+.rating-bar-fill, /* Old */
+.rating-bar-progress .filled { /* New */
+    height: 100%;
+    background-color: hsl(var(--primary)); /* Old fill color */
+    /* background-color: hsl(var(--muted-foreground)); */ /* New fill color from wireframe */
+    border-radius: var(--radius-full);
+    transition: width 0.3s ease-in-out;
+}
+.rating-bar-row .rating-count, /* Old */
+.rating-distribution-row .count { /* New */
+    color: hsl(var(--muted-foreground));
+    min-width: 30px; /* Or 40px for new */
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* Filters and Media Gallery Section (New Buyer Reviews) */
+.reviews-interactive-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-5);
+    padding-bottom: var(--spacing-5);
+    margin-bottom: var(--spacing-5);
+    border-bottom: 1px solid hsl(var(--border));
+}
+@media (min-width: 768px) {
+    .reviews-interactive-section {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .review-filters-column {
+        flex: 0 0 220px;
+        margin-right: var(--spacing-6);
+    }
+    .review-media-gallery-column {
+        flex: 1;
+    }
+}
+
+.review-filters-column.card { /* Extends card */
+    padding: var(--spacing-4);
+    background-color: hsl(var(--secondary) / 0.5);
+}
+.filter-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
+    color: hsl(var(--foreground));
+}
+.filter-option-button.btn-ghost { /* Extends .btn-ghost */
+    width: 100%;
+    justify-content: space-between;
+    padding: var(--spacing-2_5, 0.625rem) var(--spacing-3);
+    margin-bottom: var(--spacing-2);
+    font-weight: var(--font-weight-normal);
+    color: hsl(var(--foreground));
+    background-color: hsl(var(--background));
+    border: 1px solid hsl(var(--border));
+    text-align: left;
+}
+.filter-option-button:hover {
+    background-color: hsl(var(--accent));
+}
+.filter-option-button .icon {
+    color: hsl(var(--muted-foreground));
+}
+
+.media-gallery-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-3);
+    color: hsl(var(--foreground));
+}
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: var(--spacing-2);
+}
+.media-item.placeholder-bg { /* Extends .placeholder-bg */
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs, 0.75rem);
+}
+.media-item.more-media {
+    background-color: hsl(var(--muted) / 0.7);
+    color: hsl(var(--foreground));
+    font-weight: var(--font-weight-medium);
+}
+
+
+/* Review List Styling */
+.reviews-list-container /* Old */
+    
+.selected-reviews-block { /* New */
+    padding: var(--spacing-4);
+    background-color: hsl(var(--secondary) / 0.5);
+    border-radius: var(--radius);
+}
+
+.reviews-header, /* Old */
+.selected-reviews-header { /* New */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-3) var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+}
+ .selected-reviews-header .reviews-title { /* New */
+    font-size: var(--font-size-base); /* Or lg */
+    font-weight: var(--font-weight-semibold);
+    color: hsl(var(--foreground));
+    margin-right: auto;
+}
+.selected-reviews-header .reviews-count-info { /* New */
+    font-size: var(--font-size-sm);
+    color: hsl(var(--muted-foreground));
+}
+.reviews-sort-options .form-select.btn-sm { /* New, extends .form-select, .btn-sm */
+    min-width: 180px;
+    height: calc(var(--button-padding-y) * 2 + var(--font-size-xs, 0.75rem) * var(--line-height-base));
+    padding-top: var(--spacing-1);
+    padding-bottom: var(--spacing-1);
+    font-size: var(--font-size-xs, 0.75rem);
+    background-position: right var(--spacing-2) center;
+}
+
+.view-filters-button.btn-link.btn-sm { /* Old, extends button classes */
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1);
+}
+.view-filters-button .icon { width: 1rem; height: 1rem;}
+
+.reviews-grid, /* Old grid for multiple reviews */
+.review-items-list { /* New list container */
+    display: grid; /* Old */
+    /* display: flex; flex-direction: column; New */
+    grid-template-columns: 1fr; /* Old */
+    gap: var(--spacing-5); /* Or spacing-4 for new */
+}
+@media (min-width: 768px) { /* Old */
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.review-item.card, /* Old */
+.review-item-detailed.card { /* New, extends .card */
+    padding: var(--spacing-4);
+    display: flex; /* Old */
+    flex-direction: column; /* Old */
+    gap: var(--spacing-3); /* Old */
+    /* border: 1px solid hsl(var(--border)); New, if not covered by .card */
+    /* background-color: hsl(var(--card-background)); New, if not covered by .card */
+}
+.review-item-header { /* Old */
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+}
+.review-item-main-info { /* New */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-2);
+}
+
+.reviewer-avatar.placeholder-bg, /* Old, extends .placeholder-bg */
+.review-item-detailed .reviewer-avatar.placeholder-bg { /* New */
+    width: 36px; /* Old */
+    /* width: 32px; New */
+    height: 36px; /* Old */
+    /* height: 32px; New */
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    flex-shrink: 0; /* Old */
+}
+ .reviewer-avatar-name { /* New */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.reviewer-details { /* Old */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.reviewer-name {
+    font-weight: var(--font-weight-medium); /* Or semibold for New */
+    font-size: var(--font-size-sm);
+    color: hsl(var(--foreground)); /* Old */
+}
+.review-date, /* Old */
+.review-item-detailed .review-timestamp { /* New */
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground));
+}
+
+.review-item-stars, /* Old */
+.review-item-detailed .review-stars { /* New */
+    display: flex;
+    gap: var(--spacing-0_5, 0.125rem);
+    font-size: 0.875rem;
+    margin-left: auto; /* Old */
+    flex-shrink: 0; /* Old */
+    /* margin-bottom: var(--spacing-1); New, within .review-rating-date */
+}
+ .review-rating-date { /* New */
+    text-align: right;
+}
+
+.review-content p, /* Old */
+.review-text-content { /* New */
+    font-size: var(--font-size-sm);
+    color: hsl(var(--foreground));
+    line-height: var(--line-height-base);
+    margin-bottom: var(--spacing-2); /* Or spacing-1 for New */
+}
+.review-content .link-read-more, /* Old */
+.review-text-content + .link-read-more { /* New */
+    font-size: var(--font-size-sm);
+    color: var(--primary);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Pagination for reviews in detailProduct.html (specific) */
+.selected-reviews-block .pagination { /* Assuming .pagination is from components/_pagination.css */
+    /* This might need adjustments if it's a different style of pagination */
+    /* The HTML shows buttons directly inside a .pagination div, not matching the ul/li structure */
+    /* For the button-based one in detailProduct.html: */
+    display: flex; /* Already on .pagination from component */
+    justify-content: center; /* If needed, or handled by .pagination-container */
+    gap: var(--spacing-1); /* Space between buttons */
+    margin-top: var(--spacing-4); /* Space above this pagination */
+}
+.selected-reviews-block .pagination .btn.btn-ghost.btn-icon.pagination-button {
+    /* Standard button styles apply, ensure padding and size are appropriate */
+    min-width: var(--button-h); /* Make numbered buttons squarish */
+}
+.selected-reviews-block .pagination span.pagination { /* This was a span in HTML */
+    display: inline-flex; /* To keep numbered buttons together */
+    gap: var(--spacing-1);
+}
