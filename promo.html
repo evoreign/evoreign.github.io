@@ -49,7 +49,7 @@
 
         <section class="main-promo-banner content-section">
             <a href="#" class="banner-placeholder placeholder-bg" aria-label="Promo Utama">
-                 <img src="https://via.placeholder.com/1200x300/007bff/ffffff?text=Banner+Promo+Besar" alt="Banner Promo Utama">
+                 <img src="./assets/banner/banner1.jpg" alt="Banner Promo Utama">
             </a>
         </section>
 
@@ -153,17 +153,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Sample Product Data
     const sampleProducts = [
-        { id: "hp1", name: "Nama Produk Hot Promo", price: "99.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Hot+Promo+1" },
-        { id: "hp2", name: "Produk Diskon Kilat", price: "75.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Hot+Promo+2" },
-        { id: "hp3", name: "Item Terlaris Promo", price: "120.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Hot+Promo+3" },
-        { id: "hp4", name: "Promo Spesial Hari Ini", price: "50.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Hot+Promo+4" },
-        { id: "hp5", name: "Barang Cuci Gudang", price: "88.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Hot+Promo+5" },
-        { id: "hp6", name: "Penawaran Terbatas", price: "110.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Hot+Promo+6" },
-        { id: "d1", name: "Diskon Besar Produk A", price: "199.000", image: "https://via.placeholder.com/200x180/4682b4/ffffff?text=Diskon+A" },
-        { id: "d2", name: "Potongan Harga B", price: "45.000", image: "https://via.placeholder.com/200x180/4682b4/ffffff?text=Diskon+B" },
-        { id: "filter1", name: "Produk Sesuai Filter 1", price: "130.000", category: "Elektronik", filterTags: ["gratis-ongkir", "mall"], image: "https://via.placeholder.com/200x180/20b2aa/ffffff?text=Filter+1" },
-        { id: "filter2", name: "Produk Kecantikan Wajah Filter", price: "160.000", category: "Kecantikan Wajah", filterTags: ["mall"], image: "https://via.placeholder.com/200x180/20b2aa/ffffff?text=Filter+Kecantikan" },
-        { id: "filter3", name: "Produk Olahraga Flash Sale", price: "230.000", category: "Olahraga & Outdoor", filterTags: ["flash-sale"], image: "https://via.placeholder.com/200x180/20b2aa/ffffff?text=Filter+Olahraga" }
+        { id: "hp1", name: "Sabun Laundry Konsentrat", price: "99.000", image: "./assets/products/hf/1.jpeg" },
+        { id: "hp2", name: "Payung Lipat Tongkat Motif Bebek Umbrella Bahan PVC", price: "75.000", image: "./assets/products/hf/2.jpg" },
+        { id: "hp3", name: "Boneka Kucing ISTANA BONEKA Ly Hairry Cat White Lucu", price: "120.000", image: "./assets/products/hf/3.jfif" },
+        { id: "hp4", name: "Nike Air Jordan 1 Retro High Light Smoke Grey", price: "50.000", image: "./assets/products/hf/4.jfif" },
+        { id: "hp5", name: "ANT PROJECT - Tas Clucth Pria RAPTOR Organizer", price: "88.000", image: "./assets/products/hf/5.jfif" },
+        { id: "hp6", name: "TVF Footwear - Sepatu Sandal Prau Hijau", price: "110.000", image: "./assets/products/hf/6.jpg" },
+        { id: "d1", name: "READY HAMPERS KUE NASTAR BOX PREMIUM IMLEK", price: "199.000", image: "./assets/products/diskon/1.jpg" },
+        { id: "d2", name: "Sepatu Running Ortuseight Hyperblast Encore SL Original", price: "45.000", image: "./assets/products/diskon/2.jpeg" },
+        { id: "filter1", name: "Vention Kabel HDMI to DVI Ultra HD 4K Bi Directional", price: "130.000", category: "Elektronik", filterTags: ["gratis-ongkir", "mall"], image: "./assets/products/filter/2.jpg" },
+        { id: "filter2", name: "Set Perhiasan wanita ASLI XUPING grosir", price: "160.000", category: "Kecantikan Wajah", filterTags: ["mall"], image: "./assets/products/filter/1.jpg" },
+        { id: "filter3", name: "New Sepatu Badminton Victor A830 NitroLite", price: "230.000", category: "Olahraga & Outdoor", filterTags: ["flash-sale"], image: "./assets/products/filter/3.jfif" }
     ];
 
     function createProductCardHTML(product) {
