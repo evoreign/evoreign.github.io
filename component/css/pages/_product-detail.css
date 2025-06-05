@@ -442,7 +442,7 @@
     margin-bottom: var(--spacing-5);
     border-bottom: 1px solid hsl(var(--border));
 }
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .reviews-interactive-section {
         flex-direction: row;
         align-items: flex-start;
@@ -454,7 +454,7 @@
     .review-media-gallery-column {
         flex: 1;
     }
-}
+} */
 
 .review-filters-column.card { /* Extends card */
     padding: var(--spacing-4);
@@ -557,11 +557,7 @@
     grid-template-columns: 1fr; /* Old */
     gap: var(--spacing-5); /* Or spacing-4 for new */
 }
-@media (min-width: 768px) { /* Old */
-    .reviews-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+
 
 .review-item.card, /* Old */
 .review-item-detailed.card { /* New, extends .card */
