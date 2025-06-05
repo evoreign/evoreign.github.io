@@ -55,7 +55,7 @@
         <section class="store-header-section card">
             <div class="store-header-main-info">
                 <div class="store-avatar-placeholder placeholder-bg">
-                     <img src="https://via.placeholder.com/100x100/007bff/ffffff?Text=ADVL+Logo" alt="ADVL Official Shop">
+                     <img src="./assets/store/logo.image" alt="ADVL Official Shop">
                 </div>
                 <div class="store-details-actions">
                     <div class="store-name-status">
@@ -112,13 +112,13 @@
         <section class="store-banner-carousel content-section">
             <div class="banner-carousel-wrapper" id="storeBannerCarousel">
                 <div class="banner-slide active">
-                    <img src="https://via.placeholder.com/1200x250/dc3545/ffffff?text=Store+Promo+Banner+1" alt="Store Promotion 1">
+                    <img src="./assets/banner/banner4.png" alt="Store Promotion 1">
                 </div>
                 <div class="banner-slide">
-                     <img src="https://via.placeholder.com/1200x250/28a745/ffffff?text=Store+Promo+Banner+2" alt="Store Promotion 2">
+                     <img src="./assets/banner/banner3.jpg" alt="Store Promotion 2">
                 </div>
                  <div class="banner-slide">
-                     <img src="https://via.placeholder.com/1200x250/ffc107/000000?text=Store+Promo+Banner+3" alt="Store Promotion 3">
+                     <img src="./assets/banner/banner2.jpg" alt="Store Promotion 3">
                 </div>
             </div>
             <div class="carousel-pagination" id="storeBannerPagination">
@@ -299,26 +299,26 @@ document.addEventListener('DOMContentLoaded', function () {
     // Dummy Store Product Data & Pagination
     const dummyStoreProducts = {
         "Baju": [
-            { id: "sb1", name: "Kemeja Flanel Store", price: "180.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Baju+1" },
-            { id: "sb2", name: "T-Shirt Basic Store", price: "90.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Baju+2" },
-            { id: "sb3", name: "Polo Shirt Store", price: "120.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Baju+3" },
-            { id: "sb4", name: "Blouse Wanita Store", price: "160.000", image: "https://via.placeholder.com/200x180/ff6347/ffffff?text=Baju+4" }
+            { id: "sb1", name: "ADLV Basic Short Sleeve T-Shirt 2 Black", price: "180.000", image: "./assets/store/shirt/1.jpeg" },
+            { id: "sb2", name: "ADLV Ink Stamp Logo Short Sleeve T-Shirt Dark Navy", price: "90.000", image: "./assets/store/shirt/2.jpg" },
+            { id: "sb3", name: "ADLV Basic Logo Needlework Black - Kaos Lengan Panjang", price: "120.000", image: "./assets/store/shirt/3.jpeg" },
+            { id: "sb4", name: "ADLV Baby Face Scream Boy Short Sleeve", price: "160.000", image: "./assets/store/shirt/4.jpeg" }
         ],
         "Celana": [
-            { id: "sc1", name: "Celana Chino Store", price: "220.000", image: "https://via.placeholder.com/200x180/4682b4/ffffff?text=Celana+1" },
-            { id: "sc2", name: "Jeans Pria Store", price: "350.000", image: "https://via.placeholder.com/200x180/4682b4/ffffff?text=Celana+2" }
+            { id: "sc1", name: "ADLV Creature Metal Logo Pants Charcoal", price: "220.000", image: "./assets/store/celana/1.jpeg" },
+            { id: "sc2", name: "ADLV Segregated Pocket Denim Set Up Pants Blue", price: "350.000", image: "./assets/store/celana/2.jpeg" }
         ],
         "Jaket": [
-            { id: "sj1", name: "Jaket Bomber Store", price: "280.000", image: "https://via.placeholder.com/200x180/20b2aa/ffffff?text=Jaket+1" }
+            { id: "sj1", name: "ADLV Lettering Rabbit Hoodie Black - Hoodie Oversize", price: "280.000", image: "./assets/store/jaket/1.jpeg" }
         ],
          "Topi": [
-            { id: "st1", name: "Topi Baseball Store", price: "75.000", image: "https://via.placeholder.com/200x180/6a5acd/ffffff?text=Topi+1" }
+            { id: "st1", name: "ADLV Basic Ball Cap Black", price: "75.000", image: "./assets/store/hats/1.jpeg" }
         ],
         "Knit Collections": [
-            { id: "sk1", name: "Sweater Rajut Store", price: "190.000", image: "https://via.placeholder.com/200x180/daa520/000000?text=Knit+1" }
+            { id: "sk1", name: "ADLV Symbol Logo Multi Color V Neck", price: "190.000", image: "./assets/store/knit/1.jpeg" }
         ],
         "Lainnya": [
-             { id: "sl1", name: "Aksesoris Lain Store", price: "50.000", image: "https://via.placeholder.com/200x180/778899/ffffff?text=Lainnya+1" }
+             { id: "sl1", name: "ADLV New Symbol Logo Two Way Gym Sack Ivory", price: "50.000", image: "./assets/store/other/1.jpeg" }
         ]
     };
     const productsPerPageStore = 8; // Show 8 products per page
