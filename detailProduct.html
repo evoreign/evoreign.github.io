@@ -19,17 +19,23 @@
     <header class="site-header">
     <div class="header-container">
         <div class="logo-container">
-                <a href="index.html" class="logo-link">
-                    <img src="./assets/logo.PNG" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
-                </a>
+            <a href="index.html" class="logo-link">
+                <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+            </a>
         </div>
-        <div class="search-bar-container new-search-bar">
+
+        <div class="search-bar-container new-search-bar desktop-search">
             <form action="#" class="search-form">
                 <i data-lucide="search" class="icon search-icon-inside"></i>
                 <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
             </form>
         </div>
+
         <nav class="header-actions">
+            <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
+                <i data-lucide="search" class="icon"></i>
+            </button>
+            
             <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
                 <i data-lucide="shopping-cart" class="icon"></i>
             </a>
@@ -45,6 +51,20 @@
         </nav>
     </div>
 </header>
+
+<div class="search-overlay" id="searchOverlay">
+    <div class="search-overlay-header">
+        <div class="search-bar-container new-search-bar">
+            <form action="#" class="search-form">
+                <i data-lucide="search" class="icon search-icon-inside"></i>
+                <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
+            </form>
+        </div>
+        <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
+    </div>
+    <div class="search-overlay-content">
+        </div>
+</div>
 
     <main class="product-detail-page-content container">
         <div class="product-detail-layout">
@@ -260,6 +280,31 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // ADD THIS JAVASCRIPT TO YOUR <script> TAGS
+
+// --- Search Overlay Logic ---
+const searchOverlay = document.getElementById('searchOverlay');
+const searchTrigger = document.querySelector('.mobile-search-trigger');
+const searchClose = document.getElementById('searchOverlayClose');
+const mobileSearchInput = document.getElementById('mobileSearchInput');
+
+if (searchTrigger) {
+    searchTrigger.addEventListener('click', () => {
+        if (searchOverlay) {
+            searchOverlay.classList.add('is-active');
+            // Automatically focus the input field when the overlay opens
+            if(mobileSearchInput) mobileSearchInput.focus();
+        }
+    });
+}
+
+if (searchClose) {
+    searchClose.addEventListener('click', () => {
+        if (searchOverlay) {
+            searchOverlay.classList.remove('is-active');
+        }
+    });
+}
     lucide.createIcons();
 
     // Header Links (assuming they are converted to <a> tags)

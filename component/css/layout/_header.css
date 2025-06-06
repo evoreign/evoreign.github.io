@@ -135,3 +135,61 @@
    so it might stay in _checkout.css or be a more generic layout element if reused.
    For now, keeping it out of _header.css unless it's a true header variant.
 */
+/* ADD THIS CODE TO THE END OF _header.css */
+
+/* --- Search Overlay Styles --- */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(var(--background));
+    z-index: 100;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-overlay.is-active {
+    transform: translateY(0);
+}
+
+.search-overlay-header {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-3) var(--spacing-4);
+    border-bottom: 1px solid hsl(var(--border));
+    gap: var(--spacing-2);
+}
+
+.search-overlay-header .search-bar-container {
+    flex-grow: 1;
+}
+
+.search-overlay-close {
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.search-overlay-content {
+    padding: var(--spacing-4);
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* --- Mobile vs. Desktop Search Visibility --- */
+.mobile-search-trigger {
+    display: none; /* Hidden by default */
+}
+
+/* On screens 767px or smaller (mobile) */
+@media (max-width: 767px) {
+    .desktop-search {
+        display: none; /* Hide the search bar in the main header */
+    }
+    .mobile-search-trigger {
+        display: inline-flex; /* Show the search icon button */
+    }
+}

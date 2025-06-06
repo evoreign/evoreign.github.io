@@ -29,34 +29,54 @@
 <body class="page-body">
 
     <header class="site-header">
-        <div class="header-container">
-            <div class="logo-container">
-                <a href="index.html" class="logo-link">
-                    <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
-                </a>
-            </div>
-            <div class="search-bar-container new-search-bar">
-                <form action="#" class="search-form">
-                    <i data-lucide="search" class="icon search-icon-inside"></i>
-                    <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
-                </form>
-            </div>
-            <nav class="header-actions">
-                <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
-                    <i data-lucide="shopping-cart" class="icon"></i>
-                </a>
-                <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
-                    <i data-lucide="heart" class="icon"></i>
-                </a>
-                <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
-                    <i data-lucide="message-circle" class="icon"></i>
-                </a>
-                <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
-                    <i data-lucide="user" class="icon"></i>
-                </a>
-            </nav>
+    <div class="header-container">
+        <div class="logo-container">
+            <a href="index.html" class="logo-link">
+                <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+            </a>
         </div>
-    </header>
+
+        <div class="search-bar-container new-search-bar desktop-search">
+            <form action="#" class="search-form">
+                <i data-lucide="search" class="icon search-icon-inside"></i>
+                <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+            </form>
+        </div>
+
+        <nav class="header-actions">
+            <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
+                <i data-lucide="search" class="icon"></i>
+            </button>
+            
+            <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+                <i data-lucide="shopping-cart" class="icon"></i>
+            </a>
+            <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+                <i data-lucide="heart" class="icon"></i>
+            </a>
+            <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+                <i data-lucide="message-circle" class="icon"></i>
+            </a>
+            <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+                <i data-lucide="user" class="icon"></i>
+            </a>
+        </nav>
+    </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+    <div class="search-overlay-header">
+        <div class="search-bar-container new-search-bar">
+            <form action="#" class="search-form">
+                <i data-lucide="search" class="icon search-icon-inside"></i>
+                <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
+            </form>
+        </div>
+        <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
+    </div>
+    <div class="search-overlay-content">
+        </div>
+</div>
 
     <main class="profile-page-content container">
         <div class="profile-layout-container">
@@ -273,6 +293,31 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // ADD THIS JAVASCRIPT TO YOUR <script> TAGS
+
+// --- Search Overlay Logic ---
+const searchOverlay = document.getElementById('searchOverlay');
+const searchTrigger = document.querySelector('.mobile-search-trigger');
+const searchClose = document.getElementById('searchOverlayClose');
+const mobileSearchInput = document.getElementById('mobileSearchInput');
+
+if (searchTrigger) {
+    searchTrigger.addEventListener('click', () => {
+        if (searchOverlay) {
+            searchOverlay.classList.add('is-active');
+            // Automatically focus the input field when the overlay opens
+            if(mobileSearchInput) mobileSearchInput.focus();
+        }
+    });
+}
+
+if (searchClose) {
+    searchClose.addEventListener('click', () => {
+        if (searchOverlay) {
+            searchOverlay.classList.remove('is-active');
+        }
+    });
+}
     lucide.createIcons();
 
     // --- PROFILE PAGE SCRIPT ---
@@ -422,11 +467,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Sample order data
     const allOrders = [
-        { id: "order1", storeName: "Nama Toko Elektronik", status: "Selesai", statusMessage: "Pesanan tiba di alamat tujuan.", icon: "truck", products: [{ name: "Nama Produk Yang Cukup Panjang Contohnya", quantity: 1, price: "125.000", image: "https://via.placeholder.com/80x80/007bff/ffffff?text=Produk+Elektronik" }], total: "125.000", storeId: "tokoElektronik", productId: "produkElektronik" },
-        { id: "order2", storeName: "Toko Fashionista", status: "Dikirim", statusMessage: "Pesanan sedang dalam perjalanan.", icon: "package", products: [{ name: "Baju Kemeja Pria Lengan Panjang", quantity: 2, price: "150.000", image: "https://via.placeholder.com/80x80/28a745/ffffff?text=Baju+Kemeja" }], total: "300.000", storeId: "tokoFashion", productId: "bajuKemeja" },
-        { id: "order3", storeName: "Perabotan Rumah Modern", status: "Belum Bayar", statusMessage: "Menunggu pembayaran Anda.", icon: "credit-card", products: [{ name: "Lampu Meja Belajar LED", quantity: 1, price: "85.000", image: "https://via.placeholder.com/80x80/ffc107/000000?text=Lampu+Meja" }], total: "85.000", storeId: "tokoPerabotan", productId: "lampuMeja" },
-        { id: "order4", storeName: "Gadget Store", status: "Dikemas", statusMessage: "Pesanan sedang disiapkan oleh penjual.", icon: "archive", products: [{ name: "Wireless Mouse Pro", quantity: 1, price: "250.000", image: "https://via.placeholder.com/80x80/fd7e14/ffffff?text=Mouse" }], total: "250.000", storeId: "tokoGadget", productId: "mousePro" },
-        { id: "order5", storeName: "Toko Buku Edukasi", status: "Dibatalkan", statusMessage: "Pesanan telah dibatalkan.", icon: "x-circle", products: [{ name: "Buku Novel Fantasi Terbaru", quantity: 1, price: "95.000", image: "https://via.placeholder.com/80x80/17a2b8/ffffff?text=Buku+Novel" }], total: "95.000", storeId: "tokoBuku", productId: "novelFantasi" }
+        { 
+            id: "order1", storeName: "Kinera", status: "Selesai", statusMessage: "Pesanan tiba di alamat tujuan, diterima oleh Anggota keluarga.",
+            icon: "truck",
+            products: [{ name: "Kinera Celest Wyvern White / Wyvern Abyss Pro 10mm", quantity: 1, price: "125.000", image: "./assets/orders/1.jpeg" }],
+            total: "125.000", storeId: "tokoElektronik", productId: "produkElektronik"
+        },
+        { 
+            id: "order2", storeName: "Paper Rex", status: "Dikirim", statusMessage: "Pesanan sedang dalam perjalanan menuju alamat Anda.",
+            icon: "package",
+            products: [{ name: "Paper Rex Official DinoGlitch Jersey 2025/2026", quantity: 2, price: "150.000", image: "./assets/orders/2.jpg" }],
+            total: "300.000", storeId: "tokoFashion", productId: "bajuKemeja"
+        },
+        { 
+            id: "order3", storeName: "Texas Instrument", status: "Belum Bayar", statusMessage: "Menunggu pembayaran Anda sebelum 25 Mei 2025, 23:59.",
+            icon: "credit-card",
+            products: [{ name: "Texas Instruments BA II Plus Professional Financial Calculator", quantity: 1, price: "85.000", image: "./assets/orders/3.jpg" }],
+            total: "85.000", storeId: "tokoPerabotan", productId: "lampuMeja"
+        },
+         { 
+            id: "order4", storeName: "Press Play", status: "Dikemas", statusMessage: "Pesanan sedang disiapkan oleh penjual.",
+            icon: "archive",
+            products: [{ name: "IRIS Ultralight Ergonomic Wireless Gaming Mouse by Press Play", quantity: 1, price: "250.000", image: "./assets/orders/4.jpeg" }],
+            total: "250.000", storeId: "tokoGadget", productId: "mousePro"
+        },
+         { 
+            id: "order5", storeName: "Gramedia", status: "Dibatalkan", statusMessage: "Pesanan telah dibatalkan oleh sistem.",
+            icon: "x-circle",
+            products: [{ name: "Buku The Things You Can See Only When You Slow Down", quantity: 1, price: "95.000", image: "./assets/orders/5.jfif" }],
+            total: "95.000", storeId: "tokoBuku", productId: "novelFantasi"
+        }
+        
     ];
 
     function renderOrders(statusFilter = "Semua") {
