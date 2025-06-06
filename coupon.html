@@ -1,260 +1,268 @@
 <!DOCTYPE html>
 <html lang="id">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Kupon & Voucher Spesial - Beliin.id</title>
-      <link rel="stylesheet" href="./component/css/main.css">
-      <script src="https://unpkg.com/lucide@latest"></script>
-      <style>
-         /* Minimal inline style for quick icon display, replace with proper CSS classes */
-         .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
-         .placeholder-bg .icon { width: 2em; height: 2em; } /* Larger icon for image placeholders */
-      </style>
-      <link rel="icon" href="./assets/logo.PNG" type="image/png">
-   </head>
-   <body class="page-body">
-      <header class="site-header">
-         <div class="header-container">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kupon & Voucher Spesial - Beliin.id</title>
+    <link rel="stylesheet" href="./component/css/main.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="./assets/logo.PNG" type="image/png">
+    <style>
+        /* Basic icon styling */
+        .icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.125em;
+        }
+        /* Larger icon for image placeholders */
+        .placeholder-bg .icon {
+            width: 2em;
+            height: 2em;
+        }
+    </style>
+</head>
+
+<body class="page-body">
+
+    <header class="site-header">
+        <div class="header-container">
             <div class="logo-container">
-               <a href="index.html" class="logo-link">
-               <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
-               </a>
+                <a href="index.html" class="logo-link">
+                    <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+                </a>
             </div>
             <div class="search-bar-container new-search-bar desktop-search">
-               <form action="#" class="search-form">
-                  <i data-lucide="search" class="icon search-icon-inside"></i>
-                  <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
-               </form>
+                <form action="#" class="search-form">
+                    <i data-lucide="search" class="icon search-icon-inside"></i>
+                    <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+                </form>
             </div>
             <nav class="header-actions">
-               <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
-               <i data-lucide="search" class="icon"></i>
-               </button>
-               <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
-               <i data-lucide="shopping-cart" class="icon"></i>
-               </a>
-               <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
-               <i data-lucide="heart" class="icon"></i>
-               </a>
-               <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
-               <i data-lucide="message-circle" class="icon"></i>
-               </a>
-               <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
-               <i data-lucide="user" class="icon"></i>
-               </a>
+                <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
+                    <i data-lucide="search" class="icon"></i>
+                </button>
+                <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+                    <i data-lucide="shopping-cart" class="icon"></i>
+                </a>
+                <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+                    <i data-lucide="heart" class="icon"></i>
+                </a>
+                <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+                    <i data-lucide="message-circle" class="icon"></i>
+                </a>
+                <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+                    <i data-lucide="user" class="icon"></i>
+                </a>
             </nav>
-         </div>
-      </header>
-      <div class="search-overlay" id="searchOverlay">
-         <div class="search-overlay-header">
+        </div>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
             <div class="search-bar-container new-search-bar">
-               <form action="#" class="search-form">
-                  <i data-lucide="search" class="icon search-icon-inside"></i>
-                  <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
-               </form>
+                <form action="#" class="search-form">
+                    <i data-lucide="search" class="icon search-icon-inside"></i>
+                    <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
+                </form>
             </div>
             <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
-         </div>
-         <div class="search-overlay-content">
-         </div>
-      </div>
-      <main class="coupon-page-content container">
-         <section class="main-promo-banner content-section">
+        </div>
+        <div class="search-overlay-content">
+            </div>
+    </div>
+
+    <main class="coupon-page-content container">
+
+        <section class="main-promo-banner content-section">
             <a href="promo.html" class="banner-placeholder placeholder-bg" aria-label="Lihat Semua Promo">
-            <img src="./assets/banner/banner3.jpg" alt="Banner Kupon & Promo" style="width:100%; height:100%; object-fit:cover;">
+                <img src="./assets/banner/banner3.jpg" alt="Banner Kupon & Promo" style="width:100%; height:100%; object-fit:cover;">
             </a>
-         </section>
-         <section class="info-bar content-section">
+        </section>
+
+        <section class="info-bar content-section">
             <a href="promo.html" class="info-item" data-target="promo">
-            <i data-lucide="tag" class="icon info-icon"></i>
-            <span>Promo Hari Ini</span>
+                <i data-lucide="tag" class="icon info-icon"></i>
+                <span>Promo Hari Ini</span>
             </a>
             <a href="coupon.html" class="info-item active" data-target="kupon">
-            <i data-lucide="ticket" class="icon info-icon"></i>
-            <span>Kupon Saya</span>
+                <i data-lucide="ticket" class="icon info-icon"></i>
+                <span>Kupon Saya</span>
             </a>
-         </section>
-         <section class="special-foryou-section content-section">
+        </section>
+
+        <section class="special-foryou-section content-section">
             <h2 class="section-title">Spesial Untukmu</h2>
             <div class="coupon-list">
-               <div class="coupon-card-large card">
-                  <div class="coupon-image-placeholder placeholder-bg">
-                     <i data-lucide="gift" class="icon"></i>
-                  </div>
-                  <div class="coupon-card-details">
-                     <h3 class="coupon-title" data-coupon-name="Diskon s/d Rp300rb">Diskon s/d Rp300rb</h3>
-                     <p class="coupon-condition">Min. Transaksi RpXjt</p>
-                  </div>
-                  <div class="coupon-card-action">
-                     <button class="btn btn-primary btn-sm use-coupon-button">Pakai</button>
-                  </div>
-               </div>
-               <div class="coupon-card-large card">
-                  <div class="coupon-image-placeholder placeholder-bg">
-                     <i data-lucide="truck" class="icon"></i>
-                  </div>
-                  <div class="coupon-card-details">
-                     <h3 class="coupon-title" data-coupon-name="Gratis Ongkir 100% s/d Rp5.000">Gratis Ongkir 100% s/d Rp5.000</h3>
-                     <p class="coupon-condition">Khusus kategori Kecantikan Wajah</p>
-                  </div>
-                  <div class="coupon-card-action">
-                     <button class="btn btn-primary btn-sm use-coupon-button">Pakai</button>
-                  </div>
-               </div>
-               <div class="coupon-card-large card">
-                  <div class="coupon-image-placeholder placeholder-bg">
-                     <i data-lucide="percent-circle" class="icon"></i>
-                  </div>
-                  <div class="coupon-card-details">
-                     <h3 class="coupon-title" data-coupon-name="Cashback 10% s/d Rp200rb">Cashback 10% s/d Rp200rb</h3>
-                     <p class="coupon-condition">Min. Transaksi RpXjt</p>
-                  </div>
-                  <div class="coupon-card-action">
-                     <button class="btn btn-primary btn-sm use-coupon-button">Pakai</button>
-                  </div>
-               </div>
+                <div class="coupon-card-large card">
+                    <div class="coupon-image-placeholder placeholder-bg">
+                        <i data-lucide="gift" class="icon"></i>
+                    </div>
+                    <div class="coupon-card-details">
+                        <h3 class="coupon-title" data-coupon-name="Diskon s/d Rp300rb">Diskon s/d Rp300rb</h3>
+                        <p class="coupon-condition">Min. Transaksi RpXjt</p>
+                    </div>
+                    <div class="coupon-card-action">
+                        <button class="btn btn-primary btn-sm use-coupon-button">Pakai</button>
+                    </div>
+                </div>
+                <div class="coupon-card-large card">
+                    <div class="coupon-image-placeholder placeholder-bg">
+                        <i data-lucide="truck" class="icon"></i>
+                    </div>
+                    <div class="coupon-card-details">
+                        <h3 class="coupon-title" data-coupon-name="Gratis Ongkir 100% s/d Rp5.000">Gratis Ongkir 100% s/d Rp5.000</h3>
+                        <p class="coupon-condition">Khusus kategori Kecantikan Wajah</p>
+                    </div>
+                    <div class="coupon-card-action">
+                        <button class="btn btn-primary btn-sm use-coupon-button">Pakai</button>
+                    </div>
+                </div>
+                <div class="coupon-card-large card">
+                    <div class="coupon-image-placeholder placeholder-bg">
+                        <i data-lucide="percent-circle" class="icon"></i>
+                    </div>
+                    <div class="coupon-card-details">
+                        <h3 class="coupon-title" data-coupon-name="Cashback 10% s/d Rp200rb">Cashback 10% s/d Rp200rb</h3>
+                        <p class="coupon-condition">Min. Transaksi RpXjt</p>
+                    </div>
+                    <div class="coupon-card-action">
+                        <button class="btn btn-primary btn-sm use-coupon-button">Pakai</button>
+                    </div>
+                </div>
             </div>
-         </section>
-         <section class="store-vouchers-section content-section">
+        </section>
+
+        <section class="store-vouchers-section content-section">
             <h2 class="section-title">Voucher Toko</h2>
             <div class="voucher-grid-small">
-               <div class="voucher-card-small card card-interactive">
-                  <div class="voucher-store-image-placeholder placeholder-bg">
-                     <i data-lucide="store" class="icon"></i>
-                  </div>
-                  <div class="voucher-card-content">
-                     <h4 class="voucher-store-name">Nama Toko A</h4>
-                     <p class="voucher-title">Diskon Rp3rb</p>
-                     <p class="voucher-condition">Min. belanja Rp115rb</p>
-                  </div>
-                  <div class="voucher-card-action">
-                     <a href="storeProfile.html" class="btn btn-outline btn-sm">Lihat Toko</a>
-                  </div>
-               </div>
-               <div class="voucher-card-small card card-interactive">
-                  <div class="voucher-store-image-placeholder placeholder-bg">
-                     <i data-lucide="store" class="icon"></i>
-                  </div>
-                  <div class="voucher-card-content">
-                     <h4 class="voucher-store-name">Toko Elektronik Jaya</h4>
-                     <p class="voucher-title">Diskon Rp5rb</p>
-                     <p class="voucher-condition">Min. belanja Rp150rb</p>
-                  </div>
-                  <div class="voucher-card-action">
-                     <a href="storeProfile.html" class="btn btn-outline btn-sm">Lihat Toko</a>
-                  </div>
-               </div>
-               <div class="voucher-card-small card card-interactive">
-                  <div class="voucher-store-image-placeholder placeholder-bg">
-                     <i data-lucide="store" class="icon"></i>
-                  </div>
-                  <div class="voucher-card-content">
-                     <h4 class="voucher-store-name">Fashionista Boutique</h4>
-                     <p class="voucher-title">Diskon 1rb</p>
-                     <p class="voucher-condition">Min. belanja Rp100rb</p>
-                  </div>
-                  <div class="voucher-card-action">
-                     <a href="storeProfile.html" class="btn btn-outline btn-sm">Lihat Toko</a>
-                  </div>
-               </div>
+                <div class="voucher-card-small card card-interactive">
+                    <div class="voucher-store-image-placeholder placeholder-bg">
+                        <i data-lucide="store" class="icon"></i>
+                    </div>
+                    <div class="voucher-card-content">
+                        <h4 class="voucher-store-name">Nama Toko A</h4>
+                        <p class="voucher-title">Diskon Rp3rb</p>
+                        <p class="voucher-condition">Min. belanja Rp115rb</p>
+                    </div>
+                    <div class="voucher-card-action">
+                        <a href="storeProfile.html" class="btn btn-outline btn-sm">Lihat Toko</a>
+                    </div>
+                </div>
+                <div class="voucher-card-small card card-interactive">
+                    <div class="voucher-store-image-placeholder placeholder-bg">
+                        <i data-lucide="store" class="icon"></i>
+                    </div>
+                    <div class="voucher-card-content">
+                        <h4 class="voucher-store-name">Toko Elektronik Jaya</h4>
+                        <p class="voucher-title">Diskon Rp5rb</p>
+                        <p class="voucher-condition">Min. belanja Rp150rb</p>
+                    </div>
+                    <div class="voucher-card-action">
+                        <a href="storeProfile.html" class="btn btn-outline btn-sm">Lihat Toko</a>
+                    </div>
+                </div>
+                <div class="voucher-card-small card card-interactive">
+                    <div class="voucher-store-image-placeholder placeholder-bg">
+                        <i data-lucide="store" class="icon"></i>
+                    </div>
+                    <div class="voucher-card-content">
+                        <h4 class="voucher-store-name">Fashionista Boutique</h4>
+                        <p class="voucher-title">Diskon 1rb</p>
+                        <p class="voucher-condition">Min. belanja Rp100rb</p>
+                    </div>
+                    <div class="voucher-card-action">
+                        <a href="storeProfile.html" class="btn btn-outline btn-sm">Lihat Toko</a>
+                    </div>
+                </div>
             </div>
-         </section>
-      </main>
-      <script>
-         document.addEventListener('DOMContentLoaded', function () {
-             // ADD THIS JAVASCRIPT TO YOUR <script> TAGS
-         
-         // --- Search Overlay Logic ---
-         const searchOverlay = document.getElementById('searchOverlay');
-         const searchTrigger = document.querySelector('.mobile-search-trigger');
-         const searchClose = document.getElementById('searchOverlayClose');
-         const mobileSearchInput = document.getElementById('mobileSearchInput');
-         
-         if (searchTrigger) {
-             searchTrigger.addEventListener('click', () => {
-                 if (searchOverlay) {
-                     searchOverlay.classList.add('is-active');
-                     // Automatically focus the input field when the overlay opens
-                     if(mobileSearchInput) mobileSearchInput.focus();
-                 }
-             });
-         }
-         
-         if (searchClose) {
-             searchClose.addEventListener('click', () => {
-                 if (searchOverlay) {
-                     searchOverlay.classList.remove('is-active');
-                 }
-             });
-         }
-             lucide.createIcons();
-         
-             // Header action buttons (ensure they are <a> tags or handle click via JS)
-             const headerActionButtons = {
-                 "Keranjang Belanja": "keranjang.html",
-                 "Notifikasi": "#",
-                 "Chat": "chat.html",
-                 "Profil Pengguna": "profile.html"
-             };
-             document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
-                 const label = button.getAttribute('aria-label');
-                 if (headerActionButtons[label]) {
-                     if (button.tagName.toLowerCase() !== 'a') {
-                         const link = document.createElement('a');
-                         link.href = headerActionButtons[label];
-                         link.classList.add('btn', 'btn-ghost', 'btn-icon');
-                         link.setAttribute('aria-label', label);
-                         link.innerHTML = button.innerHTML;
-                         button.parentNode.replaceChild(link, button);
-                     } else {
-                          button.href = headerActionButtons[label];
-                     }
-                 }
-             });
-             lucide.createIcons(); // Re-run if icons were part of replaced elements
-         
-             // Info bar active state (already set in HTML, JS for dynamic changes if needed)
-             const infoItems = document.querySelectorAll('.info-bar .info-item');
-             infoItems.forEach(item => {
-                 item.addEventListener('click', function(e) {
-                     // If it's not a link or link is #, prevent default to handle with JS
-                     if (item.tagName.toLowerCase() !== 'a' || item.getAttribute('href') === '#') {
-                          e.preventDefault();
-                     }
-                     infoItems.forEach(i => i.classList.remove('active'));
-                     this.classList.add('active');
-                     // const target = this.dataset.target;
-                     // console.log("Navigating to:", target);
-                     // Add logic here to load content if this was a tabbed interface within the page
-                     // For now, it navigates via href.
-                 });
-             });
-         
-         
-             // "Pakai" Kupon buttons
-             const useCouponButtons = document.querySelectorAll('.use-coupon-button');
-             useCouponButtons.forEach(button => {
-                 button.addEventListener('click', function() {
-                     const couponCard = this.closest('.coupon-card-large');
-                     const couponTitleElement = couponCard.querySelector('.coupon-title');
-                     const couponName = couponTitleElement ? couponTitleElement.dataset.couponName || couponTitleElement.textContent : 'Kupon';
-                     
-                     // Simulate using the coupon
-                     alert(`Kupon "${couponName}" telah dipilih! (Simulasi)`);
-                     // Future: Add to a list of applied coupons, or redirect to a page
-                     // where this coupon can be used.
-                     // For now, just an alert.
-                     // Optionally, disable the button or change its text:
-                     this.textContent = 'Terpakai';
-                     this.disabled = true;
-                     this.classList.remove('btn-primary');
-                     this.classList.add('btn-secondary'); // Or a specific 'used' style
-                 });
-             });
-         
-             // "Lihat Toko" buttons are already <a> tags linking to storeProfile.html
-         });
-      </script>
-   </body>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // --- JAVASCRIPT LOGIC --- //
+
+            // --- INITIALIZATION --- //
+            lucide.createIcons(); // Initialize all Lucide icons on the page.
+
+            // --- UI BEHAVIORS --- //
+
+            // Handles the mobile search overlay functionality.
+            const searchOverlay = document.getElementById('searchOverlay');
+            const searchTrigger = document.querySelector('.mobile-search-trigger');
+            const searchClose = document.getElementById('searchOverlayClose');
+            const mobileSearchInput = document.getElementById('mobileSearchInput');
+            if (searchTrigger) {
+                searchTrigger.addEventListener('click', () => {
+                    if (searchOverlay) {
+                        searchOverlay.classList.add('is-active');
+                        if (mobileSearchInput) mobileSearchInput.focus();
+                    }
+                });
+            }
+            if (searchClose) {
+                searchClose.addEventListener('click', () => {
+                    if (searchOverlay) {
+                        searchOverlay.classList.remove('is-active');
+                    }
+                });
+            }
+
+            // Ensures header action buttons are proper links. (Good practice for refactoring)
+            const headerActionButtons = {
+                "Keranjang Belanja": "keranjang.html", "Notifikasi": "#", "Chat": "chat.html", "Profil Pengguna": "profile.html"
+            };
+            document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
+                const label = button.getAttribute('aria-label');
+                if (headerActionButtons[label]) {
+                    if (button.tagName.toLowerCase() !== 'a') {
+                        const link = document.createElement('a');
+                        link.href = headerActionButtons[label];
+                        link.className = button.className;
+                        link.setAttribute('aria-label', label);
+                        link.innerHTML = button.innerHTML;
+                        button.parentNode.replaceChild(link, button);
+                    } else {
+                        button.href = headerActionButtons[label];
+                    }
+                }
+            });
+            lucide.createIcons(); // Re-render icons if any were part of replaced buttons.
+
+            // Handles the active state for the info bar navigation.
+            const infoItems = document.querySelectorAll('.info-bar .info-item');
+            infoItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // Let the link navigate normally, but also handle the active class.
+                    infoItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Handles the "Pakai" (Use) button on large coupon cards.
+            const useCouponButtons = document.querySelectorAll('.use-coupon-button');
+            useCouponButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const couponCard = this.closest('.coupon-card-large');
+                    const couponTitleElement = couponCard.querySelector('.coupon-title');
+                    const couponName = couponTitleElement ? couponTitleElement.dataset.couponName || couponTitleElement.textContent : 'Kupon';
+
+                    // Simulate "using" the coupon with an alert.
+                    alert(`Kupon "${couponName}" telah dipilih! (Simulasi)`);
+
+                    // Change the button's appearance to indicate it has been used.
+                    this.textContent = 'Terpakai';
+                    this.disabled = true;
+                    this.classList.remove('btn-primary');
+                    this.classList.add('btn-secondary');
+                });
+            });
+        });
+    </script>
+</body>
+
 </html>
