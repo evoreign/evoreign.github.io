@@ -15,15 +15,3 @@
     font-size: var(--font-size-sm); /* Redundant if set on .placeholder-bg, but good for explicitness */
     color: hsl(var(--muted-foreground));
 }
-
-/* Example of how a specific placeholder might override in a page/component CSS:
-.product-image-placeholder {
-    height: 180px;
-    border-bottom: 1px solid hsl(var(--border));
-}
-.category-image-placeholder {
-    width: 80px;
-    height: 80px;
-    border-radius: var(--radius-full); // Example override
-}
-*/
