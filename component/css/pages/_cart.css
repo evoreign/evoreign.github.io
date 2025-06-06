@@ -38,9 +38,19 @@
 
 .cart-items-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: var(--spacing-6);
+    /* Mobile-first default: A single column that fits any screen */
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4); /* Optional: reduce gap slightly on mobile */
     margin-bottom: var(--spacing-6);
+}
+
+/* Apply the multi-column layout only on screens wider than 480px */
+@media (min-width: 480px) {
+    .cart-items-grid {
+        /* This is your original rule, now applied only to wider screens */
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: var(--spacing-6); /* Restore original gap for wider screens */
+    }
 }
 
 .cart-item.card { /* Extends .card component */
