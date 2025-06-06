@@ -243,3 +243,46 @@
     width: 1.25rem;
     height: 1.25rem;
 }
+/* ADD THIS CODE TO THE END OF _chat.css */
+
+/* --- Mobile Chat Responsiveness --- */
+
+/* Hide mobile-only back button by default */
+.mobile-back-button {
+    display: none;
+}
+
+/* On screens 767px or smaller (mobile) */
+@media (max-width: 767px) {
+    /* Hide the main chat content by default */
+    .chat-main-content {
+        display: none;
+    }
+
+    /* Make the sidebar take the full width */
+    .chat-sidebar {
+        width: 100%;
+        border-right: none;
+    }
+
+    /* When a chat is active, hide the sidebar... */
+    .chat-app-layout.is-chat-active .chat-sidebar {
+        display: none;
+    }
+
+    /* ...and show the main chat content */
+    .chat-app-layout.is-chat-active .chat-main-content {
+        display: flex;
+        width: 100%;
+    }
+
+    /* Show our new mobile back button inside the chat header */
+    .chat-area-header .mobile-back-button {
+        display: inline-flex;
+    }
+
+    /* Hide the original "Chats" back button in the sidebar header on mobile */
+    .sidebar-header .return-button {
+        display: none;
+    }
+}

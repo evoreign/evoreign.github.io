@@ -104,6 +104,9 @@
 
         <main class="chat-main-content">
             <header class="chat-area-header">
+                <button type="button" class="btn btn-ghost btn-icon mobile-back-button" aria-label="Kembali ke daftar chat">
+                    <i data-lucide="arrow-left" class="icon"></i>
+                </button>
                 <div class="chat-partner-info">
                     <a href="storeProfile.html">
                         <div class="avatar avatar-md" id="chatPartnerAvatar"><span>T1</span></div>
@@ -165,6 +168,31 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // ADD THIS JAVASCRIPT TO YOUR SCRIPT TAG
+
+// --- Mobile Chat View Toggle Logic ---
+const chatLayout = document.querySelector('.chat-app-layout');
+const mobileBackButton = document.querySelector('.mobile-back-button');
+
+// Add click event to each chat list item
+document.querySelectorAll('.chat-list-item').forEach(item => {
+    item.addEventListener('click', () => {
+        // Only apply this logic on mobile screens
+        if (window.innerWidth <= 767) {
+            chatLayout.classList.add('is-chat-active');
+        }
+    });
+});
+
+// Add click event to the new mobile back button
+if (mobileBackButton) {
+    mobileBackButton.addEventListener('click', () => {
+        // Only apply this logic on mobile screens
+        if (window.innerWidth <= 767) {
+            chatLayout.classList.remove('is-chat-active');
+        }
+    });
+}
     // ADD THIS JAVASCRIPT TO YOUR <script> TAGS
 
 // --- Search Overlay Logic ---

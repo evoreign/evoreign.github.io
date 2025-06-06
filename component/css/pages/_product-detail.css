@@ -659,3 +659,64 @@
     display: inline-flex; /* To keep numbered buttons together */
     gap: var(--spacing-1);
 }
+
+/* ADD THIS CODE TO THE END OF _product-detail.css */
+
+/* --- Mobile Sticky Purchase Bar --- */
+/* This query targets screens up to 1023px, right before the 3-column desktop layout kicks in. */
+@media (max-width: 1023px) {
+    
+    /* Add padding to the bottom of the main content area to prevent the new 
+       sticky bar from overlapping the last bit of content (like reviews). */
+    .product-detail-page-content.container {
+        padding-bottom: 120px; /* Adjust this value based on the final height of your bar */
+    }
+
+    /* Transform the purchase column from a card into a sticky footer bar */
+    .product-purchase-column.card {
+        position: fixed; /* Stick it to the viewport */
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 40; /* Ensure it's on top of other content */
+
+        /* Reset card styles to look like a bar */
+        max-width: none;
+        border-radius: 0;
+        border: none;
+        border-top: 1px solid hsl(var(--border));
+        box-shadow: 0 -2px 8px hsla(var(--foreground), 0.07);
+
+        /* Arrange items horizontally inside the bar */
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-4);
+    }
+
+    /* Hide elements that are not needed in the simple sticky bar */
+    .product-purchase-column .purchase-column-title,
+    .product-purchase-column .selected-variant-display,
+    .product-purchase-column .quantity-adjuster-wrapper,
+    .product-purchase-column .subtotal-display {
+        display: none;
+    }
+
+    /* Adjust the containers for the visible buttons */
+    .product-purchase-column .additional-actions {
+        display: flex;
+        gap: var(--spacing-2);
+        margin-top: 0; /* Reset margin */
+    }
+
+    .product-purchase-column .purchase-buttons {
+        flex-grow: 1; /* Allow the main buttons to take up remaining space */
+        display: flex;
+        flex-direction: row; /* Ensure buttons are side-by-side */
+    }
+
+    /* Make the two main purchase buttons share the available space */
+    .product-purchase-column .purchase-buttons .btn {
+        flex-grow: 1;
+    }
+}
