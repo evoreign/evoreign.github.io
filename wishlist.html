@@ -1,485 +1,468 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wishlist Saya - Beliin.id</title>
-    <link rel="stylesheet" href="./component/css/main.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
-        .placeholder-bg .icon { width: 2em; height: 2em; }
-        .product-image-placeholder img {width: 100%; height: 100%; object-fit: cover;}
-
-    </style>
-    <link rel="icon" href="./assets/logo.PNG" type="image/png">
-</head>
-<body class="page-body">
-
-    <header class="site-header">
-    <div class="header-container">
-        <div class="logo-container">
-            <a href="index.html" class="logo-link">
-                <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
-            </a>
-        </div>
-
-        <div class="search-bar-container new-search-bar desktop-search">
-            <form action="#" class="search-form">
-                <i data-lucide="search" class="icon search-icon-inside"></i>
-                <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
-            </form>
-        </div>
-
-        <nav class="header-actions">
-            <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
-                <i data-lucide="search" class="icon"></i>
-            </button>
-            
-            <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
-                <i data-lucide="shopping-cart" class="icon"></i>
-            </a>
-            <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
-                <i data-lucide="heart" class="icon"></i>
-            </a>
-            <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
-                <i data-lucide="message-circle" class="icon"></i>
-            </a>
-            <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
-                <i data-lucide="user" class="icon"></i>
-            </a>
-        </nav>
-    </div>
-</header>
-
-<div class="search-overlay" id="searchOverlay">
-    <div class="search-overlay-header">
-        <div class="search-bar-container new-search-bar">
-            <form action="#" class="search-form">
-                <i data-lucide="search" class="icon search-icon-inside"></i>
-                <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
-            </form>
-        </div>
-        <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
-    </div>
-    <div class="search-overlay-content">
-        </div>
-</div>
-
-    <main class="wishlist-page-content container">
-        <h1 class="page-main-title">Wishlist (<span id="wishlistCount">0</span>)</h1>
-
-        <div class="wishlist-layout-container">
-
-            <details open class="wishlist-sidebar card">
-                <summary class="sidebar-title">Kategori</summary>
-                <aside class="wishlist-sidebar card">
-                    <ul class="category-filter-list">
-                    <li class="category-filter-item">
-                        <a href="#" class="category-filter-link active" aria-current="page" data-category="Elektronik">Elektronik</a>
-                    </li>
-                    <li class="category-filter-item">
-                        <a href="#" class="category-filter-link" data-category="Baku">Baku</a>
-                    </li>
-                    <li class="category-filter-item">
-                        <a href="#" class="category-filter-link" data-category="Fashion">Fashion</a>
-                    </li>
-                    <li class="category-filter-item">
-                        <a href="#" class="category-filter-link" data-category="Dapur">Dapur</a>
-                    </li>
-                    <li class="category-filter-item">
-                        <a href="#" class="category-filter-link" data-category="Bayi">Bayi</a>
-                    </li>
-                    <li class="category-filter-item">
-                        <a href="#" class="category-filter-link" data-category="Semua">Semua Kategori</a>
-                    </li>
-                    </ul>
-                </aside>
-            </details>
-
-
-            <section class="wishlist-main-area">
-                <div class="wishlist-controls" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-4);">
-                    <div class="select-all-bar-wishlist" style="padding: var(--spacing-3); background-color: hsl(var(--secondary) / 0.7); border-radius: var(--radius); border: 1px solid hsl(var(--border));">
-                        <label class="form-checkbox-container">
-                            <input type="checkbox" class="form-checkbox" id="select-all-wishlist-items">
-                            <span class="form-checkbox-indicator">
-                                <svg viewBox="0 0 16 16" fill="red" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path></svg>
-                            </span>
-                            <span class="form-checkbox-label" id="selectAllWishlistLabel">Pilih Semua</span>
-                        </label>
-                         <button type="button" class="btn btn-link btn-sm" id="deleteSelectedWishlistButton" style="display:none; color:hsl(var(--destructive)); margin-left: var(--spacing-2);">Hapus Terpilih</button>
-                    </div>
-                    <div class="wishlist-sort-bar">
-                        <label for="sort-wishlist" class="sort-label">Urutkan:</label>
-                        <select id="sort-wishlist" class="form-select sort-select">
-                            <option value="newly-added" selected>Baru Ditambahkan</option>
-                            <option value="price-low-high">Harga Terendah</option>
-                            <option value="price-high-low">Harga Tertinggi</option>
-                            <option value="name-asc">Nama A-Z</option>
-                        </select>
-                        <button type="button" class="btn btn-ghost btn-icon view-toggle-button" id="wishlistViewToggleButton" aria-label="Ubah tampilan">
-                            <i data-lucide="layout-grid" class="icon"></i>
-                        </button>
-                    </div>
-                </div>
-                
-
-                <div class="product-grid wishlist-product-grid" id="wishlistProductGrid">
-                    </div>
-                
-                <nav class="pagination-container" aria-label="Wishlist navigation" id="wishlistPagination">
-                    </nav>
-            </section>
-        </div>
-    </main>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // ADD THIS JAVASCRIPT TO YOUR <script> TAGS
-
-// --- Search Overlay Logic ---
-const searchOverlay = document.getElementById('searchOverlay');
-const searchTrigger = document.querySelector('.mobile-search-trigger');
-const searchClose = document.getElementById('searchOverlayClose');
-const mobileSearchInput = document.getElementById('mobileSearchInput');
-
-if (searchTrigger) {
-    searchTrigger.addEventListener('click', () => {
-        if (searchOverlay) {
-            searchOverlay.classList.add('is-active');
-            // Automatically focus the input field when the overlay opens
-            if(mobileSearchInput) mobileSearchInput.focus();
-        }
-    });
-}
-
-if (searchClose) {
-    searchClose.addEventListener('click', () => {
-        if (searchOverlay) {
-            searchOverlay.classList.remove('is-active');
-        }
-    });
-}
-    lucide.createIcons();
-
-    // Header Links
-    const headerActionLinks = {
-        "Keranjang Belanja": "keranjang.html",
-        "Notifikasi": "#",
-        "Chat": "chat.html",
-        "Profil Pengguna": "profile.html"
-    };
-    document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
-        const label = button.getAttribute('aria-label');
-        if (headerActionLinks[label]) {
-            if (button.tagName.toLowerCase() !== 'a') {
-                const link = document.createElement('a');
-                link.href = headerActionLinks[label];
-                link.className = button.className;
-                link.setAttribute('aria-label', label);
-                link.innerHTML = button.innerHTML;
-                button.parentNode.replaceChild(link, button);
-            } else {
-                button.href = headerActionLinks[label];
-            }
-        }
-    });
-    lucide.createIcons();
-
-    const wishlistProductGrid = document.getElementById('wishlistProductGrid');
-    const categoryFilterLinks = document.querySelectorAll('.category-filter-list .category-filter-link');
-    const sortWishlistSelect = document.getElementById('sort-wishlist');
-    const wishlistViewToggleButton = document.getElementById('wishlistViewToggleButton');
-    const wishlistPaginationContainer = document.getElementById('wishlistPagination');
-    const wishlistCountSpan = document.getElementById('wishlistCount');
-    const wishlistSearchInput = document.getElementById('wishlistSearchInput');
-
-    const selectAllWishlistCheckbox = document.getElementById('select-all-wishlist-items');
-    const selectAllWishlistLabel = document.getElementById('selectAllWishlistLabel');
-    const deleteSelectedWishlistButton = document.getElementById('deleteSelectedWishlistButton');
-
-
-    // Sample Wishlist Data
-    let allWishlistItems = [
-        { id: "w1", name: "AFTO Smart Finder / Smart Tag", price: "1.250.000", image: "/assets/wishlist/1.jpg", category: "Elektronik", dateAdded: "2025-05-20T10:00:00Z" },
-        { id: "w2", name: "HOMEBREAKS Beanie - PRUF - Maroon", price: "350.000", image: "./assets/wishlist/2.jpg", category: "Fashion", dateAdded: "2025-05-22T11:00:00Z" },
-        { id: "w3", name: "Bosch (COOKING BUNDLE)", price: "450.000", image: "./assets/wishlist/3.jfif", category: "Dapur", dateAdded: "2025-05-10T09:00:00Z" },
-        { id: "w4", name: "UNO STACKO Game Mainan Edukatif", price: "200.000", image: "./assets/wishlist/4.jfif", category: "Bayi", dateAdded: "2025-05-24T08:00:00Z" },
-        { id: "w5", name: "Xiaomi 15 mi 15 (12/256GB)", price: "5.250.000", image: "./assets/wishlist/5.jfif", category: "Elektronik", dateAdded: "2025-04-20T10:00:00Z"  },
-        { id: "w6", name: "Kanky x Tirta Story Mizu", price: "750.000", image: "./assets/wishlist/6.jpeg", category: "Fashion", dateAdded: "2025-03-15T11:00:00Z" },
-        { id: "w7", name: "Philips Blender 3000 Series", price: "320.000", image: "./assets/wishlist/7.jfif", category: "Dapur", dateAdded: "2025-05-01T09:00:00Z"  },
-        { id: "w8", name: "Merries Good Skin XXL28 Triplepack", price: "120.000", image: "./assets/wishlist/8.webp", category: "Bayi", dateAdded: "2025-05-23T08:00:00Z"  },
-    ];
-
-    let currentWishlistPage = 1;
-    const itemsPerPageWishlist = 8; // Or adjust as needed
-    let currentCategoryFilter = "Semua";
-    let currentSortOption = "newly-added";
-    let currentSearchTerm = "";
-
-
-    function createWishlistItemHTML(item) {
-        return `
-            <div class="product-card card card-interactive" data-id="${item.id}" data-category="${item.category}">
-                 <div style="position:absolute; top: var(--spacing-1); left:var(--spacing-1); z-index:11;">
-                    <label class="form-checkbox-container">
-                        <input type="checkbox" class="form-checkbox wishlist-item-checkbox">
-                        <span class="form-checkbox-indicator">
-                            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path></svg>
-                        </span>
-                    </label>
-                </div>
-                <button class="btn btn-icon btn-ghost remove-wishlist-item" aria-label="Hapus dari wishlist" data-id="${item.id}">
-                    <i data-lucide="x" class="icon"></i>
-                </button>
-                <a href="detailProduct.html?id=${item.id}" class="product-link-wrapper">
-                    <div class="product-image-placeholder placeholder-bg"><img src="${item.image}" alt="${item.name}"></div>
-                    <div class="product-card-content">
-                        <h3 class="product-name">${item.name}</h3>
-                        <p class="product-price">Rp ${item.price}</p>
-                    </div>
-                </a>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>ADVL Official Shop - Beliin.id</title>
+      <link rel="stylesheet" href="./component/css/main.css">
+      <script src="https://unpkg.com/lucide@latest"></script>
+      <style>
+         .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
+         .placeholder-bg .icon { width: 2em; height: 2em; }
+         .stat-item .icon { width: 1.25em; height: 1.25em; margin-right: var(--spacing-2); }
+         .store-avatar-placeholder img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md); }
+         .banner-carousel-wrapper .banner-slide { display: none; }
+         .banner-carousel-wrapper .banner-slide.active { display: flex; align-items:center; justify-content:center; }
+         .banner-carousel-wrapper .banner-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg); }
+         .product-image-placeholder img {width: 100%; height: 100%; object-fit: cover;}
+      </style>
+      <link rel="icon" href="./assets/logo.PNG" type="image/png">
+   </head>
+   <body class="page-body">
+      <header class="site-header">
+         <div class="header-container">
+            <div class="logo-container">
+               <a href="index.html" class="logo-link">
+               <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+               </a>
             </div>
-        `;
-    }
-    
-    function renderWishlist() {
-        if (!wishlistProductGrid) return;
-        wishlistProductGrid.innerHTML = ''; // Clear previous items
-
-        let itemsToRender = [...allWishlistItems];
-
-        // Filter by category
-        if (currentCategoryFilter !== "Semua") {
-            itemsToRender = itemsToRender.filter(item => item.category === currentCategoryFilter);
-        }
-
-        // Filter by search term
-        if (currentSearchTerm) {
-            itemsToRender = itemsToRender.filter(item => item.name.toLowerCase().includes(currentSearchTerm.toLowerCase()));
-        }
-
-        // Sort items
-        switch (currentSortOption) {
-            case "price-low-high":
-                itemsToRender.sort((a, b) => parseFloat(a.price.replace(/\./g, '')) - parseFloat(b.price.replace(/\./g, '')));
-                break;
-            case "price-high-low":
-                itemsToRender.sort((a, b) => parseFloat(b.price.replace(/\./g, '')) - parseFloat(a.price.replace(/\./g, '')));
-                break;
-            case "name-asc":
-                itemsToRender.sort((a, b) => a.name.localeCompare(b.name));
-                break;
-            case "newly-added":
-            default:
-                itemsToRender.sort((a,b) => new Date(b.dateAdded) - new Date(a.dateAdded));
-                break;
-        }
-        
-        wishlistCountSpan.textContent = itemsToRender.length;
-
-        const totalPages = Math.ceil(itemsToRender.length / itemsPerPageWishlist);
-        currentWishlistPage = Math.min(currentWishlistPage, totalPages) || 1; // Adjust if current page exceeds new total pages
-
-        const start = (currentWishlistPage - 1) * itemsPerPageWishlist;
-        const end = start + itemsPerPageWishlist;
-        const paginatedItems = itemsToRender.slice(start, end);
-
-        if (paginatedItems.length === 0) {
-            wishlistProductGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align:center; color:hsl(var(--muted-foreground)); padding: var(--spacing-6) 0;">Wishlist Anda kosong atau tidak ada produk yang cocok.</p>`;
-        } else {
-            paginatedItems.forEach(item => {
-                wishlistProductGrid.insertAdjacentHTML('beforeend', createWishlistItemHTML(item));
-            });
-        }
-        
-        lucide.createIcons({ context: wishlistProductGrid });
-        addRemoveButtonListeners();
-        addWishlistItemCheckboxListeners();
-        renderWishlistPagination(itemsToRender.length);
-        updateSelectAllWishlistState(); // After rendering items
-    }
-
-    function addRemoveButtonListeners() {
-        document.querySelectorAll('.remove-wishlist-item').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevent link wrapper click
-                const itemId = this.dataset.id;
-                if (confirm(`Anda yakin ingin menghapus "${allWishlistItems.find(i => i.id === itemId)?.name}" dari wishlist?`)) {
-                    allWishlistItems = allWishlistItems.filter(item => item.id !== itemId);
-                    renderWishlist(); 
-                }
-            });
-        });
-    }
-    
-    function renderWishlistPagination(totalItems) {
-        if (!wishlistPaginationContainer) return;
-        wishlistPaginationContainer.innerHTML = '';
-        const totalPages = Math.ceil(totalItems / itemsPerPageWishlist);
-
-        if (totalPages <= 1) return;
-
-        const ul = document.createElement('ul');
-        ul.className = 'pagination';
-
-        // Previous
-        const prevLi = document.createElement('li');
-        prevLi.className = `page-item ${currentWishlistPage === 1 ? 'disabled' : ''}`;
-        const prevA = document.createElement('a');
-        prevA.className = 'page-link';
-        prevA.href = '#';
-        prevA.textContent = 'Previous';
-        prevA.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (currentWishlistPage > 1) {
-                currentWishlistPage--;
-                renderWishlist();
-            }
-        });
-        prevLi.appendChild(prevA);
-        ul.appendChild(prevLi);
-
-        // Page Numbers
-        for (let i = 1; i <= totalPages; i++) {
-            const pageLi = document.createElement('li');
-            pageLi.className = `page-item ${i === currentWishlistPage ? 'active' : ''}`;
-            const pageA = document.createElement('a');
-            pageA.className = 'page-link';
-            pageA.href = '#';
-            pageA.textContent = i;
-            pageA.addEventListener('click', (e) => {
-                e.preventDefault();
-                currentWishlistPage = i;
-                renderWishlist();
-            });
-            pageLi.appendChild(pageA);
-            ul.appendChild(pageLi);
-        }
-
-        // Next
-        const nextLi = document.createElement('li');
-        nextLi.className = `page-item ${currentWishlistPage === totalPages ? 'disabled' : ''}`;
-        const nextA = document.createElement('a');
-        nextA.className = 'page-link';
-        nextA.href = '#';
-        nextA.textContent = 'Next';
-        nextA.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (currentWishlistPage < totalPages) {
-                currentWishlistPage++;
-                renderWishlist();
-            }
-        });
-        nextLi.appendChild(nextA);
-        ul.appendChild(nextLi);
-        
-        wishlistPaginationContainer.appendChild(ul);
-    }
-
-    // Sidebar Category Filters
-    categoryFilterLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            categoryFilterLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-            currentCategoryFilter = this.dataset.category;
-            currentWishlistPage = 1; // Reset to first page
-            renderWishlist();
-        });
-    });
-
-    // Sort Dropdown
-    if (sortWishlistSelect) {
-        sortWishlistSelect.addEventListener('change', function() {
-            currentSortOption = this.value;
-            currentWishlistPage = 1; // Reset to first page
-            renderWishlist();
-            alert(`Wishlist diurutkan berdasarkan: ${this.options[this.selectedIndex].text}`);
-        });
-    }
-
-    // View Toggle Button
-    if (wishlistViewToggleButton) {
-        wishlistViewToggleButton.addEventListener('click', function() {
-            const iconElement = this.querySelector('i');
-            if (iconElement.getAttribute('data-lucide') === 'layout-grid') {
-                iconElement.setAttribute('data-lucide', 'list');
-                wishlistProductGrid.classList.add('list-view'); // Add CSS for list view if needed
-                 alert('Tampilan diubah ke mode daftar (Simulasi).');
-            } else {
-                iconElement.setAttribute('data-lucide', 'layout-grid');
-                wishlistProductGrid.classList.remove('list-view');
-                 alert('Tampilan diubah ke mode grid (Simulasi).');
-            }
-            lucide.createIcons({ nodes: [iconElement] });
-        });
-    }
-    
-    // Search in Wishlist
-    if (wishlistSearchInput) {
-        wishlistSearchInput.addEventListener('input', function() {
-            currentSearchTerm = this.value;
-            currentWishlistPage = 1;
-            renderWishlist();
-        });
-    }
-
-    // Select All Wishlist Items & Delete Selected
-    function updateSelectAllWishlistState() {
-        const allItemCheckboxes = document.querySelectorAll('.wishlist-item-checkbox');
-        const checkedItemCheckboxes = document.querySelectorAll('.wishlist-item-checkbox:checked');
-        
-        if (selectAllWishlistCheckbox) {
-            selectAllWishlistCheckbox.checked = allItemCheckboxes.length > 0 && checkedItemCheckboxes.length === allItemCheckboxes.length;
-            selectAllWishlistCheckbox.indeterminate = checkedItemCheckboxes.length > 0 && checkedItemCheckboxes.length < allItemCheckboxes.length;
-        }
-        if (selectAllWishlistLabel) {
-            selectAllWishlistLabel.textContent = `Pilih Semua (${checkedItemCheckboxes.length})`;
-        }
-        if (deleteSelectedWishlistButton) {
-            deleteSelectedWishlistButton.style.display = checkedItemCheckboxes.length > 0 ? 'inline-flex' : 'none';
-        }
-    }
-
-    function addWishlistItemCheckboxListeners() {
-        document.querySelectorAll('.wishlist-item-checkbox').forEach(checkbox => {
-            checkbox.addEventListener('change', updateSelectAllWishlistState);
-        });
-    }
-
-    if (selectAllWishlistCheckbox) {
-        selectAllWishlistCheckbox.addEventListener('change', function() {
-            document.querySelectorAll('.wishlist-item-checkbox').forEach(checkbox => {
-                checkbox.checked = this.checked;
-            });
-            updateSelectAllWishlistState();
-        });
-    }
-
-    if (deleteSelectedWishlistButton) {
-        deleteSelectedWishlistButton.addEventListener('click', function() {
-            const selectedCheckboxes = document.querySelectorAll('.wishlist-item-checkbox:checked');
-            if (selectedCheckboxes.length === 0) {
-                alert('Tidak ada item yang dipilih untuk dihapus.');
-                return;
-            }
-            if (confirm(`Anda yakin ingin menghapus ${selectedCheckboxes.length} item terpilih dari wishlist?`)) {
-                selectedCheckboxes.forEach(checkbox => {
-                    const itemId = checkbox.closest('.product-card').dataset.id;
-                    allWishlistItems = allWishlistItems.filter(item => item.id !== itemId);
-                });
-                renderWishlist(); // This will re-render and update counts and select all state
-            }
-        });
-    }
-
-
-    // Initial Render
-    renderWishlist();
-
-});
-</script>
-</body>
+            <div class="search-bar-container new-search-bar desktop-search">
+               <form action="#" class="search-form">
+                  <i data-lucide="search" class="icon search-icon-inside"></i>
+                  <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+               </form>
+            </div>
+            <nav class="header-actions">
+               <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
+               <i data-lucide="search" class="icon"></i>
+               </button>
+               <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+               <i data-lucide="shopping-cart" class="icon"></i>
+               </a>
+               <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+               <i data-lucide="heart" class="icon"></i>
+               </a>
+               <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+               <i data-lucide="message-circle" class="icon"></i>
+               </a>
+               <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+               <i data-lucide="user" class="icon"></i>
+               </a>
+            </nav>
+         </div>
+      </header>
+      <div class="search-overlay" id="searchOverlay">
+         <div class="search-overlay-header">
+            <div class="search-bar-container new-search-bar">
+               <form action="#" class="search-form">
+                  <i data-lucide="search" class="icon search-icon-inside"></i>
+                  <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
+               </form>
+            </div>
+            <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
+         </div>
+         <div class="search-overlay-content">
+         </div>
+      </div>
+      <main class="store-profile-page-content container">
+         <section class="store-header-section card">
+            <div class="store-header-main-info">
+               <div class="store-avatar-placeholder placeholder-bg">
+                  <img src="./assets/store/logo.image" alt="ADVL Official Shop">
+               </div>
+               <div class="store-details-actions">
+                  <div class="store-name-status">
+                     <h1 class="store-name">ADVL Official Shop</h1>
+                     <p class="store-activity-status">Aktif 1 menit yang lalu</p>
+                  </div>
+                  <div class="store-action-buttons">
+                     <button class="btn btn-outline btn-sm follow-button" id="followStoreButton" data-following="false">
+                     <i data-lucide="plus" class="icon"></i> <span class="follow-text">Ikuti</span>
+                     </button>
+                     <a href="chat.html?store_id=ADVLShop" class="btn btn-primary btn-sm chat-button">
+                     <i data-lucide="message-circle" class="icon"></i> Chat
+                     </a>
+                  </div>
+               </div>
+            </div>
+            <div class="store-stats-grid">
+               <div class="stat-item">
+                  <i data-lucide="package" class="icon"></i>
+                  <span>Produk: <strong>15,4RB</strong></span>
+               </div>
+               <div class="stat-item">
+                  <i data-lucide="users" class="icon"></i>
+                  <span>Pengikut: <strong>898,1 RB</strong></span>
+               </div>
+               <div class="stat-item">
+                  <i data-lucide="star" class="icon"></i>
+                  <span>Rating: <strong>4,9</strong> (dari 10k+ ulasan)</span>
+               </div>
+               <div class="stat-item">
+                  <i data-lucide="user-plus" class="icon"></i>
+                  <span>Mengikuti Toko: <strong id="followingCountDisplay">0</strong></span>
+               </div>
+               <div class="stat-item">
+                  <i data-lucide="message-square-share" class="icon"></i>
+                  <span>Performa Chat: <strong>50%</strong></span>
+               </div>
+               <div class="stat-item">
+                  <i data-lucide="calendar-days" class="icon"></i>
+                  <span>Bergabung: <strong>6 Tahun Lalu</strong></span>
+               </div>
+            </div>
+         </section>
+         <nav class="store-category-tabs content-section tab-navigation" id="storeCategoryTabs">
+            <button type="button" class="tab-button active" aria-selected="true" data-category="Baju">Baju</button>
+            <button type="button" class="tab-button" aria-selected="false" data-category="Celana">Celana</button>
+            <button type="button" class="tab-button" aria-selected="false" data-category="Jaket">Jaket</button>
+            <button type="button" class="tab-button" aria-selected="false" data-category="Topi">Topi</button>
+            <button type="button" class="tab-button" aria-selected="false" data-category="Knit Collections">Knit Collections</button>
+            <button type="button" class="tab-button" aria-selected="false" data-category="Lainnya">Lainnya...</button>
+         </nav>
+         <section class="store-banner-carousel content-section">
+            <div class="banner-carousel-wrapper" id="storeBannerCarousel">
+               <div class="banner-slide active">
+                  <img src="./assets/banner/banner4.png" alt="Store Promotion 1">
+               </div>
+               <div class="banner-slide">
+                  <img src="./assets/banner/banner3.jpg" alt="Store Promotion 2">
+               </div>
+               <div class="banner-slide">
+                  <img src="./assets/banner/banner2.jpg" alt="Store Promotion 3">
+               </div>
+            </div>
+            <div class="carousel-pagination" id="storeBannerPagination">
+            </div>
+         </section>
+         <section class="store-products-section content-section">
+            <h2 class="section-title" id="storeProductsTitle">Produk Toko - Baju</h2>
+            <div class="product-sort-bar">
+               <label for="sort-products" class="sort-label">Urutkan:</label>
+               <select id="sort-products" class="form-select sort-select">
+                  <option value="newest" selected>Produk Terbaru</option>
+                  <option value="price-low-high">Harga Terendah</option>
+                  <option value="price-high-low">Harga Tertinggi</option>
+                  <option value="best-selling">Terlaris</option>
+               </select>
+               <button type="button" class="btn btn-ghost btn-icon view-toggle-button" id="toggleViewButton" aria-label="Ubah tampilan">
+               <i data-lucide="layout-grid" class="icon"></i>
+               </button>
+            </div>
+            <div class="product-grid store-product-grid" id="storeProductGrid">
+            </div>
+         </section>
+         <nav class="product-pagination pagination-container" aria-label="Navigasi produk toko" id="storeProductPagination">
+         </nav>
+      </main>
+      <script>
+         document.addEventListener('DOMContentLoaded', function () {
+             // ADD THIS JAVASCRIPT TO YOUR <script> TAGS
+         
+         // --- Search Overlay Logic ---
+         const searchOverlay = document.getElementById('searchOverlay');
+         const searchTrigger = document.querySelector('.mobile-search-trigger');
+         const searchClose = document.getElementById('searchOverlayClose');
+         const mobileSearchInput = document.getElementById('mobileSearchInput');
+         
+         if (searchTrigger) {
+             searchTrigger.addEventListener('click', () => {
+                 if (searchOverlay) {
+                     searchOverlay.classList.add('is-active');
+                     // Automatically focus the input field when the overlay opens
+                     if(mobileSearchInput) mobileSearchInput.focus();
+                 }
+             });
+         }
+         
+         if (searchClose) {
+             searchClose.addEventListener('click', () => {
+                 if (searchOverlay) {
+                     searchOverlay.classList.remove('is-active');
+                 }
+             });
+         }
+             lucide.createIcons();
+         
+             // Header Links
+             const headerActionLinks = {
+                 "Keranjang Belanja": "keranjang.html",
+                 "Notifikasi": "#",
+                 "Chat": "chat.html",
+                 "Profil Pengguna": "profile.html"
+             };
+             document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
+                 const label = button.getAttribute('aria-label');
+                 if (headerActionLinks[label]) {
+                     if (button.tagName.toLowerCase() !== 'a') {
+                         const link = document.createElement('a');
+                         link.href = headerActionLinks[label];
+                         link.className = button.className;
+                         link.setAttribute('aria-label', label);
+                         link.innerHTML = button.innerHTML;
+                         button.parentNode.replaceChild(link, button);
+                     } else {
+                         button.href = headerActionLinks[label];
+                     }
+                 }
+             });
+             lucide.createIcons();
+         
+             // Follow Button
+             const followButton = document.getElementById('followStoreButton');
+             const followText = followButton ? followButton.querySelector('.follow-text') : null;
+             const followIcon = followButton ? followButton.querySelector('.icon') : null;
+             const followingCountDisplay = document.getElementById('followingCountDisplay'); // Assuming this counts stores the user follows
+         
+             if (followButton && followText && followIcon) {
+                 followButton.addEventListener('click', function() {
+                     const isFollowing = this.dataset.following === 'true';
+                     if (isFollowing) {
+                         this.dataset.following = 'false';
+                         followText.textContent = 'Ikuti';
+                         this.classList.remove('btn-primary'); // Or a specific 'following' style
+                         this.classList.add('btn-outline');
+                         followIcon.setAttribute('data-lucide', 'plus');
+                         if(followingCountDisplay) followingCountDisplay.textContent = parseInt(followingCountDisplay.textContent) -1;
+         
+                         alert('Anda berhenti mengikuti toko ini.');
+                     } else {
+                         this.dataset.following = 'true';
+                         followText.textContent = 'Mengikuti';
+                         this.classList.remove('btn-outline');
+                         this.classList.add('btn-primary'); // Or a specific 'following' style
+                         followIcon.setAttribute('data-lucide', 'check'); // Or 'user-check'
+                         if(followingCountDisplay) followingCountDisplay.textContent = parseInt(followingCountDisplay.textContent) + 1;
+                         alert('Anda sekarang mengikuti toko ini!');
+                     }
+                     lucide.createIcons({ nodes: [followIcon] });
+                 });
+             }
+         
+             // Store Category Tabs
+             const storeCategoryTabs = document.querySelectorAll('#storeCategoryTabs .tab-button');
+             const storeProductsTitle = document.getElementById('storeProductsTitle');
+         
+             storeCategoryTabs.forEach(tab => {
+                 tab.addEventListener('click', function() {
+                     storeCategoryTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+                     this.classList.add('active');
+                     this.setAttribute('aria-selected', 'true');
+                     const selectedCategory = this.dataset.category;
+                     if (storeProductsTitle) storeProductsTitle.textContent = `Produk Toko - ${selectedCategory}`;
+                     // Simulate loading products for this category
+                     loadStoreProducts(selectedCategory, 1, document.getElementById('sort-products').value);
+                     alert(`Menampilkan produk untuk kategori: ${selectedCategory}`);
+                 });
+             });
+         
+             // Store Banner Carousel
+             const storeBannerCarousel = document.getElementById('storeBannerCarousel');
+             const storeBannerPagination = document.getElementById('storeBannerPagination');
+             let storeBannerItems = [];
+             let storeBannerCurrentIndex = 0;
+             let storeBannerAutoplayInterval;
+         
+             function setupStoreBannerCarousel() {
+                 if (!storeBannerCarousel || !storeBannerPagination) return;
+                 storeBannerItems = storeBannerCarousel.querySelectorAll('.banner-slide');
+                 if (storeBannerItems.length === 0) return;
+         
+                 storeBannerPagination.innerHTML = ''; // Clear old dots
+         
+                 storeBannerItems.forEach((_, index) => {
+                     const dot = document.createElement('button');
+                     dot.classList.add('dot');
+                     if (index === 0) dot.classList.add('active');
+                     dot.setAttribute('aria-label', `Slide ${index + 1}`);
+                     dot.addEventListener('click', () => {
+                         storeBannerCurrentIndex = index;
+                         showStoreBannerItem(storeBannerCurrentIndex);
+                         resetStoreBannerAutoplay();
+                     });
+                     storeBannerPagination.appendChild(dot);
+                 });
+                 showStoreBannerItem(0);
+                 startStoreBannerAutoplay();
+             }
+         
+             function showStoreBannerItem(index) {
+                 storeBannerItems.forEach((item, i) => item.classList.toggle('active', i === index));
+                 const dots = storeBannerPagination.querySelectorAll('.dot');
+                 dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+             }
+         
+             function startStoreBannerAutoplay() {
+                 if (storeBannerItems.length <= 1) return;
+                 stopStoreBannerAutoplay();
+                 storeBannerAutoplayInterval = setInterval(() => {
+                     storeBannerCurrentIndex = (storeBannerCurrentIndex + 1) % storeBannerItems.length;
+                     showStoreBannerItem(storeBannerCurrentIndex);
+                 }, 4000); // Change every 4 seconds
+             }
+             function stopStoreBannerAutoplay() { clearInterval(storeBannerAutoplayInterval); }
+             function resetStoreBannerAutoplay() { startStoreBannerAutoplay(); }
+         
+             if (storeBannerCarousel) {
+                 setupStoreBannerCarousel();
+                 storeBannerCarousel.addEventListener('mouseenter', stopStoreBannerAutoplay);
+                 storeBannerCarousel.addEventListener('mouseleave', startStoreBannerAutoplay);
+             }
+         
+             // Store Products Section (Sort and View Toggle)
+             const sortProductsStore = document.getElementById('sort-products');
+             const toggleViewButton = document.getElementById('toggleViewButton');
+             const storeProductGrid = document.getElementById('storeProductGrid');
+         
+             if (sortProductsStore) {
+                 sortProductsStore.addEventListener('change', function() {
+                     const selectedSort = this.value;
+                     const currentCategoryTab = document.querySelector('#storeCategoryTabs .tab-button.active');
+                     const currentCategory = currentCategoryTab ? currentCategoryTab.dataset.category : "Semua";
+                     loadStoreProducts(currentCategory, 1, selectedSort);
+                     alert(`Produk diurutkan berdasarkan: ${this.options[this.selectedIndex].text}. (Simulasi)`);
+                 });
+             }
+             if (toggleViewButton) {
+                 toggleViewButton.addEventListener('click', function() {
+                     alert('Tombol ubah tampilan diklik. (Simulasi: toggle grid/list view)');
+                     // Add logic here to change class on storeProductGrid for different view
+                 });
+             }
+             
+             // Dummy Store Product Data & Pagination
+             const dummyStoreProducts = {
+                 "Baju": [
+                     { id: "sb1", name: "ADLV Basic Short Sleeve T-Shirt 2 Black", price: "180.000", image: "./assets/store/shirt/1.jpeg" },
+                     { id: "sb2", name: "ADLV Ink Stamp Logo Short Sleeve T-Shirt Dark Navy", price: "90.000", image: "./assets/store/shirt/2.jpg" },
+                     { id: "sb3", name: "ADLV Basic Logo Needlework Black - Kaos Lengan Panjang", price: "120.000", image: "./assets/store/shirt/3.jpeg" },
+                     { id: "sb4", name: "ADLV Baby Face Scream Boy Short Sleeve", price: "160.000", image: "./assets/store/shirt/4.jpeg" }
+                 ],
+                 "Celana": [
+                     { id: "sc1", name: "ADLV Creature Metal Logo Pants Charcoal", price: "220.000", image: "./assets/store/celana/1.jpeg" },
+                     { id: "sc2", name: "ADLV Segregated Pocket Denim Set Up Pants Blue", price: "350.000", image: "./assets/store/celana/2.jpeg" }
+                 ],
+                 "Jaket": [
+                     { id: "sj1", name: "ADLV Lettering Rabbit Hoodie Black - Hoodie Oversize", price: "280.000", image: "./assets/store/jaket/1.jpeg" }
+                 ],
+                  "Topi": [
+                     { id: "st1", name: "ADLV Basic Ball Cap Black", price: "75.000", image: "./assets/store/hats/1.jpeg" }
+                 ],
+                 "Knit Collections": [
+                     { id: "sk1", name: "ADLV Symbol Logo Multi Color V Neck", price: "190.000", image: "./assets/store/knit/1.jpeg" }
+                 ],
+                 "Lainnya": [
+                      { id: "sl1", name: "ADLV New Symbol Logo Two Way Gym Sack Ivory", price: "50.000", image: "./assets/store/other/1.jpeg" }
+                 ]
+             };
+             const productsPerPageStore = 8; // Show 8 products per page
+             let currentPageStore = 1;
+             const storeProductPagination = document.getElementById('storeProductPagination');
+         
+             function createStoreProductCardHTML(product) {
+                 return `
+                     <div class="product-card card card-interactive">
+                         <a href="detailProduct.html?id=${product.id}" class="product-link-wrapper">
+                             <div class="product-image-placeholder placeholder-bg"><img src="${product.image}" alt="${product.name}"></div>
+                             <div class="product-card-content">
+                                 <h3 class="product-name">${product.name}</h3>
+                                 <p class="product-price">Rp ${product.price}</p>
+                             </div>
+                         </a>
+                     </div>
+                 `;
+             }
+             
+             function loadStoreProducts(category = "Baju", page = 1, sortOption = "newest") {
+                 if (!storeProductGrid) return;
+                 storeProductGrid.innerHTML = '';
+                 currentPageStore = page;
+         
+                 let productsToDisplay = dummyStoreProducts[category] || [];
+                 
+                 // Simulate sorting
+                 if (sortOption === "price-low-high") {
+                     productsToDisplay.sort((a, b) => parseFloat(a.price.replace(/\./g, '')) - parseFloat(b.price.replace(/\./g, '')));
+                 } else if (sortOption === "price-high-low") {
+                     productsToDisplay.sort((a, b) => parseFloat(b.price.replace(/\./g, '')) - parseFloat(a.price.replace(/\./g, '')));
+                 } // "newest" and "best-selling" would need actual data/timestamps
+         
+                 const start = (page - 1) * productsPerPageStore;
+                 const end = start + productsPerPageStore;
+                 const paginatedProducts = productsToDisplay.slice(start, end);
+         
+                 if (paginatedProducts.length === 0) {
+                     storeProductGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align:center; color:hsl(var(--muted-foreground)); padding: var(--spacing-4) 0;">Tidak ada produk untuk kategori "${category}".</p>`;
+                 } else {
+                     storeProductGrid.innerHTML = paginatedProducts.map(createStoreProductCardHTML).join('');
+                 }
+                 renderStoreProductPagination(productsToDisplay.length, category, sortOption);
+                  if (storeProductsTitle) storeProductsTitle.textContent = `Produk Toko - ${category}`;
+         
+             }
+         
+             function renderStoreProductPagination(totalProducts, category, sortOption) {
+                 if (!storeProductPagination) return;
+                 storeProductPagination.innerHTML = '';
+                 const totalPages = Math.ceil(totalProducts / productsPerPageStore);
+                 if (totalPages <= 1) return;
+         
+                 const ul = document.createElement('ul');
+                 ul.className = 'pagination';
+         
+                 // Previous
+                 const prevLi = document.createElement('li');
+                 prevLi.className = `page-item ${currentPageStore === 1 ? 'disabled' : ''}`;
+                 const prevA = document.createElement('a');
+                 prevA.className = 'page-link page-link-arrow';
+                 prevA.href = '#';
+                 prevA.setAttribute('aria-label', 'Halaman sebelumnya');
+                 prevA.innerHTML = '<i data-lucide="chevron-left" class="icon"></i>';
+                 prevA.addEventListener('click', (e) => {
+                     e.preventDefault();
+                     if (currentPageStore > 1) loadStoreProducts(category, currentPageStore - 1, sortOption);
+                 });
+                 prevLi.appendChild(prevA);
+                 ul.appendChild(prevLi);
+         
+                 // Page Numbers
+                 for (let i = 1; i <= totalPages; i++) {
+                     const pageLi = document.createElement('li');
+                     pageLi.className = `page-item ${i === currentPageStore ? 'active' : ''}`;
+                     const pageA = document.createElement('a');
+                     pageA.className = 'page-link';
+                     pageA.href = '#';
+                     pageA.textContent = i;
+                     pageA.addEventListener('click', (e) => {
+                         e.preventDefault();
+                         loadStoreProducts(category, i, sortOption);
+                     });
+                     pageLi.appendChild(pageA);
+                     ul.appendChild(pageLi);
+                 }
+         
+                 // Next
+                 const nextLi = document.createElement('li');
+                 nextLi.className = `page-item ${currentPageStore === totalPages ? 'disabled' : ''}`;
+                 const nextA = document.createElement('a');
+                 nextA.className = 'page-link page-link-arrow';
+                 nextA.href = '#';
+                 nextA.setAttribute('aria-label', 'Halaman berikutnya');
+                 nextA.innerHTML = '<i data-lucide="chevron-right" class="icon"></i>';
+                 nextA.addEventListener('click', (e) => {
+                     e.preventDefault();
+                     if (currentPageStore < totalPages) loadStoreProducts(category, currentPageStore + 1, sortOption);
+                 });
+                 nextLi.appendChild(nextA);
+                 ul.appendChild(nextLi);
+                 
+                 storeProductPagination.appendChild(ul);
+                 lucide.createIcons({context: storeProductPagination});
+             }
+         
+             // Initial Load
+             loadStoreProducts("Baju", 1, "newest"); // Load "Baju" category by default
+         });
+      </script>
+   </body>
 </html>

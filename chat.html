@@ -1,353 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chats - Beliin.id</title>
-    <link rel="stylesheet" href="./component/css/main.css">
-
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        /* Minimal inline style for quick icon display, replace with proper CSS classes */
-        .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
-    </style>
-    <link rel="icon" href="./assets/logo.PNG" type="image/png">
-
-</head>
-<body class="chat-page-body">
-
-    <header class="site-header">
-    <div class="header-container">
-        <div class="logo-container">
-            <a href="index.html" class="logo-link">
-                <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
-            </a>
-        </div>
-
-        <div class="search-bar-container new-search-bar desktop-search">
-            <form action="#" class="search-form">
-                <i data-lucide="search" class="icon search-icon-inside"></i>
-                <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
-            </form>
-        </div>
-
-        <nav class="header-actions">
-            <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
-                <i data-lucide="search" class="icon"></i>
-            </button>
-            
-            <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
-                <i data-lucide="shopping-cart" class="icon"></i>
-            </a>
-            <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
-                <i data-lucide="heart" class="icon"></i>
-            </a>
-            <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
-                <i data-lucide="message-circle" class="icon"></i>
-            </a>
-            <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
-                <i data-lucide="user" class="icon"></i>
-            </a>
-        </nav>
-    </div>
-</header>
-
-<div class="search-overlay" id="searchOverlay">
-    <div class="search-overlay-header">
-        <div class="search-bar-container new-search-bar">
-            <form action="#" class="search-form">
-                <i data-lucide="search" class="icon search-icon-inside"></i>
-                <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
-            </form>
-        </div>
-        <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
-    </div>
-    <div class="search-overlay-content">
-        </div>
-</div>
-    
-    <div class="chat-app-layout">
-        <aside class="chat-sidebar">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Chats - Beliin.id</title>
+      <link rel="stylesheet" href="./component/css/main.css">
+      <script src="https://unpkg.com/lucide@latest"></script>
+      <style>
+         /* Minimal inline style for quick icon display, replace with proper CSS classes */
+         .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
+      </style>
+      <link rel="icon" href="./assets/logo.PNG" type="image/png">
+   </head>
+   <body class="chat-page-body">
+      <header class="site-header">
+         <div class="header-container">
+            <div class="logo-container">
+               <a href="index.html" class="logo-link">
+               <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+               </a>
+            </div>
+            <div class="search-bar-container new-search-bar desktop-search">
+               <form action="#" class="search-form">
+                  <i data-lucide="search" class="icon search-icon-inside"></i>
+                  <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+               </form>
+            </div>
+            <nav class="header-actions">
+               <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
+               <i data-lucide="search" class="icon"></i>
+               </button>
+               <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+               <i data-lucide="shopping-cart" class="icon"></i>
+               </a>
+               <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+               <i data-lucide="heart" class="icon"></i>
+               </a>
+               <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+               <i data-lucide="message-circle" class="icon"></i>
+               </a>
+               <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+               <i data-lucide="user" class="icon"></i>
+               </a>
+            </nav>
+         </div>
+      </header>
+      <div class="search-overlay" id="searchOverlay">
+         <div class="search-overlay-header">
+            <div class="search-bar-container new-search-bar">
+               <form action="#" class="search-form">
+                  <i data-lucide="search" class="icon search-icon-inside"></i>
+                  <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
+               </form>
+            </div>
+            <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
+         </div>
+         <div class="search-overlay-content">
+         </div>
+      </div>
+      <div class="chat-app-layout">
+         <aside class="chat-sidebar">
             <div class="sidebar-header">
-                <a href="index.html" class="btn btn-ghost return-button">
-                    <i data-lucide="arrow-left" class="icon"></i>
-                    <span>Chats</span>
-                </a>
+               <a href="index.html" class="btn btn-ghost return-button">
+               <i data-lucide="arrow-left" class="icon"></i>
+               <span>Chats</span>
+               </a>
             </div>
             <nav class="chat-list-navigation">
-                <ul class="chat-list">
-                    <li class="chat-list-item active" data-chatname="Toko 1" data-avatarinitial="T1">
-                        <div class="avatar avatar-sm">
-                            <span>T1</span>
-                        </div>
-                        <span class="chat-name">Toko 1</span>
-                    </li>
-                    <li class="chat-list-item" data-chatname="Toko 2" data-avatarinitial="T2">
-                        <div class="avatar avatar-sm"><span>T2</span></div>
-                        <span class="chat-name">Toko 2</span>
-                    </li>
-                    <li class="chat-list-item" data-chatname="Toko 3" data-avatarinitial="T3">
-                        <div class="avatar avatar-sm"><span>T3</span></div>
-                        <span class="chat-name">Toko 3</span>
-                    </li>
-                    <li class="chat-list-item" data-chatname="Toko 4" data-avatarinitial="T4">
-                        <div class="avatar avatar-sm"><span>T4</span></div>
-                        <span class="chat-name">Toko 4</span>
-                    </li>
-                    <li class="chat-list-item" data-chatname="Toko 5" data-avatarinitial="T5">
-                        <div class="avatar avatar-sm"><span>T5</span></div>
-                        <span class="chat-name">Toko 5</span>
-                    </li>
-                </ul>
+               <ul class="chat-list">
+                  <li class="chat-list-item active" data-chatname="Toko 1" data-avatarinitial="T1">
+                     <div class="avatar avatar-sm">
+                        <span>T1</span>
+                     </div>
+                     <span class="chat-name">Toko 1</span>
+                  </li>
+                  <li class="chat-list-item" data-chatname="Toko 2" data-avatarinitial="T2">
+                     <div class="avatar avatar-sm"><span>T2</span></div>
+                     <span class="chat-name">Toko 2</span>
+                  </li>
+                  <li class="chat-list-item" data-chatname="Toko 3" data-avatarinitial="T3">
+                     <div class="avatar avatar-sm"><span>T3</span></div>
+                     <span class="chat-name">Toko 3</span>
+                  </li>
+                  <li class="chat-list-item" data-chatname="Toko 4" data-avatarinitial="T4">
+                     <div class="avatar avatar-sm"><span>T4</span></div>
+                     <span class="chat-name">Toko 4</span>
+                  </li>
+                  <li class="chat-list-item" data-chatname="Toko 5" data-avatarinitial="T5">
+                     <div class="avatar avatar-sm"><span>T5</span></div>
+                     <span class="chat-name">Toko 5</span>
+                  </li>
+               </ul>
             </nav>
-        </aside>
-
-        <main class="chat-main-content">
+         </aside>
+         <main class="chat-main-content">
             <header class="chat-area-header">
-                <button type="button" class="btn btn-ghost btn-icon mobile-back-button" aria-label="Kembali ke daftar chat">
-                    <i data-lucide="arrow-left" class="icon"></i>
-                </button>
-                <div class="chat-partner-info">
-                    <a href="storeProfile.html">
-                        <div class="avatar avatar-md" id="chatPartnerAvatar"><span>T1</span></div>
-                        <h2 class="chat-partner-name" id="chatPartnerName">Toko 1</h2>
-                    </a>
-                </div>
+               <button type="button" class="btn btn-ghost btn-icon mobile-back-button" aria-label="Kembali ke daftar chat">
+               <i data-lucide="arrow-left" class="icon"></i>
+               </button>
+               <div class="chat-partner-info">
+                  <a href="storeProfile.html">
+                     <div class="avatar avatar-md" id="chatPartnerAvatar"><span>T1</span></div>
+                     <h2 class="chat-partner-name" id="chatPartnerName">Toko 1</h2>
+                  </a>
+               </div>
             </header>
-
             <div class="message-display-area" id="messageDisplayArea">
-                <div class="date-separator">
-                    <span>Today</span>
-                </div>
-                <div class="message-item message-received">
-                    <div class="avatar avatar-sm message-avatar"><span>T1</span></div>
-                    <div class="message-content">
-                        <div class="message-bubble">
-                            <p>Hello Kak, Selamat Datang di Toko kami :)</p>
-                        </div>
-                        <span class="message-timestamp">08:17 AM</span>
-                    </div>
-                </div>
-                <div class="message-item message-sent">
-                    <div class="message-content">
-                        <div class="message-bubble">
-                            <p>Apakah produk ini masih ada?</p>
-                        </div>
-                        <div class="message-meta">
-                            <span class="message-timestamp">08:22 AM</span>
-                            <span class="message-status">
-                                <i data-lucide="check-check" class="icon"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                 <div class="message-item message-received">
-                    <div class="avatar avatar-sm message-avatar"><span>T1</span></div>
-                    <div class="message-content">
-                        <div class="message-bubble">
-                            <p>Masih kak, silahkan diorder ya.</p>
-                        </div>
-                        <span class="message-timestamp">08:25 AM</span>
-                    </div>
-                </div>
+               <div class="date-separator">
+                  <span>Today</span>
+               </div>
+               <div class="message-item message-received">
+                  <div class="avatar avatar-sm message-avatar"><span>T1</span></div>
+                  <div class="message-content">
+                     <div class="message-bubble">
+                        <p>Hello Kak, Selamat Datang di Toko kami :)</p>
+                     </div>
+                     <span class="message-timestamp">08:17 AM</span>
+                  </div>
+               </div>
+               <div class="message-item message-sent">
+                  <div class="message-content">
+                     <div class="message-bubble">
+                        <p>Apakah produk ini masih ada?</p>
+                     </div>
+                     <div class="message-meta">
+                        <span class="message-timestamp">08:22 AM</span>
+                        <span class="message-status">
+                        <i data-lucide="check-check" class="icon"></i>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               <div class="message-item message-received">
+                  <div class="avatar avatar-sm message-avatar"><span>T1</span></div>
+                  <div class="message-content">
+                     <div class="message-bubble">
+                        <p>Masih kak, silahkan diorder ya.</p>
+                     </div>
+                     <span class="message-timestamp">08:25 AM</span>
+                  </div>
+               </div>
             </div>
-
             <footer class="message-input-area">
-                <div class="avatar avatar-sm current-user-avatar">
-                    <span>U</span>
-                </div>
-                <form class="message-form" id="messageForm">
-                    <input type="text" class="form-input message-input" id="messageInput" placeholder="Type...">
-                    <button type="submit" class="btn btn-primary btn-icon send-button" aria-label="Send message">
-                        <i data-lucide="send-horizontal" class="icon"></i>
-                    </button>
-                </form>
+               <div class="avatar avatar-sm current-user-avatar">
+                  <span>U</span>
+               </div>
+               <form class="message-form" id="messageForm">
+                  <input type="text" class="form-input message-input" id="messageInput" placeholder="Type...">
+                  <button type="submit" class="btn btn-primary btn-icon send-button" aria-label="Send message">
+                  <i data-lucide="send-horizontal" class="icon"></i>
+                  </button>
+               </form>
             </footer>
-        </main>
-    </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // ADD THIS JAVASCRIPT TO YOUR SCRIPT TAG
-
-// --- Mobile Chat View Toggle Logic ---
-const chatLayout = document.querySelector('.chat-app-layout');
-const mobileBackButton = document.querySelector('.mobile-back-button');
-
-// Add click event to each chat list item
-document.querySelectorAll('.chat-list-item').forEach(item => {
-    item.addEventListener('click', () => {
-        // Only apply this logic on mobile screens
-        if (window.innerWidth <= 767) {
-            chatLayout.classList.add('is-chat-active');
-        }
-    });
-});
-
-// Add click event to the new mobile back button
-if (mobileBackButton) {
-    mobileBackButton.addEventListener('click', () => {
-        // Only apply this logic on mobile screens
-        if (window.innerWidth <= 767) {
-            chatLayout.classList.remove('is-chat-active');
-        }
-    });
-}
-    // ADD THIS JAVASCRIPT TO YOUR <script> TAGS
-
-// --- Search Overlay Logic ---
-const searchOverlay = document.getElementById('searchOverlay');
-const searchTrigger = document.querySelector('.mobile-search-trigger');
-const searchClose = document.getElementById('searchOverlayClose');
-const mobileSearchInput = document.getElementById('mobileSearchInput');
-
-if (searchTrigger) {
-    searchTrigger.addEventListener('click', () => {
-        if (searchOverlay) {
-            searchOverlay.classList.add('is-active');
-            // Automatically focus the input field when the overlay opens
-            if(mobileSearchInput) mobileSearchInput.focus();
-        }
-    });
-}
-
-if (searchClose) {
-    searchClose.addEventListener('click', () => {
-        if (searchOverlay) {
-            searchOverlay.classList.remove('is-active');
-        }
-    });
-}
-    lucide.createIcons();
-
-    const chatListItems = document.querySelectorAll('.chat-list-item');
-    const chatPartnerNameElement = document.getElementById('chatPartnerName');
-    const chatPartnerAvatarElement = document.getElementById('chatPartnerAvatar').querySelector('span');
-    const messageDisplayArea = document.getElementById('messageDisplayArea');
-    const messageForm = document.getElementById('messageForm');
-    const messageInput = document.getElementById('messageInput');
-
-    // Sample messages for different chats (for simulation)
-    const sampleMessages = {
-        "Toko 1": [
-            { type: 'received', sender: 'T1', text: 'Hello Kak, Selamat Datang di Toko kami :)', time: '08:17 AM' },
-            { type: 'sent', text: 'Apakah produk ini masih ada?', time: '08:22 AM', status: 'read' },
-            { type: 'received', sender: 'T1', text: 'Masih kak, silahkan diorder ya.', time: '08:25 AM' }
-        ],
-        "Toko 2": [
-            { type: 'received', sender: 'T2', text: 'Hi! Ada yang bisa dibantu dengan Toko 2?', time: '09:00 AM' }
-        ],
-        "Toko 3": [
-            { type: 'received', sender: 'T3', text: 'Welcome to Toko 3! Let me know if you have questions.', time: '10:15 AM' }
-        ],
-        "Toko 4": [
-            { type: 'received', sender: 'T4', text: 'Toko 4 ready to serve!', time: '11:30 AM' }
-        ],
-        "Toko 5": [
-            { type: 'received', sender: 'T5', text: 'Thanks for reaching out to Toko 5.', time: '12:00 PM' }
-        ]
-    };
-
-    function formatTime(date) {
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12; // the hour '0' should be '12'
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        return hours + ':' + minutes + ' ' + ampm;
-    }
-
-    function renderMessages(chatName) {
-        messageDisplayArea.innerHTML = ''; // Clear previous messages
-        const messages = sampleMessages[chatName] || [{ type: 'received', sender: chatName.substring(0,2).toUpperCase(), text: `Starting chat with ${chatName}...`, time: formatTime(new Date()) }];
-        
-        // Add a date separator (optional, could be more dynamic)
-        const dateSeparator = document.createElement('div');
-        dateSeparator.className = 'date-separator';
-        dateSeparator.innerHTML = `<span>Today</span>`;
-        messageDisplayArea.appendChild(dateSeparator);
-
-        messages.forEach(msg => {
-            appendMessage(msg.text, msg.type, msg.sender, msg.time, msg.status);
-        });
-        scrollToBottom();
-    }
-
-    function appendMessage(text, type, senderInitial, time, status = 'sent') {
-        const messageItem = document.createElement('div');
-        messageItem.classList.add('message-item', type === 'sent' ? 'message-sent' : 'message-received');
-
-        let messageHTML = '';
-        if (type === 'received') {
-            messageHTML += `<div class="avatar avatar-sm message-avatar"><span>${senderInitial || '?'}</span></div>`;
-        }
-
-        messageHTML += `<div class="message-content">
-                            <div class="message-bubble"><p>${text}</p></div>`;
-
-        if (type === 'sent') {
-            messageHTML += `<div class="message-meta">
-                                <span class="message-timestamp">${time || formatTime(new Date())}</span>
-                                <span class="message-status">
-                                    <i data-lucide="${status === 'read' ? 'check-check' : 'check'}" class="icon"></i>
-                                </span>
-                            </div>`;
-        } else {
-            messageHTML += `<span class="message-timestamp">${time || formatTime(new Date())}</span>`;
-        }
-        messageHTML += `</div>`;
-        messageItem.innerHTML = messageHTML;
-        messageDisplayArea.appendChild(messageItem);
-        lucide.createIcons({
-            nodes: [messageItem.querySelector('.message-status i')] // Re-render icon if added dynamically
-        });
-        scrollToBottom();
-    }
-    
-    function scrollToBottom() {
-        messageDisplayArea.scrollTop = messageDisplayArea.scrollHeight;
-    }
-
-    chatListItems.forEach(item => {
-        item.addEventListener('click', function () {
-            chatListItems.forEach(i => i.classList.remove('active'));
-            this.classList.add('active');
-
-            const chatName = this.dataset.chatname;
-            const avatarInitial = this.dataset.avatarinitial;
-
-            chatPartnerNameElement.textContent = chatName;
-            chatPartnerAvatarElement.textContent = avatarInitial;
-            
-            // Simulate loading messages for the selected chat
-            renderMessages(chatName);
-        });
-    });
-
-    messageForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const text = messageInput.value.trim();
-        if (text) {
-            appendMessage(text, 'sent', null, formatTime(new Date()), 'sent'); // 'sent' status initially
-            messageInput.value = '';
-
-            // Simulate a reply after a short delay
-            const currentChatPartner = chatPartnerNameElement.textContent;
-            setTimeout(() => {
-                const replyText = `Thanks for your message about "${text.substring(0,20)}...". We'll get back to you.`;
-                appendMessage(replyText, 'received', currentChatPartner.substring(0,2).toUpperCase(), formatTime(new Date()));
-            }, 1500);
-        }
-    });
-
-    // Initial load for the active chat
-    const activeChatItem = document.querySelector('.chat-list-item.active');
-    if (activeChatItem) {
-        renderMessages(activeChatItem.dataset.chatname);
-    }
-    scrollToBottom();
-});
-</script>
-</body>
+         </main>
+      </div>
+      <script>
+         document.addEventListener('DOMContentLoaded', function () {
+             // ADD THIS JAVASCRIPT TO YOUR SCRIPT TAG
+         
+         // --- Mobile Chat View Toggle Logic ---
+         const chatLayout = document.querySelector('.chat-app-layout');
+         const mobileBackButton = document.querySelector('.mobile-back-button');
+         
+         // Add click event to each chat list item
+         document.querySelectorAll('.chat-list-item').forEach(item => {
+             item.addEventListener('click', () => {
+                 // Only apply this logic on mobile screens
+                 if (window.innerWidth <= 767) {
+                     chatLayout.classList.add('is-chat-active');
+                 }
+             });
+         });
+         
+         // Add click event to the new mobile back button
+         if (mobileBackButton) {
+             mobileBackButton.addEventListener('click', () => {
+                 // Only apply this logic on mobile screens
+                 if (window.innerWidth <= 767) {
+                     chatLayout.classList.remove('is-chat-active');
+                 }
+             });
+         }
+             // ADD THIS JAVASCRIPT TO YOUR <script> TAGS
+         
+         // --- Search Overlay Logic ---
+         const searchOverlay = document.getElementById('searchOverlay');
+         const searchTrigger = document.querySelector('.mobile-search-trigger');
+         const searchClose = document.getElementById('searchOverlayClose');
+         const mobileSearchInput = document.getElementById('mobileSearchInput');
+         
+         if (searchTrigger) {
+             searchTrigger.addEventListener('click', () => {
+                 if (searchOverlay) {
+                     searchOverlay.classList.add('is-active');
+                     // Automatically focus the input field when the overlay opens
+                     if(mobileSearchInput) mobileSearchInput.focus();
+                 }
+             });
+         }
+         
+         if (searchClose) {
+             searchClose.addEventListener('click', () => {
+                 if (searchOverlay) {
+                     searchOverlay.classList.remove('is-active');
+                 }
+             });
+         }
+             lucide.createIcons();
+         
+             const chatListItems = document.querySelectorAll('.chat-list-item');
+             const chatPartnerNameElement = document.getElementById('chatPartnerName');
+             const chatPartnerAvatarElement = document.getElementById('chatPartnerAvatar').querySelector('span');
+             const messageDisplayArea = document.getElementById('messageDisplayArea');
+             const messageForm = document.getElementById('messageForm');
+             const messageInput = document.getElementById('messageInput');
+         
+             // Sample messages for different chats (for simulation)
+             const sampleMessages = {
+                 "Toko 1": [
+                     { type: 'received', sender: 'T1', text: 'Hello Kak, Selamat Datang di Toko kami :)', time: '08:17 AM' },
+                     { type: 'sent', text: 'Apakah produk ini masih ada?', time: '08:22 AM', status: 'read' },
+                     { type: 'received', sender: 'T1', text: 'Masih kak, silahkan diorder ya.', time: '08:25 AM' }
+                 ],
+                 "Toko 2": [
+                     { type: 'received', sender: 'T2', text: 'Hi! Ada yang bisa dibantu dengan Toko 2?', time: '09:00 AM' }
+                 ],
+                 "Toko 3": [
+                     { type: 'received', sender: 'T3', text: 'Welcome to Toko 3! Let me know if you have questions.', time: '10:15 AM' }
+                 ],
+                 "Toko 4": [
+                     { type: 'received', sender: 'T4', text: 'Toko 4 ready to serve!', time: '11:30 AM' }
+                 ],
+                 "Toko 5": [
+                     { type: 'received', sender: 'T5', text: 'Thanks for reaching out to Toko 5.', time: '12:00 PM' }
+                 ]
+             };
+         
+             function formatTime(date) {
+                 let hours = date.getHours();
+                 let minutes = date.getMinutes();
+                 const ampm = hours >= 12 ? 'PM' : 'AM';
+                 hours = hours % 12;
+                 hours = hours ? hours : 12; // the hour '0' should be '12'
+                 minutes = minutes < 10 ? '0' + minutes : minutes;
+                 return hours + ':' + minutes + ' ' + ampm;
+             }
+         
+             function renderMessages(chatName) {
+                 messageDisplayArea.innerHTML = ''; // Clear previous messages
+                 const messages = sampleMessages[chatName] || [{ type: 'received', sender: chatName.substring(0,2).toUpperCase(), text: `Starting chat with ${chatName}...`, time: formatTime(new Date()) }];
+                 
+                 // Add a date separator (optional, could be more dynamic)
+                 const dateSeparator = document.createElement('div');
+                 dateSeparator.className = 'date-separator';
+                 dateSeparator.innerHTML = `<span>Today</span>`;
+                 messageDisplayArea.appendChild(dateSeparator);
+         
+                 messages.forEach(msg => {
+                     appendMessage(msg.text, msg.type, msg.sender, msg.time, msg.status);
+                 });
+                 scrollToBottom();
+             }
+         
+             function appendMessage(text, type, senderInitial, time, status = 'sent') {
+                 const messageItem = document.createElement('div');
+                 messageItem.classList.add('message-item', type === 'sent' ? 'message-sent' : 'message-received');
+         
+                 let messageHTML = '';
+                 if (type === 'received') {
+                     messageHTML += `<div class="avatar avatar-sm message-avatar"><span>${senderInitial || '?'}</span></div>`;
+                 }
+         
+                 messageHTML += `<div class="message-content">
+                                     <div class="message-bubble"><p>${text}</p></div>`;
+         
+                 if (type === 'sent') {
+                     messageHTML += `<div class="message-meta">
+                                         <span class="message-timestamp">${time || formatTime(new Date())}</span>
+                                         <span class="message-status">
+                                             <i data-lucide="${status === 'read' ? 'check-check' : 'check'}" class="icon"></i>
+                                         </span>
+                                     </div>`;
+                 } else {
+                     messageHTML += `<span class="message-timestamp">${time || formatTime(new Date())}</span>`;
+                 }
+                 messageHTML += `</div>`;
+                 messageItem.innerHTML = messageHTML;
+                 messageDisplayArea.appendChild(messageItem);
+                 lucide.createIcons({
+                     nodes: [messageItem.querySelector('.message-status i')] // Re-render icon if added dynamically
+                 });
+                 scrollToBottom();
+             }
+             
+             function scrollToBottom() {
+                 messageDisplayArea.scrollTop = messageDisplayArea.scrollHeight;
+             }
+         
+             chatListItems.forEach(item => {
+                 item.addEventListener('click', function () {
+                     chatListItems.forEach(i => i.classList.remove('active'));
+                     this.classList.add('active');
+         
+                     const chatName = this.dataset.chatname;
+                     const avatarInitial = this.dataset.avatarinitial;
+         
+                     chatPartnerNameElement.textContent = chatName;
+                     chatPartnerAvatarElement.textContent = avatarInitial;
+                     
+                     // Simulate loading messages for the selected chat
+                     renderMessages(chatName);
+                 });
+             });
+         
+             messageForm.addEventListener('submit', function (e) {
+                 e.preventDefault();
+                 const text = messageInput.value.trim();
+                 if (text) {
+                     appendMessage(text, 'sent', null, formatTime(new Date()), 'sent'); // 'sent' status initially
+                     messageInput.value = '';
+         
+                     // Simulate a reply after a short delay
+                     const currentChatPartner = chatPartnerNameElement.textContent;
+                     setTimeout(() => {
+                         const replyText = `Thanks for your message about "${text.substring(0,20)}...". We'll get back to you.`;
+                         appendMessage(replyText, 'received', currentChatPartner.substring(0,2).toUpperCase(), formatTime(new Date()));
+                     }, 1500);
+                 }
+             });
+         
+             // Initial load for the active chat
+             const activeChatItem = document.querySelector('.chat-list-item.active');
+             if (activeChatItem) {
+                 renderMessages(activeChatItem.dataset.chatname);
+             }
+             scrollToBottom();
+         });
+      </script>
+   </body>
 </html>

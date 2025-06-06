@@ -1,378 +1,365 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beliin.id - Semua Kebutuhan, Langsung Disini</title>
-    <link rel="stylesheet" href="./component/css/main.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
-        /* Styles for carousel - can be moved to CSS file */
-        .banner-main .carousel-item, .banner-side .carousel-item {
-            display: none;
-            width: 100%;
-            height: 100%; /* Ensure banners fill their containers */
-        }
-        .banner-main .carousel-item.active, .banner-side .carousel-item.active {
-            display: flex; /* Or block, depending on content */
-            align-items: center; /* Center placeholder text/image */
-            justify-content: center; /* Center placeholder text/image */
-        }
-        .banner-main, .banner-item { /* Ensure these containers have relative positioning if controls are absolute */
-            position: relative;
-            overflow: hidden; /* To contain absolutely positioned controls or hide non-active slides */
-        }
-        .home-carousel-controls {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            background-color: hsla(var(--card-background-hsl, 0 0% 100%) / 0.5); /* Use card bg for theme consistency */
-            color: hsl(var(--card-foreground-hsl, 0 0% 0%)); /* Use card fg for theme consistency */
-            border-radius: var(--radius-full);
-            padding: var(--spacing-1);
-        }
-        .home-carousel-controls.prev { left: var(--spacing-2); }
-        .home-carousel-controls.next { right: var(--spacing-2); }
-
-        /* Ensure images within banners fit well */
-        .banner-main a img, .banner-item a img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Or contain, depending on desired effect */
-        }
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Beliin.id - Semua Kebutuhan, Langsung Disini</title>
+      <link rel="stylesheet" href="./component/css/main.css">
+      <script src="https://unpkg.com/lucide@latest"></script>
+      <style>
+         .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
+         /* Styles for carousel - can be moved to CSS file */
+         .banner-main .carousel-item, .banner-side .carousel-item {
+         display: none;
+         width: 100%;
+         height: 100%; /* Ensure banners fill their containers */
+         }
+         .banner-main .carousel-item.active, .banner-side .carousel-item.active {
+         display: flex; /* Or block, depending on content */
+         align-items: center; /* Center placeholder text/image */
+         justify-content: center; /* Center placeholder text/image */
+         }
+         .banner-main, .banner-item { /* Ensure these containers have relative positioning if controls are absolute */
+         position: relative;
+         overflow: hidden; /* To contain absolutely positioned controls or hide non-active slides */
+         }
+         .home-carousel-controls {
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+         z-index: 10;
+         background-color: hsla(var(--card-background-hsl, 0 0% 100%) / 0.5); /* Use card bg for theme consistency */
+         color: hsl(var(--card-foreground-hsl, 0 0% 0%)); /* Use card fg for theme consistency */
+         border-radius: var(--radius-full);
+         padding: var(--spacing-1);
+         }
+         .home-carousel-controls.prev { left: var(--spacing-2); }
+         .home-carousel-controls.next { right: var(--spacing-2); }
+         /* Ensure images within banners fit well */
+         .banner-main a img, .banner-item a img {
+         width: 100%;
+         height: 100%;
+         object-fit: contain; /* Or contain, depending on desired effect */
+         }
          .category-image-placeholder .icon { /* Adjust icon size in category placeholders */
-            width: 2.5em;
-            height: 2.5em;
-        }
-    </style>
-    <link rel="icon" href="./assets/logo.PNG" type="image/png">
-</head>
-<body class="page-body">
-
-    <header class="site-header">
-    <div class="header-container">
-        <div class="logo-container">
-            <a href="index.html" class="logo-link">
-                <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
-            </a>
-        </div>
-
-        <div class="search-bar-container new-search-bar desktop-search">
-            <form action="#" class="search-form">
-                <i data-lucide="search" class="icon search-icon-inside"></i>
-                <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
-            </form>
-        </div>
-
-        <nav class="header-actions">
-            <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
-                <i data-lucide="search" class="icon"></i>
-            </button>
-            
-            <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
-                <i data-lucide="shopping-cart" class="icon"></i>
-            </a>
-            <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
-                <i data-lucide="heart" class="icon"></i>
-            </a>
-            <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
-                <i data-lucide="message-circle" class="icon"></i>
-            </a>
-            <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
-                <i data-lucide="user" class="icon"></i>
-            </a>
-        </nav>
-    </div>
-</header>
-
-<div class="search-overlay" id="searchOverlay">
-    <div class="search-overlay-header">
-        <div class="search-bar-container new-search-bar">
-            <form action="#" class="search-form">
-                <i data-lucide="search" class="icon search-icon-inside"></i>
-                <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
-            </form>
-        </div>
-        <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
-    </div>
-    <div class="search-overlay-content">
-        </div>
-</div>
-
-<div class="search-overlay" id="searchOverlay">
-    <div class="search-overlay-header">
-        <div class="search-bar-container new-search-bar">
-            <form action="#" class="search-form">
-                <i data-lucide="search" class="icon search-icon-inside"></i>
-                <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
-            </form>
-        </div>
-        <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
-    </div>
-    <div class="search-overlay-content">
-        </div>
-</div>
-
-    <main class="homepage-content container">
-
-        <section class="banner-section">
+         width: 2.5em;
+         height: 2.5em;
+         }
+      </style>
+      <link rel="icon" href="./assets/logo.PNG" type="image/png">
+   </head>
+   <body class="page-body">
+      <header class="site-header">
+         <div class="header-container">
+            <div class="logo-container">
+               <a href="index.html" class="logo-link">
+               <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+               </a>
+            </div>
+            <div class="search-bar-container new-search-bar desktop-search">
+               <form action="#" class="search-form">
+                  <i data-lucide="search" class="icon search-icon-inside"></i>
+                  <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+               </form>
+            </div>
+            <nav class="header-actions">
+               <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
+               <i data-lucide="search" class="icon"></i>
+               </button>
+               <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+               <i data-lucide="shopping-cart" class="icon"></i>
+               </a>
+               <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+               <i data-lucide="heart" class="icon"></i>
+               </a>
+               <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+               <i data-lucide="message-circle" class="icon"></i>
+               </a>
+               <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+               <i data-lucide="user" class="icon"></i>
+               </a>
+            </nav>
+         </div>
+      </header>
+      <div class="search-overlay" id="searchOverlay">
+         <div class="search-overlay-header">
+            <div class="search-bar-container new-search-bar">
+               <form action="#" class="search-form">
+                  <i data-lucide="search" class="icon search-icon-inside"></i>
+                  <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
+               </form>
+            </div>
+            <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
+         </div>
+         <div class="search-overlay-content">
+         </div>
+      </div>
+      <div class="search-overlay" id="searchOverlay">
+         <div class="search-overlay-header">
+            <div class="search-bar-container new-search-bar">
+               <form action="#" class="search-form">
+                  <i data-lucide="search" class="icon search-icon-inside"></i>
+                  <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
+               </form>
+            </div>
+            <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
+         </div>
+         <div class="search-overlay-content">
+         </div>
+      </div>
+      <main class="homepage-content container">
+         <section class="banner-section">
             <div class="banner-main" id="mainBanner">
-                <div class="carousel-item active"><a href="#" aria-label="Main Banner 1"><img src="./assets/banner/banner1.jpg" alt="Main Banner 1"></a></div>
-                <div class="carousel-item"><a href="#" aria-label="Main Banner 2"><img src="./assets/banner/banner2.jpg" alt="Main Banner 2"></a></div>
-                <div class="carousel-item"><a href="#" aria-label="Main Banner 3"><img src="./assets/banner/banner3.jpg" alt="Main Banner 3"></a></div>
-                <button class="btn btn-icon btn-secondary home-carousel-controls prev" data-carousel="mainBanner" data-slide="prev" aria-label="Previous slide">
-                    <i data-lucide="chevron-left"></i>
-                </button>
-                <button class="btn btn-icon btn-secondary home-carousel-controls next" data-carousel="mainBanner" data-slide="next" aria-label="Next slide">
-                    <i data-lucide="chevron-right"></i>
-                </button>
+               <div class="carousel-item active"><a href="#" aria-label="Main Banner 1"><img src="./assets/banner/banner1.jpg" alt="Main Banner 1"></a></div>
+               <div class="carousel-item"><a href="#" aria-label="Main Banner 2"><img src="./assets/banner/banner2.jpg" alt="Main Banner 2"></a></div>
+               <div class="carousel-item"><a href="#" aria-label="Main Banner 3"><img src="./assets/banner/banner3.jpg" alt="Main Banner 3"></a></div>
+               <button class="btn btn-icon btn-secondary home-carousel-controls prev" data-carousel="mainBanner" data-slide="prev" aria-label="Previous slide">
+               <i data-lucide="chevron-left"></i>
+               </button>
+               <button class="btn btn-icon btn-secondary home-carousel-controls next" data-carousel="mainBanner" data-slide="next" aria-label="Next slide">
+               <i data-lucide="chevron-right"></i>
+               </button>
             </div>
             <div class="banner-side">
-                <div class="banner-item banner-side-top" id="sideBannerTop">
-                    <div class="carousel-item active"><a href="#" aria-label="Side Banner Top 1"><img src="./assets/banner/side-banner/1.png" alt="Side Banner Top 1"></a></div>
-                    <div class="carousel-item"><a href="#" aria-label="Side Banner Top 2"><img src="./assets/banner/side-banner/2.png" alt="Side Banner Top 2"></a></div>
-                </div>
-                <div class="banner-item banner-side-bottom" id="sideBannerBottom">
-                    <div class="carousel-item active"><a href="#" aria-label="Side Banner Bottom 1"><img src="./assets/banner/side-banner/3.png" alt="Side Banner Bottom 1"></a></div>
-                    <div class="carousel-item"><a href="#" aria-label="Side Banner Bottom 2"><img src="./assets/banner/side-banner/4.png" alt="Side Banner Bottom 2"></a></div>
-                </div>
+               <div class="banner-item banner-side-top" id="sideBannerTop">
+                  <div class="carousel-item active"><a href="#" aria-label="Side Banner Top 1"><img src="./assets/banner/side-banner/1.png" alt="Side Banner Top 1"></a></div>
+                  <div class="carousel-item"><a href="#" aria-label="Side Banner Top 2"><img src="./assets/banner/side-banner/2.png" alt="Side Banner Top 2"></a></div>
+               </div>
+               <div class="banner-item banner-side-bottom" id="sideBannerBottom">
+                  <div class="carousel-item active"><a href="#" aria-label="Side Banner Bottom 1"><img src="./assets/banner/side-banner/3.png" alt="Side Banner Bottom 1"></a></div>
+                  <div class="carousel-item"><a href="#" aria-label="Side Banner Bottom 2"><img src="./assets/banner/side-banner/4.png" alt="Side Banner Bottom 2"></a></div>
+               </div>
             </div>
-        </section>
-
-        <section class="categories-section content-section">
+         </section>
+         <section class="categories-section content-section">
             <h2 class="section-title">Kategori</h2>
             <div class="category-grid">
-                <a href="#" class="category-item card card-interactive">
-                    <div class="category-image-placeholder"><i data-lucide="layout-grid" class="icon"></i></div>
-                    <p class="category-name">Semua Kategori</p>
-                </a>
-                <a href="#" class="category-item card card-interactive">
-                    <div class="category-image-placeholder"><i data-lucide="smartphone" class="icon"></i></div>
-                    <p class="category-name">Elektronik</p>
-                </a>
-                <a href="#" class="category-item card card-interactive">
-                    <div class="category-image-placeholder"><i data-lucide="shirt" class="icon"></i></div>
-                    <p class="category-name">Fashion Pria</p>
-                </a>
-                <a href="#" class="category-item card card-interactive">
-                    <div class="category-image-placeholder"><i data-lucide="shopping-bag" class="icon"></i></div>
-                    <p class="category-name">Fashion Wanita</p>
-                </a>
-                <a href="#" class="category-item card card-interactive">
-                    <div class="category-image-placeholder"><i data-lucide="home" class="icon"></i></div>
-                    <p class="category-name">Rumah Tangga</p>
-                </a>
-                <a href="#" class="category-item card card-interactive">
-                    <div class="category-image-placeholder"><i data-lucide="heart-pulse" class="icon"></i></div>
-                    <p class="category-name">Kesehatan</p>
-                </a>
+               <a href="#" class="category-item card card-interactive">
+                  <div class="category-image-placeholder"><i data-lucide="layout-grid" class="icon"></i></div>
+                  <p class="category-name">Semua Kategori</p>
+               </a>
+               <a href="#" class="category-item card card-interactive">
+                  <div class="category-image-placeholder"><i data-lucide="smartphone" class="icon"></i></div>
+                  <p class="category-name">Elektronik</p>
+               </a>
+               <a href="#" class="category-item card card-interactive">
+                  <div class="category-image-placeholder"><i data-lucide="shirt" class="icon"></i></div>
+                  <p class="category-name">Fashion Pria</p>
+               </a>
+               <a href="#" class="category-item card card-interactive">
+                  <div class="category-image-placeholder"><i data-lucide="shopping-bag" class="icon"></i></div>
+                  <p class="category-name">Fashion Wanita</p>
+               </a>
+               <a href="#" class="category-item card card-interactive">
+                  <div class="category-image-placeholder"><i data-lucide="home" class="icon"></i></div>
+                  <p class="category-name">Rumah Tangga</p>
+               </a>
+               <a href="#" class="category-item card card-interactive">
+                  <div class="category-image-placeholder"><i data-lucide="heart-pulse" class="icon"></i></div>
+                  <p class="category-name">Kesehatan</p>
+               </a>
             </div>
-        </section>
-
-        <section class="flash-sale-section content-section">
+         </section>
+         <section class="flash-sale-section content-section">
             <div class="section-header">
-                <h2 class="section-title">Promo Kilat</h2>
-                <a href="promo.html" class="see-all-link">
-                    Lihat Semua <i data-lucide="chevron-right" class="icon"></i>
-                </a>
+               <h2 class="section-title">Promo Kilat</h2>
+               <a href="promo.html" class="see-all-link">
+               Lihat Semua <i data-lucide="chevron-right" class="icon"></i>
+               </a>
             </div>
             <div class="product-scroll-container">
-                <div class="product-list-horizontal">
-                    <div class="product-card card card-interactive">
-                        <a href="detailProduct.html" class="product-link-wrapper">
-                            <div class="product-image-placeholder"><img src="./assets/products/1.jfif" alt="Produk Kilat 1"></div>
-                            <div class="product-card-content">
-                                <h3 class="product-name">Soklin Deterjen Cair Sakura Strawberry 1600 ml</h3>
-                                <p class="product-price">Rp 29.800</p>
-                                <span class="stock-badge">STOK TERBATAS</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-card card card-interactive">
-                        <a href="detailProduct.html" class="product-link-wrapper">
-                            <div class="product-image-placeholder"><img src="./assets/products/2.jfif" alt="Produk Kilat 2"></div>
-                            <div class="product-card-content">
-                                 <h3 class="product-name">[NEW LAUNCH] vivo Y28 (6/128) - Gleaming Orange</h3>
-                                <p class="product-price">Rp 1.999.000</p>
-                                <span class="stock-badge">STOK TERBATAS</span>
-                            </div>
-                        </a>
-                    </div>
-                     <div class="product-card card card-interactive">
-                        <a href="detailProduct.html" class="product-link-wrapper">
-                            <div class="product-image-placeholder"><img src="./assets/products/3.jfif" alt="Produk Kilat 3"></div>
-                            <div class="product-card-content">
-                                 <h3 class="product-name">Skull & Co. Asus ROG Ally X Back Button Enhancement Set</h3>
-                                <p class="product-price">Rp 72.270</p>
-                                <span class="stock-badge">STOK TERBATAS</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-card card card-interactive">
-                        <a href="detailProduct.html" class="product-link-wrapper">
-                            <div class="product-image-placeholder"><img src="./assets/products/4.jfif" alt="Produk Kilat 4"></div>
-                            <div class="product-card-content">
-                                 <h3 class="product-name">Creality K2 PLUS CFS Combo 3D Printer Multi Material</h3>
-                                <p class="product-price">Rp 26.504.050</p>
-                                <span class="stock-badge">STOK TERBATAS</span>
-                            </div>
-                        </a>
-                    </div>
-                     <div class="product-card card card-interactive">
-                        <a href="detailProduct.html" class="product-link-wrapper">
-                            <div class="product-image-placeholder"><img src="./assets/products/5.jfif" alt="Produk Kilat 5"></div>
-                            <div class="product-card-content">
-                                <h3 class="product-name">Nanlite FS 300B Bi-Color LED Video Light </h3>
-                                <p class="product-price">Rp 4.195.000</p>
-                                <span class="stock-badge">STOK TERBATAS</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+               <div class="product-list-horizontal">
+                  <div class="product-card card card-interactive">
+                     <a href="detailProduct.html" class="product-link-wrapper">
+                        <div class="product-image-placeholder"><img src="./assets/products/1.jfif" alt="Produk Kilat 1"></div>
+                        <div class="product-card-content">
+                           <h3 class="product-name">Soklin Deterjen Cair Sakura Strawberry 1600 ml</h3>
+                           <p class="product-price">Rp 29.800</p>
+                           <span class="stock-badge">STOK TERBATAS</span>
+                        </div>
+                     </a>
+                  </div>
+                  <div class="product-card card card-interactive">
+                     <a href="detailProduct.html" class="product-link-wrapper">
+                        <div class="product-image-placeholder"><img src="./assets/products/2.jfif" alt="Produk Kilat 2"></div>
+                        <div class="product-card-content">
+                           <h3 class="product-name">[NEW LAUNCH] vivo Y28 (6/128) - Gleaming Orange</h3>
+                           <p class="product-price">Rp 1.999.000</p>
+                           <span class="stock-badge">STOK TERBATAS</span>
+                        </div>
+                     </a>
+                  </div>
+                  <div class="product-card card card-interactive">
+                     <a href="detailProduct.html" class="product-link-wrapper">
+                        <div class="product-image-placeholder"><img src="./assets/products/3.jfif" alt="Produk Kilat 3"></div>
+                        <div class="product-card-content">
+                           <h3 class="product-name">Skull & Co. Asus ROG Ally X Back Button Enhancement Set</h3>
+                           <p class="product-price">Rp 72.270</p>
+                           <span class="stock-badge">STOK TERBATAS</span>
+                        </div>
+                     </a>
+                  </div>
+                  <div class="product-card card card-interactive">
+                     <a href="detailProduct.html" class="product-link-wrapper">
+                        <div class="product-image-placeholder"><img src="./assets/products/4.jfif" alt="Produk Kilat 4"></div>
+                        <div class="product-card-content">
+                           <h3 class="product-name">Creality K2 PLUS CFS Combo 3D Printer Multi Material</h3>
+                           <p class="product-price">Rp 26.504.050</p>
+                           <span class="stock-badge">STOK TERBATAS</span>
+                        </div>
+                     </a>
+                  </div>
+                  <div class="product-card card card-interactive">
+                     <a href="detailProduct.html" class="product-link-wrapper">
+                        <div class="product-image-placeholder"><img src="./assets/products/5.jfif" alt="Produk Kilat 5"></div>
+                        <div class="product-card-content">
+                           <h3 class="product-name">Nanlite FS 300B Bi-Color LED Video Light </h3>
+                           <p class="product-price">Rp 4.195.000</p>
+                           <span class="stock-badge">STOK TERBATAS</span>
+                        </div>
+                     </a>
+                  </div>
+               </div>
             </div>
-        </section>
-
-        <section class="recommendations-section content-section">
+         </section>
+         <section class="recommendations-section content-section">
             <h2 class="section-title">Rekomendasi Untukmu</h2>
             <div class="product-grid">
-                <div class="product-card card card-interactive">
-                    <a href="detailProduct.html" class="product-link-wrapper">
-                        <div class="product-image-placeholder"><img src="./assets/products/for-you/1.jpeg" alt="Rekomendasi 1"></div>
-                        <div class="product-card-content">
-                            <h3 class="product-name">Apple MacBook Air M4 2025 13-Inch 512GB 256GB</h3>
-                            <p class="product-price">Rp 16.000.000</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="product-card card card-interactive">
-                     <a href="detailProduct.html" class="product-link-wrapper">
-                        <div class="product-image-placeholder"><img src="./assets/products/for-you/2.jpeg" alt="Rekomendasi 2"></div>
-                        <div class="product-card-content">
-                            <h3 class="product-name">JisuLife Handheld Fan Life9 Kipas Angin Mini Portable</h3>
-                            <p class="product-price">Rp 283.000</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="product-card card card-interactive">
-                     <a href="detailProduct.html" class="product-link-wrapper">
-                        <div class="product-image-placeholder"><img src="./assets/products/for-you/3.jpg" alt="Rekomendasi 3"></div>
-                        <div class="product-card-content">
-                            <h3 class="product-name">Garmin MARQ Golfer Gen 2 Carbon Edition - Black</h3>
-                            <p class="product-price">Rp 52.999.000</p>
-                        </div>
-                    </a>
-                </div>
-                </div>
-        </section>
-    </main>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // ADD THIS JAVASCRIPT TO YOUR <script> TAGS
-
-// --- Search Overlay Logic ---
-const searchOverlay = document.getElementById('searchOverlay');
-const searchTrigger = document.querySelector('.mobile-search-trigger');
-const searchClose = document.getElementById('searchOverlayClose');
-const mobileSearchInput = document.getElementById('mobileSearchInput');
-
-if (searchTrigger) {
-    searchTrigger.addEventListener('click', () => {
-        if (searchOverlay) {
-            searchOverlay.classList.add('is-active');
-            // Automatically focus the input field when the overlay opens
-            if(mobileSearchInput) mobileSearchInput.focus();
-        }
-    });
-}
-
-if (searchClose) {
-    searchClose.addEventListener('click', () => {
-        if (searchOverlay) {
-            searchOverlay.classList.remove('is-active');
-        }
-    });
-}
-    lucide.createIcons();
-
-    function setupCarousel(carouselId) {
-        const carouselElement = document.getElementById(carouselId);
-        if (!carouselElement) {
-            // console.warn(`Carousel element with ID "${carouselId}" not found.`);
-            return;
-        }
-
-        const items = carouselElement.querySelectorAll('.carousel-item');
-        let currentIndex = 0;
-        const totalItems = items.length;
-
-        if (totalItems === 0) {
-            // console.warn(`No items found for carousel ID "${carouselId}".`);
-            return;
-        }
-
-        function showItem(index) {
-            items.forEach((item, i) => {
-                item.classList.remove('active');
-                if (i === index) {
-                    item.classList.add('active');
-                }
-            });
-        }
-
-        let autoplayInterval;
-        function startAutoplay() {
-            if (totalItems <= 1) return;
-            stopAutoplay();
-            autoplayInterval = setInterval(() => {
-                currentIndex = (currentIndex + 1) % totalItems;
-                showItem(currentIndex);
-            }, 5000);
-        }
-
-        function stopAutoplay() {
-            clearInterval(autoplayInterval);
-        }
-
-        const prevButton = document.querySelector(`.home-carousel-controls.prev[data-carousel="${carouselId}"]`);
-        const nextButton = document.querySelector(`.home-carousel-controls.next[data-carousel="${carouselId}"]`);
-
-        if (prevButton && nextButton) {
-            if (totalItems > 1) {
-                prevButton.addEventListener('click', () => {
-                    stopAutoplay();
-                    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-                    showItem(currentIndex);
-                    startAutoplay(); 
-                });
-
-                nextButton.addEventListener('click', () => {
-                    stopAutoplay();
-                    currentIndex = (currentIndex + 1) % totalItems;
-                    showItem(currentIndex);
-                    startAutoplay(); 
-                });
-            } else { // Hide controls if only one item or no items
-                prevButton.style.display = 'none';
-                nextButton.style.display = 'none';
-            }
-        }
-
-
-        carouselElement.addEventListener('mouseenter', stopAutoplay);
-        carouselElement.addEventListener('mouseleave', startAutoplay);
-
-        showItem(currentIndex); 
-        startAutoplay(); 
-    }
-
-    setupCarousel('mainBanner');
-    setupCarousel('sideBannerTop');
-    setupCarousel('sideBannerBottom');
-
-});
-</script>
-</body>
+               <div class="product-card card card-interactive">
+                  <a href="detailProduct.html" class="product-link-wrapper">
+                     <div class="product-image-placeholder"><img src="./assets/products/for-you/1.jpeg" alt="Rekomendasi 1"></div>
+                     <div class="product-card-content">
+                        <h3 class="product-name">Apple MacBook Air M4 2025 13-Inch 512GB 256GB</h3>
+                        <p class="product-price">Rp 16.000.000</p>
+                     </div>
+                  </a>
+               </div>
+               <div class="product-card card card-interactive">
+                  <a href="detailProduct.html" class="product-link-wrapper">
+                     <div class="product-image-placeholder"><img src="./assets/products/for-you/2.jpeg" alt="Rekomendasi 2"></div>
+                     <div class="product-card-content">
+                        <h3 class="product-name">JisuLife Handheld Fan Life9 Kipas Angin Mini Portable</h3>
+                        <p class="product-price">Rp 283.000</p>
+                     </div>
+                  </a>
+               </div>
+               <div class="product-card card card-interactive">
+                  <a href="detailProduct.html" class="product-link-wrapper">
+                     <div class="product-image-placeholder"><img src="./assets/products/for-you/3.jpg" alt="Rekomendasi 3"></div>
+                     <div class="product-card-content">
+                        <h3 class="product-name">Garmin MARQ Golfer Gen 2 Carbon Edition - Black</h3>
+                        <p class="product-price">Rp 52.999.000</p>
+                     </div>
+                  </a>
+               </div>
+            </div>
+         </section>
+      </main>
+      <script>
+         document.addEventListener('DOMContentLoaded', function () {
+             // ADD THIS JAVASCRIPT TO YOUR <script> TAGS
+         
+         // --- Search Overlay Logic ---
+         const searchOverlay = document.getElementById('searchOverlay');
+         const searchTrigger = document.querySelector('.mobile-search-trigger');
+         const searchClose = document.getElementById('searchOverlayClose');
+         const mobileSearchInput = document.getElementById('mobileSearchInput');
+         
+         if (searchTrigger) {
+             searchTrigger.addEventListener('click', () => {
+                 if (searchOverlay) {
+                     searchOverlay.classList.add('is-active');
+                     // Automatically focus the input field when the overlay opens
+                     if(mobileSearchInput) mobileSearchInput.focus();
+                 }
+             });
+         }
+         
+         if (searchClose) {
+             searchClose.addEventListener('click', () => {
+                 if (searchOverlay) {
+                     searchOverlay.classList.remove('is-active');
+                 }
+             });
+         }
+             lucide.createIcons();
+         
+             function setupCarousel(carouselId) {
+                 const carouselElement = document.getElementById(carouselId);
+                 if (!carouselElement) {
+                     // console.warn(`Carousel element with ID "${carouselId}" not found.`);
+                     return;
+                 }
+         
+                 const items = carouselElement.querySelectorAll('.carousel-item');
+                 let currentIndex = 0;
+                 const totalItems = items.length;
+         
+                 if (totalItems === 0) {
+                     // console.warn(`No items found for carousel ID "${carouselId}".`);
+                     return;
+                 }
+         
+                 function showItem(index) {
+                     items.forEach((item, i) => {
+                         item.classList.remove('active');
+                         if (i === index) {
+                             item.classList.add('active');
+                         }
+                     });
+                 }
+         
+                 let autoplayInterval;
+                 function startAutoplay() {
+                     if (totalItems <= 1) return;
+                     stopAutoplay();
+                     autoplayInterval = setInterval(() => {
+                         currentIndex = (currentIndex + 1) % totalItems;
+                         showItem(currentIndex);
+                     }, 5000);
+                 }
+         
+                 function stopAutoplay() {
+                     clearInterval(autoplayInterval);
+                 }
+         
+                 const prevButton = document.querySelector(`.home-carousel-controls.prev[data-carousel="${carouselId}"]`);
+                 const nextButton = document.querySelector(`.home-carousel-controls.next[data-carousel="${carouselId}"]`);
+         
+                 if (prevButton && nextButton) {
+                     if (totalItems > 1) {
+                         prevButton.addEventListener('click', () => {
+                             stopAutoplay();
+                             currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                             showItem(currentIndex);
+                             startAutoplay(); 
+                         });
+         
+                         nextButton.addEventListener('click', () => {
+                             stopAutoplay();
+                             currentIndex = (currentIndex + 1) % totalItems;
+                             showItem(currentIndex);
+                             startAutoplay(); 
+                         });
+                     } else { // Hide controls if only one item or no items
+                         prevButton.style.display = 'none';
+                         nextButton.style.display = 'none';
+                     }
+                 }
+         
+         
+                 carouselElement.addEventListener('mouseenter', stopAutoplay);
+                 carouselElement.addEventListener('mouseleave', startAutoplay);
+         
+                 showItem(currentIndex); 
+                 startAutoplay(); 
+             }
+         
+             setupCarousel('mainBanner');
+             setupCarousel('sideBannerTop');
+             setupCarousel('sideBannerBottom');
+         
+         });
+      </script>
+   </body>
 </html>

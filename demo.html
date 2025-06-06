@@ -1,119 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../component/componentStyle.css">
-  <link rel="icon" href="../assets/logo.PNG" type="image/png">
-</head>
-<body class="dark"> 
-
-  <h1>Page Title (H1)</h1>
-  <h2>Section Title (H2)</h2>
-  <p>This is a paragraph with a <a href="#">link</a>.</p>
-
-  <div style="max-width: 500px; margin: 2rem auto; display: grid; gap: 1.5rem;"> // Container for demo
-
-    <form style="display: grid; gap: 1rem;">
-      <div>
-        <label for="name" class="form-label">Name</label>
-        <input type="text" id="name" class="form-input" placeholder="Your Name">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link rel="stylesheet" href="../component/componentStyle.css">
+      <link rel="icon" href="../assets/logo.PNG" type="image/png">
+   </head>
+   <body class="dark">
+      <h1>Page Title (H1)</h1>
+      <h2>Section Title (H2)</h2>
+      <p>This is a paragraph with a <a href="#">link</a>.</p>
+      <div style="max-width: 500px; margin: 2rem auto; display: grid; gap: 1.5rem;">
+         // Container for demo
+         <form style="display: grid; gap: 1rem;">
+            <div>
+               <label for="name" class="form-label">Name</label>
+               <input type="text" id="name" class="form-input" placeholder="Your Name">
+            </div>
+            <div>
+               <label for="message" class="form-label">Message</label>
+               <textarea id="message" class="form-textarea" placeholder="Your Message"></textarea>
+            </div>
+            <div>
+               <label for="country" class="form-label">Country</label>
+               <select id="country" class="form-select">
+                  <option>United States</option>
+                  <option>Canada</option>
+                  <option>Mexico</option>
+               </select>
+            </div>
+            <label class="form-checkbox-container">
+               <input type="checkbox" class="form-checkbox" id="agree">
+               <span class="form-checkbox-indicator">
+                  <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path>
+                  </svg>
+               </span>
+               <span class="form-checkbox-label">I agree to the terms</span>
+            </label>
+            <label class="form-checkbox-container">
+               <input type="checkbox" class="form-checkbox" id="subscribe" checked>
+               <span class="form-checkbox-indicator">
+                  <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path>
+                  </svg>
+               </span>
+               <span class="form-checkbox-label">Subscribe to newsletter</span>
+            </label>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+               <button type="button" class="btn btn-primary">Primary</button>
+               <button type="button" class="btn btn-secondary">Secondary</button>
+               <button type="button" class="btn btn-destructive">Destructive</button>
+               <button type="button" class="btn btn-outline">Outline</button>
+               <button type="button" class="btn btn-ghost">Ghost</button>
+               <a href="#" class="btn btn-link">Link</a>
+               <button type="button" class="btn btn-primary btn-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <path d="M5 12h14"/>
+                     <path d="M12 5v14"/>
+                  </svg>
+               </button>
+            </div>
+         </form>
+         <div class="card">
+            <div class="card-header">
+               <h3 class="card-title">Card Title</h3>
+               <p class="card-description">A short description for the card.</p>
+            </div>
+            <div class="card-content">
+               <p>This is the main content of the card. It can contain various elements.</p>
+            </div>
+            <div class="card-footer">
+               <button class="btn btn-secondary">Cancel</button>
+               <button class="btn btn-primary">Submit</button>
+            </div>
+         </div>
+         <div class="alert">
+            <h5 class="alert-title">Heads up!</h5>
+            <div class="alert-description">
+               This is a default alert message.
+            </div>
+         </div>
+         <div class="alert alert-destructive">
+            <h5 class="alert-title">Error!</h5>
+            <div class="alert-description">
+               Something went wrong. Please try again.
+            </div>
+         </div>
+         <p>
+            Status: <span class="badge badge-primary">Active</span>
+            <span class="badge badge-secondary">Pending</span>
+            <span class="badge badge-destructive">Failed</span>
+            <span class="badge badge-outline">Archived</span>
+         </p>
+         <div class="carousel">
+            <div class="carousel-inner">
+               <div class="carousel-item">Slide 1</div>
+               <div class="carousel-item">Slide 2</div>
+               <div class="carousel-item">Slide 3</div>
+            </div>
+            <button class="btn btn-icon btn-secondary carousel-control carousel-control-prev" aria-label="Previous slide">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+               </svg>
+            </button>
+            <button class="btn btn-icon btn-secondary carousel-control carousel-control-next" aria-label="Next slide">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+               </svg>
+            </button>
+            <ol class="carousel-indicators">
+               <li class="carousel-indicator active" aria-current="true" aria-label="Slide 1"></li>
+               <li class="carousel-indicator" aria-label="Slide 2"></li>
+               <li class="carousel-indicator" aria-label="Slide 3"></li>
+            </ol>
+         </div>
       </div>
-      <div>
-        <label for="message" class="form-label">Message</label>
-        <textarea id="message" class="form-textarea" placeholder="Your Message"></textarea>
-      </div>
-      <div>
-        <label for="country" class="form-label">Country</label>
-        <select id="country" class="form-select">
-          <option>United States</option>
-          <option>Canada</option>
-          <option>Mexico</option>
-        </select>
-      </div>
-      <label class="form-checkbox-container">
-        <input type="checkbox" class="form-checkbox" id="agree">
-        <span class="form-checkbox-indicator">
-          <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path></svg>
-        </span>
-        <span class="form-checkbox-label">I agree to the terms</span>
-      </label>
-       <label class="form-checkbox-container">
-        <input type="checkbox" class="form-checkbox" id="subscribe" checked>
-        <span class="form-checkbox-indicator">
-          <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path></svg>
-        </span>
-        <span class="form-checkbox-label">Subscribe to newsletter</span>
-      </label>
-      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-        <button type="button" class="btn btn-primary">Primary</button>
-        <button type="button" class="btn btn-secondary">Secondary</button>
-        <button type="button" class="btn btn-destructive">Destructive</button>
-        <button type="button" class="btn btn-outline">Outline</button>
-        <button type="button" class="btn btn-ghost">Ghost</button>
-        <a href="#" class="btn btn-link">Link</a>
-        <button type="button" class="btn btn-primary btn-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-        </button>
-      </div>
-    </form>
-
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Card Title</h3>
-        <p class="card-description">A short description for the card.</p>
-      </div>
-      <div class="card-content">
-        <p>This is the main content of the card. It can contain various elements.</p>
-      </div>
-      <div class="card-footer">
-        <button class="btn btn-secondary">Cancel</button>
-        <button class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-
-    <div class="alert">
-      <h5 class="alert-title">Heads up!</h5>
-      <div class="alert-description">
-        This is a default alert message.
-      </div>
-    </div>
-
-    <div class="alert alert-destructive">
-      <h5 class="alert-title">Error!</h5>
-      <div class="alert-description">
-        Something went wrong. Please try again.
-      </div>
-    </div>
-
-    <p>
-      Status: <span class="badge badge-primary">Active</span>
-      <span class="badge badge-secondary">Pending</span>
-      <span class="badge badge-destructive">Failed</span>
-      <span class="badge badge-outline">Archived</span>
-    </p>
-
-    <div class="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item">Slide 1</div>
-        <div class="carousel-item">Slide 2</div>
-        <div class="carousel-item">Slide 3</div>
-      </div>
-      <button class="btn btn-icon btn-secondary carousel-control carousel-control-prev" aria-label="Previous slide">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-      </button>
-      <button class="btn btn-icon btn-secondary carousel-control carousel-control-next" aria-label="Next slide">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </button>
-      <ol class="carousel-indicators">
-        <li class="carousel-indicator active" aria-current="true" aria-label="Slide 1"></li>
-        <li class="carousel-indicator" aria-label="Slide 2"></li>
-        <li class="carousel-indicator" aria-label="Slide 3"></li>
-      </ol>
-    </div>
-
-  </div> // End demo container
-
-</body>
+      // End demo container
+   </body>
 </html>

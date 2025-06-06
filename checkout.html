@@ -1,252 +1,240 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pembayaran - Beliin.id</title>
-    <link rel="stylesheet" href="./component/css/main.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        /* Minimal inline style for quick icon display, replace with proper CSS classes */
-        .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
-    </style>
-    <link rel="icon" href="./assets/logo.PNG" type="image/png">
-</head>
-<body class="page-body checkout-page-body">
-
-    <header class="site-header checkout-header"> 
-
-        <div class="checkout-header-container header-container">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Pembayaran - Beliin.id</title>
+      <link rel="stylesheet" href="./component/css/main.css">
+      <script src="https://unpkg.com/lucide@latest"></script>
+      <style>
+         /* Minimal inline style for quick icon display, replace with proper CSS classes */
+         .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
+      </style>
+      <link rel="icon" href="./assets/logo.PNG" type="image/png">
+   </head>
+   <body class="page-body checkout-page-body">
+      <header class="site-header checkout-header">
+         <div class="checkout-header-container header-container">
             <a href="keranjang.html" class="back-link-logo">
-                <i data-lucide="arrow-left" class="icon"></i>
-                <a href="index.html" class="logo-link">
-                    <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo"style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
-                </a>
+            <i data-lucide="arrow-left" class="icon"></i>
+            <a href="index.html" class="logo-link">
+            <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo"style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+            </a>
             </a>
             <h1 class="page-main-title">Pembayaran</h1>
-        </div>
-    </header>
-
-    <main class="checkout-page-content container">
-        <div class="checkout-layout-container">
-
+         </div>
+      </header>
+      <main class="checkout-page-content container">
+         <div class="checkout-layout-container">
             <section class="checkout-main-column">
-                <div class="ordered-products-section card">
-                    <h2 class="section-title">Produk Dipesan</h2>
-                    <ul class="product-summary-list">
-                        <li class="product-summary-item" data-price="125000">
-                            <div class="product-summary-image placeholder-bg"><img src="./assets/checkout/1.jpeg" alt="Produk A"></div>
-                            <div class="product-summary-details">
-                                <p class="product-summary-name">Ortuseight Sepatu Sneakers PHYTON - BLACK/WHITE</p>
-                                <p class="product-summary-price">Rp 125.000</p>
-                            </div>
-                        </li>
-                        <li class="product-summary-item" data-price="75000">
-                            <div class="product-summary-image placeholder-bg"><img src="./assets/checkout/2.jpeg" alt="Produk B"></div>
-                            <div class="product-summary-details">
-                                <p class="product-summary-name">BARDI Smart UNIVERSAL IR REMOTE 12M</p>
-                                <p class="product-summary-price">Rp 75.000</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="order-totals-summary card">
-                    <div class="summary-line">
-                        <span>Subtotal Pesanan:</span>
-                        <span id="subtotalAmount">Rp 200.000</span>
-                    </div>
-                    <div class="summary-line discount-line">
-                        <span>Diskon 10%:</span>
-                        <span id="discountAmount">-Rp 20.000</span>
-                    </div>
-                    <div class="summary-line shipping-line">
-                        <span>Ongkos Kirim:</span>
-                        <span id="shippingAmount">Rp 0</span>
-                    </div>
-                </div>
-
-                <div class="payment-methods-section card">
-                    <h2 class="section-title">Metode Pembayaran</h2>
-                    <div class="payment-options-grid">
-                        <button type="button" class="btn btn-outline payment-option-button" data-payment="COD">COD</button>
-                        <button type="button" class="btn btn-outline payment-option-button active" data-payment="Transfer Bank">Transfer Bank</button>
-                        <button type="button" class="btn btn-outline payment-option-button" data-payment="Kartu Kredit">Kartu Kredit</button>
-                        <button type="button" class="btn btn-outline payment-option-button" data-payment="Kartu Debit">Kartu Debit</button>
-                        <button type="button" class="btn btn-outline payment-option-button" data-payment="Bayar Tunai di Mitra">Bayar Tunai di Mitra / Agen</button>
-                        <button type="button" class="btn btn-outline payment-option-button" data-payment="BCA OneKlik">BCA OneKlik</button>
-                    </div>
-                </div>
+               <div class="ordered-products-section card">
+                  <h2 class="section-title">Produk Dipesan</h2>
+                  <ul class="product-summary-list">
+                     <li class="product-summary-item" data-price="125000">
+                        <div class="product-summary-image placeholder-bg"><img src="./assets/checkout/1.jpeg" alt="Produk A"></div>
+                        <div class="product-summary-details">
+                           <p class="product-summary-name">Ortuseight Sepatu Sneakers PHYTON - BLACK/WHITE</p>
+                           <p class="product-summary-price">Rp 125.000</p>
+                        </div>
+                     </li>
+                     <li class="product-summary-item" data-price="75000">
+                        <div class="product-summary-image placeholder-bg"><img src="./assets/checkout/2.jpeg" alt="Produk B"></div>
+                        <div class="product-summary-details">
+                           <p class="product-summary-name">BARDI Smart UNIVERSAL IR REMOTE 12M</p>
+                           <p class="product-summary-price">Rp 75.000</p>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+               <div class="order-totals-summary card">
+                  <div class="summary-line">
+                     <span>Subtotal Pesanan:</span>
+                     <span id="subtotalAmount">Rp 200.000</span>
+                  </div>
+                  <div class="summary-line discount-line">
+                     <span>Diskon 10%:</span>
+                     <span id="discountAmount">-Rp 20.000</span>
+                  </div>
+                  <div class="summary-line shipping-line">
+                     <span>Ongkos Kirim:</span>
+                     <span id="shippingAmount">Rp 0</span>
+                  </div>
+               </div>
+               <div class="payment-methods-section card">
+                  <h2 class="section-title">Metode Pembayaran</h2>
+                  <div class="payment-options-grid">
+                     <button type="button" class="btn btn-outline payment-option-button" data-payment="COD">COD</button>
+                     <button type="button" class="btn btn-outline payment-option-button active" data-payment="Transfer Bank">Transfer Bank</button>
+                     <button type="button" class="btn btn-outline payment-option-button" data-payment="Kartu Kredit">Kartu Kredit</button>
+                     <button type="button" class="btn btn-outline payment-option-button" data-payment="Kartu Debit">Kartu Debit</button>
+                     <button type="button" class="btn btn-outline payment-option-button" data-payment="Bayar Tunai di Mitra">Bayar Tunai di Mitra / Agen</button>
+                     <button type="button" class="btn btn-outline payment-option-button" data-payment="BCA OneKlik">BCA OneKlik</button>
+                  </div>
+               </div>
             </section>
-
             <aside class="checkout-sidebar-column">
-                <div class="shipping-address-card card">
-                    <div class="card-header-actions">
-                        <h3 class="card-title-sm">Alamat Pengiriman</h3>
-                        <a href="profile.html#alamat" class="btn btn-link btn-sm change-button">Ubah</a>
-                    </div>
-                    <div class="address-details">
-                        <p class="address-recipient-name">Nama Penerima Lengkap</p>
-                        <p class="address-phone">081234567890</p>
-                        <p class="address-full">Jl. Selayang No.23, Kecamatan Suka Sejahtera, Kota Bekasi, Jawa Barat 17116</p>
-                    </div>
-                </div>
-
-                <div class="order-note-section card">
-                     <label for="order-note" class="form-label">Pesan (opsional):</label>
-                     <textarea id="order-note" class="form-textarea" placeholder="Tinggalkan pesan untuk penjual..."></textarea>
-                </div>
-
-                <div class="shipping-options-card card">
-                    <div class="card-header-actions">
-                        <h3 class="card-title-sm">Opsi Pengiriman</h3>
-                        <button type="button" class="btn btn-link btn-sm change-button" id="changeShippingBtn">Ubah</button>
-                    </div>
-                    <div class="shipping-details">
-                        <p class="shipping-method-name" id="shippingMethodName">Reguler</p>
-                        <p class="shipping-courier" id="shippingCourier">Jasa Kirim Toko</p>
-                        <p class="shipping-eta" id="shippingEta">Dapatkan tanggal XX - XX</p>
-                    </div>
-                </div>
+               <div class="shipping-address-card card">
+                  <div class="card-header-actions">
+                     <h3 class="card-title-sm">Alamat Pengiriman</h3>
+                     <a href="profile.html#alamat" class="btn btn-link btn-sm change-button">Ubah</a>
+                  </div>
+                  <div class="address-details">
+                     <p class="address-recipient-name">Nama Penerima Lengkap</p>
+                     <p class="address-phone">081234567890</p>
+                     <p class="address-full">Jl. Selayang No.23, Kecamatan Suka Sejahtera, Kota Bekasi, Jawa Barat 17116</p>
+                  </div>
+               </div>
+               <div class="order-note-section card">
+                  <label for="order-note" class="form-label">Pesan (opsional):</label>
+                  <textarea id="order-note" class="form-textarea" placeholder="Tinggalkan pesan untuk penjual..."></textarea>
+               </div>
+               <div class="shipping-options-card card">
+                  <div class="card-header-actions">
+                     <h3 class="card-title-sm">Opsi Pengiriman</h3>
+                     <button type="button" class="btn btn-link btn-sm change-button" id="changeShippingBtn">Ubah</button>
+                  </div>
+                  <div class="shipping-details">
+                     <p class="shipping-method-name" id="shippingMethodName">Reguler</p>
+                     <p class="shipping-courier" id="shippingCourier">Jasa Kirim Toko</p>
+                     <p class="shipping-eta" id="shippingEta">Dapatkan tanggal XX - XX</p>
+                  </div>
+               </div>
             </aside>
-
-        </div>
-
-        <footer class="checkout-footer-actions">
+         </div>
+         <footer class="checkout-footer-actions">
             <div class="final-total-display">
-                <span class="total-label">Total Pembayaran:</span>
-                <span class="total-amount" id="finalTotalAmount">Rp 180.000</span>
+               <span class="total-label">Total Pembayaran:</span>
+               <span class="total-amount" id="finalTotalAmount">Rp 180.000</span>
             </div>
             <button type="button" class="btn btn-primary place-order-button" id="placeOrderButton">Buat Pesanan</button>
-        </footer>
-    </main>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    lucide.createIcons();
-
-    const paymentOptionButtons = document.querySelectorAll('.payment-option-button');
-    const placeOrderButton = document.getElementById('placeOrderButton');
-    const changeShippingBtn = document.getElementById('changeShippingBtn');
-
-    // Header navigation buttons (if they were buttons instead of <a> tags)
-    // Since they are likely intended as primary navigation, changing them to <a> tags is better.
-    // Example for one if it remained a button:
-    const cartHeaderButton = document.querySelector('.site-header .header-actions button[aria-label="Keranjang Belanja"]');
-    if (cartHeaderButton) {
-        cartHeaderButton.addEventListener('click', () => window.location.href = 'keranjang.html');
-    }
-    // ... similar for other header buttons, but ideally they are <a> tags.
-    // For this revision, I've assumed you'll change them to <a> tags in the main template.
-    // If not, the JS to make them navigate would be like the above.
-    // For the specific checkout page header buttons, they are already <a> tags.
-
-    const headerLinks = {
-        "Keranjang Belanja": "keranjang.html",
-        "Notifikasi": "#", // Placeholder
-        "Chat": "chat.html",
-        "Profil Pengguna": "profile.html"
-    };
-
-    document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
-        const label = button.getAttribute('aria-label');
-        if (headerLinks[label]) {
-            // If it's not already an <a> tag, make it one or add click listener
-            if (button.tagName.toLowerCase() !== 'a') {
-                const link = document.createElement('a');
-                link.href = headerLinks[label];
-                link.classList.add('btn', 'btn-ghost', 'btn-icon');
-                link.setAttribute('aria-label', label);
-                link.innerHTML = button.innerHTML;
-                button.parentNode.replaceChild(link, button);
-            } else { // If it's already an <a> tag, ensure href is correct
-                button.href = headerLinks[label];
-            }
-        }
-    });
-    lucide.createIcons(); // Re-run if any icons were part of replaced buttons
-
-
-    paymentOptionButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            paymentOptionButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            console.log('Metode Pembayaran dipilih:', this.dataset.payment);
-        });
-    });
-
-    if (changeShippingBtn) {
-        changeShippingBtn.addEventListener('click', function() {
-            // Simulate changing shipping options
-            // In a real app, this would open a modal or navigate
-            const options = [
-                { name: "Ekspres", courier: "Kurir Cepat XYZ", eta: "Estimasi tiba besok", cost: 25000 },
-                { name: "Reguler", courier: "Jasa Kirim Toko", eta: "Dapatkan tanggal XX - XX", cost: 0 },
-                { name: "Hemat", courier: "Kurir Hemat ABC", eta: "Estimasi tiba 3-5 hari", cost: 5000 }
-            ];
-            const currentOptionName = document.getElementById('shippingMethodName').textContent;
-            let nextOptionIndex = options.findIndex(opt => opt.name === currentOptionName) + 1;
-            if (nextOptionIndex >= options.length) {
-                nextOptionIndex = 0;
-            }
-            const newOption = options[nextOptionIndex];
-
-            document.getElementById('shippingMethodName').textContent = newOption.name;
-            document.getElementById('shippingCourier').textContent = newOption.courier;
-            document.getElementById('shippingEta').textContent = newOption.eta;
-            document.getElementById('shippingAmount').textContent = `Rp ${newOption.cost.toLocaleString('id-ID')}`;
-            updateTotals(); // Recalculate total if shipping cost changes
-            alert(`Opsi pengiriman diubah ke: ${newOption.name}`);
-        });
-    }
-
-    function parseCurrency(currencyString) {
-        return parseInt(currencyString.replace(/[^0-9]/g, ''), 10) || 0;
-    }
-
-    function formatCurrency(number) {
-        return `Rp ${number.toLocaleString('id-ID')}`;
-    }
-
-    function updateTotals() {
-        let subtotal = 0;
-        document.querySelectorAll('.product-summary-item').forEach(item => {
-            subtotal += parseCurrency(item.querySelector('.product-summary-price').textContent);
-        });
-
-        // For simplicity, discount and shipping are static from HTML for initial load
-        // but shipping can be updated by the "change shipping" simulation
-        let discount = parseCurrency(document.getElementById('discountAmount').textContent); // a negative value
-        let shipping = parseCurrency(document.getElementById('shippingAmount').textContent);
-
-        document.getElementById('subtotalAmount').textContent = formatCurrency(subtotal);
-
-        const finalTotal = subtotal + discount + shipping; // discount is already negative
-        document.getElementById('finalTotalAmount').textContent = formatCurrency(finalTotal);
-    }
-
-
-    if (placeOrderButton) {
-        placeOrderButton.addEventListener('click', function () {
-            const selectedPayment = document.querySelector('.payment-option-button.active');
-            if (!selectedPayment) {
-                alert('Silakan pilih metode pembayaran terlebih dahulu.');
-                return;
-            }
-            const orderNote = document.getElementById('order-note').value;
-            const total = document.getElementById('finalTotalAmount').textContent;
-
-            // Simulate order placement
-            alert(`Pesanan berhasil dibuat!\nMetode Pembayaran: ${selectedPayment.dataset.payment}\nTotal: ${total}\nCatatan: ${orderNote || '-'}\n\nAnda akan diarahkan ke halaman pesanan.`);
-            // In a real app, you'd send data to a server here.
-            // For now, redirect to orders page.
-            window.location.href = 'orders.html';
-        });
-    }
-
-    // Initial calculation
-    updateTotals();
-});
-</script>
-</body>
+         </footer>
+      </main>
+      <script>
+         document.addEventListener('DOMContentLoaded', function () {
+             lucide.createIcons();
+         
+             const paymentOptionButtons = document.querySelectorAll('.payment-option-button');
+             const placeOrderButton = document.getElementById('placeOrderButton');
+             const changeShippingBtn = document.getElementById('changeShippingBtn');
+         
+             // Header navigation buttons (if they were buttons instead of <a> tags)
+             // Since they are likely intended as primary navigation, changing them to <a> tags is better.
+             // Example for one if it remained a button:
+             const cartHeaderButton = document.querySelector('.site-header .header-actions button[aria-label="Keranjang Belanja"]');
+             if (cartHeaderButton) {
+                 cartHeaderButton.addEventListener('click', () => window.location.href = 'keranjang.html');
+             }
+             // ... similar for other header buttons, but ideally they are <a> tags.
+             // For this revision, I've assumed you'll change them to <a> tags in the main template.
+             // If not, the JS to make them navigate would be like the above.
+             // For the specific checkout page header buttons, they are already <a> tags.
+         
+             const headerLinks = {
+                 "Keranjang Belanja": "keranjang.html",
+                 "Notifikasi": "#", // Placeholder
+                 "Chat": "chat.html",
+                 "Profil Pengguna": "profile.html"
+             };
+         
+             document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
+                 const label = button.getAttribute('aria-label');
+                 if (headerLinks[label]) {
+                     // If it's not already an <a> tag, make it one or add click listener
+                     if (button.tagName.toLowerCase() !== 'a') {
+                         const link = document.createElement('a');
+                         link.href = headerLinks[label];
+                         link.classList.add('btn', 'btn-ghost', 'btn-icon');
+                         link.setAttribute('aria-label', label);
+                         link.innerHTML = button.innerHTML;
+                         button.parentNode.replaceChild(link, button);
+                     } else { // If it's already an <a> tag, ensure href is correct
+                         button.href = headerLinks[label];
+                     }
+                 }
+             });
+             lucide.createIcons(); // Re-run if any icons were part of replaced buttons
+         
+         
+             paymentOptionButtons.forEach(button => {
+                 button.addEventListener('click', function () {
+                     paymentOptionButtons.forEach(btn => btn.classList.remove('active'));
+                     this.classList.add('active');
+                     console.log('Metode Pembayaran dipilih:', this.dataset.payment);
+                 });
+             });
+         
+             if (changeShippingBtn) {
+                 changeShippingBtn.addEventListener('click', function() {
+                     // Simulate changing shipping options
+                     // In a real app, this would open a modal or navigate
+                     const options = [
+                         { name: "Ekspres", courier: "Kurir Cepat XYZ", eta: "Estimasi tiba besok", cost: 25000 },
+                         { name: "Reguler", courier: "Jasa Kirim Toko", eta: "Dapatkan tanggal XX - XX", cost: 0 },
+                         { name: "Hemat", courier: "Kurir Hemat ABC", eta: "Estimasi tiba 3-5 hari", cost: 5000 }
+                     ];
+                     const currentOptionName = document.getElementById('shippingMethodName').textContent;
+                     let nextOptionIndex = options.findIndex(opt => opt.name === currentOptionName) + 1;
+                     if (nextOptionIndex >= options.length) {
+                         nextOptionIndex = 0;
+                     }
+                     const newOption = options[nextOptionIndex];
+         
+                     document.getElementById('shippingMethodName').textContent = newOption.name;
+                     document.getElementById('shippingCourier').textContent = newOption.courier;
+                     document.getElementById('shippingEta').textContent = newOption.eta;
+                     document.getElementById('shippingAmount').textContent = `Rp ${newOption.cost.toLocaleString('id-ID')}`;
+                     updateTotals(); // Recalculate total if shipping cost changes
+                     alert(`Opsi pengiriman diubah ke: ${newOption.name}`);
+                 });
+             }
+         
+             function parseCurrency(currencyString) {
+                 return parseInt(currencyString.replace(/[^0-9]/g, ''), 10) || 0;
+             }
+         
+             function formatCurrency(number) {
+                 return `Rp ${number.toLocaleString('id-ID')}`;
+             }
+         
+             function updateTotals() {
+                 let subtotal = 0;
+                 document.querySelectorAll('.product-summary-item').forEach(item => {
+                     subtotal += parseCurrency(item.querySelector('.product-summary-price').textContent);
+                 });
+         
+                 // For simplicity, discount and shipping are static from HTML for initial load
+                 // but shipping can be updated by the "change shipping" simulation
+                 let discount = parseCurrency(document.getElementById('discountAmount').textContent); // a negative value
+                 let shipping = parseCurrency(document.getElementById('shippingAmount').textContent);
+         
+                 document.getElementById('subtotalAmount').textContent = formatCurrency(subtotal);
+         
+                 const finalTotal = subtotal + discount + shipping; // discount is already negative
+                 document.getElementById('finalTotalAmount').textContent = formatCurrency(finalTotal);
+             }
+         
+         
+             if (placeOrderButton) {
+                 placeOrderButton.addEventListener('click', function () {
+                     const selectedPayment = document.querySelector('.payment-option-button.active');
+                     if (!selectedPayment) {
+                         alert('Silakan pilih metode pembayaran terlebih dahulu.');
+                         return;
+                     }
+                     const orderNote = document.getElementById('order-note').value;
+                     const total = document.getElementById('finalTotalAmount').textContent;
+         
+                     // Simulate order placement
+                     alert(`Pesanan berhasil dibuat!\nMetode Pembayaran: ${selectedPayment.dataset.payment}\nTotal: ${total}\nCatatan: ${orderNote || '-'}\n\nAnda akan diarahkan ke halaman pesanan.`);
+                     // In a real app, you'd send data to a server here.
+                     // For now, redirect to orders page.
+                     window.location.href = 'orders.html';
+                 });
+             }
+         
+             // Initial calculation
+             updateTotals();
+         });
+      </script>
+   </body>
 </html>
