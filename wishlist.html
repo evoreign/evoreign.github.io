@@ -71,9 +71,10 @@
 
         <div class="wishlist-layout-container">
 
-            <aside class="wishlist-sidebar card">
-                <h2 class="sidebar-title">Kategori</h2>
-                <ul class="category-filter-list">
+            <details open class="wishlist-sidebar card">
+                <summary class="sidebar-title">Kategori</summary>
+                <aside class="wishlist-sidebar card">
+                    <ul class="category-filter-list">
                     <li class="category-filter-item">
                         <a href="#" class="category-filter-link active" aria-current="page" data-category="Elektronik">Elektronik</a>
                     </li>
@@ -89,11 +90,13 @@
                     <li class="category-filter-item">
                         <a href="#" class="category-filter-link" data-category="Bayi">Bayi</a>
                     </li>
-                     <li class="category-filter-item">
+                    <li class="category-filter-item">
                         <a href="#" class="category-filter-link" data-category="Semua">Semua Kategori</a>
                     </li>
-                </ul>
-            </aside>
+                    </ul>
+                </aside>
+            </details>
+
 
             <section class="wishlist-main-area">
                 <div class="wishlist-controls" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-4);">
@@ -101,7 +104,7 @@
                         <label class="form-checkbox-container">
                             <input type="checkbox" class="form-checkbox" id="select-all-wishlist-items">
                             <span class="form-checkbox-indicator">
-                                <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path></svg>
+                                <svg viewBox="0 0 16 16" fill="red" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path></svg>
                             </span>
                             <span class="form-checkbox-label" id="selectAllWishlistLabel">Pilih Semua</span>
                         </label>

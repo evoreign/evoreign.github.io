@@ -17,12 +17,57 @@
 
 /* Wishlist Sidebar */
 .wishlist-sidebar.card { /* Extends .card, specific layout for wishlist */
-    flex: 0 0 260px;
     padding: var(--spacing-5);
 }
 /* .sidebar-title and category filter list are in layout/_sidebar_navigation.css */
 
+/* ADD THESE NEW RULES FOR THE WISHLIST CONTROLS */
+.wishlist-controls {
+    display: flex;
+    flex-direction: column; /* Stack controls vertically on mobile */
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+}
 
+/* Make the sort bar take full width on mobile */
+.wishlist-sort-bar {
+    width: 100%;
+    justify-content: space-between; /* Space out "Urutkan" and the view icon */
+    margin-bottom: 0; /* Remove margin as parent now handles spacing */
+}
+
+/* On wider screens, switch back to a horizontal layout for controls */
+@media (min-width: 768px) {
+    .wishlist-controls {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .wishlist-sort-bar {
+        width: auto; /* Revert to auto width */
+        justify-content: flex-end; /* Revert to original alignment */
+    }
+}
+
+
+/* REPLACE the existing .wishlist-product-grid rule with this block */
+.wishlist-product-grid.product-grid {
+    display: grid;
+    /* Mobile-first: Default to 2 columns for a compact but readable view */
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-3); /* Use a slightly smaller gap on mobile */
+}
+
+/* For wider screens, allow the grid to auto-fill with more columns */
+@media (min-width: 768px) {
+    .wishlist-product-grid.product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: var(--spacing-4); /* Restore the original gap */
+    }
+}
+
+/* --- (Keep other existing styles in the file) --- */
 /* Main Wishlist Area */
 .wishlist-main-area {
     flex: 1;
@@ -56,11 +101,6 @@
     height: 1.25rem;
 }
 
-/* Wishlist Product Grid */
-.wishlist-product-grid.product-grid {
-    /* .product-grid from _home.css or component */
-     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-}
 
 .product-card.card-interactive { /* From components/_cards.css */
     position: relative; /* For remove button */
