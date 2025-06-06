@@ -1,298 +1,303 @@
 <!DOCTYPE html>
 <html lang="id">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keranjang Belanja - Beliin.id</title>
-    <link rel="stylesheet" href="./component/css/main.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="icon" href="./assets/logo.PNG" type="image/png">
-    <style>
-        .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
-        .product-image-placeholder img { width: 100%; height: 100%; object-fit: contain; border-radius: var(--radius); }
-    </style>
-</head>
-
-<body class="page-body">
-
-    <header class="site-header">
-        <div class="header-container">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Keranjang Belanja - Beliin.id</title>
+      <link rel="stylesheet" href="./component/css/main.css">
+      <script src="https://unpkg.com/lucide@latest"></script>
+      <link rel="icon" href="./assets/logo.PNG" type="image/png">
+      <style>
+         .icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
+         .product-image-placeholder img { width: 100%; height: 100%; object-fit: contain; border-radius: var(--radius); }
+      </style>
+   </head>
+   <body class="page-body">
+      <header class="site-header">
+         <div class="header-container">
             <div class="logo-container">
-                <a href="index.html" class="logo-link">
-                    <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
-                </a>
+               <a href="index.html" class="logo-link">
+               <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+               </a>
             </div>
             <div class="search-bar-container new-search-bar desktop-search">
-                <form action="#" class="search-form">
-                    <i data-lucide="search" class="icon search-icon-inside"></i>
-                    <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
-                </form>
+               <form action="#" class="search-form">
+                  <i data-lucide="search" class="icon search-icon-inside"></i>
+                  <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+               </form>
             </div>
             <nav class="header-actions">
-                <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
-                    <i data-lucide="search" class="icon"></i>
-                </button>
-                <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
-                    <i data-lucide="shopping-cart" class="icon"></i>
-                </a>
-                <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
-                    <i data-lucide="heart" class="icon"></i>
-                </a>
-                <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
-                    <i data-lucide="message-circle" class="icon"></i>
-                </a>
-                <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
-                    <i data-lucide="user" class="icon"></i>
-                </a>
+               <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
+               <i data-lucide="search" class="icon"></i>
+               </button>
+               <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+               <i data-lucide="shopping-cart" class="icon"></i>
+               </a>
+               <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+               <i data-lucide="heart" class="icon"></i>
+               </a>
+               <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+               <i data-lucide="message-circle" class="icon"></i>
+               </a>
+               <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+               <i data-lucide="user" class="icon"></i>
+               </a>
             </nav>
-        </div>
-    </header>
-
-    <div class="search-overlay" id="searchOverlay">
-        <div class="search-overlay-header">
+         </div>
+      </header>
+      <div class="search-overlay" id="searchOverlay">
+         <div class="search-overlay-header">
             <div class="search-bar-container new-search-bar">
-                <form action="#" class="search-form">
-                    <i data-lucide="search" class="icon search-icon-inside"></i>
-                    <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
-                </form>
+               <form action="#" class="search-form">
+                  <i data-lucide="search" class="icon search-icon-inside"></i>
+                  <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
+               </form>
             </div>
             <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
-        </div>
-        <div class="search-overlay-content"></div>
-    </div>
-
-    <main class="shopping-cart-page container">
-        <h1 class="page-title">Keranjang</h1>
-        <div class="cart-content">
+         </div>
+         <div class="search-overlay-content"></div>
+      </div>
+      <main class="shopping-cart-page container">
+         <h1 class="page-title">Keranjang</h1>
+         <div class="cart-content">
             <div class="select-all-bar">
-                <label class="form-checkbox-container">
-                    <input type="checkbox" class="form-checkbox" id="select-all-items">
-                    <span class="form-checkbox-indicator">
-                        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path></svg>
-                    </span>
-                    <span class="form-checkbox-label" id="selectAllLabel">Pilih Semua (0)</span>
-                </label>
-                <button type="button" class="btn btn-link btn-sm" id="deleteSelectedButton" style="display:none; color:hsl(var(--destructive));">Hapus Terpilih</button>
+               <label class="form-checkbox-container">
+                  <input type="checkbox" class="form-checkbox" id="select-all-items">
+                  <span class="form-checkbox-indicator">
+                     <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path>
+                     </svg>
+                  </span>
+                  <span class="form-checkbox-label" id="selectAllLabel">Pilih Semua (0)</span>
+               </label>
+               <button type="button" class="btn btn-link btn-sm" id="deleteSelectedButton" style="display:none; color:hsl(var(--destructive));">Hapus Terpilih</button>
             </div>
-
             <div class="cart-items-grid">
-                
-                <div class="cart-item card" data-price="75000" data-id="product1">
-                    <div class="item-selection">
-                        <label class="form-checkbox-container">
-                            <input type="checkbox" class="form-checkbox cart-item-checkbox" name="cart-item-select-1">
-                            <span class="form-checkbox-indicator">
-                                <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path></svg>
-                            </span>
-                        </label>
-                    </div>
-                    <a href="detailProduct.html?id=product1" class="product-image-placeholder">
-                        <img src="./assets/cart/1.jpg" alt="Nama Produk Keren">
-                    </a>
-                    <div class="product-details">
-                        <a href="detailProduct.html?id=product1" style="text-decoration:none; color:inherit;">
-                            <h3 class="product-name">Nama Produk Keren</h3>
-                        </a>
-                        <p class="product-price">Rp 75.000</p>
-                    </div>
-                    <div class="quantity-adjuster">
-                        <button type="button" class="btn btn-outline btn-icon btn-sm quantity-button" data-action="decrease" aria-label="Kurangi jumlah">
-                            <i data-lucide="minus" class="icon"></i>
-                        </button>
-                        <input type="number" class="form-input quantity-display" value="1" min="1" max="99" aria-label="Jumlah produk">
-                        <button type="button" class="btn btn-outline btn-icon btn-sm quantity-button" data-action="increase" aria-label="Tambah jumlah">
-                            <i data-lucide="plus" class="icon"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="cart-item card" data-price="120000" data-id="product2">
-                    <div class="item-selection">
-                        <label class="form-checkbox-container">
-                            <input type="checkbox" class="form-checkbox cart-item-checkbox" name="cart-item-select-2">
-                            <span class="form-checkbox-indicator">
-                                <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path></svg>
-                            </span>
-                        </label>
-                    </div>
-                    <a href="detailProduct.html?id=product2" class="product-image-placeholder">
-                        <img src="./assets/cart/2.jpg" alt="Produk Lain Contoh">
-                    </a>
-                    <div class="product-details">
-                        <a href="detailProduct.html?id=product2" style="text-decoration:none; color:inherit;">
-                            <h3 class="product-name">Produk Lain Contoh</h3>
-                        </a>
-                        <p class="product-price">Rp 120.000</p>
-                    </div>
-                    <div class="quantity-adjuster">
-                        <button type="button" class="btn btn-outline btn-icon btn-sm quantity-button" data-action="decrease" aria-label="Kurangi jumlah">
-                            <i data-lucide="minus" class="icon"></i>
-                        </button>
-                        <input type="number" class="form-input quantity-display" value="1" min="1" max="99" aria-label="Jumlah produk">
-                        <button type="button" class="btn btn-outline btn-icon btn-sm quantity-button" data-action="increase" aria-label="Tambah jumlah">
-                            <i data-lucide="plus" class="icon"></i>
-                        </button>
-                    </div>
-                </div>
+               <div class="cart-item card" data-price="75000" data-id="product1">
+                  <div class="item-selection">
+                     <label class="form-checkbox-container">
+                        <input type="checkbox" class="form-checkbox cart-item-checkbox" name="cart-item-select-1">
+                        <span class="form-checkbox-indicator">
+                           <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path>
+                           </svg>
+                        </span>
+                     </label>
+                  </div>
+                  <a href="detailProduct.html?id=product1" class="product-image-placeholder">
+                  <img src="./assets/cart/1.jpg" alt="Nama Produk Keren">
+                  </a>
+                  <div class="product-details">
+                     <a href="detailProduct.html?id=product1" style="text-decoration:none; color:inherit;">
+                        <h3 class="product-name">Nama Produk Keren</h3>
+                     </a>
+                     <p class="product-price">Rp 75.000</p>
+                  </div>
+                  <div class="quantity-adjuster">
+                     <button type="button" class="btn btn-outline btn-icon btn-sm quantity-button" data-action="decrease" aria-label="Kurangi jumlah">
+                     <i data-lucide="minus" class="icon"></i>
+                     </button>
+                     <input type="number" class="form-input quantity-display" value="1" min="1" max="99" aria-label="Jumlah produk">
+                     <button type="button" class="btn btn-outline btn-icon btn-sm quantity-button" data-action="increase" aria-label="Tambah jumlah">
+                     <i data-lucide="plus" class="icon"></i>
+                     </button>
+                  </div>
+               </div>
+               <div class="cart-item card" data-price="120000" data-id="product2">
+                  <div class="item-selection">
+                     <label class="form-checkbox-container">
+                        <input type="checkbox" class="form-checkbox cart-item-checkbox" name="cart-item-select-2">
+                        <span class="form-checkbox-indicator">
+                           <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z"></path>
+                           </svg>
+                        </span>
+                     </label>
+                  </div>
+                  <a href="detailProduct.html?id=product2" class="product-image-placeholder">
+                  <img src="./assets/cart/2.jpg" alt="Produk Lain Contoh">
+                  </a>
+                  <div class="product-details">
+                     <a href="detailProduct.html?id=product2" style="text-decoration:none; color:inherit;">
+                        <h3 class="product-name">Produk Lain Contoh</h3>
+                     </a>
+                     <p class="product-price">Rp 120.000</p>
+                  </div>
+                  <div class="quantity-adjuster">
+                     <button type="button" class="btn btn-outline btn-icon btn-sm quantity-button" data-action="decrease" aria-label="Kurangi jumlah">
+                     <i data-lucide="minus" class="icon"></i>
+                     </button>
+                     <input type="number" class="form-input quantity-display" value="1" min="1" max="99" aria-label="Jumlah produk">
+                     <button type="button" class="btn btn-outline btn-icon btn-sm quantity-button" data-action="increase" aria-label="Tambah jumlah">
+                     <i data-lucide="plus" class="icon"></i>
+                     </button>
+                  </div>
+               </div>
             </div>
-
             <hr class="cart-separator">
-
             <div class="cart-summary">
-                <div class="total-payment-info">
-                    <span class="total-label">Total Pembayaran:</span>
-                    <span class="total-amount" id="totalAmount">Rp 0</span>
-                </div>
-                <button type="button" class="btn btn-primary checkout-button" id="checkoutButton">Beli (0)</button>
+               <div class="total-payment-info">
+                  <span class="total-label">Total Pembayaran:</span>
+                  <span class="total-amount" id="totalAmount">Rp 0</span>
+               </div>
+               <button type="button" class="btn btn-primary checkout-button" id="checkoutButton">Beli (0)</button>
             </div>
-        </div>
-    </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // --- JAVASCRIPT LOGIC --- //
-
-            // --- INITIALIZATION --- //
-            lucide.createIcons();
-            const selectAllCheckbox = document.getElementById('select-all-items');
-            const selectAllLabel = document.getElementById('selectAllLabel');
-            const totalAmountElement = document.getElementById('totalAmount');
-            const checkoutButton = document.getElementById('checkoutButton');
-            const deleteSelectedButton = document.getElementById('deleteSelectedButton');
-            // NOTE: 'cartItemsGrid' and individual item checkboxes are selected within functions
-            // to ensure the script always works with the most current state of the DOM.
-
-            // --- UI BEHAVIORS & CALCULATIONS --- //
-
-            // Helper function to format a number into an Indonesian Rupiah currency string.
-            function formatCurrency(amount) {
-                return 'Rp ' + amount.toLocaleString('id-ID');
-            }
-
-            // Central function to recalculate and update all totals and counts on the page.
-            function updateTotal() {
-                let total = 0;
-                let selectedCount = 0;
-                const currentCartItems = document.querySelectorAll('.cart-item');
-                const currentCartItemCheckboxes = document.querySelectorAll('.cart-item-checkbox');
-
-                // Loop through each cart item to see if it's selected.
-                currentCartItems.forEach(item => {
-                    const checkbox = item.querySelector('.cart-item-checkbox');
-                    if (checkbox && checkbox.checked) {
-                        const price = parseFloat(item.dataset.price);
-                        const quantity = parseInt(item.querySelector('.quantity-display').value);
-                        if (!isNaN(price) && !isNaN(quantity)) {
-                            total += price * quantity;
-                            selectedCount++;
-                        }
-                    }
-                });
-
-                // Update the text content of the summary elements.
-                if (totalAmountElement) totalAmountElement.textContent = formatCurrency(total);
-                if (checkoutButton) checkoutButton.textContent = `Beli (${selectedCount})`;
-                if (selectAllLabel) selectAllLabel.textContent = `Pilih Semua (${selectedCount})`;
-
-                // Update the state of the "Select All" checkbox.
-                // It's checked if all items are selected, indeterminate if some are, and unchecked if none are.
-                if (selectAllCheckbox) {
-                    const allSelected = selectedCount === currentCartItemCheckboxes.length && currentCartItemCheckboxes.length > 0;
-                    const someSelected = selectedCount > 0 && selectedCount < currentCartItemCheckboxes.length;
-                    selectAllCheckbox.checked = allSelected;
-                    selectAllCheckbox.indeterminate = someSelected;
-                }
-
-                // Show or hide the "Delete Selected" button.
-                if (deleteSelectedButton) {
-                    deleteSelectedButton.style.display = selectedCount > 0 ? 'inline-flex' : 'none';
-                }
-            }
-
-            // Sets up all event listeners for a single cart item.
-            function setupCartItemEventListeners(itemElement) {
-                const quantityDisplay = itemElement.querySelector('.quantity-display');
-                const itemCheckbox = itemElement.querySelector('.cart-item-checkbox');
-
-                // Listen for clicks on the plus/minus buttons.
-                itemElement.querySelectorAll('.quantity-button').forEach(button => {
-                    button.addEventListener('click', function() {
-                        let quantity = parseInt(quantityDisplay.value);
-                        const action = this.dataset.action;
-                        if (action === 'increase' && quantity < 99) {
-                            quantity++;
-                        } else if (action === 'decrease' && quantity > 1) {
-                            quantity--;
-                        }
-                        quantityDisplay.value = quantity;
-                        updateTotal(); // Recalculate everything after change.
-                    });
-                });
-
-                // Listen for direct input changes on the quantity field.
-                if (quantityDisplay) {
-                    quantityDisplay.addEventListener('change', function() {
-                        let quantity = parseInt(this.value);
-                        if (isNaN(quantity) || quantity < 1) this.value = 1;
-                        if (quantity > 99) this.value = 99;
-                        updateTotal();
-                    });
-                }
-                
-                // Listen for changes to the item's checkbox.
-                if (itemCheckbox) {
-                    itemCheckbox.addEventListener('change', updateTotal);
-                }
-            }
-
-            // --- EVENT LISTENERS --- //
-
-            // Set up listeners for all cart items that exist on page load.
-            document.querySelectorAll('.cart-item').forEach(item => {
-                setupCartItemEventListeners(item);
-            });
-
-            // Listener for the "Select All" checkbox.
-            if (selectAllCheckbox) {
-                selectAllCheckbox.addEventListener('change', function() {
-                    document.querySelectorAll('.cart-item-checkbox').forEach(checkbox => {
-                        checkbox.checked = this.checked;
-                    });
-                    updateTotal();
-                });
-            }
-
-            // Listener for the "Checkout" button.
-            if (checkoutButton) {
-                checkoutButton.addEventListener('click', function() {
-                    const selectedItemsCount = document.querySelectorAll('.cart-item-checkbox:checked').length;
-                    if (selectedItemsCount === 0) {
-                        alert('Keranjang Anda kosong atau tidak ada item yang dipilih. Silakan pilih item untuk dibeli.');
-                        return;
-                    }
-                    window.location.href = 'checkout.html';
-                });
-            }
-            
-            // Listener for the "Delete Selected" button.
-            if (deleteSelectedButton) {
-                deleteSelectedButton.addEventListener('click', function() {
-                    const selectedCheckboxes = document.querySelectorAll('.cart-item-checkbox:checked');
-                    if (selectedCheckboxes.length > 0 && confirm(`Anda yakin ingin menghapus ${selectedCheckboxes.length} item terpilih dari keranjang?`)) {
-                        selectedCheckboxes.forEach(checkbox => {
-                            checkbox.closest('.cart-item').remove(); // Remove the entire item card from the DOM.
-                        });
-                        updateTotal(); // Recalculate totals after deletion.
-                    }
-                });
-            }
-
-            // --- INITIAL PAGE LOAD --- //
-            // Run the calculation once when the page first loads to set the initial state.
-            updateTotal();
-        });
-    </script>
-</body>
-
+         </div>
+      </main>
+      <script>
+         document.addEventListener('DOMContentLoaded', function() {
+             // --- JAVASCRIPT LOGIC FOR SHOPPING CART --- //
+         
+             // --- INITIALIZATION --- //
+             // This script runs only after the entire HTML document has been loaded and parsed.
+             lucide.createIcons(); // Initialize all Lucide icons on the page.
+         
+             // --- DOM ELEMENT SELECTORS --- //
+             // Grab all necessary interactive elements from the page to be used in the script.
+             const selectAllCheckbox = document.getElementById('select-all-items');
+             const selectAllLabel = document.getElementById('selectAllLabel');
+             const totalAmountElement = document.getElementById('totalAmount');
+             const checkoutButton = document.getElementById('checkoutButton');
+             const deleteSelectedButton = document.getElementById('deleteSelectedButton');
+             // NOTE: Individual cart items are selected within functions to ensure the script
+             // always works with the most current state of the DOM, especially after deletions.
+         
+         
+             // --- UI BEHAVIORS & CALCULATIONS --- //
+         
+             // Helper function to format a number into an Indonesian Rupiah currency string.
+             function formatCurrency(amount) {
+                 return 'Rp ' + amount.toLocaleString('id-ID');
+             }
+         
+             // Central function to recalculate and update all totals and counts on the page.
+             // This function is the core of the cart's interactivity.
+             function updateTotal() {
+                 let total = 0;
+                 let selectedCount = 0;
+                 const currentCartItems = document.querySelectorAll('.cart-item');
+                 const currentCartItemCheckboxes = document.querySelectorAll('.cart-item-checkbox');
+         
+                 // Loop through each cart item to see if it's selected.
+                 currentCartItems.forEach(item => {
+                     const checkbox = item.querySelector('.cart-item-checkbox');
+                     // If the item's checkbox is checked, add its price * quantity to the total.
+                     if (checkbox && checkbox.checked) {
+                         const price = parseFloat(item.dataset.price); // Price from data attribute
+                         const quantity = parseInt(item.querySelector('.quantity-display').value);
+                         if (!isNaN(price) && !isNaN(quantity)) {
+                             total += price * quantity;
+                             selectedCount++;
+                         }
+                     }
+                 });
+         
+                 // Update the text content of the summary elements with the new values.
+                 if (totalAmountElement) totalAmountElement.textContent = formatCurrency(total);
+                 if (checkoutButton) checkoutButton.textContent = `Beli (${selectedCount})`;
+                 if (selectAllLabel) selectAllLabel.textContent = `Pilih Semua (${selectedCount})`;
+         
+                 // Update the state of the "Select All" checkbox.
+                 // It's checked if all items are selected, indeterminate if some are, and unchecked if none are.
+                 if (selectAllCheckbox) {
+                     const allSelected = selectedCount === currentCartItemCheckboxes.length && currentCartItemCheckboxes.length > 0;
+                     const someSelected = selectedCount > 0 && selectedCount < currentCartItemCheckboxes.length;
+                     selectAllCheckbox.checked = allSelected;
+                     selectAllCheckbox.indeterminate = someSelected;
+                 }
+         
+                 // Show the "Delete Selected" button only if at least one item is checked.
+                 if (deleteSelectedButton) {
+                     deleteSelectedButton.style.display = selectedCount > 0 ? 'inline-flex' : 'none';
+                 }
+             }
+         
+             // Sets up all event listeners for a single cart item (quantity buttons and checkbox).
+             function setupCartItemEventListeners(itemElement) {
+                 const quantityDisplay = itemElement.querySelector('.quantity-display');
+                 const itemCheckbox = itemElement.querySelector('.cart-item-checkbox');
+         
+                 // Listen for clicks on the plus/minus buttons.
+                 itemElement.querySelectorAll('.quantity-button').forEach(button => {
+                     button.addEventListener('click', function() {
+                         let quantity = parseInt(quantityDisplay.value);
+                         const action = this.dataset.action;
+                         if (action === 'increase' && quantity < 99) {
+                             quantity++;
+                         } else if (action === 'decrease' && quantity > 1) {
+                             quantity--;
+                         }
+                         quantityDisplay.value = quantity;
+                         updateTotal(); // Recalculate everything after the quantity changes.
+                     });
+                 });
+         
+                 // Listen for direct input changes on the quantity field (e.g., user types a number).
+                 if (quantityDisplay) {
+                     quantityDisplay.addEventListener('change', function() {
+                         let quantity = parseInt(this.value);
+                         if (isNaN(quantity) || quantity < 1) this.value = 1; // Prevent values less than 1
+                         if (quantity > 99) this.value = 99; // Enforce max quantity
+                         updateTotal();
+                     });
+                 }
+         
+                 // Listen for changes to the item's individual checkbox.
+                 if (itemCheckbox) {
+                     itemCheckbox.addEventListener('change', updateTotal);
+                 }
+             }
+         
+         
+             // --- EVENT LISTENERS --- //
+         
+             // Set up listeners for all cart items that exist on the initial page load.
+             document.querySelectorAll('.cart-item').forEach(item => {
+                 setupCartItemEventListeners(item);
+             });
+         
+             // Add a listener for the "Select All" checkbox.
+             if (selectAllCheckbox) {
+                 selectAllCheckbox.addEventListener('change', function() {
+                     // Check or uncheck all individual item checkboxes based on this one's state.
+                     document.querySelectorAll('.cart-item-checkbox').forEach(checkbox => {
+                         checkbox.checked = this.checked;
+                     });
+                     updateTotal();
+                 });
+             }
+         
+             // Add a listener for the "Beli" (Checkout) button.
+             if (checkoutButton) {
+                 checkoutButton.addEventListener('click', function() {
+                     const selectedItemsCount = document.querySelectorAll('.cart-item-checkbox:checked').length;
+                     if (selectedItemsCount === 0) {
+                         alert('Keranjang Anda kosong atau tidak ada item yang dipilih. Silakan pilih item untuk dibeli.');
+                         return; // Stop the action if nothing is selected.
+                     }
+                     // Proceed to the checkout page.
+                     window.location.href = 'checkout.html';
+                 });
+             }
+         
+             // Add a listener for the "Hapus Terpilih" (Delete Selected) button.
+             if (deleteSelectedButton) {
+                 deleteSelectedButton.addEventListener('click', function() {
+                     const selectedCheckboxes = document.querySelectorAll('.cart-item-checkbox:checked');
+                     if (selectedCheckboxes.length > 0 && confirm(`Anda yakin ingin menghapus ${selectedCheckboxes.length} item terpilih dari keranjang?`)) {
+                         selectedCheckboxes.forEach(checkbox => {
+                             checkbox.closest('.cart-item').remove(); // Find the parent card and remove it from the DOM.
+                         });
+                         updateTotal(); // Recalculate totals after deletion.
+                     }
+                 });
+             }
+         
+         
+             // --- INITIAL PAGE LOAD --- //
+             // Run the calculation once when the page first loads to set the correct initial state.
+             updateTotal();
+         });
+      </script>
+   </body>
 </html>
