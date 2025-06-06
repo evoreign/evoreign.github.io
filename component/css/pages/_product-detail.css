@@ -35,8 +35,8 @@
     gap: var(--spacing-4);
 }
 .product-main-image-container .main-product-image.product-image-placeholder { /* Extends .product-image-placeholder */
-    width: 100%;
-    height: auto !important;
+    width: 400px;
+    height: 400px;
     aspect-ratio: 4 / 5; /* Or your preferred aspect ratio */
     border-radius: var(--radius-lg);
     overflow: hidden;
