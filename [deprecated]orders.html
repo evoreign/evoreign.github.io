@@ -50,37 +50,47 @@
             <aside class="profile-sidebar card">
                 <div class="profile-sidebar-userinfo">
                     <div class="user-avatar-placeholder placeholder-bg">
-                        <i data-lucide="user-circle-2" class="icon user-avatar-icon"></i>
+                         <img src="https://via.placeholder.com/80x80/6c757d/ffffff?text=VF" alt="Avatar Violetta Fransisca" id="userAvatarPreview" style="border-radius:50%;">
                     </div>
-                    <h2 class="user-profile-name">violetta fransisca</h2>
-                    <a href="profile.html" class="btn btn-link btn-sm">Ubah profil</a>
+                    <h2 class="user-profile-name">Violetta Fransisca</h2>
+                    <button type="button" class="btn btn-link btn-sm edit-profile-button-main">Ubah profil</button>
                 </div>
                 <nav class="profile-navigation">
-                    <h3 class="profile-nav-title">Navigasi Akun</h3>
+                    <h3 class="profile-nav-title">Akun Saya</h3>
                     <ul class="profile-nav-list">
                         <li class="profile-nav-item">
-                            <a href="profile.html" class="profile-nav-link">
-                                <i data-lucide="user" class="icon nav-icon"></i> Akun Saya
+                            <a href="#biodata" class="profile-nav-link active" aria-current="page" data-section="biodata-section">
+                                <i data-lucide="user" class="icon nav-icon"></i> Biodata diri
                             </a>
                         </li>
                         <li class="profile-nav-item">
-                            <a href="orders.html" class="profile-nav-link active" aria-current="page">
+                            <a href="#alamat" class="profile-nav-link" data-section="alamat-section">
+                                <i data-lucide="map-pin" class="icon nav-icon"></i> Daftar Alamat
+                            </a>
+                        </li>
+                        <li class="profile-nav-item">
+                            <a href="#pembayaran" class="profile-nav-link" data-section="pembayaran-section">
+                                <i data-lucide="credit-card" class="icon nav-icon"></i> Pembayaran
+                            </a>
+                        </li>
+                        <li class="profile-nav-item">
+                            <a href="#notifikasi" class="profile-nav-link" data-section="notifikasi-section">
+                                <i data-lucide="bell" class="icon nav-icon"></i> Pengaturan Notifikasi
+                            </a>
+                        </li>
+                        <li class="profile-nav-item">
+                            <a href="#password" class="profile-nav-link" data-section="password-section">
+                                <i data-lucide="lock" class="icon nav-icon"></i> Ubah Password
+                            </a>
+                        </li>
+                         <li class="profile-nav-item">
+                            <a href="orders.html" class="profile-nav-link">
                                 <i data-lucide="package" class="icon nav-icon"></i> Pesanan Saya
                             </a>
                         </li>
-                        <li class="profile-nav-item">
-                            <a href="#" class="profile-nav-link">
-                                <i data-lucide="bell" class="icon nav-icon"></i> Notifikasi
-                            </a>
-                        </li>
-                        <li class="profile-nav-item">
+                         <li class="profile-nav-item">
                             <a href="coupon.html" class="profile-nav-link">
-                                <i data-lucide="ticket" class="icon nav-icon"></i> Voucher Saya
-                            </a>
-                        </li>
-                        <li class="profile-nav-item">
-                            <a href="#" class="profile-nav-link">
-                                <i data-lucide="coins" class="icon nav-icon"></i> Koin Beliin Saya
+                                <i data-lucide="ticket" class="icon nav-icon"></i> Coupon Saya
                             </a>
                         </li>
                     </ul>

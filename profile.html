@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Saya - Beliin.id</title>
+    <title>Akun Saya - Beliin.id</title>
     <link rel="stylesheet" href="./component/css/main.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -12,8 +12,7 @@
         .profile-main-section .detail-value input[type="date"],
         .profile-main-section .detail-value input[type="tel"],
         .profile-main-section .detail-value input[type="email"] {
-            /* display: inline-block; Remove if you want form-input default display:flex */
-            width: auto; /* Adjust width as needed, or let it be 100% if .form-input is used */
+            width: auto;
             min-width: 200px;
             padding: var(--spacing-1) var(--spacing-2);
             font-size: var(--font-size-sm);
@@ -22,41 +21,42 @@
             background-color: hsl(var(--background));
             color: hsl(var(--foreground));
         }
-         .profile-photo-placeholder img { width:100%; height:100%; object-fit:cover; border-radius: inherit;}
+        .profile-photo-placeholder img { width:100%; height:100%; object-fit:cover; border-radius: inherit;}
+        .product-image-placeholder img {width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-sm); }
     </style>
     <link rel="icon" href="./assets/logo.PNG" type="image/png">
 </head>
 <body class="page-body">
 
     <header class="site-header">
-    <div class="header-container">
-        <div class="logo-container">
-            <a href="index.html" class="logo-link">
-                <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
-            </a>
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo-link">
+                    <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
+                </a>
+            </div>
+            <div class="search-bar-container new-search-bar">
+                <form action="#" class="search-form">
+                    <i data-lucide="search" class="icon search-icon-inside"></i>
+                    <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+                </form>
+            </div>
+            <nav class="header-actions">
+                <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+                    <i data-lucide="shopping-cart" class="icon"></i>
+                </a>
+                <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+                    <i data-lucide="heart" class="icon"></i>
+                </a>
+                <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+                    <i data-lucide="message-circle" class="icon"></i>
+                </a>
+                <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+                    <i data-lucide="user" class="icon"></i>
+                </a>
+            </nav>
         </div>
-        <div class="search-bar-container new-search-bar">
-            <form action="#" class="search-form">
-                <i data-lucide="search" class="icon search-icon-inside"></i>
-                <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
-            </form>
-        </div>
-        <nav class="header-actions">
-            <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
-                <i data-lucide="shopping-cart" class="icon"></i>
-            </a>
-            <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
-                <i data-lucide="heart" class="icon"></i>
-            </a>
-            <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
-                <i data-lucide="message-circle" class="icon"></i>
-            </a>
-            <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
-                <i data-lucide="user" class="icon"></i>
-            </a>
-        </nav>
-    </div>
-</header>
+    </header>
 
     <main class="profile-page-content container">
         <div class="profile-layout-container">
@@ -87,6 +87,11 @@
                                 <i data-lucide="credit-card" class="icon nav-icon"></i> Pembayaran
                             </a>
                         </li>
+                         <li class="profile-nav-item">
+                            <a href="#pesanan" class="profile-nav-link" data-section="pesanan-section">
+                                <i data-lucide="package" class="icon nav-icon"></i> Pesanan Saya
+                            </a>
+                        </li>
                         <li class="profile-nav-item">
                             <a href="#notifikasi" class="profile-nav-link" data-section="notifikasi-section">
                                 <i data-lucide="bell" class="icon nav-icon"></i> Pengaturan Notifikasi
@@ -95,11 +100,6 @@
                         <li class="profile-nav-item">
                             <a href="#password" class="profile-nav-link" data-section="password-section">
                                 <i data-lucide="lock" class="icon nav-icon"></i> Ubah Password
-                            </a>
-                        </li>
-                         <li class="profile-nav-item">
-                            <a href="orders.html" class="profile-nav-link">
-                                <i data-lucide="package" class="icon nav-icon"></i> Pesanan Saya
                             </a>
                         </li>
                          <li class="profile-nav-item">
@@ -166,7 +166,6 @@
 
             <section class="profile-main-section card" id="alamat-section" data-title="Daftar Alamat" style="display:none;">
                 <h1 class="section-title-lg">Daftar Alamat</h1>
-                <p>Konten untuk Daftar Alamat akan ditampilkan di sini.</p>
                 <p><a href="#" class="btn btn-primary btn-sm">Tambah Alamat Baru</a></p>
                 <div class="section-list">
                     <div class="section-item">
@@ -185,10 +184,8 @@
                 </div>
             </section>
 
-
             <section class="profile-main-section card" id="pembayaran-section" data-title="Pembayaran" style="display:none;">
                 <h1 class="section-title-lg">Pembayaran</h1>
-                <p>Konten untuk metode Pembayaran akan ditampilkan di sini.</p>
                 <p><a href="#" class="btn btn-primary btn-sm">Tambah Metode Pembayaran</a></p>
                 <div class="section-list">
                     <div class="section-item">
@@ -205,16 +202,27 @@
                         <button type="button" class="btn btn-link btn-sm">Hapus</button>
                     </div>
                 </div>
-                <br>
-                <br>
-                <br>
+                 <br><br><br>
                 <p class="section-hint">Pastikan untuk memperbarui informasi pembayaran Anda secara berkala.</p>
             </section>
 
+            <section class="profile-main-section card" id="pesanan-section" data-title="Pesanan Saya" style="display:none;">
+                <h1 class="section-title-lg">Pesanan Saya</h1>
+                 <nav class="orders-tab-navigation tab-navigation">
+                    <button type="button" class="tab-button active" aria-selected="true" data-status="Semua">Semua</button>
+                    <button type="button" class="tab-button" aria-selected="false" data-status="Belum Bayar">Belum Bayar</button>
+                    <button type="button" class="tab-button" aria-selected="false" data-status="Dikemas">Dikemas</button>
+                    <button type="button" class="tab-button" aria-selected="false" data-status="Dikirim">Dikirim</button>
+                    <button type="button" class="tab-button" aria-selected="false" data-status="Selesai">Selesai</button>
+                    <button type="button" class="tab-button" aria-selected="false" data-status="Dibatalkan">Dibatalkan</button>
+                    <button type="button" class="tab-button" aria-selected="false" data-status="Pengembalian">Pengembalian</button>
+                </nav>
+                <div class="order-list" id="orderList">
+                    </div>
+            </section>
             <section class="profile-main-section card" id="notifikasi-section" data-title="Pengaturan Notifikasi" style="display:none;">
                 <h1 class="section-title-lg">Pengaturan Notifikasi</h1>
-                <p>Konten untuk Pengaturan Notifikasi akan ditampilkan di sini.</p>
-                <div>
+                 <div>
                     <label class="form-checkbox-container">
                         <input type="checkbox" class="form-checkbox" checked>
                         <span class="form-checkbox-indicator"></span>
@@ -237,13 +245,11 @@
                         <span class="form-checkbox-indicator"></span>
                         <span class="form-checkbox-label">Notifikasi Pembayaran</span>
                     </label>
-              
-
+                </div>
             </section>
 
             <section class="profile-main-section card" id="password-section" data-title="Ubah Password" style="display:none;">
                 <h1 class="section-title-lg">Ubah Password</h1>
-                <p>Form untuk Ubah Password akan ditampilkan di sini.</p>
                 <form action="#" method="POST">
                     <div class="form-group">
                         <label for="current-password" class="form-label">Password Saat Ini</label>
@@ -260,7 +266,6 @@
                     <button type="submit" class="btn btn-primary submit-button">Simpan Perubahan</button>
                 </form>
                 <p class="form-hint">Pastikan password baru Anda kuat dan unik.</p>
-
             </section>
 
         </div>
@@ -270,58 +275,28 @@
 document.addEventListener('DOMContentLoaded', function () {
     lucide.createIcons();
 
-    // Header Links
-    const headerActionLinks = {
-        "Keranjang Belanja": "keranjang.html",
-        "Notifikasi": "#",
-        "Chat": "chat.html",
-        "Profil Pengguna": "profile.html"
-    };
-    document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
-        const label = button.getAttribute('aria-label');
-        if (headerActionLinks[label]) {
-            if (button.tagName.toLowerCase() !== 'a') {
-                const link = document.createElement('a');
-                link.href = headerActionLinks[label];
-                link.className = button.className;
-                link.setAttribute('aria-label', label);
-                link.innerHTML = button.innerHTML;
-                button.parentNode.replaceChild(link, button);
-            } else {
-                button.href = headerActionLinks[label];
-            }
-        }
-    });
-    lucide.createIcons();
+    // --- PROFILE PAGE SCRIPT ---
 
     // Profile Page Navigation & Section Switching
     const profileNavLinks = document.querySelectorAll('.profile-nav-link');
     const profileSections = document.querySelectorAll('.profile-main-section');
-    const mainSectionTitleElement = document.querySelector('.profile-main-section .section-title-lg'); // Assuming only one is visible
 
     function showSection(sectionIdToShow) {
         profileSections.forEach(section => {
-            if (section.id === sectionIdToShow) {
-                section.style.display = 'block';
-                // Update the main title if structure allows for a single H1 for all sections
-                // For this HTML, each section has its own H1, so we only need to show/hide.
-            } else {
-                section.style.display = 'none';
-            }
+            section.style.display = (section.id === sectionIdToShow) ? 'block' : 'none';
         });
     }
 
     profileNavLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             const targetSectionId = this.dataset.section;
-            if (targetSectionId) { // For same-page navigation
+            if (targetSectionId) {
                 e.preventDefault();
                 profileNavLinks.forEach(nav => nav.classList.remove('active'));
                 this.classList.add('active');
                 showSection(targetSectionId);
-                window.location.hash = this.hash; // Update URL hash
+                window.location.hash = this.hash;
             }
-            // Else, it's a normal link (e.g., to orders.html) and will navigate
         });
     });
 
@@ -329,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function displayInitialSection() {
         let sectionIdFromHash = window.location.hash.substring(1);
         if (!sectionIdFromHash) {
-            sectionIdFromHash = "biodata"; // Default section
+            sectionIdFromHash = "biodata";
         }
         const targetSection = document.getElementById(sectionIdFromHash + "-section");
         const targetLink = document.querySelector(`.profile-nav-link[data-section="${sectionIdFromHash}-section"]`);
@@ -337,22 +312,21 @@ document.addEventListener('DOMContentLoaded', function () {
         if (targetSection) {
             showSection(targetSection.id);
             if (targetLink) {
-                 profileNavLinks.forEach(nav => nav.classList.remove('active'));
-                 targetLink.classList.add('active');
+                profileNavLinks.forEach(nav => nav.classList.remove('active'));
+                targetLink.classList.add('active');
             }
         } else {
-            showSection('biodata-section'); // Fallback to default
-             const defaultLink = document.querySelector('.profile-nav-link[data-section="biodata-section"]');
-             if(defaultLink) defaultLink.classList.add('active');
+            showSection('biodata-section');
+            const defaultLink = document.querySelector('.profile-nav-link[data-section="biodata-section"]');
+            if(defaultLink) defaultLink.classList.add('active');
         }
     }
     displayInitialSection();
-    window.addEventListener('hashchange', displayInitialSection); // Listen for hash changes
-
+    window.addEventListener('hashchange', displayInitialSection);
 
     // Edit Profile Functionality
-    const editProfileButton = document.querySelector('.edit-profile-button'); // In Biodata Diri section
-    const editProfileButtonMain = document.querySelector('.edit-profile-button-main'); // Under user avatar
+    const editProfileButton = document.querySelector('.edit-profile-button');
+    const editProfileButtonMain = document.querySelector('.edit-profile-button-main');
     const biodataDetailsDiv = document.querySelector('#biodata-section .biodata-details');
     let isEditMode = false;
 
@@ -365,20 +339,20 @@ document.addEventListener('DOMContentLoaded', function () {
             const fieldName = span.dataset.field;
             if (isEditMode) {
                 if (fieldName !== 'gender') {
-                    let currentValue = span.textContent.startsWith(': ') ? span.textContent.substring(2) : span.textContent;
+                    let currentValue = span.textContent;
                     let inputType = "text";
-                    if (fieldName === "dob") inputType = "date"; // Simple date, can be improved
+                    if (fieldName === "dob") inputType = "date";
                     else if (fieldName === "phone") inputType = "tel";
                     else if (fieldName === "email") inputType = "email";
                     
                     const input = document.createElement('input');
                     input.type = inputType;
-                    if (fieldName === "dob") { // Attempt to convert dd/mm/yyyy to yyyy-mm-dd
+                    if (fieldName === "dob") {
                         const parts = currentValue.split('/');
                         if (parts.length === 3) currentValue = `${parts[2]}-${parts[1]}-${parts[0]}`;
                     }
                     input.value = currentValue;
-                    input.dataset.originalSpan = fieldName; // Keep track
+                    input.dataset.originalSpan = fieldName;
                     span.style.display = 'none';
                     span.parentNode.insertBefore(input, span.nextSibling);
                 }
@@ -386,11 +360,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 const inputField = span.parentNode.querySelector(`input[data-original-span="${fieldName}"]`);
                 if (inputField) {
                     let newValue = inputField.value;
-                     if (fieldName === "dob") { // Convert yyyy-mm-dd back to dd/mm/yyyy
+                     if (fieldName === "dob") {
                         const parts = newValue.split('-');
                         if (parts.length === 3) newValue = `${parts[2]}/${parts[1]}/${parts[0]}`;
                     }
-                    span.textContent = newValue; // Removed adding ": " prefix, style with CSS if needed
+                    span.textContent = newValue;
                     span.style.display = '';
                     inputField.remove();
                 }
@@ -403,35 +377,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if(editProfileButton) editProfileButton.textContent = isEditMode ? 'Simpan Perubahan' : 'Edit profile';
         if(editProfileButtonMain) editProfileButtonMain.textContent = isEditMode ? 'Simpan Perubahan' : 'Ubah profil';
-
     }
 
     if (editProfileButton) {
         editProfileButton.addEventListener('click', toggleEditMode);
     }
-    if (editProfileButtonMain) { // The one under avatar
+    if (editProfileButtonMain) {
          editProfileButtonMain.addEventListener('click', () => {
-            // Ensure biodata section is active for this button
             const biodataLink = document.querySelector('.profile-nav-link[data-section="biodata-section"]');
             if (biodataLink && !biodataLink.classList.contains('active')) {
-                biodataLink.click(); // Activate and show biodata section
+                biodataLink.click();
             }
-            // Then toggle edit mode if not already in edit mode by the other button
-             if (editProfileButton && editProfileButton.textContent === 'Edit profile' && !isEditMode) { // Only toggle if main btn is not already "Simpan"
+            if (!isEditMode) {
                 toggleEditMode();
-            } else if (editProfileButton && editProfileButton.textContent === 'Simpan Perubahan' && isEditMode) {
-                 toggleEditMode(); // This would save changes
             }
         });
     }
-
 
     // Change Photo Button
     const changePhotoButton = document.getElementById('changePhotoButton');
     const photoInput = document.getElementById('changePhotoImageInput');
     const profilePhotoPreview = document.getElementById('profilePhotoPreview');
     const userAvatarPreview = document.getElementById('userAvatarPreview');
-
 
     if (changePhotoButton && photoInput) {
         changePhotoButton.addEventListener('click', () => photoInput.click());
@@ -441,13 +408,108 @@ document.addEventListener('DOMContentLoaded', function () {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     profilePhotoPreview.src = e.target.result;
-                    userAvatarPreview.src = e.target.result; // Update sidebar avatar too
+                    userAvatarPreview.src = e.target.result;
                 }
                 reader.readAsDataURL(file);
-                alert('Foto profil diubah! (Simulasi)');
             }
         });
     }
+
+
+    // --- ORDERS PAGE SCRIPT ---
+    const orderTabs = document.querySelectorAll('.orders-tab-navigation .tab-button');
+    const orderListContainer = document.getElementById('orderList');
+
+    // Sample order data
+    const allOrders = [
+        { id: "order1", storeName: "Nama Toko Elektronik", status: "Selesai", statusMessage: "Pesanan tiba di alamat tujuan.", icon: "truck", products: [{ name: "Nama Produk Yang Cukup Panjang Contohnya", quantity: 1, price: "125.000", image: "https://via.placeholder.com/80x80/007bff/ffffff?text=Produk+Elektronik" }], total: "125.000", storeId: "tokoElektronik", productId: "produkElektronik" },
+        { id: "order2", storeName: "Toko Fashionista", status: "Dikirim", statusMessage: "Pesanan sedang dalam perjalanan.", icon: "package", products: [{ name: "Baju Kemeja Pria Lengan Panjang", quantity: 2, price: "150.000", image: "https://via.placeholder.com/80x80/28a745/ffffff?text=Baju+Kemeja" }], total: "300.000", storeId: "tokoFashion", productId: "bajuKemeja" },
+        { id: "order3", storeName: "Perabotan Rumah Modern", status: "Belum Bayar", statusMessage: "Menunggu pembayaran Anda.", icon: "credit-card", products: [{ name: "Lampu Meja Belajar LED", quantity: 1, price: "85.000", image: "https://via.placeholder.com/80x80/ffc107/000000?text=Lampu+Meja" }], total: "85.000", storeId: "tokoPerabotan", productId: "lampuMeja" },
+        { id: "order4", storeName: "Gadget Store", status: "Dikemas", statusMessage: "Pesanan sedang disiapkan oleh penjual.", icon: "archive", products: [{ name: "Wireless Mouse Pro", quantity: 1, price: "250.000", image: "https://via.placeholder.com/80x80/fd7e14/ffffff?text=Mouse" }], total: "250.000", storeId: "tokoGadget", productId: "mousePro" },
+        { id: "order5", storeName: "Toko Buku Edukasi", status: "Dibatalkan", statusMessage: "Pesanan telah dibatalkan.", icon: "x-circle", products: [{ name: "Buku Novel Fantasi Terbaru", quantity: 1, price: "95.000", image: "https://via.placeholder.com/80x80/17a2b8/ffffff?text=Buku+Novel" }], total: "95.000", storeId: "tokoBuku", productId: "novelFantasi" }
+    ];
+
+    function renderOrders(statusFilter = "Semua") {
+        orderListContainer.innerHTML = '';
+        const filteredOrders = statusFilter === "Semua" ? allOrders : allOrders.filter(order => order.status === statusFilter);
+
+        if (filteredOrders.length === 0) {
+            orderListContainer.innerHTML = `<p style="text-align:center; color:hsl(var(--muted-foreground)); padding: var(--spacing-6) 0;">Tidak ada pesanan dengan status "${statusFilter}".</p>`;
+            return;
+        }
+
+        filteredOrders.forEach(order => {
+            const orderCard = document.createElement('div');
+            orderCard.className = 'order-card card';
+            
+            let productsHTML = '';
+            order.products.forEach(product => {
+                productsHTML += `
+                    <div class="order-product-item">
+                        <a href="detailProduct.html?id=${product.productId || 'generic'}" class="product-image-placeholder order-product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                        </a>
+                        <div class="order-product-details">
+                            <a href="detailProduct.html?id=${product.productId || 'generic'}" style="text-decoration:none; color:inherit;"><p class="product-name">${product.name}</p></a>
+                            <p class="product-quantity">x${product.quantity}</p>
+                        </div>
+                        <p class="order-product-price">Rp ${product.price}</p>
+                    </div>
+                `;
+            });
+
+            orderCard.innerHTML = `
+                <div class="order-card-header">
+                    <div class="order-store-info">
+                        <a href="storeProfile.html?id=${order.storeId || 'generic'}" style="text-decoration:none; color:inherit;"><span class="store-name">${order.storeName}</span></a>
+                    </div>
+                    <div class="order-status-message">
+                        <i data-lucide="${order.icon || 'info'}" class="icon"></i> ${order.statusMessage}
+                    </div>
+                </div>
+                <div class="order-card-body">${productsHTML}</div>
+                <div class="order-card-footer">
+                    <div class="order-total-summary">
+                        <span>Total Pesanan:</span>
+                        <span class="total-amount">Rp ${order.total}</span>
+                    </div>
+                    <div class="order-actions">
+                        ${order.status === "Selesai" ? '<button class="btn btn-outline btn-sm rate-order-button" data-orderid="'+order.id+'">Nilai</button>' : ''}
+                        <a href="chat.html?store_id=${order.storeId || 'generic'}" class="btn btn-outline btn-sm">Hubungi Penjual</a>
+                        <button class="btn btn-primary btn-sm buy-again-button" data-orderid="${order.id}">Beli Lagi</button>
+                    </div>
+                </div>
+            `;
+            orderListContainer.appendChild(orderCard);
+        });
+        lucide.createIcons({context: orderListContainer});
+
+        // Add event listeners for new buttons
+        document.querySelectorAll('.rate-order-button').forEach(button => {
+            button.addEventListener('click', function() { alert(`Tombol "Nilai" untuk pesanan ${this.dataset.orderid} diklik.`); });
+        });
+        document.querySelectorAll('.buy-again-button').forEach(button => {
+            button.addEventListener('click', function() { alert(`Tombol "Beli Lagi" untuk pesanan ${this.dataset.orderid} diklik.`); });
+        });
+    }
+
+    orderTabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+            orderTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+            this.classList.add('active');
+            this.setAttribute('aria-selected', 'true');
+            renderOrders(this.dataset.status);
+        });
+    });
+
+    // Initial render for orders if the pesanan tab is active
+     if (document.querySelector('.profile-nav-link[data-section="pesanan-section"].active')) {
+        renderOrders("Semua");
+     }
+     // Also render if the hash is #pesanan on load
+     if(window.location.hash === '#pesanan') {
+        renderOrders("Semua");
+     }
 });
 </script>
 </body>
