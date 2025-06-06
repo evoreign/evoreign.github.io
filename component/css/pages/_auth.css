@@ -133,3 +133,26 @@
 .login-prompt a:hover {
     text-decoration: underline;
 }
+
+/* --- Responsive Styles for Mobile --- */
+@media (max-width: 768px) {
+
+    /* Hides the promotional section on the left to save space */
+    .promo-section {
+        display: none;
+    }
+
+    /* Allows the main form container to behave like a normal page on mobile */
+    .signup-container {
+        flex-direction: column; /* Stacks the (now single) column vertically */
+        min-height: auto;       /* Removes the minimum height constraint */
+        margin-top: 0;          /* Removes top margin */
+        box-shadow: none;       /* Removes the desktop shadow effect */
+        border-radius: 0;       /* Removes rounded corners for a full-screen feel */
+    }
+
+    /* Adjusts padding on the form section for smaller screens */
+    .form-section.card {
+        padding: var(--spacing-6) var(--spacing-4);
+    }
+}

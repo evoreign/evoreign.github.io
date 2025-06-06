@@ -1,202 +1,198 @@
 <!DOCTYPE html>
 <html lang="id">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Masuk - Beliin.id</title>
-      <link rel="stylesheet" href="./component/css/main.css">
-      <script src="https://unpkg.com/lucide@latest"></script>
-      <link rel="icon" href="./assets/logo.PNG" type="image/png">
-   </head>
-   <body class="signup-page-body">
-      <header class="site-header">
-         <div class="header-container">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - Beliin.id</title>
+    <link rel="stylesheet" href="./component/css/main.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="./assets/logo.PNG" type="image/png">
+    <style>
+        .logo-image {
+            width: 15%;
+            height: 15%;
+            object-fit: cover;
+            border-radius: var(--radius);
+        }
+        .promo-section .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius);
+        }
+    </style>
+</head>
+
+<body class="signup-page-body">
+
+    <header class="site-header">
+        <div class="header-container">
             <div class="logo-container">
-               <a href="index.html" class="logo-link">
-               <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
-               </a>
+                <a href="index.html" class="logo-link">
+                    <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo-image">
+                </a>
             </div>
             <div class="search-bar-container new-search-bar desktop-search">
-               <form action="#" class="search-form">
-                  <i data-lucide="search" class="icon search-icon-inside"></i>
-                  <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
-               </form>
+                <form action="#" class="search-form">
+                    <i data-lucide="search" class="icon search-icon-inside"></i>
+                    <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+                </form>
             </div>
             <nav class="header-actions">
-               <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
-               <i data-lucide="search" class="icon"></i>
-               </button>
-               <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
-               <i data-lucide="shopping-cart" class="icon"></i>
-               </a>
-               <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
-               <i data-lucide="heart" class="icon"></i>
-               </a>
-               <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
-               <i data-lucide="message-circle" class="icon"></i>
-               </a>
-               <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
-               <i data-lucide="user" class="icon"></i>
-               </a>
+                <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
+                    <i data-lucide="search" class="icon"></i>
+                </button>
+                <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja"><i data-lucide="shopping-cart" class="icon"></i></a>
+                <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist"><i data-lucide="heart" class="icon"></i></a>
+                <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat"><i data-lucide="message-circle" class="icon"></i></a>
+                <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna"><i data-lucide="user" class="icon"></i></a>
             </nav>
-         </div>
-      </header>
-      <div class="search-overlay" id="searchOverlay">
-         <div class="search-overlay-header">
+        </div>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
             <div class="search-bar-container new-search-bar">
-               <form action="#" class="search-form">
-                  <i data-lucide="search" class="icon search-icon-inside"></i>
-                  <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
-               </form>
+                <form action="#" class="search-form">
+                    <i data-lucide="search" class="icon search-icon-inside"></i>
+                    <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
+                </form>
             </div>
             <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
-         </div>
-         <div class="search-overlay-content">
-         </div>
-      </div>
-      <main class="signup-container">
-         <aside class="promo-section">
+        </div>
+        <div class="search-overlay-content"></div>
+    </div>
+
+    <main class="signup-container">
+
+        <aside class="promo-section">
             <div class="promo-content">
-               <h1 class="brand-name">Beliin.id</h1>
-               <div class="image-placeholder">
-                  <img src="../assets/logo.jpeg" alt="Promo Beliin.id" style="width:100%; height:100%; object-fit:cover; border-radius: var(--radius);">
-               </div>
-               <h2 class="headline">Semua kebutuhan, Langsung Beliin.id</h2>
-               <p class="sub-headline">Masuk dan nikmati berbagai keuntungan di Beliin.id</p>
+                <h1 class="brand-name">Beliin.id</h1>
+                <h2 class="headline">Semua kebutuhan, Langsung Beliin.id</h2>
+                <p class="sub-headline">Masuk dan nikmati berbagai keuntungan di Beliin.id</p>
             </div>
-         </aside>
-         <section class="form-section card">
+        </aside>
+
+        <section class="form-section card">
             <div class="form-tabs">
-               <a href="signUp.html" class="tab-button" id="tab-daftar">Daftar</a>
-               <button type="button" class="tab-button active" aria-selected="true" id="tab-masuk">Masuk</button>
+                <a href="signUp.html" class="tab-button" id="tab-daftar">Daftar</a>
+                <a href="#" class="tab-button active" aria-current="page" id="tab-masuk">Masuk</a>
             </div>
-            <form id="signInForm" method="POST">
-               <div class="form-group">
-                  <label for="contact" class="form-label">Email</label>
-                  <input type="email" id="contact" name="contact" class="form-input" required placeholder="Contoh: email@beliin.com">
-               </div>
-               <div class="form-group">
-                  <label for="password" class="form-label">Password</label>
-                  <input type="password" id="password" name="password" class="form-input" required placeholder="Masukkan password Anda">
-               </div>
-               <div>
-                  <p class="form-hint"> Butuh bantuan? <a class="form-link" href="#">Hubungi kami</a></p>
-               </div>
-               <button type="submit" class="btn btn-primary submit-button">Masuk</button>
+
+            <form id="signInForm" method="POST" class="form-stack">
+                <div class="form-group">
+                    <label for="contact" class="form-label">Email</label>
+                    <input type="email" id="contact" name="contact" class="form-input" required placeholder="Contoh: email@beliin.com">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" class="form-input" required placeholder="Masukkan password Anda">
+                </div>
+                <div>
+                    <p class="form-hint">Butuh bantuan? <a class="form-link" href="#">Hubungi kami</a></p>
+                </div>
+                <button type="submit" class="btn btn-primary submit-button">Masuk</button>
             </form>
+
             <p class="login-prompt">
-               Belum punya akun? <a href="signUp.html">Daftar</a>
+                Belum punya akun? <a href="signUp.html" class="form-link">Daftar</a>
             </p>
-         </section>
-      </main>
-      <script>
-         document.addEventListener('DOMContentLoaded', function () {
-             // ADD THIS JAVASCRIPT TO YOUR <script> TAGS
-         
-         // --- Search Overlay Logic ---
-         const searchOverlay = document.getElementById('searchOverlay');
-         const searchTrigger = document.querySelector('.mobile-search-trigger');
-         const searchClose = document.getElementById('searchOverlayClose');
-         const mobileSearchInput = document.getElementById('mobileSearchInput');
-         
-         if (searchTrigger) {
-             searchTrigger.addEventListener('click', () => {
-                 if (searchOverlay) {
-                     searchOverlay.classList.add('is-active');
-                     // Automatically focus the input field when the overlay opens
-                     if(mobileSearchInput) mobileSearchInput.focus();
-                 }
-             });
-         }
-         
-         if (searchClose) {
-             searchClose.addEventListener('click', () => {
-                 if (searchOverlay) {
-                     searchOverlay.classList.remove('is-active');
-                 }
-             });
-         }
-             lucide.createIcons();
-         
-             // Header action buttons (ensure they are <a> tags)
-             const headerActionLinks = {
-                 "Keranjang Belanja": "keranjang.html",
-                 "Notifikasi": "#",
-                 "Chat": "chat.html",
-                 "Profil Pengguna": "profile.html"
-             };
-             document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
-                 const label = button.getAttribute('aria-label');
-                 if (headerActionLinks[label]) {
-                     if (button.tagName.toLowerCase() !== 'a') { // If it's a button, replace with <a>
-                         const link = document.createElement('a');
-                         link.href = headerActionLinks[label];
-                         link.className = button.className; // Copy classes
-                         link.setAttribute('aria-label', label);
-                         link.innerHTML = button.innerHTML; // Copy icon
-                         button.parentNode.replaceChild(link, button);
-                     } else { // If already an <a>, just set href
-                          button.href = headerActionLinks[label];
-                     }
-                 }
-             });
-             lucide.createIcons(); // Re-run if icons were part of replaced elements
-         
-         
-             const signInForm = document.getElementById('signInForm');
-             if (signInForm) {
-                 signInForm.addEventListener('submit', function(event) {
-                     event.preventDefault(); // Prevent actual form submission
-         
-                     const emailInput = document.getElementById('contact');
-                     const passwordInput = document.getElementById('password');
-                     const email = emailInput.value.trim();
-                     const password = passwordInput.value.trim();
-         
-                     let isValid = true;
-                     // Basic validation
-                     if (email === "") {
-                         alert("Silakan masukkan email Anda.");
-                         emailInput.focus();
-                         isValid = false;
-                     } else if (!email.includes('@') || !email.includes('.')) { // Very basic email check
-                         alert("Format email tidak valid.");
-                         emailInput.focus();
-                         isValid = false;
-                     }
-                     
-                     if (isValid && password === "") {
-                         alert("Silakan masukkan password Anda.");
-                         passwordInput.focus();
-                         isValid = false;
-                     }
-         
-                     if (isValid) {
-                         // Simulate login
-                         // In a real app, you'd send this to a server.
-                         // For demo, let's use a dummy credential
-                         if (email === "user@beliin.com" && password === "password123") {
-                             alert("Login berhasil! Selamat datang kembali.");
-                             // Store login state (simulated)
-                             try {
-                                 localStorage.setItem('isLoggedInBeliin', 'true');
-                                 localStorage.setItem('userEmailBeliin', email);
-                             } catch (e) {
-                                 console.warn("localStorage not available for login state simulation.");
-                             }
-                             window.location.href = "index.html"; // Redirect to indexpage
-                         } else {
-                             alert("Email atau password salah. Silakan coba lagi.");
-                             passwordInput.value = ""; // Clear password field
-                             passwordInput.focus();
-                         }
-                     }
-                 });
-             }
-         
-             // Tab "Daftar" is already an <a> tag.
-             // The "Masuk" tab is the current page, so no JS needed for it specifically here.
-         });
-      </script>
-   </body>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            /**
+             * ------------------------------------------------------------------------
+             * Global Initializations
+             * ------------------------------------------------------------------------
+             */
+            lucide.createIcons();
+            initializeSearchOverlay();
+            initializeLoginPage();
+
+            /**
+             * ------------------------------------------------------------------------
+             * Mobile Search Overlay Functionality
+             * ------------------------------------------------------------------------
+             */
+            function initializeSearchOverlay() {
+                const searchOverlay = document.getElementById('searchOverlay');
+                const searchTrigger = document.querySelector('.mobile-search-trigger');
+                const searchClose = document.getElementById('searchOverlayClose');
+                const mobileSearchInput = document.getElementById('mobileSearchInput');
+
+                if (!searchOverlay || !searchTrigger || !searchClose) return;
+
+                searchTrigger.addEventListener('click', () => {
+                    searchOverlay.classList.add('is-active');
+                    if (mobileSearchInput) mobileSearchInput.focus();
+                });
+
+                searchClose.addEventListener('click', () => {
+                    searchOverlay.classList.remove('is-active');
+                });
+            }
+
+            /**
+             * ------------------------------------------------------------------------
+             * Sign In Page Functionality
+             * ------------------------------------------------------------------------
+             */
+            function initializeLoginPage() {
+                const signInForm = document.getElementById('signInForm');
+                if (!signInForm) return;
+
+                // Handle the form submission event.
+                signInForm.addEventListener('submit', function(event) {
+                    // Prevent the form from actually submitting and reloading the page.
+                    event.preventDefault();
+
+                    const emailInput = document.getElementById('contact');
+                    const passwordInput = document.getElementById('password');
+                    const email = emailInput.value.trim();
+                    const password = passwordInput.value.trim();
+
+                    // --- Basic Validation ---
+                    if (email === "" || password === "") {
+                        alert("Email dan password harus diisi.");
+                        return; // Stop the function if fields are empty.
+                    }
+
+                    // --- Login Process Using localStorage (for demonstration) ---
+                    try {
+                        // Get the array of registered users from localStorage.
+                        // If no one has registered, it defaults to an empty array [].
+                        const users = JSON.parse(localStorage.getItem('beliinUsers')) || [];
+
+                        // Find a user in the array whose email matches the one entered.
+                        const foundUser = users.find(user => user.email === email);
+
+                        // Check if a user was found AND if their password matches.
+                        // WARNING: This is for demo only. Never store or compare plaintext passwords in a real app.
+                        if (foundUser && foundUser.password === password) {
+                            alert(`Login berhasil! Selamat datang kembali, ${foundUser.username}.`);
+                            // Store login state so other pages know the user is logged in.
+                            localStorage.setItem('isLoggedInBeliin', 'true');
+                            localStorage.setItem('currentUserBeliin', JSON.stringify(foundUser));
+                            // Redirect to the homepage.
+                            window.location.href = "index.html";
+                        } else {
+                            // This block runs if the email was not found or the password was incorrect.
+                            alert("Email atau password salah. Silakan coba lagi.");
+                            passwordInput.value = ""; // Clear the password field for security.
+                            passwordInput.focus(); // Set focus back to the password field.
+                        }
+                    } catch (e) {
+                        console.error("Error during login process:", e);
+                        alert("Terjadi kesalahan saat mencoba login. Silakan coba lagi.");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
 </html>

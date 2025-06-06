@@ -1,236 +1,267 @@
 <!DOCTYPE html>
 <html lang="id">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Daftar - Beliin.id</title>
-      <link rel="stylesheet" href="./component/css/main.css">
-      <script src="https://unpkg.com/lucide@latest"></script>
-      <link rel="icon" href="./assets/logo.PNG" type="image/png">
-   </head>
-   <body class="signup-page-body">
-      <header class="site-header">
-         <div class="header-container">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - Beliin.id</title>
+
+    <link rel="stylesheet" href="./component/css/main.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="./assets/logo.PNG" type="image/png">
+
+    <style>
+        /* -------------------------------------------------------------------------- */
+        /* Layout Styles                               */
+        /* -------------------------------------------------------------------------- */
+        .logo-image {
+            width: 15%;
+            height: 15%;
+            object-fit: cover;
+            border-radius: var(--radius);
+        }
+
+        /* -------------------------------------------------------------------------- */
+        /* Promo Section Styles (Left side of signup)     */
+        /* -------------------------------------------------------------------------- */
+        /* .promo-section .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius);
+        } */
+    </style>
+</head>
+<body class="signup-page-body">
+
+    <header class="site-header">
+        <div class="header-container">
             <div class="logo-container">
-               <a href="index.html" class="logo-link">
-               <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo" style="width: 15%; height: 15%; object-fit: cover; border-radius: var(--radius);">
-               </a>
+                <a href="index.html" class="logo-link">
+                    <img src="./assets/logo.jpeg" alt="Logo Beliin.id" class="logo-image">
+                </a>
             </div>
+
             <div class="search-bar-container new-search-bar desktop-search">
-               <form action="#" class="search-form">
-                  <i data-lucide="search" class="icon search-icon-inside"></i>
-                  <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
-               </form>
+                <form action="#" class="search-form">
+                    <i data-lucide="search" class="icon search-icon-inside"></i>
+                    <input type="search" class="form-input search-input" placeholder="Cari produk, kategori, atau toko...">
+                </form>
             </div>
+
             <nav class="header-actions">
-               <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
-               <i data-lucide="search" class="icon"></i>
-               </button>
-               <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
-               <i data-lucide="shopping-cart" class="icon"></i>
-               </a>
-               <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
-               <i data-lucide="heart" class="icon"></i>
-               </a>
-               <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
-               <i data-lucide="message-circle" class="icon"></i>
-               </a>
-               <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
-               <i data-lucide="user" class="icon"></i>
-               </a>
+                <button type="button" class="btn btn-ghost btn-icon mobile-search-trigger" aria-label="Buka Pencarian">
+                    <i data-lucide="search" class="icon"></i>
+                </button>
+                <a href="keranjang.html" class="btn btn-ghost btn-icon" aria-label="Keranjang Belanja">
+                    <i data-lucide="shopping-cart" class="icon"></i>
+                </a>
+                <a href="wishlist.html" class="btn btn-ghost btn-icon" aria-label="Wishlist">
+                    <i data-lucide="heart" class="icon"></i>
+                </a>
+                <a href="chat.html" class="btn btn-ghost btn-icon" aria-label="Chat">
+                    <i data-lucide="message-circle" class="icon"></i>
+                </a>
+                <a href="profile.html" class="btn btn-ghost btn-icon" aria-label="Profil Pengguna">
+                    <i data-lucide="user" class="icon"></i>
+                </a>
             </nav>
-         </div>
-      </header>
-      <div class="search-overlay" id="searchOverlay">
-         <div class="search-overlay-header">
+        </div>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
             <div class="search-bar-container new-search-bar">
-               <form action="#" class="search-form">
-                  <i data-lucide="search" class="icon search-icon-inside"></i>
-                  <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
-               </form>
+                <form action="#" class="search-form">
+                    <i data-lucide="search" class="icon search-icon-inside"></i>
+                    <input type="search" class="form-input search-input" placeholder="Cari di Beliin.id..." id="mobileSearchInput">
+                </form>
             </div>
             <button type="button" class="btn btn-link search-overlay-close" id="searchOverlayClose">Batal</button>
-         </div>
-         <div class="search-overlay-content">
-         </div>
-      </div>
-      <main class="signup-container">
-         <aside class="promo-section">
+        </div>
+        <div class="search-overlay-content">
+            </div>
+    </div>
+
+    <main class="signup-container">
+
+        <aside class="promo-section">
             <div class="promo-content">
-               <h1 class="brand-name">Beliin.id</h1>
-               <div class="image-placeholder">
-                  <img src="../assets/logo.jpeg" alt="Promo Beliin.id" style="width:100%; height:100%; object-fit:cover; border-radius: var(--radius);">
-               </div>
-               <h2 class="headline">Semua kebutuhan, Langsung Beliin.id</h2>
-               <p class="sub-headline">Daftar sekarang dan nikmati berbagai keuntungan di Beliin.id</p>
+                <h1 class="brand-name">Beliin.id</h1>
+                <!-- <div class="image-placeholder">
+                    <img src="../assets/logo.jpeg" alt="Promo Beliin.id">
+                </div> -->
+                <h2 class="headline">Semua kebutuhan, Langsung Beliin.id</h2>
+                <p class="sub-headline">Daftar sekarang dan nikmati berbagai keuntungan di Beliin.id</p>
             </div>
-         </aside>
-         <section class="form-section card">
+        </aside>
+
+        <section class="form-section card">
             <div class="form-tabs">
-               <button type="button" class="tab-button active" aria-selected="true" id="tab-daftar">Daftar</button>
-               <a href="signIn.html" class="tab-button" id="tab-masuk">Masuk</a>
+                <a href="#" class="tab-button active" aria-current="page" id="tab-daftar">Daftar</a>
+                <a href="signIn.html" class="tab-button" id="tab-masuk">Masuk</a>
             </div>
-            <form id="signUpForm" method="POST">
-               <div class="form-group">
-                  <label for="username" class="form-label">Username</label>
-                  <input type="text" id="username" name="username" class="form-input" required placeholder="Buat username unik Anda">
-               </div>
-               <div class="form-group">
-                  <label for="contact" class="form-label">Email</label>
-                  <input type="email" id="contact" name="contact" class="form-input" required placeholder="Contoh: email@beliin.com">
-                  <p class="form-hint">Contoh: email@beliin.com</p>
-               </div>
-               <div class="form-group">
-                  <label for="password" class="form-label">Password</label>
-                  <input type="password" id="password" name="password" class="form-input" required placeholder="Minimal 8 karakter">
-               </div>
-               <div class="form-group">
-                  <label for="confirmPassword" class="form-label">Konfirmasi Password</label>
-                  <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" required placeholder="Ulangi password Anda">
-               </div>
-               <button type="submit" class="btn btn-primary submit-button">Daftar</button>
+
+            <form id="signUpForm" method="POST" class="form-stack">
+                <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" name="username" class="form-input" required placeholder="Buat username unik Anda">
+                </div>
+                <div class="form-group">
+                    <label for="contact" class="form-label">Email</label>
+                    <input type="email" id="contact" name="contact" class="form-input" required placeholder="Contoh: email@beliin.com">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" class="form-input" required placeholder="Minimal 8 karakter">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Konfirmasi Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" required placeholder="Ulangi password Anda">
+                </div>
+                <button type="submit" class="btn btn-primary submit-button">Daftar</button>
             </form>
+
             <p class="terms-text">
-               Dengan mendaftar, saya menyetujui
-               <a href="#">Kebijakan Privasi</a> serta
-               <a href="#">Syarat & Ketentuan Beliin.id</a>.
+                Dengan mendaftar, saya menyetujui
+                <a href="#" class="form-link">Kebijakan Privasi</a> serta
+                <a href="#" class="form-link">Syarat & Ketentuan Beliin.id</a>.
             </p>
             <p class="login-prompt">
-               Sudah punya akun? <a href="signIn.html">Masuk</a>
+                Sudah punya akun? <a href="signIn.html" class="form-link">Masuk</a>
             </p>
-         </section>
-      </main>
-      <script>
-         document.addEventListener('DOMContentLoaded', function () {
-             // ADD THIS JAVASCRIPT TO YOUR <script> TAGS
-         
-         // --- Search Overlay Logic ---
-         const searchOverlay = document.getElementById('searchOverlay');
-         const searchTrigger = document.querySelector('.mobile-search-trigger');
-         const searchClose = document.getElementById('searchOverlayClose');
-         const mobileSearchInput = document.getElementById('mobileSearchInput');
-         
-         if (searchTrigger) {
-             searchTrigger.addEventListener('click', () => {
-                 if (searchOverlay) {
-                     searchOverlay.classList.add('is-active');
-                     // Automatically focus the input field when the overlay opens
-                     if(mobileSearchInput) mobileSearchInput.focus();
-                 }
-             });
-         }
-         
-         if (searchClose) {
-             searchClose.addEventListener('click', () => {
-                 if (searchOverlay) {
-                     searchOverlay.classList.remove('is-active');
-                 }
-             });
-         }
-             lucide.createIcons();
-         
-             // Header action buttons (ensure they are <a> tags)
-             const headerActionLinks = {
-                 "Keranjang Belanja": "keranjang.html",
-                 "Notifikasi": "#",
-                 "Chat": "chat.html",
-                 "Profil Pengguna": "profile.html"
-             };
-             document.querySelectorAll('.site-header .header-actions .btn-icon').forEach(button => {
-                 const label = button.getAttribute('aria-label');
-                 if (headerActionLinks[label]) {
-                     if (button.tagName.toLowerCase() !== 'a') {
-                         const link = document.createElement('a');
-                         link.href = headerActionLinks[label];
-                         link.className = button.className;
-                         link.setAttribute('aria-label', label);
-                         link.innerHTML = button.innerHTML;
-                         button.parentNode.replaceChild(link, button);
-                     } else {
-                          button.href = headerActionLinks[label];
-                     }
-                 }
-             });
-             lucide.createIcons();
-         
-         
-             const signUpForm = document.getElementById('signUpForm');
-             if (signUpForm) {
-                 signUpForm.addEventListener('submit', function(event) {
-                     event.preventDefault(); // Prevent actual form submission
-         
-                     const usernameInput = document.getElementById('username');
-                     const emailInput = document.getElementById('contact');
-                     const passwordInput = document.getElementById('password');
-                     const confirmPasswordInput = document.getElementById('confirmPassword');
-         
-                     const username = usernameInput.value.trim();
-                     const email = emailInput.value.trim();
-                     const password = passwordInput.value; // Keep original for length check
-                     const confirmPassword = confirmPasswordInput.value;
-         
-                     let isValid = true;
-         
-                     // Basic validation
-                     if (username === "") {
-                         alert("Silakan masukkan username Anda.");
-                         usernameInput.focus();
-                         isValid = false;
-                     }
-                     
-                     if (isValid && email === "") {
-                         alert("Silakan masukkan email Anda.");
-                         emailInput.focus();
-                         isValid = false;
-                     } else if (isValid && (!email.includes('@') || !email.includes('.'))) {
-                         alert("Format email tidak valid.");
-                         emailInput.focus();
-                         isValid = false;
-                     }
-                     
-                     if (isValid && password === "") {
-                         alert("Silakan masukkan password Anda.");
-                         passwordInput.focus();
-                         isValid = false;
-                     } else if (isValid && password.length < 8) {
-                         alert("Password minimal harus 8 karakter.");
-                         passwordInput.focus();
-                         isValid = false;
-                     }
-         
-                     if (isValid && confirmPassword === "") {
-                         alert("Silakan konfirmasi password Anda.");
-                         confirmPasswordInput.focus();
-                         isValid = false;
-                     } else if (isValid && password !== confirmPassword) {
-                         alert("Konfirmasi password tidak cocok dengan password.");
-                         confirmPasswordInput.focus();
-                         isValid = false;
-                     }
-         
-         
-                     if (isValid) {
-                         // Simulate registration
-                         // In a real app, you'd send this to a server and check for existing username/email.
-                         alert(`Pendaftaran untuk username "${username}" berhasil! Silakan masuk.`);
-                         // Store registration data (simulated, not secure for real use)
-                          try {
-                             const users = JSON.parse(localStorage.getItem('beliinUsers')) || [];
-                             const userExists = users.find(user => user.email === email || user.username === username);
-                             if (userExists) {
-                                 alert("Email atau Username sudah terdaftar. Silakan gunakan yang lain.");
-                                 return; // Stop further processing
-                             }
-                             users.push({ username, email, password }); // Store password plaintext for demo only!
-                             localStorage.setItem('beliinUsers', JSON.stringify(users));
-                         } catch(e) {
-                             console.warn("localStorage not available for user registration simulation.");
-                         }
-                         window.location.href = "signIn.html"; // Redirect to sign-in page
-                     }
-                 });
-             }
-         });
-      </script>
-   </body>
+        </section>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    lucide.createIcons();
+    initializeSearchOverlay();
+    initializeSignUpPage();
+
+    function initializeSearchOverlay() {
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchTrigger = document.querySelector('.mobile-search-trigger');
+        const searchClose = document.getElementById('searchOverlayClose');
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        if (!searchOverlay || !searchTrigger || !searchClose) return;
+
+        searchTrigger.addEventListener('click', () => {
+            searchOverlay.classList.add('is-active');
+            if (mobileSearchInput) mobileSearchInput.focus();
+        });
+
+        searchClose.addEventListener('click', () => {
+            searchOverlay.classList.remove('is-active');
+        });
+    }
+
+    function initializeSignUpPage() {
+        const signUpForm = document.getElementById('signUpForm');
+        if (!signUpForm) return;
+
+        signUpForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const usernameInput = document.getElementById('username');
+            const emailInput = document.getElementById('contact');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+
+            const username = usernameInput.value.trim();
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+
+            // -------------------------
+            // 1. BASIC EMPTY / LENGTH CHECKS
+            // -------------------------
+            if (!username) {
+                alert('Username tidak boleh kosong.');
+                usernameInput.focus();
+                return;
+            }
+            if (username.length < 3) {
+                alert('Username minimal 3 karakter.');
+                usernameInput.focus();
+                return;
+            }
+
+            if (!email) {
+                alert('Email tidak boleh kosong.');
+                emailInput.focus();
+                return;
+            }
+
+            if (!password) {
+                alert('Password tidak boleh kosong.');
+                passwordInput.focus();
+                return;
+            }
+            if (password.length < 8) {
+                alert('Password minimal 8 karakter.');
+                passwordInput.focus();
+                return;
+            }
+
+            if (!confirmPassword) {
+                alert('Konfirmasi Password tidak boleh kosong.');
+                confirmPasswordInput.focus();
+                return;
+            }
+
+            // -------------------------
+            // 2. EMAIL FORMAT VALIDATION
+            // -------------------------
+            // (simple regex; adjust as needed)
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Format email tidak valid.');
+                emailInput.focus();
+                return;
+            }
+
+            // -------------------------
+            // 3. PASSWORD / CONFIRM PASSWORD MATCH
+            // -------------------------
+            if (password !== confirmPassword) {
+                alert('Password dan Konfirmasi Password tidak cocok.');
+                confirmPasswordInput.focus();
+                return;
+            }
+
+            // -------------------------
+            // 4. EVERYTHING OKAY → STORE IN localStorage
+            // -------------------------
+            try {
+                // STEP 1: Ambil daftar user dari localStorage (jika belum ada, gunakan array kosong)
+                const users = JSON.parse(localStorage.getItem('beliinUsers')) || [];
+
+                // STEP 2: Cek apakah email atau username sudah terdaftar
+                const userExists = users.some(user =>
+                    user.email.toLowerCase() === email.toLowerCase() ||
+                    user.username.toLowerCase() === username.toLowerCase()
+                );
+
+                if (userExists) {
+                    alert('Email atau Username sudah terdaftar. Silakan gunakan yang lain.');
+                    return;
+                }
+
+                // STEP 3: Tambah user baru ke array, lalu simpan kembali
+                users.push({ username, email, password });
+                localStorage.setItem('beliinUsers', JSON.stringify(users));
+
+                alert(`Pendaftaran untuk username "${username}" berhasil! Silakan masuk.`);
+                window.location.href = 'signIn.html';
+            } catch (e) {
+                console.warn('localStorage tidak tersedia untuk simulasi pendaftaran.');
+                alert('Pendaftaran berhasil (simulasi). Anda akan dialihkan ke halaman login.');
+                window.location.href = 'signIn.html';
+            }
+        });
+    }
+});
+</script>
+
+</body>
 </html>

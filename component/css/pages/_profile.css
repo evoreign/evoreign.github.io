@@ -124,6 +124,7 @@
 /* .form-radio-container and its children are in components/_checkboxes_radios.css */
 
 .profile-actions {
+    gap: 30px;
     margin-top: var(--spacing-8);
     padding-top: var(--spacing-6);
     border-top: 1px solid hsl(var(--border));
