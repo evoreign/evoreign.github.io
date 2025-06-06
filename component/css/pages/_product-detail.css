@@ -10,10 +10,11 @@
 }
 
 /* Grid area assignments for .product-detail-layout */
-@media (min-width: 768px) {
+@media (min-width: 800px) {
     .product-gallery-column { grid-area: gallery; }
     .product-info-column { grid-area: info; }
     .product-purchase-column { grid-area: purchase; } /* Spans or specific area based on MQ */
+    
 }
 @media (min-width: 1024px) {
     /* grid-area assignments remain the same */
@@ -66,6 +67,7 @@
 
 /* Product Info Column */
 .product-info-column {
+    padding: 5px;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-4);
@@ -436,7 +438,7 @@
 /* Filters and Media Gallery Section (New Buyer Reviews) */
 .reviews-interactive-section {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: var(--spacing-5);
     padding-bottom: var(--spacing-5);
     margin-bottom: var(--spacing-5);
